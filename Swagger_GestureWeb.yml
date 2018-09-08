@@ -134,9 +134,10 @@ paths:
     delete:
       tags:
       - "user"
-      summary: "Request authentication"
-      description: "This method logs the user in."
-      operationId: "delete"
+      - "experiment"
+      summary: "Delete experiment"
+      description: "This method deletes the experiment."
+      operationId: "deleteExperiment"
       consumes:
       - "application/json"
       produces:
@@ -147,8 +148,12 @@ paths:
         type: "integer"
         required: true
       responses:
-        405:
-          description: "Invalid input"
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid experiment"
+        404:
+          description: "Experiment not found"
 securityDefinitions:
   petstore_auth:
     type: "oauth2"
