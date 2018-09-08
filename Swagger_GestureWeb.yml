@@ -112,10 +112,11 @@ paths:
           description: "Invalid input"
     put:
       tags:
+      - "experiment"
       - "user"
-      summary: "Request authentication"
-      description: "This method logs the user in."
-      operationId: "putExperiment"
+      summary: "Update experiment"
+      description: "This method updates an experiment given the user id."
+      operationId: "updateExperiment"
       consumes:
       - "application/json"
       produces:
@@ -123,10 +124,10 @@ paths:
       parameters:
       - name: "experimentId"
         in: "path"
-        type: "integer"
-        description: "User object that needs to be logged in."
+        description: "ID of experiment to update"
         required: true
-          
+        type: "integer"
+        format: "int64"
       responses:
         405:
           description: "Invalid input"
