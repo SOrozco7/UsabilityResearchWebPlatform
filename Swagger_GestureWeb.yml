@@ -186,7 +186,6 @@ definitions:
       password:
         type: "string"
 
-
   Experiment:
     type: "object"
     required:
@@ -199,7 +198,12 @@ definitions:
         format: "int64"
       name:
         type: "string"
-
+      startDateTime:
+        type: "string"
+        format: "date-time"
+      endDateTime:
+        type: "string"
+        format: "date-time"
 
 externalDocs:
   description: "Find out more about Swagger"
