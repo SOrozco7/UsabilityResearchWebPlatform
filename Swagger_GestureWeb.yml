@@ -5,11 +5,11 @@ info:
   title: "Swagger_GestureWeb"
   termsOfService: "http://swagger.io/terms/"
   contact:
-    email: ""
+    email: "apiteam@swagger.io"
   license:
-    name: ""
-    url: ""
-host: ""
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
 basePath: "/api"
 tags:
 - name: "user"
@@ -58,6 +58,8 @@ paths:
         name: "body"
         description: "Experiment object of the experiment that needs to be created."
         required: true
+        schema:
+          $ref: "#/definitions/Experiment"
       responses:
         200:
           description: "successful operation"
@@ -94,18 +96,17 @@ paths:
       - "user"
       summary: "Request authentication"
       description: "This method logs the user in."
-      operationId: "login"
+      operationId: "getExperiments"
       consumes:
       - "application/json"
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "User object that needs to be logged in."
+      - in: "path"
+        name: "experimentId"
+        type: "integer"
         required: true
-        schema:
-          $ref: "#/definitions/User"
+
       responses:
         405:
           description: "Invalid input"
@@ -114,18 +115,18 @@ paths:
       - "user"
       summary: "Request authentication"
       description: "This method logs the user in."
-      operationId: "login"
+      operationId: "putExperiment"
       consumes:
       - "application/json"
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
+      - name: "experimentId"
+        in: "path"
+        type: "integer"
         description: "User object that needs to be logged in."
         required: true
-        schema:
-          $ref: "#/definitions/User"
+          
       responses:
         405:
           description: "Invalid input"
@@ -134,18 +135,16 @@ paths:
       - "user"
       summary: "Request authentication"
       description: "This method logs the user in."
-      operationId: "login"
+      operationId: "delete"
       consumes:
       - "application/json"
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "User object that needs to be logged in."
+      - in: "path"
+        name: "experimentId"
+        type: "integer"
         required: true
-        schema:
-          $ref: "#/definitions/User"
       responses:
         405:
           description: "Invalid input"
@@ -161,45 +160,10 @@ securityDefinitions:
     type: "apiKey"
     name: "api_key"
     in: "header"
+    
 definitions:
-  Order:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      petId:
-        type: "integer"
-        format: "int64"
-      quantity:
-        type: "integer"
-        format: "int32"
-      shipDate:
-        type: "string"
-        format: "date-time"
-      status:
-        type: "string"
-        description: "Order Status"
-        enum:
-        - "placed"
-        - "approved"
-        - "delivered"
-      complete:
-        type: "boolean"
-        default: false
-    xml:
-      name: "Order"
-  Category:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-    xml:
-      name: "Category"
   User:
+  
     type: "object"
     properties:
       id:
@@ -215,71 +179,22 @@ definitions:
         type: "string"
       password:
         type: "string"
-      phone:
-        type: "string"
-      userStatus:
-        type: "integer"
-        format: "int32"
-        description: "User Status"
-    xml:
-      name: "User"
-  Tag:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-    xml:
-      name: "Tag"
-  Pet:
+
+
+  Experiment:
     type: "object"
     required:
     - "name"
-    - "photoUrls"
+    - "id"
+    - "usrRef"
     properties:
       id:
         type: "integer"
         format: "int64"
-      category:
-        $ref: "#/definitions/Category"
       name:
         type: "string"
-        example: "doggie"
-      photoUrls:
-        type: "array"
-        xml:
-          name: "photoUrl"
-          wrapped: true
-        items:
-          type: "string"
-      tags:
-        type: "array"
-        xml:
-          name: "tag"
-          wrapped: true
-        items:
-          $ref: "#/definitions/Tag"
-      status:
-        type: "string"
-        description: "pet status in the store"
-        enum:
-        - "available"
-        - "pending"
-        - "sold"
-    xml:
-      name: "Pet"
-  ApiResponse:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      type:
-        type: "string"
-      message:
-        type: "string"
+
+
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"
