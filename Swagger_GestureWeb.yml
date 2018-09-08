@@ -115,7 +115,7 @@ paths:
       - "experiment"
       - "user"
       summary: "Update experiment"
-      description: "This method updates an experiment given the user id."
+      description: "This method updates an experiment given its id."
       operationId: "updateExperiment"
       consumes:
       - "application/json"
