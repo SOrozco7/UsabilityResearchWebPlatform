@@ -1,11 +1,11 @@
 {
-  "name": "swagger-gestureweb",
+  "name": "swagger-gesture-web",
   "version": "1.0.0",
-  "description": "This is a server.",
+  "description": "API Swagger specification for Gesture Web.",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
-    "start": "node index.js"
+	"prestart": "npm install",
+	"start": "node index.js"
   },
   "keywords": [
     "swagger"
@@ -15,9 +15,6 @@
   "dependencies": {
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
-    "pg": "^7.4.3",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^4.38.0",
-    "swagger-tools": "^0.10.4"
+    "swagger-tools": "0.10.1"
   }
 }

@@ -1,9 +1,9 @@
 ---
 swagger: "2.0"
 info:
-  description: "This is a server."
+  description: "API Swagger specification for Gesture Web."
   version: "1.0.0"
-  title: "Swagger_GestureWeb"
+  title: "Swagger Gesture Web"
   termsOfService: "http://swagger.io/terms/"
   contact:
     email: "apiteam@swagger.io"
@@ -16,7 +16,7 @@ tags:
 - name: "user"
   description: "Operations about user"
 - name: "experiment"
-  description: "Everything about your experiments"
+  description: "Operations about experiments"
 schemes:
 - "https"
 - "http"
@@ -207,6 +207,8 @@ definitions:
         type: "integer"
         format: "int64"
       name:
+        type: "string"
+      description:
         type: "string"
       startDateTime:
         type: "string"
