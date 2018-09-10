@@ -25,6 +25,17 @@ module.exports.deleteExperiment = function deleteExperiment (req, res, next) {
     });
 };
 
+module.exports.getExperiments = function getExperiments (req, res, next) {
+  var experimentId = req.swagger.params['experimentId'].value;
+  Experiment.getExperiments(experimentId)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.listExperiments = function listExperiments (req, res, next) {
   var body = req.swagger.params['body'].value;
   Experiment.listExperiments(body)

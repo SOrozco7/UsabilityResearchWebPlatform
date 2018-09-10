@@ -46,6 +46,20 @@ exports.deleteExperiment = function(experimentId) {
 
 
 /**
+ * Request authentication
+ * This method logs the user in.
+ *
+ * experimentId Integer 
+ * no response value expected for this operation
+ **/
+exports.getExperiments = function(experimentId) {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
+
+/**
  * List the current user's experiments
  * This method retrieves the whole list of experiments created by the user that is logged in.
  *
@@ -61,7 +75,7 @@ exports.listExperiments = function(body) {
 
 /**
  * Update experiment
- * This method updates an experiment given the user id.
+ * This method updates an experiment given its id.
  *
  * experimentId Long ID of experiment to update
  * no response value expected for this operation

@@ -44,7 +44,6 @@ paths:
   /experiment:
     post:
       tags:
-      - "user"
       - "experiment"
       summary: "Create an experiment"
       description: "This method creates an experiment with the given parameters."
@@ -71,7 +70,6 @@ paths:
           description: "Invalid input"
     get:
       tags:
-      - "user"
       - "experiment"
       summary: "List the current user's experiments"
       description: "This method retrieves the whole list of experiments created by the user that is logged in."
@@ -93,7 +91,7 @@ paths:
   /experiment/{experimentId}:
     get:
       tags:
-      - "user"
+      - "experiment"
       summary: "Request authentication"
       description: "This method logs the user in."
       operationId: "getExperiments"
@@ -113,7 +111,6 @@ paths:
     put:
       tags:
       - "experiment"
-      - "user"
       summary: "Update experiment"
       description: "This method updates an experiment given its id."
       operationId: "updateExperiment"
@@ -133,7 +130,6 @@ paths:
           description: "Invalid input"
     delete:
       tags:
-      - "user"
       - "experiment"
       summary: "Delete experiment"
       description: "This method deletes the experiment."

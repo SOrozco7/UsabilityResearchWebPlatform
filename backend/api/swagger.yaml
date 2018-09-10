@@ -1,22 +1,22 @@
 ---
 swagger: "2.0"
 info:
-  description: "API Swagger specification for Gesture Web."
+  description: "This is a server."
   version: "1.0.0"
-  title: "Swagger Gesture Web"
+  title: "Swagger_GestureWeb"
   termsOfService: "http://swagger.io/terms/"
   contact:
     email: "apiteam@swagger.io"
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "localhost:8080"
+host: "petstore.swagger.io"
 basePath: "/api"
 tags:
 - name: "user"
   description: "Operations about user"
 - name: "experiment"
-  description: "Operations about experiments"
+  description: "Everything about your experiments"
 schemes:
 - "https"
 - "http"
@@ -46,7 +46,6 @@ paths:
   /experiment:
     get:
       tags:
-      - "user"
       - "experiment"
       summary: "List the current user's experiments"
       description: "This method retrieves the whole list of experiments created by\
@@ -66,10 +65,9 @@ paths:
       responses:
         405:
           description: "Invalid user"
-      x-swagger-router-controller: "User"
+      x-swagger-router-controller: "Experiment"
     post:
       tags:
-      - "user"
       - "experiment"
       summary: "Create an experiment"
       description: "This method creates an experiment with the given parameters."
@@ -94,11 +92,11 @@ paths:
               $ref: "#/definitions/Experiment"
         405:
           description: "Invalid input"
-      x-swagger-router-controller: "User"
+      x-swagger-router-controller: "Experiment"
   /experiment/{experimentId}:
     get:
       tags:
-      - "user"
+      - "experiment"
       summary: "Request authentication"
       description: "This method logs the user in."
       operationId: "getExperiments"
@@ -114,13 +112,12 @@ paths:
       responses:
         405:
           description: "Invalid input"
-      x-swagger-router-controller: "User"
+      x-swagger-router-controller: "Experiment"
     put:
       tags:
       - "experiment"
-      - "user"
       summary: "Update experiment"
-      description: "This method updates an experiment given the user id."
+      description: "This method updates an experiment given its id."
       operationId: "updateExperiment"
       consumes:
       - "application/json"
@@ -139,7 +136,6 @@ paths:
       x-swagger-router-controller: "Experiment"
     delete:
       tags:
-      - "user"
       - "experiment"
       summary: "Delete experiment"
       description: "This method deletes the experiment."
@@ -160,7 +156,7 @@ paths:
           description: "Invalid experiment"
         404:
           description: "Experiment not found"
-      x-swagger-router-controller: "User"
+      x-swagger-router-controller: "Experiment"
 securityDefinitions:
   petstore_auth:
     type: "oauth2"
@@ -207,8 +203,6 @@ definitions:
         type: "integer"
         format: "int64"
       name:
-        type: "string"
-      description:
         type: "string"
       startDateTime:
         type: "string"
