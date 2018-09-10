@@ -1,11 +1,11 @@
 {
-  "name": "swagger-gestureweb",
+  "name": "swagger-gesture-web",
   "version": "1.0.0",
-  "description": "This is a server.",
+  "description": "API Swagger specification for Gesture Web.",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
-    "start": "node index.js"
+	"prestart": "npm install",
+	"start": "node index.js"
   },
   "keywords": [
     "swagger"
