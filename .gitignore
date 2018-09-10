@@ -41,7 +41,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-server/config/config.json
+config.json
 # Node dependencies
 node_modules/
 package-lock.json
