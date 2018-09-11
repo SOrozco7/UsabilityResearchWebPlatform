@@ -1,24 +1,27 @@
 {
-  "name": "swagger-gesture-web",
+  "name": "GestureWebBackEnd",
   "version": "1.0.0",
-  "description": "API Swagger specification for Gesture Web.",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
-    "start": "node index.js"
+    "start:dev": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "swagger"
-  ],
-  "license": "Unlicense",
-  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "connect": "^3.2.0",
-    "js-yaml": "^3.3.0",
-    "pg": "^7.4.3",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "jwt-simple": "^0.5.1",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.6.4",
+    "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.38.0",
-    "sequelize-cli": "^4.1.1",
-    "swagger-tools": "0.10.1"
+    "sequelize": "^4.37.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
   }
 }
