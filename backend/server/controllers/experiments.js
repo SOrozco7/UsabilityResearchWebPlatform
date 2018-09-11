@@ -121,15 +121,14 @@ module.exports = {
                         });
                     }
                 }
-                return Experiment
+                return experiment
                     .update({
-                        name: req.body.name || Experiment.name,
-                        description: req.body.description || Experiment.description,
-                        startDateTime: req.body.startDateTime || Experiment.startDateTime,
-                        endDateTime: req.body.endDateTime || Experiment.endDateTime
-                        // user_id: req.body.user_id || Experiment.user_id
+                        name: req.body.name || experiment.name,
+                        description: req.body.description || experiment.description,
+                        startDateTime: req.body.startDateTime || experiment.startDateTime,
+                        endDateTime: req.body.endDateTime || experiment.endDateTime
                     })
-                    .then(() => res.status(200).send(Experiment)) // Send back the updated tuple.
+                    .then((experiment) => res.status(200).send(experiment)) // Send back the updated tuple.
                     .catch((error) => res.status(400).send(error));
             })
             .catch((error) => res.status(400).send(error));
