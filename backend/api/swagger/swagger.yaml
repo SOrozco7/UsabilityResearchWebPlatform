@@ -1,0 +1,314 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Hello World App
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /login:
+    x-swagger-router-controller: user.controller
+    post:
+      #tags:
+      #- "user"
+      #summary: "Authenticate"
+      description: "This method logs the user in."
+      operationId: login
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: user
+        description: "The user that needs to be logged in."
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetUserResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+      x-swagger-router-controller: "User"
+      
+  /swagger:
+    x-swagger-pipe: swagger_raw
+    
+  /experiments:
+    x-swagger-router-controller: experiment.controller
+    get:
+      #tags:
+      #- "experiment"
+      summary: "List the current user's experiments"
+      description: "This method retrieves the whole list of experiments created by the user that is logged in."
+      operationId: listExperiments
+      parameters:
+        - name: name
+          in: query
+          type: string
+          required: false
+        - name: sort
+          in: query
+          type: string
+          required: false
+        - name: fields
+          in: query
+          type: string
+          required: false
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      #parameters:
+      #- in: "body"
+      #  name: user
+      #  description: "User object whose experiments are to be listed."
+      #  required: true
+      #  schema:
+      #    $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetExperimentListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: Add a new experiment to the user
+      parameters:
+        - in: body
+          name: experiment
+          description: The experiment to create
+          schema:
+            $ref: "#/definitions/Experiment"
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetExperimentResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /experiments/{experimentId}:
+    x-swagger-router-controller: experiment.controller
+    get:
+      #tags:
+      #- "experiment"
+      summary: "Request authentication"
+      description: "This method logs the user in."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "experimentId"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Experiment"
+      
+    put:
+      #tags:
+      #- "experiment"
+      summary: "Update an experiment"
+      description: "This method updates an experiment given its id."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: experimentId
+        in: path
+        description: "ID of the experiment to update"
+        required: true
+        type: number
+      - name: experiment
+        in: body
+        description: "The experiment to update"
+        schema:
+          $ref: "#/definitions/Experiment"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetExperimentResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"  
+      x-swagger-router-controller: "Experiment"
+      
+    delete:
+      #tags:
+      #- "experiment"
+      summary: "Delete an experiment"
+      description: "This method deletes the experiment given it id."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: experimentId
+        description: "ID of the experiment to delete"
+        type: number
+        in: path
+        required: true
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    
+definitions:
+  User:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+    required:
+    - "username"
+    - "firstName"
+    - "lastName"
+    - "email"
+    - "password"
+    example:
+      firstName: "firstName"
+      lastName: "lastName"
+      password: "password"
+      email: "email"
+      username: "username"
+        
+  Experiment:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      startDateTime:
+        type: "string"
+        format: "date-time"
+      endDateTime:
+        type: "string"
+        format: "date-time"
+    required:
+    - "name"
+    - "startDateTime"
+    - "endDateTime"
+    example:
+      startDateTime: "2000-01-23T04:56:07.000+00:00"
+      name: "name"
+      id: 0
+      endDateTime: "2000-01-23T04:56:07.000+00:00"
+      
+  GetUserResponse:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Id of the user
+      username:
+        type: string
+        description: Username
+      firstName:
+        type: string
+        description: First name of the user
+      lastName:
+        type: string
+        description: Last name of the user
+      email:
+        type: string
+        description: Email of the user
+    required:
+      - id
+      - username
+      - firstName
+      - lastName
+      - email
+  
+  GetExperimentResponse:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Id of the user
+      name:
+        type: string
+        description: Username
+      startDateTime:
+        type: string
+        description: The experiment start date
+      endDateTime:
+        type: string
+        description: The experiment end date
+    required:
+      - id
+      - name
+      - startDateTime
+      - endDateTime
+      
+  GetExperimentListResponse:
+    required:
+      - experiments
+    properties:
+      experiments:
+        type: array
+        items:
+          $ref: "#/definitions/GetExperimentResponse"
+  GeneralResponse:
+    type: object
+    properties:
+      success:
+        type: number
+        description: returns 1 if successful
+      description:
+        type: string
+        description: a short comment
+    required:
+      - success
+      - description
+      
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      code: 
+        type: number
+      message:
+        type: string
+      description: 
+        type: string
