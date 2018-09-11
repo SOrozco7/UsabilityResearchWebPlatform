@@ -1,17 +1,40 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: DataTypes.STRING,
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
-  }, {});
-  User.associate = function(models) {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    // uuid: {
+    //   type: DataTypes.UUID,
+    //   defaultValue: DataTypes.UUIDV1,
+    // },
+    // confirmed: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false
+    // }
+  });
+
+  // A user can have many experiments
+  User.associate = function (models) {
     User.hasMany(models.Experiment, {
-      foreignKey: 'userId',
+      foreignKey: 'user_id',
       as: 'experiments'
     });
   };
+
   return User;
 };

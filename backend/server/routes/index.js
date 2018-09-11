@@ -8,8 +8,8 @@ module.exports = (app) => {
     message: 'Welcome to the GestureWeb Project API!',
   }));
 
-  //Autentication routes
-  // app.post('/api/login', authenticationController.login);
+  // Authentication routes
+  app.post('/api/login', authenticationController.login);
 
   //Routes for the USERS table
   // app.post('/api/users', usersController.create);

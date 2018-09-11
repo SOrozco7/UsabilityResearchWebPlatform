@@ -29,11 +29,11 @@ module.exports = {
         type: Sequelize.DATE
       },
       userId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         references: {
           model: 'Users',
           key: 'id',
-          as: 'userId'
+          as: 'user_id'
         }
       }
     });

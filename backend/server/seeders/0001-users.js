@@ -2,61 +2,95 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users', 
+
+    return queryInterface.bulkInsert('Users',
+
       [
         {
-          username: "Rick12",
-          firstName: "Rick",
-          lastName: "Gómez Velasco",
-          email: "rickgv@example.com",
-          password: "vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1ar",
+          id: "danperez@gmail.com",
+          firstName: 'Dan',
+          lastName: 'Perez',
+          password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')
+          updatedAt: Sequelize.fn('NOW'),
+          // confirmed: true,
+          // uuid: "cf8e17a0-518b-11e8-a3d8-3be89ca651f0"
         },
         {
-          username: "jsimpson",
-          firstName: "Jason",
-          lastName: "Simpson",
-          email: "jason.simpson43@example.com",
-          password: "QjSH496pcT5CEbzjD/vtVeH03tfHKFy36d4J0Ltp3lRtee9HDxY3K",
+          id: "jdoe@gmail.com",
+          firstName: 'John',
+          lastName: 'Doe',
+          password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')
+          updatedAt: Sequelize.fn('NOW'),
+          // confirmed: true,
+          // uuid: "cf8e17a0-518b-11e8-a3d8-3be89ca651f1"
         },
         {
-          username: "rroberts",
-          firstName: "Richard",
-          lastName: "Roberts",
-          email: "rroberts@example.com",
-          password: "q5MkhSBtlsJcNEVsYh64a.aCluzHnGog7TQAKVmQwO9C8xb.t89F.",
+          id: "bjoel@gmail.com",
+          firstName: 'Billy',
+          lastName: 'Joel',
+          password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')
+          updatedAt: Sequelize.fn('NOW'),
+          // confirmed: true,
+          // uuid: "cf8e17a0-518b-11e8-a3d8-3be89ca651f2"
         },
         {
-          username: "jmyg",
-          firstName: "Joachim Migüas",
-          lastName: "Ysidoro-Groß",
-          email: "joachimyg@example.com",
-          password: "YzJBSzV4TUhkMzc3d3laeg$zqU/1IN0/AogfP4cmSJI1vc8lpXRW9",
+          id: "jjoel@gmail.com",
+          firstName: 'Jimmy',
+          lastName: 'Joel',
+          password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')
+          updatedAt: Sequelize.fn('NOW'),
+          // confirmed: true,
+          // uuid: "cf8e17a0-518b-11e8-a3d8-3be89ca651f3"
+        },
+        {
+          id: "jbanana@gmail.com",
+          firstName: 'Juanito',
+          lastName: 'Banana',
+          password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW'),
+          // confirmed: true,
+          // uuid: "cf8e17a0-518b-11e8-a3d8-3be89ca651f4"
+        },
+        {
+          id: "mvargas@gmail.com",
+          firstName: 'Mary',
+          lastName: 'Vargas',
+          password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW'),
+          // confirmed: true,
+          // uuid: "cf8e17a0-518b-11e8-a3d8-3be89ca651f5"
         }
       ], {});
   },
+
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Users',
-      [
-        {
-          id: 1
-        },
-        {
-          id: 2,
-        },
-        {
-          id: 3,
-        },
-        {
-          id: 4,
-        }
-      ]);
+
+    return queryInterface.bulkDelete('Users', 
+    [
+      {
+        id: "danperez@gmail.com"
+      },
+      {
+        id: "jdoe@gmail.com"
+      },
+      {
+        id: "bjoel@gmail.com"
+      },
+      {
+        id: "jjoel@gmail.com"
+      },
+      {
+        id: "jbanana@gmail.com"
+      },
+      {
+        id: "mvargas@gmail.com"
+      },
+    ]);
   }
 };
