@@ -1,5 +1,5 @@
-const User = require('../models').User;
 const Experiment = require('../models').Experiment;
+const User = require('../models').User;
 
 module.exports = {
     create(req, res) {
@@ -79,14 +79,14 @@ module.exports = {
 
         return Experiment
             .findById(req.params.id, {
-                include: [
-                    {
-                        model: User,
-                        as: 'user_id',
-                        required: false,
-                        attributes: ['id', 'firstName', 'lastName', 'username', 'createdAt', 'updatedAt']
-                    }
-                ],
+                // include: [
+                //     {
+                //         model: User,
+                //         as: 'user_id',
+                //         required: false,
+                //         attributes: ['id', 'firstName', 'lastName', 'username', 'createdAt', 'updatedAt']
+                //     }
+                // ],
                 //Without these attributes, it fails bacuse its trying to search for an experiment_id that doesn't exists
                 attributes: ['id', 'name', 'description', 'startDateTime', 'endDateTime', 'createdAt', 'updatedAt', 'user_id']
             })
@@ -113,25 +113,8 @@ module.exports = {
                     });
                 } else {
                     //If im trying to update a date, the date must be correct
-                    var begin;
-                    var end;
-                    if (req.body.startDateTime && req.body.endDateTime) {
-                        begin = new Date(req.body.startDateTime);
-                        end = new Date(req.body.endDateTime);
-                    } else {
-                        if (req.body.startDateTime) {
-                            begin = new Date(req.body.startDateTime);
-                            end = new Date(experiment.endDateTime);
-                        } else {
-                            if (req.body.endDateTime) {
-                                begin = new Date(experiment.startDateTime);
-                                end = new Date(req.body.endDateTime);
-                            } else {
-                                begin = new Date(experiment.startDateTime);
-                                end = new Date(experiment.endDateTime);
-                            }
-                        }
-                    }
+                    const begin = new Date(req.body.startDateTime || experiment.startDateTime);
+                    const end = new Date(req.body.endDateTime || experiment.endDateTime);
                     if (begin > end) {
                         return res.status(400).send({
                             message: 'The end date cannot be before the begin date.'
@@ -143,8 +126,8 @@ module.exports = {
                         name: req.body.name || Experiment.name,
                         description: req.body.description || Experiment.description,
                         startDateTime: req.body.startDateTime || Experiment.startDateTime,
-                        endDateTime: req.body.endDateTime || Experiment.endDateTime,
-                        user_id: req.body.user_id || Experiment.user_id
+                        endDateTime: req.body.endDateTime || Experiment.endDateTime
+                        // user_id: req.body.user_id || Experiment.user_id
                     })
                     .then(() => res.status(200).send(Experiment)) // Send back the updated tuple.
                     .catch((error) => res.status(400).send(error));
@@ -161,7 +144,7 @@ module.exports = {
         }
         return Experiment
             .findById(req.params.id, {
-                attributes: ['id', 'vision', 'name', 'startDateTime', 'endDateTime', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'name', 'description', 'startDateTime', 'endDateTime', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(Experiment => {
                 if (!Experiment) {
