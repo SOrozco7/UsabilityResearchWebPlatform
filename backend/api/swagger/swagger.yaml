@@ -110,7 +110,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
             
-  /experiments/{experimentId}:
+  /experiments/{id}:
     x-swagger-router-controller: experiment.controller
     get:
       #tags:
@@ -122,7 +122,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "experimentId"
+      - name: "id"
         in: "path"
         required: true
         type: "integer"
@@ -141,7 +141,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: experimentId
+      - name: id
         in: path
         description: "ID of the experiment to update"
         required: true
@@ -172,7 +172,7 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: experimentId
+      - name: id
         description: "ID of the experiment to delete"
         type: number
         in: path
