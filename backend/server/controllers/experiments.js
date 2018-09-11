@@ -46,6 +46,7 @@ module.exports = {
                 description: req.body.description,
                 startDateTime: req.body.startDateTime,
                 endDateTime: req.body.endDateTime,
+                user_id: req.body.user_id
             })
             .then(Experiment => res.status(200).send(Experiment))
             .catch(error => res.status(400).send(error));
