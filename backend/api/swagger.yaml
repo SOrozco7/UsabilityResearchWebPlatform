@@ -40,8 +40,14 @@ paths:
         schema:
           $ref: "#/definitions/User"
       responses:
+        200:
+          description: "Successful login!"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
         405:
-          description: "Invalid input"
+          description: "Bad credentials"
       x-swagger-router-controller: "User"
   /experiment:
     get:
