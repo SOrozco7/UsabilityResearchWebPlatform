@@ -18,6 +18,7 @@
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.38.0",
+    "sequelize-cli": "^4.1.1",
     "swagger-tools": "0.10.1"
   }
 }
