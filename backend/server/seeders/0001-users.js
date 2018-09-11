@@ -8,6 +8,7 @@ module.exports = {
       [
         {
           id: "danperez@gmail.com",
+          username: "danperez@gmail.com",
           firstName: 'Dan',
           lastName: 'Perez',
           password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
@@ -18,6 +19,7 @@ module.exports = {
         },
         {
           id: "jdoe@gmail.com",
+          username: "jdoe@gmail.com",
           firstName: 'John',
           lastName: 'Doe',
           password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
@@ -28,6 +30,7 @@ module.exports = {
         },
         {
           id: "bjoel@gmail.com",
+          username: "bjoel@gmail.com",
           firstName: 'Billy',
           lastName: 'Joel',
           password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
@@ -38,6 +41,7 @@ module.exports = {
         },
         {
           id: "jjoel@gmail.com",
+          username: "jjoel@gmail.com", 
           firstName: 'Jimmy',
           lastName: 'Joel',
           password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
@@ -48,6 +52,7 @@ module.exports = {
         },
         {
           id: "jbanana@gmail.com",
+          username: "jbanana@gmail.com",
           firstName: 'Juanito',
           lastName: 'Banana',
           password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
@@ -58,6 +63,7 @@ module.exports = {
         },
         {
           id: "mvargas@gmail.com",
+          username: "mvargas@gmail.com",
           firstName: 'Mary',
           lastName: 'Vargas',
           password: '$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y',
