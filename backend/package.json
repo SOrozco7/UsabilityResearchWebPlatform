@@ -14,11 +14,15 @@
     "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "should": "^7.1.0",
     "supertest": "^1.0.0"
   },
   "scripts": {
     "start": "node app.js",
-    "test": "swagger project test"
+    "test": "swagger project test",
+    "lint": "node_modules/.bin/eslint 'api/**/*.js' app.js"
   }
 }
