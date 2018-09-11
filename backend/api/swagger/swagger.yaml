@@ -58,7 +58,7 @@ paths:
       #- "experiment"
       summary: "List the current user's experiments"
       description: "This method retrieves the whole list of experiments created by the user that is logged in."
-      operationId: listExperiments
+      operationId: getExperiments
       parameters:
         - name: name
           in: query
@@ -94,6 +94,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     post:
       description: Add a new experiment to the user
+      operationId: createExperiment
       parameters:
         - in: body
           name: experiment
@@ -117,6 +118,7 @@ paths:
       #- "experiment"
       summary: "Request authentication"
       description: "This method logs the user in."
+      operationId: getExperimentById
       consumes:
       - "application/json"
       produces:
@@ -127,15 +129,21 @@ paths:
         required: true
         type: "integer"
       responses:
-        405:
-          description: "Invalid input"
-      x-swagger-router-controller: "Experiment"
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetExperimentResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
       
     put:
       #tags:
       #- "experiment"
       summary: "Update an experiment"
       description: "This method updates an experiment given its id."
+      operationId: updateExperiment
       consumes:
       - "application/json"
       produces:
@@ -167,6 +175,7 @@ paths:
       #- "experiment"
       summary: "Delete an experiment"
       description: "This method deletes the experiment given it id."
+      operationId: deleteExperiment
       consumes:
       - "application/json"
       produces:
