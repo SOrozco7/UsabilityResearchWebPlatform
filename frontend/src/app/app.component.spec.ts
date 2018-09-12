@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { APP_BASE_HREF } from '@angular/common'
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component'
 import { AppModule } from './app.module'

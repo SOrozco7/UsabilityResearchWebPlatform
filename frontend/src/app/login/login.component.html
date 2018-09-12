@@ -3,20 +3,25 @@
         <div class="col-md-4">
             <img src="assets/images/logo.png" width="150px" class="user-avatar" />
             <h1>SB Admin BS4 Angular5</h1>
+
+            <!-- <form (submit)="login()"> -->
             <form role="form">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
+                        <input type="text" [(ngModel)]="id" class="form-control input-underline input-lg" id="id" placeholder="Email" [ngModelOptions]="{standalone: true}">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                        <input type="password" [(ngModel)]="password" class="form-control input-underline input-lg" id="password" placeholder="Password" [ngModelOptions]="{standalone: true}">
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a>
+                <!-- <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a> -->
+                <a class="btn rounded-btn" (click)="login()"> Log in </a>
+                <!-- <button type="submit" class="btn rounded-btn">Log in</button> -->
                 &nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
             </form>
+
         </div>
     </div>
 </div>
