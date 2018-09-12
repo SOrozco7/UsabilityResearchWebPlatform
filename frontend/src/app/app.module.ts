@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { ErrorHandlerService } from './services/error-handler.service';
 
 import { AuthGuard } from './shared';
+import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
@@ -42,7 +43,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         }),
         AppRoutingModule
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent, ExperimentListComponent],
     providers: [
         AuthGuard,
         AuthService,
