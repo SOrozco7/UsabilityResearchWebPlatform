@@ -1,78 +1,40 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Charts'" [icon]="'fa-bar-chart-o'"></app-page-header>
+    <app-page-header [heading]="'Create Experiment'" [icon]="'fa-bar-chart-o'"></app-page-header>
     <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Bar Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-info btn-sm" (click)="randomize()">Update</button>
-                </div>
+            <div class="col-lg-6">
+    
+                <form role="form">
+                    <fieldset class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" name="name">
+                    </fieldset>
+                    <br>
+                    <fieldset class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="3" name="description"></textarea>
+                    </fieldset>
+                    <br>
+                    <label>Start date</label>
+                    &nbsp;
+                    <input type="date" name="start">
+
+                    <br>
+                    <br>
+
+                    <label>End date</label>
+                    &nbsp;
+                    &nbsp;
+                    <input type="date" name="end">
+
+                </form>
+                <br>
+                <br>
+                <button type="button" [routerLink]="['/experiments']" class="btn btn-lg btn-success">Submit</button>
+                &nbsp;
+                &nbsp;
+                <button type="button" [routerLink]="['/experiments']" class="btn btn-lg btn-danger">Cancel</button>
+                
             </div>
         </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Doughnut Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="180px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Radar Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Pie Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="150px" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Polar Area Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="130px" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col col-sm-6">
-            <div class="card mb-3">
-                <div class="card-header">
-                    Line Chart
-                </div>
-                <div class="card-body">
-                    <canvas baseChart height="130" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- /.row -->
 </div>
