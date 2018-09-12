@@ -1,3 +1,44 @@
-<p>
-  experiment-list works!
-</p>
+<div [@routerTransition]>
+  <button type="button" [routerLink]="['/createExperiment']" class="btn btn-lg btn-primary">New Experiment</button>
+  <br>
+  <br>
+  <div class="row">
+      
+      <div class="col col-xl-6 col-lg-12">
+          <div class="card mb-3">
+              <div class="card-header">My Experiments</div>
+              <table class="card-body table table-hover">
+                  <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Experiment</th>
+                      <th>Date</th>
+                      <th>Total Questions</th>
+                      <th>Total Users</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let experiment of experiments">
+                          <td>
+                              {{experiment.id}}
+                          </td>
+                          <td>
+                              {{experiment.name}}
+                          </td>
+                          <td>
+                              {{experiment.startDateTime}}
+                          </td>
+                          <td>
+                              <span>-</span>
+                          </td>
+                          <td>
+                              <span>-</span>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          
+      </div>
+  </div>
+</div>

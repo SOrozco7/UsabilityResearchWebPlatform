@@ -19,12 +19,8 @@ export class ExperimentListComponent implements OnInit {
   constructor(private errorHandler:ErrorHandlerService, private crud:CrudService, private router:Router, private auth:AuthService) { }
 
   ngOnInit() {
-    if(this.auth.isRoot()){
+    
       this.getAllExperiments();
-    }
-    else{
-      this.getUserExperiments();
-    }
     
   }
 
