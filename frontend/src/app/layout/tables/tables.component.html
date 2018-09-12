@@ -1,6 +1,7 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Experiment'" [icon]="'fa-table'"></app-page-header>
-    <button type="button" class="btn btn-lg btn-primary">New Experiment</button>
+    <button type="button" [routerLink]="['/createExperiment']" class="btn btn-lg btn-primary">New Experiment</button>
+    <br>
     <br>
     <div class="row">
         
@@ -20,21 +21,22 @@
                     <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
+                        <td><button type="button" [routerLink]="['/experiment']" class="btn btn-sm btn-link">Mark</button></td>
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td>adfa</td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
-                        <td>Jacob</td>
+                        <td><button type="button" [routerLink]="['/experiment']" class="btn btn-sm btn-link">Jacob</button></td>
                         <td>Thornton</td>
                         <td>@fat</td>
                         <td>adfa</td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td><button type="button" [routerLink]="['/experiment']" class="btn btn-sm btn-link">Larry</button></td>
+                        <td>Something</td>
                         <td>@twitter</td>
                         <td>adfa</td>
                     </tr>
