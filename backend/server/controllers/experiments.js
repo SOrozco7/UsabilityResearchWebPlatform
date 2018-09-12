@@ -113,40 +113,22 @@ module.exports = {
                     });
                 } else {
                     //If im trying to update a date, the date must be correct
-                    var begin;
-                    var end;
-                    if (req.body.startDateTime && req.body.endDateTime) {
-                        begin = new Date(req.body.startDateTime);
-                        end = new Date(req.body.endDateTime);
-                    } else {
-                        if (req.body.startDateTime) {
-                            begin = new Date(req.body.startDateTime);
-                            end = new Date(experiment.endDateTime);
-                        } else {
-                            if (req.body.endDateTime) {
-                                begin = new Date(experiment.startDateTime);
-                                end = new Date(req.body.endDateTime);
-                            } else {
-                                begin = new Date(experiment.startDateTime);
-                                end = new Date(experiment.endDateTime);
-                            }
-                        }
-                    }
+                    const begin = new Date(req.body.startDateTime || experiment.startDateTime);
+                    const end = new Date(req.body.endDateTime || experiment.endDateTime);
                     if (begin > end) {
                         return res.status(400).send({
                             message: 'The end date cannot be before the begin date.'
                         });
                     }
                 }
-                return Experiment
+                return experiment
                     .update({
-                        name: req.body.name || Experiment.name,
-                        description: req.body.description || Experiment.description,
-                        startDateTime: req.body.startDateTime || Experiment.startDateTime,
-                        endDateTime: req.body.endDateTime || Experiment.endDateTime
-                        // user_id: req.body.user_id || Experiment.user_id
+                        name: req.body.name || experiment.name,
+                        description: req.body.description || experiment.description,
+                        startDateTime: req.body.startDateTime || experiment.startDateTime,
+                        endDateTime: req.body.endDateTime || experiment.endDateTime
                     })
-                    .then(() => res.status(200).send(Experiment)) // Send back the updated tuple.
+                    .then((experiment) => res.status(200).send(experiment)) // Send back the updated tuple.
                     .catch((error) => res.status(400).send(error));
             })
             .catch((error) => res.status(400).send(error));
