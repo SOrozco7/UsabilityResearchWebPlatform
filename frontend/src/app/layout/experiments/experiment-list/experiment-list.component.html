@@ -15,6 +15,7 @@
                       <th>Date</th>
                       <th>Total Questions</th>
                       <th>Total Users</th>
+                      <th></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -33,6 +34,9 @@
                           </td>
                           <td>
                               <span>-</span>
+                          </td>
+                          <td>
+                            <button type="button" [routerLink]="['/experiments/', experiment.id]" class="btn btn-sm btn-link">View</button>
                           </td>
                       </tr>
                   </tbody>
