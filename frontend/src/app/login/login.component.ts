@@ -37,6 +37,10 @@ export class LoginComponent implements OnInit {
                         this.auth.setSession(res);
                         console.log("Successful login!");
                         this.router.navigate(['/dashboard']);
+
+                        // I believe that this local storage item 
+                        // assignment to true enables the transition
+                        // '/dashboard'
                         localStorage.setItem('isLoggedin', 'true');
                     },
                     err => {
@@ -62,9 +66,5 @@ export class LoginComponent implements OnInit {
         else{
             return true;
         }
-    }
-
-    onLoggedin() {
-        localStorage.setItem('isLoggedin', 'true');
     }
 }
