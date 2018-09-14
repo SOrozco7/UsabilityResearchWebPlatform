@@ -8,7 +8,6 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ExperimentRetrieveComponent } from './experiments/experiment-retrieve/experiment-retrieve.component';
-import { ExperimentListComponent } from './experiments/experiment-list/experiment-list.component';
 
 @NgModule({
     imports: [
@@ -17,6 +16,6 @@ import { ExperimentListComponent } from './experiments/experiment-list/experimen
         TranslateModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ExperimentRetrieveComponent, ExperimentListComponent]
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ExperimentRetrieveComponent]
 })
 export class LayoutModule {}
