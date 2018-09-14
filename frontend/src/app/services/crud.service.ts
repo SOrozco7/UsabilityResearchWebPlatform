@@ -9,7 +9,7 @@ export class CrudService {
   URL: string;
   headers: HttpHeaders;
   models = {
-   
+
     USER: "users",
     EXPERIMENT: "experiments"
   };
@@ -17,13 +17,13 @@ export class CrudService {
   constructor(private auth: AuthService, private http: HttpClient, private log: LogService) {
     this.URL = 'http://localhost:8000/api';
 
-    if(this.auth.isLoggedIn()){
+    if (this.auth.isLoggedIn()) {
       this.headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': this.auth.getToken()
       });
     }
-    else{
+    else {
       this.headers = new HttpHeaders({
         'Content-Type': 'application/json',
       });
@@ -44,7 +44,7 @@ export class CrudService {
     );
   }
 
-  registerUser(body:any) {
+  registerUser(body: any) {
     return this.http.post(
       this.URL + "/" + this.models.USER,
       body,
@@ -52,21 +52,18 @@ export class CrudService {
     );
   }
 
-  confirmUser(uuid:String){
+  confirmUser(uuid: String) {
     return this.http.get(
       this.URL + "/users/confirm/" + uuid
     );
   }
 
   create(model: string, body: any) {
-    return this.log.record(model, "CREATE")
-    .mergeMap(
-        res => this.http.post(
-          this.URL + "/" + model,
-          body,
-          { headers: this.headers }
-        )
-      );
+
+    return this.http.post(this.URL + "/" + model,
+      body,
+      { headers: this.headers }
+    );
   }
 
   update(model: string, id: any, body: any) {
@@ -75,8 +72,8 @@ export class CrudService {
       body,
       { headers: this.headers }
     ).mergeMap(
-        res => this.log.record(model, "UPDATE ID " + id)
-      );
+      res => this.log.record(model, "UPDATE ID " + id)
+    );
   }
 
   delete(model: string, id: any) {
@@ -84,7 +81,7 @@ export class CrudService {
       this.URL + "/" + model + "/" + id,
       { headers: this.headers }
     ).mergeMap(
-        res => this.log.record(model, "DELETE ID " + id)
-      );
+      res => this.log.record(model, "DELETE ID " + id)
+    );
   }
 }
