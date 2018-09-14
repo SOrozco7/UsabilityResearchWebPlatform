@@ -11,8 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ExperimentRetrieveComponent } from './experiments/experiment-retrieve/experiment-retrieve.component';
 import { ExperimentListComponent } from './experiments/experiment-list/experiment-list.component';
 import { ExperimentUpdateComponent } from './experiments/experiment-update/experiment-update.component';
-
-import { FormsModule } from '@angular/forms';
+import { ExperimentCreateComponent } from './experiments/experiment-create/experiment-create.component';
 
 @NgModule({
     imports: [
