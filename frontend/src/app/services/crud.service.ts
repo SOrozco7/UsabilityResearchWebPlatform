@@ -70,13 +70,12 @@ export class CrudService {
   }
 
   update(model: string, id: any, body: any) {
+
     return this.http.put(
       this.URL + "/" + model + "/" + id,
       body,
       { headers: this.headers }
-    ).mergeMap(
-        res => this.log.record(model, "UPDATE ID " + id)
-      );
+    );
   }
 
   delete(model: string, id: any) {
