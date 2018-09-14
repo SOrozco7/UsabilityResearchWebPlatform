@@ -9,14 +9,18 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ExperimentRetrieveComponent } from './experiments/experiment-retrieve/experiment-retrieve.component';
 import { ExperimentListComponent } from './experiments/experiment-list/experiment-list.component';
+import { ExperimentUpdateComponent } from './experiments/experiment-update/experiment-update.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
         LayoutRoutingModule,
         TranslateModule,
+        FormsModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ExperimentRetrieveComponent, ExperimentListComponent]
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ExperimentRetrieveComponent, ExperimentListComponent, ExperimentUpdateComponent]
 })
 export class LayoutModule {}

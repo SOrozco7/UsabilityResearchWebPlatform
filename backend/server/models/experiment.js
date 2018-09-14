@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     startDateTime: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATEONLY
     },
     endDateTime: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.DATEONLY
     }
   }, {});
 

@@ -7,8 +7,9 @@ export class Experiment {
         public startDateTime: Date,
         public endDateTime: Date,
         public user_id: string,
+        
         public updatedAt?: Date,
         public createdAt?: Date,
-        public id?: number,
+        public id?: number
     ) { }
 }
