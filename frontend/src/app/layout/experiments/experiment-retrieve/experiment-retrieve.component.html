@@ -4,14 +4,14 @@
             <div class="card-body">
                 <h4 class="card-title">{{experiment.name}}</h4>
                 <p class="card-text">{{experiment.description}}</p>
-                <p class="card-text">From: {{experiment.startDateTime}}</p>
-                <p class="card-text">To: {{experiment.endDateTime}}</p>
+                <p class="card-text">From: {{experiment.startDate}}</p>
+                <p class="card-text">To: {{experiment.endDate}}</p>
             </div>
     </div>
 </div>
 
 <br>
-<button type="button" [routerLink]="['/editExperiment']" class="btn btn-lg btn-success">Edit</button>
+<button type="button" (click)="updateExperiment(experiment.id)" class="btn btn-lg btn-success">Edit</button>
 &nbsp;
 &nbsp;
 <button type="button" [routerLink]="['/experiments']" class="btn btn-lg btn-danger">Back</button>

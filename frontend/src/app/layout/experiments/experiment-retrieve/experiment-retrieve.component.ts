@@ -37,4 +37,8 @@ export class ExperimentRetrieveComponent implements OnInit {
     )
   }
 
+  updateExperiment(updateID: number){
+    this.router.navigate(['experiments/update/'+updateID]);
+  }
+
 }

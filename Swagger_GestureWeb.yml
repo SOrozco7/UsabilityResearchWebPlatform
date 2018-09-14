@@ -194,10 +194,10 @@ definitions:
         format: "int64"
       name:
         type: "string"
-      startDateTime:
+      startDate:
         type: "string"
         format: "date-time"
-      endDateTime:
+      endDate:
         type: "string"
         format: "date-time"
 
