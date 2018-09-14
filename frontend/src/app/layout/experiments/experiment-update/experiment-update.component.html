@@ -7,8 +7,9 @@
                     <input type="text" class="form-control input-underline input-lg" name="experimentName" [(ngModel)]="experiment.name"
                         placeholder="Experiment Name">
                     <br>
-                    <input type="text" class="form-control input-underline input-lg" name="experimentDescription"
-                        [(ngModel)]="experiment.description" placeholder="Experiment Description">
+                    <textarea class="form-control" rows="3" name="experimentDescription" [(ngModel)]="experiment.description" placeholder="Experiment Description"></textarea>
+                    <!-- <input type="text" class="form-control input-underline input-lg" name="experimentDescription" -->
+                        <!-- [(ngModel)]="experiment.description" placeholder="Experiment Description"> -->
                 </div>
                 <p>From:</p>
                 <input class="form-control" type="date" id="endDateTime" name="startDateTime" [(ngModel)]="experiment.startDateTime">
