@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Experiment } from '../../../models/experiment';
-import { User } from '../../../models/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 
@@ -40,5 +39,4 @@ export class ExperimentRetrieveComponent implements OnInit {
   updateExperiment(updateID: number){
     this.router.navigate(['experiments/update/'+updateID]);
   }
-
 }
