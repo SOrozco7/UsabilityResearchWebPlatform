@@ -55,7 +55,7 @@ export class ExperimentUpdateComponent implements OnInit {
   }
 
   validate(){
-    if(!this.experiment.name && !this.experiment.description && !this.experiment.startDateTime && !this.experiment.endDateTime){
+    if(!this.experiment.name && !this.experiment.description && !this.experiment.startDate && !this.experiment.endDate){
       this.errorHandler.showErrorMessage('You must enter a valid value in all fields.');
       return false;
     }

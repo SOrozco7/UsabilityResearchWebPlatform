@@ -20,7 +20,7 @@ module.exports = {
                 //         },
                 //         required: false,
                 //         //Without this line of attributes, it fails!!
-                //         attributes : ['id', 'name', 'description', 'startDateTime', 'endDateTime', 'createdAt', 'updatedAt', 'user_id']
+                //         attributes : ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
                 //     },
                 // ],
             })

@@ -14,19 +14,19 @@ module.exports = {
                 message: 'Attribute description cannot be empty'
             });
         }
-        if (!req.body.startDateTime) {
+        if (!req.body.startDate) {
             return res.status(400).send({
                 message: 'Attribute begin date cannot be empty'
             });
         }
-        if (!req.body.endDateTime) {
+        if (!req.body.endDate) {
             return res.status(400).send({
                 message: 'Attribute end date cannot be empty'
             });
         }
 
-        var begin = new Date(req.body.startDateTime);
-        var end = new Date(req.body.endDateTime);
+        var begin = new Date(req.body.startDate);
+        var end = new Date(req.body.endDate);
 
         if (begin > end) {
             return res.status(400).send({
@@ -44,8 +44,8 @@ module.exports = {
             .create({
                 name: req.body.name,
                 description: req.body.description,
-                startDateTime: req.body.startDateTime,
-                endDateTime: req.body.endDateTime,
+                startDate: req.body.startDate,
+                endDate: req.body.endDate,
                 user_id: req.body.user_id
             })
             .then(Experiment => res.status(200).send(Experiment))
@@ -63,7 +63,7 @@ module.exports = {
                 //         attributes: ['id', 'firstName', 'lastName', 'username', 'createdAt', 'updatedAt']
                 //     }
                 // ],
-                // attributes: ['id', 'name', 'description', 'startDateTime', 'endDateTime', 'createdAt', 'updatedAt', 'user_id']
+                // attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(experiments => res.status(200).send(experiments))
             .catch(error => res.status(400).send(error));
@@ -88,7 +88,7 @@ module.exports = {
                 //     }
                 // ],
                 //Without these attributes, it fails bacuse its trying to search for an experiment_id that doesn't exists
-                attributes: ['id', 'name', 'description', 'startDateTime', 'endDateTime', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(experiment => {
                 if (!experiment) {
@@ -104,7 +104,7 @@ module.exports = {
     update(req, res) {
         return Experiment
             .findById(req.params.id, {
-                attributes: ['id', 'name', 'description', 'startDateTime', 'endDateTime', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(experiment => {
                 if (!experiment) {
@@ -113,8 +113,8 @@ module.exports = {
                     });
                 } else {
                     //If im trying to update a date, the date must be correct
-                    const begin = new Date(req.body.startDateTime || experiment.startDateTime);
-                    const end = new Date(req.body.endDateTime || experiment.endDateTime);
+                    const begin = new Date(req.body.startDate || experiment.startDate);
+                    const end = new Date(req.body.endDate || experiment.endDate);
                     if (begin > end) {
                         return res.status(400).send({
                             message: 'The end date cannot be before the begin date.'
@@ -125,8 +125,8 @@ module.exports = {
                     .update({
                         name: req.body.name || experiment.name,
                         description: req.body.description || experiment.description,
-                        startDateTime: req.body.startDateTime || experiment.startDateTime,
-                        endDateTime: req.body.endDateTime || experiment.endDateTime
+                        startDate: req.body.startDate || experiment.startDate,
+                        endDate: req.body.endDate || experiment.endDate
                     })
                     .then((experiment) => res.status(200).send(experiment)) // Send back the updated tuple.
                     .catch((error) => res.status(400).send(error));
@@ -143,7 +143,7 @@ module.exports = {
         }
         return Experiment
             .findById(req.params.id, {
-                attributes: ['id', 'name', 'description', 'startDateTime', 'endDateTime', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(Experiment => {
                 if (!Experiment) {
