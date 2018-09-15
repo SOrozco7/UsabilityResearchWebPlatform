@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../models/user';
 
 @Component({
     selector: 'app-header',
@@ -8,14 +10,18 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+    user: User;
     pushRightClass: string = 'push-right';
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router, private authService: AuthService) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();
         this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de|zh-CHS/) ? browserLang : 'en');
+
+        this.user = new User('', '', '', '', '', null, null, null);
 
         this.router.events.subscribe(val => {
             if (
@@ -28,7 +34,10 @@ export class HeaderComponent implements OnInit {
         });
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+
+        this.setUserNameInHeader();
+    }
 
     isToggled(): boolean {
         const dom: Element = document.querySelector('body');
@@ -51,5 +60,12 @@ export class HeaderComponent implements OnInit {
 
     changeLang(language: string) {
         this.translate.use(language);
+    }
+
+    setUserNameInHeader(){
+
+        let currUserJSONObj = this.authService.getUser();
+        this.user.firstName = currUserJSONObj.firstName;
+        this.user.lastName = currUserJSONObj.lastName;
     }
 }
