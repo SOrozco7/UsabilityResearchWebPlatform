@@ -1,7 +1,7 @@
 {
   "name": "GestureWebBackEnd",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start:dev": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +22,6 @@
     "sequelize": "^4.37.4"
   },
   "devDependencies": {
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.18.4"
   }
 }
