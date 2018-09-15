@@ -3,7 +3,7 @@
 #    Build image:
 #    docker build -t corpus-web_frontend .
 #
-#    Run image (on 192.168.2.26:4200):
+#    Run image (on localhost:4200):
 #    docker run --name corpus-web_frontend -p 4200:4200 corpus-web_frontend
 
 # base image
