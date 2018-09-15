@@ -1,3 +1,11 @@
+# Usage:
+#
+#    Build image:
+#    docker build -t corpus-web_backend .
+#
+#    Run image (on localhost:8000):
+#    docker run --name corpus-web_backend -p 8000:8000 corpus-web_backend
+
 FROM node:8
 
 WORKDIR .
