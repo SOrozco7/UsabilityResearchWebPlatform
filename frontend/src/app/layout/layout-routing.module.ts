@@ -4,10 +4,11 @@ import { LayoutComponent } from './layout.component';
 import { ExperimentRetrieveComponent } from './experiments/experiment-retrieve/experiment-retrieve.component';
 import { ExperimentListComponent } from './experiments/experiment-list/experiment-list.component';
 import { ExperimentCreateComponent } from './experiments/experiment-create/experiment-create.component';
+import { ExperimentUpdateComponent } from './experiments/experiment-update/experiment-update.component';
+import { ExperimentDeleteComponent } from './experiments/experiment-delete/experiment-delete.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { CrudService } from '../services/crud.service';
 import { LogService } from '../services/log.service';
-import { ExperimentUpdateComponent } from './experiments/experiment-update/experiment-update.component';
 
 const routes: Routes = [
     {
@@ -20,6 +21,7 @@ const routes: Routes = [
             { path: 'experiments', loadChildren: './blank-page/blank-page.module#BlankPageModule', component: ExperimentListComponent, canActivate: [AuthGuard]},
             { path: 'experiments/:id', loadChildren: './blank-page/blank-page.module#BlankPageModule', component: ExperimentRetrieveComponent, canActivate: [AuthGuard]},
             { path: 'experiments/update/:id', loadChildren: './form/form.module#FormModule', component: ExperimentUpdateComponent, canActivate: [AuthGuard]},
+            { path: 'experiments/delete/:id', loadChildren: './form/form.module#FormModule', component: ExperimentDeleteComponent, canActivate: [AuthGuard]},
             { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },

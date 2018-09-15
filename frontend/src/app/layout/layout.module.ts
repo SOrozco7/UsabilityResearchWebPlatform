@@ -12,6 +12,7 @@ import { ExperimentRetrieveComponent } from './experiments/experiment-retrieve/e
 import { ExperimentListComponent } from './experiments/experiment-list/experiment-list.component';
 import { ExperimentUpdateComponent } from './experiments/experiment-update/experiment-update.component';
 import { ExperimentCreateComponent } from './experiments/experiment-create/experiment-create.component';
+import { ExperimentDeleteComponent } from './experiments/experiment-delete/experiment-delete.component';
 
 @NgModule({
     imports: [
@@ -21,6 +22,6 @@ import { ExperimentCreateComponent } from './experiments/experiment-create/exper
         FormsModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ExperimentRetrieveComponent, ExperimentListComponent, ExperimentCreateComponent, ExperimentUpdateComponent]
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, ExperimentRetrieveComponent, ExperimentListComponent, ExperimentCreateComponent, ExperimentUpdateComponent, ExperimentDeleteComponent]
 })
 export class LayoutModule {}
