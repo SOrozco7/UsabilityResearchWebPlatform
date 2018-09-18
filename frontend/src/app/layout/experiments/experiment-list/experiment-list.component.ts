@@ -14,6 +14,7 @@ import { ErrorHandlerService } from '../../../services/error-handler.service';
 })
 export class ExperimentListComponent implements OnInit {
 
+  // An array of experiments to be displayed.
   experiments: Experiment[];
 
   constructor(private errorHandler: ErrorHandlerService, private crud: CrudService, private router: Router, private auth: AuthService) { }
@@ -21,9 +22,11 @@ export class ExperimentListComponent implements OnInit {
   ngOnInit() {
 
     this.getUserExperiments();
-    // this.getAllExperiments();
   }
 
+  /**
+   * Method that retrieves the whole list of experiments.
+   */
   getAllExperiments() {
     this.crud.list(this.crud.models.EXPERIMENT)
       .subscribe(
@@ -37,6 +40,11 @@ export class ExperimentListComponent implements OnInit {
       )
   }
 
+  /**
+   * Method that retrieves the user who currently is logged in. The response includes 
+   * the experiments that she/he owns. The experiments are then extracted from the 
+   * resulting JSON response to be displayed.
+   */
   getUserExperiments() {
     this.crud.retrieve(this.crud.models.USER, this.auth.getUser().id)
       .subscribe(
@@ -50,14 +58,25 @@ export class ExperimentListComponent implements OnInit {
       )
   }
 
+  /**
+   * Method that takes you to the section to create an experiment.
+   */
   createExperiment() {
     this.router.navigate(['experiments/create']);
   }
 
-  retrieveExperiment(retrieveID: number) {
-    this.router.navigate(['experiments/' + retrieveID]);
+  /**
+   * Method that retrieves an experiment.
+   * @param id the id of the experiment to retrieve
+   */
+  retrieveExperiment(id: number) {
+    this.router.navigate(['experiments/' + id]);
   }
 
+  /**
+   * Method that deletes a given experiment
+   * @param id the id of the experiment to deletes
+   */
   deleteExperiment(id: number) {
     console.log("Deleting")
     this.crud.delete(this.crud.models.EXPERIMENT, id)

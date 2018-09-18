@@ -10,6 +10,7 @@ module.exports = {
         return User
             .findAll( {
 
+                // Include the experiments that each user owns
                 include: [
                     {
                         model: Experiment,
@@ -28,6 +29,7 @@ module.exports = {
         return User
             .findById(req.params.id, {
 
+                // Include the experiments that this user owns
                 include: [
                     {
                         model: Experiment,
