@@ -18,14 +18,16 @@ COPY . .
 
 RUN npm install -g nodemon
 
-CMD npm install -g sequelize-cli
+RUN npm install -g sequelize-cli
 
 EXPOSE 8000
 
-CMD ["sequelize", "db:create"]
+RUN ["sequelize", "db:drop"]
 
-CMD ["sequelize", "db:migrate"]
+RUN ["sequelize", "db:create"]
 
-CMD ["sequelize", "db:seed:all"]
+RUN ["sequelize", "db:migrate"]
+
+RUN ["sequelize", "db:seed:all"]
 
 CMD ["node", "./bin/www"]
