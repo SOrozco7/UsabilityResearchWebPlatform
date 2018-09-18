@@ -16,66 +16,66 @@ export class ExperimentListComponent implements OnInit {
 
   experiments: Experiment[];
 
-  constructor(private errorHandler:ErrorHandlerService, private crud:CrudService, private router:Router, private auth:AuthService) { }
+  constructor(private errorHandler: ErrorHandlerService, private crud: CrudService, private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
-    
-      this.getAllExperiments();
-    
+
+    this.getUserExperiments();
+    // this.getAllExperiments();
   }
 
-  getAllExperiments(){
+  getAllExperiments() {
     this.crud.list(this.crud.models.EXPERIMENT)
-    .subscribe(
-      (res:Experiment[])=>{
-        console.log(res);
-        this.experiments = res;
-      },
-      (err:HttpErrorResponse) => {
-        this.errorHandler.handleError(err);
-      }
-    )
+      .subscribe(
+        (res: Experiment[]) => {
+          console.log(res);
+          this.experiments = res;
+        },
+        (err: HttpErrorResponse) => {
+          this.errorHandler.handleError(err);
+        }
+      )
   }
 
-  getUserExperiments(){
+  getUserExperiments() {
     this.crud.retrieve(this.crud.models.USER, this.auth.getUser().id)
-    .subscribe(
-      (res:User)=>{
-        console.log(res.experiments);
-        this.experiments = res.experiments;
-      },
-      (err:HttpErrorResponse) => {
-        this.errorHandler.handleError(err);
-      }
-    )
+      .subscribe(
+        (res: User) => {
+          console.log(res.experiments);
+          this.experiments = res.experiments;
+        },
+        (err: HttpErrorResponse) => {
+          this.errorHandler.handleError(err);
+        }
+      )
   }
 
-  createExperiment(){
+  createExperiment() {
     this.router.navigate(['experiments/create']);
   }
 
-  retrieveExperiment(retrieveID: number){
-    this.router.navigate(['experiments/'+retrieveID]);
+  retrieveExperiment(retrieveID: number) {
+    this.router.navigate(['experiments/' + retrieveID]);
   }
 
-  deleteExperiment(id: number){
+  deleteExperiment(id: number) {
     console.log("Deleting")
     this.crud.delete(this.crud.models.EXPERIMENT, id)
-    .subscribe(
-      (res:Response) => {
-        this.errorHandler.showInformativeMessage('Experiment successfully deleted.');
-        let x = 0;
-        for(let experiment of this.experiments){
-          if(experiment.id == id){
+      .subscribe(
+        (res: Response) => {
+          this.errorHandler.showInformativeMessage('Experiment successfully deleted.');
+          let x = 0;
+          for (let experiment of this.experiments) {
+            if (experiment.id == id) {
 
-            this.experiments.splice(x, 1);
+              this.experiments.splice(x, 1);
+            }
+            x++;
           }
-          x++;
+        },
+        (err: HttpErrorResponse) => {
+          this.errorHandler.handleError(err);
         }
-      },
-      (err:HttpErrorResponse) => {
-        this.errorHandler.handleError(err);
-      }
-    )
+      )
   }
 }
