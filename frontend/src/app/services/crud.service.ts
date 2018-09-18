@@ -15,7 +15,7 @@ export class CrudService {
   };
 
   constructor(private auth: AuthService, private http: HttpClient, private log: LogService) {
-    this.URL = 'http://localhost:8000/api';
+    this.URL = 'http://35.227.42.255:8000/api';
 
     if (this.auth.isLoggedIn()) {
       this.headers = new HttpHeaders({
