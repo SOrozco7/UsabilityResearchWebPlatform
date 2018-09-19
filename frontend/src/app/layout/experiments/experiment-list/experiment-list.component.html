@@ -1,4 +1,4 @@
-<div [@routerTransition]>
+<div>
   <button class="btn btn-success pull-right" (click)="createExperiment()">Create Experiment</button>
   <br>
   <br>
@@ -36,7 +36,7 @@
                               <span>-</span>
                           </td>
                           <td>
-                            <button type="button" [routerLink]="['/experiments/', experiment.id]" class="btn btn-sm btn-link">View</button>
+                            <button type="button" (click)="retrieveExperiment(experiment.id)" class="btn btn-sm btn-link">View</button>
                           </td>
                       </tr>
                   </tbody>

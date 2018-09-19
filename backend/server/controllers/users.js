@@ -10,21 +10,46 @@ module.exports = {
         return User
             .findAll( {
 
-                // include: [
-                //     {
-                //         model: Experiment,
-                //         as: 'experiments',
-                //         through: {
-
-                //             attributes: ['user_id'],
-                //         },
-                //         required: false,
-                //         //Without this line of attributes, it fails!!
-                //         attributes : ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
-                //     },
-                // ],
+                // Include the experiments that each user owns
+                include: [
+                    {
+                        model: Experiment,
+                        as: 'experiments',
+                        required: false,
+                    }
+                ],
             })
             .then(users => res.status(200).send(users))
             .catch(error => res.status(400).send(error));
+    },
+
+    //Method for retrieving a single user
+    retrieve(req, res) {
+
+        return User
+            .findById(req.params.id, {
+
+                // Include the experiments that this user owns
+                include: [
+                    {
+                        model: Experiment,
+                        as: 'experiments',
+                        required: false,
+                    }
+                ],
+            })
+            .then(user => {
+
+                if (!user) {
+
+                    return res.status(404).send({
+
+                        message: 'User Not Found.',
+                    });
+                }
+
+                return res.status(200).send(user);
+            })
+            .catch(error => res.status(404).send(error));
     },
 };
