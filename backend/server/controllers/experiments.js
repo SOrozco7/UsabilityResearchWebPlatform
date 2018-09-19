@@ -48,7 +48,7 @@ module.exports = {
                 endDate: req.body.endDate,
                 user_id: req.body.user_id
             })
-            .then(Experiment => res.status(200).send(Experiment))
+            .then(Experiment => res.status(201).send(Experiment))
             .catch(error => res.status(400).send(error));
     },
 
