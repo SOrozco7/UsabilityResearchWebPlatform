@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class LogService {
@@ -9,7 +10,7 @@ export class LogService {
   Models: {};
 
   constructor(private auth:AuthService, private http:HttpClient) {
-    this.URL = 'http://localhost:8000/api';
+    this.URL = environment.baseUrl + 'api';
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       //'Authorization': this.auth.getToken()

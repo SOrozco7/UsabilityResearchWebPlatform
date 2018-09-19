@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import * as moment from 'moment';
 
 @Injectable()
@@ -9,7 +10,7 @@ export class AuthService {
 
 
   constructor(private http: HttpClient) {
-    this.URL = 'http://localhost:8000/api';
+    this.URL = environment.baseUrl + 'api';
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });

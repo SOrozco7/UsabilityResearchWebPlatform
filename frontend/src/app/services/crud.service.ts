@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import 'rxjs/Rx';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { LogService } from './log.service';
 
 @Injectable()
@@ -15,7 +16,7 @@ export class CrudService {
   };
 
   constructor(private auth: AuthService, private http: HttpClient, private log: LogService) {
-    this.URL = 'http://localhost:8000/api';
+    this.URL = environment.baseUrl + 'api';
 
     if (this.auth.isLoggedIn()) {
       this.headers = new HttpHeaders({
