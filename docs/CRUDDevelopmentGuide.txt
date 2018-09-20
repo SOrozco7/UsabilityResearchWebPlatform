@@ -1,0 +1,58 @@
+1. BACKEND
+
+
+Modify the following folders based on the Experiment template:
+modelo
+controlador
+rutas
+migraciones
+seeds
+
+
+1.
+server/models/ … Create a question.js based on experiment.js
+
+2. 
+server/controllers/… change index.js -> add questions.js
+server/controllers/… create questions.js based on experiments.js
+
+3.
+server/routes/… modify index.js, add methods for QUESTIONS
+
+4.
+server/migrations/… create a file named create-question.js based on the following file: 0002-create-experiment.js
+
+5.
+
+{
+  "development": {
+    "username": "ZEUS",
+    "password": “la contraseña de ZEUS",
+    "database": "database_development",
+    "host": “127.0.0.1”,
+    "port": "5432",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "adsoft",
+    "password": "5i5i5i5i",
+    "database": "database_production",
+    "host": "35.227.42.255",
+    "port": "5432",
+    "dialect": "postgres"
+  }
+}
+
+Create a finle with the former conten and add it on the following file:
+backend/server/config/config.json
+
+
+6.
+server/seeders/… create a file named questions.js based on experiments.js
