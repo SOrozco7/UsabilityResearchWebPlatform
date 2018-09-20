@@ -3,8 +3,8 @@ const fetch = require('node-fetch');
 
 const SERVER = 'http://localhost:8000/api';
 
-describe('Experiments.List', function () {
-    it('GET /experiments must list all experiments', async () => {
+describe('ListAllExperiments', function () {
+    it('GET /experiments must list all experiments.', async () => {
 
         const response = await fetch(SERVER + '/experiments');
         expect(response.status).to.be.equal(200);

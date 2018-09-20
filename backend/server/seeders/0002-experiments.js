@@ -15,7 +15,7 @@ module.exports = {
         },
         {
           name: "Freiewahlentscheidungbildungsexperimentforschung",
-          description: "Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können.",
+          description: "Dieser Text ist ein Beispiel.",
           startDate: new Date(Date.UTC(2018, 0, 1)),
           endDate: new Date(Date.UTC(2018, 4, 1)),
           user_id: "danperez@gmail.com",
