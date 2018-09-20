@@ -4,17 +4,17 @@ To setup your testing environment, do the following:
 
     export NODE_ENV=test
 
-2. Start the server in test mode:
+2. Start the server:
 
-    npm run start:test
+    npm run start
 
-Ton run tests, you can either run the full test suite or run a specific subset of tests.
+To run tests, you can either run the full test suite or run a specific subset of tests.
 
-3. To run all tests:
+- To run all tests:
 
     npm test
 
-4. To run a subset of tests whose file names match a specific substring. E.g. specifying "Retrieve" would run both 'RetrieveExistingExperiment.test' and 'RetrieveNonExistentExperiment.test':
+- To run a subset of tests whose file names match a specific substring. E.g. specifying "Retrieve" would run both 'RetrieveExistingExperiment.test' and 'RetrieveNonExistentExperiment.test':
 
     jest <TEST_FILE_NAME_SUBSTRING>
 

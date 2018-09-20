@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start:dev": "NODE_ENV=development && nodemon ./bin/www",
-    "start:test": "NODE_ENV=test && nodemon ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "NODE_ENV=test mocha --recursive --reporter spec"
   },
   "keywords": [],
