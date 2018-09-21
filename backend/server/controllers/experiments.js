@@ -117,7 +117,7 @@ module.exports = {
                 if (!experiment) {
                     return res.status(400).send({
                         status: 400,
-                        message: 'Experiment Not Found'
+                        message: 'No experiment with that ID was found.'
                     });
                 } else {
                     //If im trying to update a date, the date must be correct
@@ -157,7 +157,7 @@ module.exports = {
                 if (!Experiment) {
                     return res.status(400).send({
                         status: 400,
-                        message: 'Experiment Not Found',
+                        message: 'No experiment with that ID was found.',
                     });
                 }
                 return Experiment

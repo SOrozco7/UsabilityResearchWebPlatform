@@ -149,7 +149,7 @@ paths:
         400:
           description: "Invalid experiment"
         404:
-          description: "Experiment not found"
+          description: "No experiment with that ID was found."
 securityDefinitions:
   petstore_auth:
     type: "oauth2"

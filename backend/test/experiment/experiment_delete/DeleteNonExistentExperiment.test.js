@@ -15,6 +15,6 @@ describe('DeleteNonExistentExperiment', function () {
 
         const deleteExperimentResponseJson = await deleteExperimentResponse.json();
         expect(deleteExperimentResponseJson.status).to.be.equal(400);
-        expect(deleteExperimentResponseJson.message).to.be.equal("Experiment Not Found");
+        expect(deleteExperimentResponseJson.message).to.be.equal("No experiment with that ID was found.");
     });
 });

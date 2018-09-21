@@ -22,6 +22,6 @@ describe('UpdateNonExistentExperiment', function () {
 
         const updateExperimentResponseJson = await updateExperimentResponse.json();
         expect(updateExperimentResponseJson.status).to.be.equal(400);
-        expect(updateExperimentResponseJson.message).to.be.equal("Experiment Not Found");
+        expect(updateExperimentResponseJson.message).to.be.equal("No experiment with that ID was found.");
     });
 });
