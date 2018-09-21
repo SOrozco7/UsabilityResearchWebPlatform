@@ -99,6 +99,7 @@ module.exports = {
             .then(experiment => {
                 if (!experiment) {
                     return res.status(400).send({
+                        status: 400,
                         message: 'No experiment with that ID was found.'
                     });
                 }
