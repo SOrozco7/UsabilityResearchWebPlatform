@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './components/authentication/login/login/login.component';
+import { LoginComponent } from './components/authentication/login/login.component';
 
 // Services
 import { AuthService } from './services/auth.service';
