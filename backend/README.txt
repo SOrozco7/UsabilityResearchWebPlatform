@@ -1,6 +1,8 @@
 The model naming convention will be the singular version of the table, with the first letter capitalized. The tables in the migration file will be named as they are in the relational diagram, same for attributes. 
 
-For simplicity, in controllers we are using only codes 200 for succesful operations and 400 on failures. URLs for the routes' index file have to use '-' if the table name has a '_' on it.
+In the controllers, we will follow the HTTP code standards. For example, a code of 200 will be used for a standard successful request, whereas 201 will be used for the successful creation of a new resource and 400 will be used for a bad request. See https://en.wikipedia.org/wiki/List_of_HTTP_status_codes.
+
+URLs for the routes' index file have to use '-' if the table name has a '_' on it.
 
 To setup the node_modules folder and project files:
 

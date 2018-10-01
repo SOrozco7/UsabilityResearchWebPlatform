@@ -6,22 +6,26 @@ module.exports = {
         // check that params are not null, undefined or empty string
         if (!req.body.name) {
             return res.status(400).send({
-                message: 'Attribute name cannot be empty'
+                status: 400,
+                message: 'The attribute "name" of an instance of "Experiment" cannot be empty.'
             });
         }
         if (!req.body.description) {
             return res.status(400).send({
-                message: 'Attribute description cannot be empty'
+                status: 400,
+                message: 'The attribute "description" of an instance of "Experiment" cannot be empty.'
             });
         }
         if (!req.body.startDate) {
             return res.status(400).send({
-                message: 'Attribute begin date cannot be empty'
+                status: 400,
+                message: 'The attribute "startDate" of an instance of "Experiment" cannot be empty.'
             });
         }
         if (!req.body.endDate) {
             return res.status(400).send({
-                message: 'Attribute end date cannot be empty'
+                status: 400,
+                message: 'The attribute "endDate" of an instance of "Experiment" cannot be empty.'
             });
         }
 
@@ -30,13 +34,15 @@ module.exports = {
 
         if (begin > end) {
             return res.status(400).send({
-                message: 'End date cannot be before begin date'
+                status: 400,
+                message: 'The attribute "endDate" of an instance of "Experiment" cannot be before its attribute "startDate".'
             });
         }
        
         if (!req.body.user_id) {
             return res.status(400).send({
-                message: 'Attribute user_id cannot be empty'
+                status: 400,
+                message: 'The attribute "user_id" of an instance of "Experiment" cannot be empty.'
             });
         }
 
@@ -48,7 +54,7 @@ module.exports = {
                 endDate: req.body.endDate,
                 user_id: req.body.user_id
             })
-            .then(Experiment => res.status(200).send(Experiment))
+            .then(Experiment => res.status(201).send(Experiment))
             .catch(error => res.status(400).send(error));
     },
 
@@ -93,6 +99,7 @@ module.exports = {
             .then(experiment => {
                 if (!experiment) {
                     return res.status(400).send({
+                        status: 400,
                         message: 'No experiment with that ID was found.'
                     });
                 }
@@ -109,6 +116,7 @@ module.exports = {
             .then(experiment => {
                 if (!experiment) {
                     return res.status(400).send({
+                        status: 400,
                         message: 'No experiment with that ID was found.'
                     });
                 } else {
@@ -148,15 +156,17 @@ module.exports = {
             .then(Experiment => {
                 if (!Experiment) {
                     return res.status(400).send({
-                        message: 'Not Found',
+                        status: 400,
+                        message: 'No experiment with that ID was found.',
                     });
                 }
                 return Experiment
                     .destroy()
                     .then(() => res.status(200).send({
+                        status: 200,
                         message: 'Experiment deleted'
                     }))
-                    .catch(error => res.status(400).send(error));
+                    .catch(error => res.status(400).send({error}));
             })
             .catch(error => res.status(400).send(error));
     },
