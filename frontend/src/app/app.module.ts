@@ -12,12 +12,14 @@ import { AuthService } from './services/auth.service';
 import { CrudService } from './services/crud.service';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { ExperimentsListComponent } from './components/experiments/experiments-list/experiments-list.component';
+import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ExperimentsListComponent
+    ExperimentsListComponent,
+    ExperimentCreateComponent
   ],
   imports: [
     BrowserModule,
