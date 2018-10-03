@@ -3,16 +3,16 @@ import { CrudService } from '../../../services/crud.service';
 import { AuthService } from '../../../services/auth.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { ExperimentsListComponent } from './experiments-list.component';
+import { ExperimentListComponent } from './experiment-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ExperimentsListComponent', () => {
-  let component: ExperimentsListComponent;
-  let fixture: ComponentFixture<ExperimentsListComponent>;
+describe('ExperimentListComponent', () => {
+  let component: ExperimentListComponent;
+  let fixture: ComponentFixture<ExperimentListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExperimentsListComponent ],
+      declarations: [ ExperimentListComponent ],
       imports: [ RouterTestingModule ],
       providers: [
         AuthService,
@@ -26,7 +26,7 @@ describe('ExperimentsListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExperimentsListComponent);
+    fixture = TestBed.createComponent(ExperimentListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

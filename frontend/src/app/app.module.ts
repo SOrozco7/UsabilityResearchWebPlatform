@@ -13,15 +13,17 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { AuthService } from './services/auth.service';
 import { CrudService } from './services/crud.service';
 import { ErrorHandlerService } from './services/error-handler.service';
-import { ExperimentsListComponent } from './components/experiments/experiments-list/experiments-list.component';
+import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
 import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
+import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ExperimentsListComponent,
-    ExperimentCreateComponent
+    ExperimentListComponent,
+    ExperimentCreateComponent,
+    ExperimentRetrieveComponent
   ],
   imports: [
     BrowserModule,
