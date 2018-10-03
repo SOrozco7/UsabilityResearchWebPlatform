@@ -11,10 +11,16 @@ import { LoginComponent } from './components/authentication/login/login.componen
 const routes: Routes = [
 
   // General
-  { path:'login', component: LoginComponent},
+  { 
+    path:'login', 
+    component: LoginComponent
+  },
 
   // All other routes
-  { path: '**', redirectTo: '' }
+  { 
+    path: '**', 
+    redirectTo: '' 
+  }
 ]
 
 @NgModule({
