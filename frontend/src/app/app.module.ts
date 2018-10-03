@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'; 
+import { CommonModule } from '@angular/common'; 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
@@ -12,17 +14,20 @@ import { AuthService } from './services/auth.service';
 import { CrudService } from './services/crud.service';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { ExperimentsListComponent } from './components/experiments/experiments-list/experiments-list.component';
+import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ExperimentsListComponent
+    ExperimentsListComponent,
+    ExperimentCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AuthService, CrudService, ErrorHandlerService],
   bootstrap: [AppComponent]
