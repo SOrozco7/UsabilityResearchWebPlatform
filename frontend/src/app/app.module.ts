@@ -16,6 +16,7 @@ import { ErrorHandlerService } from './services/error-handler.service';
 import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
 import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
 import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
+import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ExperimentRetrieveComponent } from './components/experiments/experiment
     LoginComponent,
     ExperimentListComponent,
     ExperimentCreateComponent,
-    ExperimentRetrieveComponent
+    ExperimentRetrieveComponent,
+    ExperimentUpdateComponent
   ],
   imports: [
     BrowserModule,
