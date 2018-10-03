@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Experiment } from '../../../models/experiment';
+import { User } from '../../../models/user';
+import { AuthService } from '../../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
-import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-experiment-create',
@@ -12,62 +14,46 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class ExperimentCreateComponent implements OnInit {
 
-  name: string;
-  startDate: Date;
-  endDate: Date;
-  description: string;
+  experiment: Experiment;
+  id: number;
 
-  constructor(private crud: CrudService, private router: Router, private errorHandler: ErrorHandlerService, private auth: AuthService) { }
+  constructor(private errorHandler: ErrorHandlerService, private crud: CrudService, private router: Router, private route: ActivatedRoute, private auth: AuthService) {
+
+  }
 
   ngOnInit() {
+    this.experiment = new Experiment(null, null, null, null, null, null, null, null);
+    this.experiment.user_id = this.auth.getUser().id;
   }
 
   createExperiment() {
-    console.log("Creating experiment");
-
-    let body = {
-      id: null,
-      name: this.name,
-      description: this.description,
-      startDate: this.startDate,
-      endDate: this.endDate,
-      user_id: this.auth.getUser()
-    };
     if (this.validate()) {
-      this.crud.create(this.crud.models.EXPERIMENT, body)
+      this.crud.create(this.crud.models.EXPERIMENT, this.experiment)
         .subscribe(
           (res: Experiment) => {
-            this.errorHandler.showInformativeMessage("Experiment successfully created");
+            console.log(res);
+            this.experiment = res;
             this.router.navigate(['experiments']);
           },
-          (err) => {
+          (err: HttpErrorResponse) => {
             this.errorHandler.handleError(err);
           }
-        );
+        )
     }
   }
 
   validate() {
-    if (!this.name) {
-      this.errorHandler.showErrorMessage("You must give your experiment a name.");
+    if (!this.experiment.name && !this.experiment.description && !this.experiment.startDate && !this.experiment.endDate) {
+      this.errorHandler.showErrorMessage('You must enter a valid value in all fields.');
       return false;
     }
-
-    if (!this.startDate) {
-      this.errorHandler.showErrorMessage("You must provide a start date for the experiment.");
-      return false;
+    else {
+      return true;
     }
+  }
 
-    if (!this.endDate) {
-      this.errorHandler.showErrorMessage("You must provide an end date for the experiment.");
-      return false;
-    }
+  listExperiments(){
 
-    if (this.startDate > this.endDate) {
-      this.errorHandler.showErrorMessage("The start date must be before the end date.");
-      return false;
-    }
-
-    return true;
+    this.router.navigate(['experiments/']);
   }
 }

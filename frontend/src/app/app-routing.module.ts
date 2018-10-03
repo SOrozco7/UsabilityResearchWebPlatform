@@ -28,15 +28,15 @@ const routes: Routes = [
     canActivate: [AuthGuard] 
   },
   { 
-    path: 'experiments/:id', 
-    component: ExperimentRetrieveComponent, 
-    canActivate: [AuthGuard] 
-  },
-  { 
     path: 'experiments/create', 
     component: ExperimentCreateComponent, 
     canActivate: [AuthGuard] 
   }, 
+  { 
+    path: 'experiments/:id', 
+    component: ExperimentRetrieveComponent, 
+    canActivate: [AuthGuard] 
+  },
   { 
     path: 'experiments/update/:id', 
     component: ExperimentUpdateComponent, 
