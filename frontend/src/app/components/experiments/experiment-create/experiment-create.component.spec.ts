@@ -5,6 +5,7 @@ import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ExperimentCreateComponent } from './experiment-create.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('ExperimentCreateComponent', () => {
   let component: ExperimentCreateComponent;
@@ -13,7 +14,7 @@ describe('ExperimentCreateComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ExperimentCreateComponent ],
-      imports: [ RouterTestingModule ],
+      imports: [ RouterTestingModule, FormsModule ],
       providers: [
         AuthService,
         CrudService,

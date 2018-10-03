@@ -3,6 +3,7 @@ import { CrudService } from '../../../services/crud.service';
 import { Experiment } from '../../../models/experiment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-experiment-create',
@@ -14,8 +15,9 @@ export class ExperimentCreateComponent implements OnInit {
   name: string;
   startDate: Date;
   endDate: Date;
+  description: string;
 
-  constructor(private crud: CrudService, private router: Router, private errorHandler: ErrorHandlerService) { }
+  constructor(private crud: CrudService, private router: Router, private errorHandler: ErrorHandlerService, private auth: AuthService) { }
 
   ngOnInit() {
   }
@@ -26,9 +28,10 @@ export class ExperimentCreateComponent implements OnInit {
     let body = {
       id: null,
       name: this.name,
+      description: this.description,
       startDate: this.startDate,
       endDate: this.endDate,
-      user_id: ""
+      user_id: this.auth.getUser()
     };
     if (this.validate()) {
       this.crud.create(this.crud.models.EXPERIMENT, body)

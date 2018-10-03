@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'; 
+import { CommonModule } from '@angular/common'; 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
@@ -24,7 +26,8 @@ import { ExperimentCreateComponent } from './components/experiments/experiment-c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AuthService, CrudService, ErrorHandlerService],
   bootstrap: [AppComponent]
