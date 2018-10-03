@@ -13,13 +13,19 @@ import { ExperimentCreateComponent } from './components/experiments/experiment-c
 const routes: Routes = [
 
   // General
-  { path:'login', component: LoginComponent},
+  { 
+    path:'login', 
+    component: LoginComponent
+  },
 
   // Experiments
   { path: 'experiments', component: ExperimentsListComponent, canActivate: [AuthGuard] },
   { path: 'experiments/create', component: ExperimentCreateComponent, canActivate: [AuthGuard] },
   // All other routes
-  { path: '**', redirectTo: '' }
+  { 
+    path: '**', 
+    redirectTo: '' 
+  }
 ]
 
 @NgModule({
