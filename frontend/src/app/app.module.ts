@@ -17,6 +17,7 @@ import { ExperimentListComponent } from './components/experiments/experiment-lis
 import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
 import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
 import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
+import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ExperimentUpdateComponent } from './components/experiments/experiment-u
     ExperimentListComponent,
     ExperimentCreateComponent,
     ExperimentRetrieveComponent,
-    ExperimentUpdateComponent
+    ExperimentUpdateComponent,
+    ExperimentDeleteComponent
   ],
   imports: [
     BrowserModule,
