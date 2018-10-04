@@ -14,6 +14,16 @@ describe('ExperimentCreateComponent', () => {
   let fixture: ComponentFixture<ExperimentCreateComponent>;
 
   beforeEach(async(() => {
+
+    var userObj = {
+
+      "user": {
+        "id": "danperez@gmail.com",
+      }
+    }
+
+    localStorage.setItem('user', JSON.stringify(userObj.user));
+
     TestBed.configureTestingModule({
       declarations: [ ExperimentCreateComponent ],
       imports: [ RouterTestingModule, FormsModule ],
