@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CrudService } from '../../../services/crud.service';
 import { AuthService } from '../../../services/auth.service';
+import { AuthMockService } from '../../../services/auth-mock.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ExperimentCreateComponent } from './experiment-create.component';
@@ -14,15 +15,6 @@ describe('ExperimentCreateComponent', () => {
   let fixture: ComponentFixture<ExperimentCreateComponent>;
 
   beforeEach(async(() => {
-
-    var userObj = {
-
-      "user": {
-        "id": "danperez@gmail.com",
-      }
-    }
-
-    localStorage.setItem('user', JSON.stringify(userObj.user));
 
     TestBed.configureTestingModule({
       declarations: [ ExperimentCreateComponent ],
@@ -43,6 +35,11 @@ describe('ExperimentCreateComponent', () => {
     fixture = TestBed.createComponent(ExperimentCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    // Call the auth mock service to have a user with an id in the 
+    // local storage
+    new AuthMockService();
+
   });
 
   it('should create', () => {
