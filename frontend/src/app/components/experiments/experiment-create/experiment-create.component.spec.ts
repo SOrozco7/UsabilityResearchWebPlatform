@@ -17,8 +17,8 @@ describe('ExperimentCreateComponent', () => {
   beforeEach(async(() => {
 
     TestBed.configureTestingModule({
-      declarations: [ ExperimentCreateComponent ],
-      imports: [ RouterTestingModule, FormsModule ],
+      declarations: [ExperimentCreateComponent],
+      imports: [RouterTestingModule, FormsModule],
       providers: [
         AuthService,
         CrudService,
@@ -27,22 +27,25 @@ describe('ExperimentCreateComponent', () => {
         HttpHandler
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
+    // Call the auth mock service to have a user with an id in the 
+    // local storage
+    let authMock = new AuthMockService();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ExperimentCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-
-    // Call the auth mock service to have a user with an id in the 
-    // local storage
-    new AuthMockService();
-
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  afterEach(function () {
+
+    localStorage.removeItem('user');
   });
 });
