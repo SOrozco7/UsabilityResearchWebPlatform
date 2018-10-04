@@ -47,11 +47,11 @@ const routes: Routes = [
     component: ExperimentDeleteComponent, 
     canActivate: [AuthGuard] 
   },
-  // // All other routes
-  // { 
-  //   path: '**', 
-  //   // redirectTo: 'experiments' 
-  // }
+  // All other routes
+  { 
+    path: '**', 
+    redirectTo: 'experiments' 
+  }
 ]
 
 @NgModule({
