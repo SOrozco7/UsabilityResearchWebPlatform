@@ -27,7 +27,5 @@ export class ExperimentDeleteComponent implements OnInit {
         this.errorHandler.handleError(err);
       }
     )
-
-    this.router.navigate(['experiments/']);
   }
 }
