@@ -1,9 +1,11 @@
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CrudService } from '../../../services/crud.service';
 import { AuthService } from '../../../services/auth.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ExperimentCreateComponent } from './experiment-create.component';
+import { LoginComponent } from '../../authentication/login/login.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 
@@ -24,6 +26,7 @@ describe('ExperimentCreateComponent', () => {
       ]
     })
     .compileComponents();
+
   }));
 
   beforeEach(() => {

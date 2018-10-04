@@ -46,7 +46,9 @@ export class ExperimentListComponent implements OnInit {
    * resulting JSON response to be displayed.
    */
   getUserExperiments() {
-    this.crud.retrieve(this.crud.models.USER, this.auth.getUser().id)
+
+    let currUserId = this.auth.getUser().id;
+    this.crud.retrieve(this.crud.models.USER, currUserId)
       .subscribe(
         (res: User) => {
           console.log(res.experiments);

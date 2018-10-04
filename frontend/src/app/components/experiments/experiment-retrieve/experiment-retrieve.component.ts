@@ -37,6 +37,15 @@ export class ExperimentRetrieveComponent implements OnInit {
   }
 
   updateExperiment(updateID: number){
-    this.router.navigate(['experiments/update/'+updateID]);
+    this.router.navigate(['experiments/update/' + updateID]);
+  }
+
+  deleteExperiment(deleteID: number){
+    this.router.navigate(['experiments/delete/' + deleteID]);
+  }
+
+  listExperiments(){
+
+    this.router.navigate(['experiments']);
   }
 }

@@ -33,7 +33,7 @@ export class ExperimentCreateComponent implements OnInit {
           (res: Experiment) => {
             console.log(res);
             this.experiment = res;
-            this.router.navigate(['experiments']);
+            this.listExperiments();
           },
           (err: HttpErrorResponse) => {
             this.errorHandler.handleError(err);
@@ -54,6 +54,6 @@ export class ExperimentCreateComponent implements OnInit {
 
   listExperiments(){
 
-    this.router.navigate(['experiments/']);
+    this.router.navigate(['experiments']);
   }
 }

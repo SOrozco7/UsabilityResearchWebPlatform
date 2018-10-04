@@ -14,7 +14,7 @@
 <button type="button" (click)="updateExperiment(experiment.id)" class="btn btn-lg btn-success">Edit</button>
 &nbsp;
 &nbsp;
-<button type="button" [routerLink]="['/experiments']" class="btn btn-lg btn-danger">Back</button>
+<button type="button" (click)="listExperiments()" class="btn btn-lg btn-danger">Back</button>
 &nbsp;
 &nbsp;
-<button type="button" [routerLink]="['/experiments/delete/',experiment.id]" class="btn btn-lg btn-danger">Delete</button>
+<button type="button" (click)="deleteExperiment(experiment.id)" class="btn btn-lg btn-danger">Delete</button>

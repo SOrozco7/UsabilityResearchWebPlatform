@@ -5,6 +5,7 @@ import { Experiment } from '../../../models/experiment';
 import { User } from '../../../models/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-experiment-update',
@@ -62,5 +63,10 @@ export class ExperimentUpdateComponent implements OnInit {
     else {
       return true;
     }
+  }
+
+  listExperiments(){
+
+    this.router.navigate(['experiments']);
   }
 }
