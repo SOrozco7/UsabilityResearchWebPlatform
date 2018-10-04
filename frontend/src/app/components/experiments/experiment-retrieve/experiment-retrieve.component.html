@@ -1,0 +1,20 @@
+<div class="col-sm-6">    
+  <div class="card text-white bg-dark mb-3">
+          <div class="card-header">{{experiment.user_id}}</div>
+          <div class="card-body">
+              <h4 class="card-title">{{experiment.name}}</h4>
+              <p class="card-text">{{experiment.description}}</p>
+              <p class="card-text">From: {{experiment.startDate}}</p>
+              <p class="card-text">To: {{experiment.endDate}}</p>
+          </div>
+  </div>
+</div>
+
+<br>
+<button type="button" (click)="updateExperiment(experiment.id)" class="btn btn-lg btn-success">Edit</button>
+&nbsp;
+&nbsp;
+<button type="button" (click)="listExperiments()" class="btn btn-lg btn-danger">Back</button>
+&nbsp;
+&nbsp;
+<button type="button" (click)="deleteExperiment(experiment.id)" class="btn btn-lg btn-danger">Delete</button>

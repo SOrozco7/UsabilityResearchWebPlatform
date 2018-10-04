@@ -1,53 +1,41 @@
-import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common'; 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
+// Components
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './components/authentication/login/login.component';
 
+// Services
 import { AuthService } from './services/auth.service';
+import { CrudService } from './services/crud.service';
 import { ErrorHandlerService } from './services/error-handler.service';
-
-import { AuthGuard } from './shared';
-
-// AoT requires an exported function for factories
-export const createTranslateLoader = (http: HttpClient) => {
-    /* for development
-    return new TranslateHttpLoader(
-        http,
-        '/start-angular/SB-Admin-BS4-Angular-6/master/dist/assets/i18n/',
-        '.json'
-    ); */
-    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-};
+import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
+import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
+import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
+import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
+import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: createTranslateLoader,
-                deps: [HttpClient]
-            }
-        }),
-        AppRoutingModule
-    ],
-    declarations: [AppComponent],
-    providers: [
-        AuthGuard,
-        AuthService,
-        ErrorHandlerService
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    ExperimentListComponent,
+    ExperimentCreateComponent,
+    ExperimentRetrieveComponent,
+    ExperimentUpdateComponent,
+    ExperimentDeleteComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+  ],
+  providers: [AuthService, CrudService, ErrorHandlerService],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

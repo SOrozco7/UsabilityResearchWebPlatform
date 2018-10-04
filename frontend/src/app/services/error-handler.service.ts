@@ -1,7 +1,5 @@
 import { Injectable, ErrorHandler } from '@angular/core';
 // import { MatSnackBar } from '@angular/material/snack-bar';
-import { duration } from 'moment';
-
 
 @Injectable()
 export class ErrorHandlerService {
