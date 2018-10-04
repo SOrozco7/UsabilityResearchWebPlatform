@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'user',
       onDelete: 'CASCADE',
     });
+    Questionnaire.hasMany(models.QuestionnaireQuestion, {
+      foreignKey: 'questionnaire_id',
+      as: 'questionnaires',
+    })
     Questionnaire.belongsToMany(models.Experiment, {through: 'ExperimentQuestionnaire'});
   }
   return Questionnaire;
