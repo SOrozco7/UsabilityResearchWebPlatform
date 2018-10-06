@@ -3,6 +3,7 @@ const authMiddleware = require('../middlewares/authentication');
 const usersController = require('../controllers').users;
 const experimentsController = require('../controllers').experiments;
 const authenticationController = require('../controllers').authentication;
+const questionnairesController = require('../controllers').questionnaires;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -26,4 +27,11 @@ module.exports = (app) => {
   app.get('/api/experiments/:id', experimentsController.retrieve);
   app.put('/api/experiments/:id', experimentsController.update);
   app.delete('/api/experiments/:id', experimentsController.destroy);
+
+  // Routes for the QUESTIONNAIRES table
+  app.post('/api/questionnaires', questionnairesController.create);  
+  app.get('/api/questionnaires', questionnairesController.list);
+  app.get('/api/questionnaires/:id', questionnairesController.retrieve);
+  app.put('/api/questionnaires/:id', questionnairesController.update);
+  app.delete('/api/questionnaires/:id', questionnairesController.destroy);
 };
