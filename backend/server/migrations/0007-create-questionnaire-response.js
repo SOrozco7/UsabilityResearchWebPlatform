@@ -16,6 +16,22 @@ module.exports = {
           as: 'questionnaire_id'
         }
       },
+      participant_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Participants',
+          key: 'id',
+          as: 'participant_id'
+        }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

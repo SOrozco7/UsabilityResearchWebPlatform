@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       as: 'questionnaire',
       onDelete: 'CASCADE',
     });
+    QuestionnaireResponse.belongsTo(models.Participant, {
+      foreignKey: 'participant_id',
+      as: 'participant',
+      onDelete: 'CASCADE',
+    });
   }
   return QuestionnaireResponse;
 };
