@@ -73,7 +73,7 @@ module.exports = {
                     .update({
                         experiment_id: req.body.experiment_id || participant.experiment_id,
                     })
-                    .then((user) => res.status(200).send(user))
+                    .then((participant) => res.status(200).send(participant))
                     .catch((error) => res.status(400).send(error));
             })
             .catch((error) => res.status(400).send(error));
@@ -103,7 +103,7 @@ module.exports = {
                     .destroy()
                     .then(() => res.status(200).send({
                         status: 200,
-                        message: 'User deleted.'
+                        message: 'Participant deleted.'
                     }))
                     .catch(error => res.status(400).send(error));
             })
