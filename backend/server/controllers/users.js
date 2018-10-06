@@ -111,7 +111,7 @@ module.exports = {
                     });
                 } 
 
-                return User
+                return user
                     .update({
 
                         // Don't let it update the email that corresponds to the user id and the username
