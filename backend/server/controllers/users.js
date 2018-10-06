@@ -6,10 +6,10 @@ module.exports = {
 
     create(req, res) {
 
-        if(!req.body.username){
+        if(!req.body.email){
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "username" of an instance of "User" cannot be empty.'
+                message: 'The attribute "email" of an instance of "User" cannot be empty.'
             });
         }
 
@@ -86,7 +86,8 @@ module.exports = {
 
                     return res.status(404).send({
 
-                        message: 'User Not Found.',
+                        status: 400,
+                        message: 'No user with that ID was found.',
                     });
                 }
 
