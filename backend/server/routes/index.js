@@ -4,11 +4,8 @@ const usersController = require('../controllers').users;
 const experimentsController = require('../controllers').experiments;
 const authenticationController = require('../controllers').authentication;
 const questionnairesController = require('../controllers').questionnaires;
-<<<<<<< HEAD
 const questionnaireQuestionsController = require('../controllers').questionnaireQuestions;
 const questionnaireResponsesController = require('../controllers').questionnaireResponses;
-=======
->>>>>>> cf8a790de4c24a32c1322ac209c0c78df51e0365
 const participantsController = require('../controllers').participants;
 
 module.exports = (app) => {
