@@ -11,7 +11,7 @@ module.exports = {
             return res.status(400).send({message: 'The post body must contain a user_id and password field.'});
         }
         
-        let user_id = (String)(req.body.user_id).toLocaleLowerCase();
+        let user_id = (String)(req.body.user_id);
         let password = req.body.password;
 
         User.findById(user_id)
