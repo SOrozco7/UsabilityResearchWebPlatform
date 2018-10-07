@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 const SERVER = 'http://localhost:8000/api';
 
-describe('RetrieveNonExistentExperiment', function () {
+describe('RetrieveNonExistentParticipant', function () {
     it('GET /participants/:id with an invalid id must not retrieve a participant.', async () => {
 
         const retrieveParticipantResponse = await fetch(SERVER + '/participants' + '/0');        
