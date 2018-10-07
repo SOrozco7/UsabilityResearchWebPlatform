@@ -46,10 +46,10 @@ module.exports = (app) => {
   app.delete('/api/questionnairequestions/:id', questionnaireQuestionsController.destroy);
 
   // Routes for the QUESTIONNAIRESPONSES table
-  app.post('/api/questionnaireresponses', questionnaireReponsesController.create);  
-  app.get('/api/questionnaireresponses', questionnaireReponsesController.list);
-  app.get('/api/questionnaireresponses/:id', questionnaireReponsesController.retrieve);
-  app.delete('/api/questionnaireresponses/:id', questionnaireReponsesController.destroy);
+  app.post('/api/questionnaireresponses', questionnaireResponsesController.create);  
+  app.get('/api/questionnaireresponses', questionnaireResponsesController.list);
+  app.get('/api/questionnaireresponses/:id', questionnaireResponsesController.retrieve);
+  app.delete('/api/questionnaireresponses/:id', questionnaireResponsesController.destroy);
   
   // Routes for the PARTICIPANTS table
   app.post('/api/participants', participantsController.create);

@@ -3,6 +3,7 @@ const experiments = require('./experiments');
 const users = require('./users');
 const questionnaires = require('./questionnaires');
 const questionnaireQuestions = require('./questionnaire-questions');
+const questionnaireResponses = require('./questionnaire-responses');
 const participants = require('./participants');
 
 module.exports = {
