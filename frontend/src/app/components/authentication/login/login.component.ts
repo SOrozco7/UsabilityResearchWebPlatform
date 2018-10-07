@@ -35,12 +35,7 @@ export class LoginComponent implements OnInit {
                     res => {
                         this.auth.setSession(res);
                         console.log("Successful login!");
-                        this.router.navigate(['/dashboard']);
-
-                        // I believe that this local storage item 
-                        // assignment to true enables the transition
-                        // '/dashboard'
-                        localStorage.setItem('isLoggedin', 'true');
+                        this.router.navigate(['']);
                     },
                     err => {
                         this.errorHandler.handleError(err);

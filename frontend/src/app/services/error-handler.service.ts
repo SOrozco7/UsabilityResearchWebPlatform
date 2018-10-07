@@ -9,10 +9,10 @@ export class ErrorHandlerService {
 
   handleError(err) {
 
-    if (err.error.message) {
+    if (err.error && err.error.message) {
       this.showErrorMessage(err.error.message);
     }
-    else if (err.error.errors) {
+    else if (err.error && err.error.errors && err.error.errors[0].message) {
       this.showErrorMessage(err.error.errors[0].message);
     }
     else if (err.message) {

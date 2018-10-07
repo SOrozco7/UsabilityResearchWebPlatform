@@ -18,6 +18,8 @@ import { ExperimentCreateComponent } from './components/experiments/experiment-c
 import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
 import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
 import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
+import { LogoutComponent } from './components/authentication/logout/logout.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ExperimentDeleteComponent } from './components/experiments/experiment-d
     ExperimentCreateComponent,
     ExperimentRetrieveComponent,
     ExperimentUpdateComponent,
-    ExperimentDeleteComponent
+    ExperimentDeleteComponent,
+    LogoutComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
