@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 // Components
 import { LoginComponent } from './components/authentication/login/login.component';
+import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
 import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
 import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
@@ -20,7 +21,10 @@ const routes: Routes = [
     path:'login', 
     component: LoginComponent
   },
-
+  { 
+    path: 'logout', 
+    component: LogoutComponent
+  },
   // Experiments
   { 
     path: 'experiments', 

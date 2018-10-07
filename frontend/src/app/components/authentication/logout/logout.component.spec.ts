@@ -5,16 +5,16 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { AuthService } from '../../../services/auth.service';
 import { RouterStub } from '../../../router-stub';
-import { LoginComponent } from './login.component';
+import { LogoutComponent } from './logout.component';
 
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('LogoutComponent', () => {
+  let component: LogoutComponent;
+  let fixture: ComponentFixture<LogoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent],
+      declarations: [LogoutComponent],
       imports: [FormsModule],
       providers: [
         ErrorHandlerService,
@@ -29,7 +29,7 @@ describe('LoginComponent', () => {
 
   beforeEach(() => {
     // router = TestBed.get(Router);
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(LogoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
