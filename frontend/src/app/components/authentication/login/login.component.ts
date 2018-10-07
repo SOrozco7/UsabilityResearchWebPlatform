@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service'; 
+import { AuthService } from '../../../services/auth.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 
 @Component({
@@ -53,17 +53,22 @@ export class LoginComponent implements OnInit {
         return false;
     }
 
-    validate(){
+    validate() {
 
-        console.log("id = " + this.id + "; password = " + this.password);
+        // console.log("id = " + this.id + "; password = " + this.password);
 
-        if(!this.id || !this.password){
+        if (!this.id || !this.password) {
 
             this.errorHandler.showErrorMessage('You must introduce your email address and password.');
             return false;
         }
-        else{
+        else {
             return true;
         }
+    }
+
+    goToSignup() {
+
+        this.router.navigate(['/signup']);
     }
 }

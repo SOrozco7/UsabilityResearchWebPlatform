@@ -12,7 +12,7 @@ describe('CreateUserWithoutFirstName', function () {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "email": "name@mail.com",
+                "id": "name@mail.com",
                 "lastName": "Last name",
                 "password": "secret"
             })
