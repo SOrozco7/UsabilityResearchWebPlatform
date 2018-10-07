@@ -15,12 +15,12 @@ module.exports = (app) => {
   app.post('/api/login', authenticationController.login);
 
   //Routes for the USERS table
-  // app.post('/api/users', usersController.create);
+  app.post('/api/users', usersController.create);
   app.get('/api/users', usersController.list);
   // app.get('/api/users/confirm/:uuid', usersController.confirm);
   app.get('/api/users/:id', usersController.retrieve);
-  // app.put('/api/users/:id', usersController.update);
-  // app.delete('/api/users/:id', usersController.destroy);
+  app.put('/api/users/:id', usersController.update);
+  app.delete('/api/users/:id', usersController.destroy);
 
   //Routes for the EXPERIMENTS table
   app.post('/api/experiments', experimentsController.create);  
