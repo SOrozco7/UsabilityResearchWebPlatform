@@ -5,6 +5,7 @@ const experimentsController = require('../controllers').experiments;
 const authenticationController = require('../controllers').authentication;
 const questionnairesController = require('../controllers').questionnaires;
 const questionnaireQuestionsController = require('../controllers').questionnaireQuestions;
+const questionnaireResponsesController = require('../controllers').questionnaireResponses;
 const participantsController = require('../controllers').participants;
 
 module.exports = (app) => {
@@ -43,6 +44,12 @@ module.exports = (app) => {
   app.get('/api/questionnairequestions/:id', questionnaireQuestionsController.retrieve);
   app.put('/api/questionnairequestions/:id', questionnaireQuestionsController.update);
   app.delete('/api/questionnairequestions/:id', questionnaireQuestionsController.destroy);
+
+  // Routes for the QUESTIONNAIRESPONSES table
+  app.post('/api/questionnaireresponses', questionnaireReponsesController.create);  
+  app.get('/api/questionnaireresponses', questionnaireReponsesController.list);
+  app.get('/api/questionnaireresponses/:id', questionnaireReponsesController.retrieve);
+  app.delete('/api/questionnaireresponses/:id', questionnaireReponsesController.destroy);
   
   // Routes for the PARTICIPANTS table
   app.post('/api/participants', participantsController.create);

@@ -11,5 +11,6 @@ module.exports = {
     users,
     questionnaireQuestions,
     questionnaires,
+    questionnaireResponses,
     participants
 };
