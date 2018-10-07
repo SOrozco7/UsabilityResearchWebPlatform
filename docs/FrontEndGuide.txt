@@ -1,0 +1,4 @@
+In the Angular Project in src\environments\enviroment
+
+the programmer needs to change the baseURL to where its server for the
+API's its located
