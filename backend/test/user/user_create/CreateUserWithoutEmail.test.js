@@ -23,6 +23,6 @@ describe('CreateUserWithoutEmail', function () {
 
         const createUserResponseJson = await createUserResponse.json();
         expect(createUserResponseJson.status).to.be.equal(400);
-        expect(createUserResponseJson.message).to.be.equal('The attribute "email" of an instance of "User" cannot be empty.');
+        expect(createUserResponseJson.message).to.be.equal('The attribute "id" (email) of an instance of "User" cannot be empty.');
     });
 });
