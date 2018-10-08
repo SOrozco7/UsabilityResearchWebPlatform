@@ -52,4 +52,13 @@ describe('ExperimentUpdateComponent', () => {
     htmlElement.click();
     expect(component.updateExperiment).toHaveBeenCalled();
   }));
+
+  it("The listExperiments() method should be called if the 'Back' button is clicked", async(() => {
+
+    spyOn(component, "listExperiments");
+    htmlElement = fixture.debugElement.query(By.css('.btn.btn-lg.btn-danger')).nativeElement;
+    htmlElement.click();
+    expect(component.listExperiments).toHaveBeenCalled();
+  }));
+
 });
