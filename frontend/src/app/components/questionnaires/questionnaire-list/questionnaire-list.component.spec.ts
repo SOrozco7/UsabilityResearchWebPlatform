@@ -4,8 +4,22 @@ import { AuthService } from '../../../services/auth.service';
 import { CrudService } from '../../../services/crud.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Questionnaire } from '../../../models/questionnaire';
+import { Observable } from 'rxjs';
 
 import { QuestionnaireListComponent } from './questionnaire-list.component';
+
+class MockCrudService {
+  models = {
+
+    USER: "users",
+    EXPERIMENT: "experiments",
+    QUESTIONNAIRE: "questionnaires"
+  };
+  list(model: string) {
+    return Observable.of([new Questionnaire("SUS", "", true, 1, null, null, 3)]);
+  }
+}
 
 describe('QuestionnaireListComponent', () => {
   let component: QuestionnaireListComponent;
@@ -15,7 +29,7 @@ describe('QuestionnaireListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ QuestionnaireListComponent ],
       imports: [ RouterTestingModule ],
-      providers: [ ErrorHandlerService, CrudService, AuthService, HttpClient, HttpHandler ]
+      providers: [ ErrorHandlerService, { provide: CrudService, useClass: MockCrudService }, AuthService, HttpClient, HttpHandler ]
     })
     .compileComponents();
   }));
@@ -28,5 +42,10 @@ describe('QuestionnaireListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should retrieve the list of questionnaires', () => {
+    expect(component.questionnaires !== undefined).toBe(true);
+    expect(component.questionnaires[0].name).toBe("SUS");
   });
 });
