@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     Questionnaire.hasMany(models.QuestionnaireQuestion, {
       foreignKey: 'questionnaire_id',
-      as: 'questionnaires',
+      as: 'questions',
     })
     Questionnaire.belongsToMany(models.Experiment, { as: 'theExperiments', through: 'experimentsQuestionnaires'});
   }

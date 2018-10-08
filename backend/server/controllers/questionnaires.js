@@ -1,4 +1,5 @@
 const Questionnaire = require('../models').Questionnaire;
+const QuestionnaireQuestion = require('../models').QuestionnaireQuestion;
 
 module.exports = {
     create(req, res) {
@@ -45,9 +46,23 @@ module.exports = {
             .catch(error => res.status(400).send(error));
     },
 
+    listByUser(req, res) {
+        return Questionnaire
+            .findAll({
+                where: {
+                    experiment_id: req.body.experiment_id
+                }
+            })
+    },
+
     retrieve(req, res) {
         return Questionnaire
             .findById(req.params.id, {
+                include: [{
+                    model: QuestionnaireQuestion,
+                    as: 'questions',
+                    required: false,
+                }]
             })
             .then(questionnaire => {
                 if (!questionnaire) {
