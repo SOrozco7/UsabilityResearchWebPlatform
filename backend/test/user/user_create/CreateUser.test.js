@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
 const fetch = require('node-fetch');
+const bcrypt = require('bcrypt-nodejs');
 
 const SERVER = 'http://localhost:8000/api';
 
@@ -14,16 +15,18 @@ describe('CreateUser', function () {
             },
         });
 
+        let plainTextPassword = "secret";
+
         const createUserResponse = await fetch(SERVER + '/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "email": "name@mail.com",
+                "id": "name@mail.com",
                 "firstName": "First name",
                 "lastName": "Last name",
-                "password": "secret",
+                "password": plainTextPassword,
             })
         })
         // .then(res => res.json())         // If you want to print the JSON for debugging, uncomment 
@@ -37,9 +40,12 @@ describe('CreateUser', function () {
         expect(createUserResponseJson.username).to.be.equal("name@mail.com");
         expect(createUserResponseJson.firstName).to.be.equal("First name");
         expect(createUserResponseJson.lastName).to.be.equal("Last name");
-        expect(createUserResponseJson.password).to.be.equal("secret");
 
-        // console.log("The user with id " + newUserId + " was successfully created.");
+        // Compare the stored hash and the password provided by the user
+        bcrypt.compare(plainTextPassword, createUserResponseJson.password, function(err, res) {
+            
+            expect(res).to.be.true;
+        });
 
         const deleteUserResponse = await fetch(SERVER + '/users/' + newUserId, {
             method: 'DELETE',

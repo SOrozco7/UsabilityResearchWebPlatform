@@ -6,60 +6,63 @@ module.exports = {
 
     create(req, res) {
 
-        if(!req.body.email){
+        if (!req.body.id) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "email" of an instance of "User" cannot be empty.'
+                message: 'The attribute "id" (email) of an instance of "User" cannot be empty.'
             });
         }
 
-        if(!req.body.firstName){
+        if (!req.body.firstName) {
             return res.status(400).send({
                 status: 400,
                 message: 'The attribute "firstName" of an instance of "User" cannot be empty.'
             });
         }
 
-        if(!req.body.lastName){
+        if (!req.body.lastName) {
             return res.status(400).send({
                 status: 400,
                 message: 'The attribute "lastName" of an instance of "User" cannot be empty.'
             });
         }
 
-        if(!req.body.password){
+        if (!req.body.password) {
             return res.status(400).send({
                 status: 400,
                 message: 'The attribute "password" of an instance of "User" cannot be empty.'
             });
         }
 
-        return User
-            .create({
-                id: req.body.email, // We're using the email as both the id and the username
-                username: req.body.email, 
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                password: req.body.password,
-            })
-            .then(user => res.status(201).send(user))
-            .catch(error => res.status(400).send(error));
+        bcrypt.hash(req.body.password, null, null, (err, hash) => {
+            let hashed = hash;
+
+            return User
+                .create({
+                    id: req.body.id, // We're using the email as both the id and the username
+                    username: req.body.id,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    // Store the hashed password
+                    password: hashed,
+                })
+                .then(user => res.status(201).send(user))
+                .catch(error => res.status(400).send(error));
+        });
     },
 
     //Method for listing users
     list(req, res) {
 
         return User
-            .findAll( {
+            .findAll({
 
                 // Include the experiments that each user owns
-                include: [
-                    {
-                        model: Experiment,
-                        as: 'experiments',
-                        required: false,
-                    }
-                ],
+                include: [{
+                    model: Experiment,
+                    as: 'experiments',
+                    required: false,
+                }],
             })
             .then(users => res.status(200).send(users))
             .catch(error => res.status(400).send(error));
@@ -72,13 +75,11 @@ module.exports = {
             .findById(req.params.id, {
 
                 // Include the experiments that this user owns
-                include: [
-                    {
-                        model: Experiment,
-                        as: 'experiments',
-                        required: false,
-                    }
-                ],
+                include: [{
+                    model: Experiment,
+                    as: 'experiments',
+                    required: false,
+                }],
             })
             .then(user => {
 
@@ -96,7 +97,7 @@ module.exports = {
             .catch(error => res.status(404).send(error));
     },
 
-    update(req, res){
+    update(req, res) {
 
         return User
             .findById(req.params.id, {
@@ -104,13 +105,13 @@ module.exports = {
             })
             .then(user => {
 
-                if(!user) {
+                if (!user) {
                     return res.status(400).send({
 
                         status: 400,
                         message: 'No user with that ID was found.'
                     });
-                } 
+                }
 
                 return user
                     .update({
@@ -133,14 +134,14 @@ module.exports = {
                 message: 'The user ID must be a non-empty string.'
             });
         }
-        
+
         return User
             .findById(req.params.id, {
                 attributes: ['id', 'username', 'firstName', 'lastName', 'password', 'createdAt', 'updatedAt']
             })
             .then(User => {
 
-                if(!User) {
+                if (!User) {
                     return res.status(400).send({
                         status: 400,
                         message: 'No user with that ID was found.',
@@ -153,7 +154,9 @@ module.exports = {
                         status: 200,
                         message: 'User deleted.'
                     }))
-                    .catch(error => res.status(400).send({error}));
+                    .catch(error => res.status(400).send({
+                        error
+                    }));
             })
             .catch(error => res.status(400).send(error));
     }

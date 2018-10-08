@@ -20,6 +20,7 @@ import { ExperimentUpdateComponent } from './components/experiments/experiment-u
 import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { NavComponent } from './components/nav/nav.component';
+import { SignupComponent } from './components/signup/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NavComponent } from './components/nav/nav.component';
     ExperimentUpdateComponent,
     ExperimentDeleteComponent,
     LogoutComponent,
-    NavComponent
+    NavComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
