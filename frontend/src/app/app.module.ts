@@ -21,6 +21,7 @@ import { ExperimentDeleteComponent } from './components/experiments/experiment-d
 import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { NavComponent } from './components/nav/nav.component';
+import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NavComponent } from './components/nav/nav.component';
     ExperimentDeleteComponent,
     QuestionnaireListComponent,
     LogoutComponent,
-    NavComponent
+    NavComponent,
+    QuestionnaireListForExperimentComponent
   ],
   imports: [
     BrowserModule,

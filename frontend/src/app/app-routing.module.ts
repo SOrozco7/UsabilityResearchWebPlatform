@@ -14,6 +14,7 @@ import { ExperimentRetrieveComponent } from './components/experiments/experiment
 import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
 import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
 import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
+import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';
 
 const routes: Routes = [
 
@@ -55,6 +56,11 @@ const routes: Routes = [
   {
     path: 'questionnaires',
     component: QuestionnaireListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:id/questionnaires',
+    component: QuestionnaireListForExperimentComponent,
     canActivate: [AuthGuard]
   },
   // All other routes
