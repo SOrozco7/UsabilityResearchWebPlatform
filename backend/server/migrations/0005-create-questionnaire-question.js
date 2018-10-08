@@ -14,6 +14,14 @@ module.exports = {
       text: {
         type: Sequelize.TEXT,
       },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
       questionnaire_id: {
         type: Sequelize.INTEGER,
         references: {
