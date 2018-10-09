@@ -68,8 +68,11 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  // Failing test
   passwordWasConfirmed() {
 
-    return this.user.password === this.passwordConfirmation;
+    return (this.user.password && this.passwordConfirmation) 
+    && (this.user.password.length > 0 && this.passwordConfirmation.length > 0) 
+    && (this.user.password === this.passwordConfirmation);
   }
 }
