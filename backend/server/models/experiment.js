@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'user',
         onDelete: 'CASCADE',
       })
-    Experiment.belongsToMany(models.Questionnaire, { as: 'questionnaires', through: 'experimentsQuestionnaires' });
+    Experiment.belongsToMany(models.Questionnaire, {through: 'ExperimentQuestionnaire'}, models.BodyParts);
   }
 
   return Experiment;
