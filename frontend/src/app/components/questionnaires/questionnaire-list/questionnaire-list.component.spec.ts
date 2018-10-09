@@ -17,7 +17,7 @@ class MockCrudService {
     QUESTIONNAIRE: "questionnaires"
   };
   list(model: string) {
-    return Observable.of([new Questionnaire("SUS", "", true, 1, null, null, 3)]);
+    return Observable.of([new Questionnaire("SUS", "", true, null, 1, null, null, 3)]);
   }
 }
 

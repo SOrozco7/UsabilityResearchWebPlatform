@@ -41,6 +41,7 @@ module.exports = {
     retrieve(req, res) {
         return Question
             .findById(req.params.id, {
+                include: [{ all: true }]
             })
             .then(question => {
                 if (!question) {

@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'questionnaire',
       onDelete: 'CASCADE',
     });
+    QuestionnaireQuestion.belongsToMany(models.QuestionnaireResponse, {
+      as: 'responses',
+      through: models.QuestionnaireQuestionResponse,
+    });
   }
 
   return QuestionnaireQuestion;

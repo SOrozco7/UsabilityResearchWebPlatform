@@ -23,6 +23,7 @@ import { LogoutComponent } from './components/authentication/logout/logout.compo
 import { NavComponent } from './components/nav/nav.component';
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';
 import { SignupComponent } from './components/signup/signup/signup.component';
+import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SignupComponent } from './components/signup/signup/signup.component';
     LogoutComponent,
     NavComponent,
     QuestionnaireListForExperimentComponent,
-    SignupComponent
+    SignupComponent,
+    QuestionnaireFillComponent
   ],
   imports: [
     BrowserModule,

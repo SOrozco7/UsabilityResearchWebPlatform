@@ -33,6 +33,7 @@ module.exports = {
     retrieve(req, res) {
         return Response
             .findById(req.params.id, {
+                include: [{ all: true }]
             })
             .then(response => {
                 if (!response) {
