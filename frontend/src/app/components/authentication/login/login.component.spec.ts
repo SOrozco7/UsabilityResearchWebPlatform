@@ -43,6 +43,11 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('The id and password fields should be empty', async(() => {
+    expect(component.id).toEqual('', 'The id field is not empty.');
+    expect(component.password).toEqual('', 'The password field is not empty.');
+  }));
+
   it("The login() method should be called if the 'Log in' button is clicked", async(() => {
     spyOn(component, "login");
     htmlElement = fixture.debugElement.query(By.css('.btn.rounded-btn')).nativeElement;
