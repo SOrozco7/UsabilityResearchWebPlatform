@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
-import * as moment from 'moment'
+import * as moment from 'moment';
 
 @Injectable()
 export class AuthService {
   URL: string;
   headers: HttpHeaders;
-
 
   constructor(private http: HttpClient) {
     this.URL = environment.baseUrl + 'api';
@@ -18,11 +17,10 @@ export class AuthService {
 
   // Make the post request with the id and password provided, if successful, sets session data
   login(id: string, password: string) {
-    let user;
-    let body = {
+    const body = {
       user_id: id,
       password: password
-    }
+    };
 
     return this.http.post(
       this.URL + '/login',
@@ -54,9 +52,8 @@ export class AuthService {
 
   isRoot() {
     if (this.isLoggedIn()) {
-      return this.getUser().system_role == "root";
-    }
-    else {
+      return this.getUser().system_role === 'root';
+    } else {
       return false;
     }
   }
@@ -68,7 +65,7 @@ export class AuthService {
 
   // get the logged-in user
   getUser() {
-    return JSON.parse(localStorage.getItem('user'))
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   getToken() {

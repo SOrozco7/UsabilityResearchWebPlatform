@@ -12,20 +12,25 @@ import { ErrorHandlerService } from '../../../services/error-handler.service';
 })
 export class ExperimentDeleteComponent implements OnInit {
 
-  constructor(private errorHandler:ErrorHandlerService, private crud:CrudService, private router:Router, private auth:AuthService, private route:ActivatedRoute) { }
+  constructor(
+    private errorHandler: ErrorHandlerService,
+    private crud: CrudService,
+    private router: Router,
+    private auth: AuthService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    let id = parseInt(this.route.snapshot.paramMap.get("id"));
+    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
-    console.log("Deleting")
+    console.log('Deleting');
     this.crud.delete(this.crud.models.EXPERIMENT, id)
     .subscribe(
-      (res:Response) => {
+      (res: Response) => {
         this.errorHandler.showInformativeMessage('Successfully deleted experiment.');
       },
-      (err:HttpErrorResponse) => {
+      (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
       }
-    )
+    );
   }
 }

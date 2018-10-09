@@ -32,6 +32,6 @@ export class QuestionnaireListComponent implements OnInit {
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
         }
-      )
+      );
   }
 }

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavComponent } from './nav.component';
 import { Router } from '@angular/router';
-import { RouterStub } from  '../../router-stub';
+import { RouterStub } from '../../router-stub';
 
 describe('NavComponent', () => {
   let component: NavComponent;

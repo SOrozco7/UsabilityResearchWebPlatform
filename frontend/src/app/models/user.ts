@@ -1,4 +1,4 @@
-import { Experiment } from "./experiment";
+import { Experiment } from './experiment';
 
 export class User {
     constructor(

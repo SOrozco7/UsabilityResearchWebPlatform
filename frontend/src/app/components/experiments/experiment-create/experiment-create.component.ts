@@ -17,9 +17,12 @@ export class ExperimentCreateComponent implements OnInit {
   experiment: Experiment;
   id: number;
 
-  constructor(private errorHandler: ErrorHandlerService, private crud: CrudService, private router: Router, private route: ActivatedRoute, private auth: AuthService) {
-
-  }
+  constructor(
+    private errorHandler: ErrorHandlerService,
+    private crud: CrudService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private auth: AuthService) { }
 
   ngOnInit() {
     this.experiment = new Experiment(null, null, null, null, null, null, null, null);
@@ -38,7 +41,7 @@ export class ExperimentCreateComponent implements OnInit {
           (err: HttpErrorResponse) => {
             this.errorHandler.handleError(err);
           }
-        )
+        );
     }
   }
 
@@ -46,13 +49,12 @@ export class ExperimentCreateComponent implements OnInit {
     if (!this.experiment.name && !this.experiment.description && !this.experiment.startDate && !this.experiment.endDate) {
       this.errorHandler.showErrorMessage('You must enter a valid value in all fields.');
       return false;
-    }
-    else {
+    } else {
       return true;
     }
   }
 
-  listExperiments(){
+  listExperiments() {
 
     this.router.navigate(['experiments']);
   }
