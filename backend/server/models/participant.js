@@ -5,17 +5,34 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER
     },
-    // There will be further information here, but as for now this solely serves
-    // the purpose of bridging a QuestionnaireResponse with an 
-    // Experiment.
+    name: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    },
+    age: {
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    gender: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    },
+    ethnicgroup: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    },    
+    educationlevel: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    }
   }, {});
 
   Participant.associate = function (models) {
     Participant.belongsTo(models.Experiment, {
       foreignKey: 'experiment_id',
-      as: 'experiment',
+      as: 'participant',
       onDelete: 'CASCADE',
     });
   }

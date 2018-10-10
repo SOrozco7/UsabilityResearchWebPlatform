@@ -5,12 +5,22 @@ module.exports = {
     return queryInterface.bulkInsert('Participants',
       [
         {
-          experiment_id: 2,
+          experiment_id: 1,
+          name: "John Nash",
+          age: 72,
+          gender: "Male",
+          ethnicgroup: "Aryan",
+          educationlevel: "PhD",
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
         {
-          experiment_id: 1,
+          experiment_id: 2,
+          name: "Isaac Newton",
+          age: 32,
+          gender: "Male",
+          ethnicgroup: "Aryan",
+          educationlevel: "PhD"
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },

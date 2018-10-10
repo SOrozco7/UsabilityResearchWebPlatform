@@ -9,10 +9,45 @@ module.exports = {
                 message: 'The attribute "experiment_id" of an instance "Participant" cannot be empty.'
           });
         }
+        if (!req.body.name) {
+            return res.status(400).send({
+                status: 400,
+                message: 'The attribute "name" of an instance of "Experiment" cannot be empty.'
+            });
+        }
+        if (!req.body.age) {
+            return res.status(400).send({
+                status: 400,
+                message: 'The attribute "age" of an instance of "Experiment" cannot be empty.'
+            });
+        }
+        if (!req.body.gender) {
+            return res.status(400).send({
+                status: 400,
+                message: 'The attribute "gender" of an instance of "Experiment" cannot be empty.'
+            });
+        }
+        if (!req.body.ethnicgroup) {
+            return res.status(400).send({
+                status: 400,
+                message: 'The attribute "ethnicgroup" of an instance of "Experiment" cannot be empty.'
+            });
+        }
+        if (!req.body.educationlevel) {
+            return res.status(400).send({
+                status: 400,
+                message: 'The attribute "educationlevel" of an instance of "Experiment" cannot be empty.'
+            });
+        }
         return Participant
             .create({
                 id: req.body.id,
                 experiment_id: req.body.experiment_id
+                name: req.body.name,
+                age: req.body.age,
+                gender: req.body.gender,
+                ethnicgroup: req.body.ethnicgroup,
+                educationlevel: req.body.educationlevel
             })
             .then(participant => res.status(201).send(participant))
             .catch(error => res.status(400).send(error));
@@ -25,7 +60,7 @@ module.exports = {
                 include: [
                     {
                         model: Experiment,
-                        as: 'experiment',
+                        as: 'participant',
                         required: false,
                     }
                 ]

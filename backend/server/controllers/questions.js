@@ -1,65 +1,55 @@
-const Experiment = require('../models').Experiment;
+const Question = require('../models').Question;
 const User = require('../models').User;
 
 module.exports = {
     create(req, res) {
         // check that params are not null, undefined or empty string
-        if (!req.body.name) {
+        if (!req.body.text) {
             return res.status(400).send({
                 status: 400,
                 message: 'The attribute "name" of an instance of "Experiment" cannot be empty.'
             });
         }
-        if (!req.body.description) {
+        if (!req.body.initialimage) {
             return res.status(400).send({
                 status: 400,
                 message: 'The attribute "description" of an instance of "Experiment" cannot be empty.'
             });
         }
-        if (!req.body.startDate) {
+        if (!req.body.finalimage) {
             return res.status(400).send({
                 status: 400,
                 message: 'The attribute "startDate" of an instance of "Experiment" cannot be empty.'
             });
         }
-        if (!req.body.endDate) {
+        if (!req.body.initialsound) {
+            return res.status(400).send({
+                status: 400,
+                message: 'The attribute "startDate" of an instance of "Experiment" cannot be empty.'
+            });
+        }
+        if (!req.body.finalsound) {
             return res.status(400).send({
                 status: 400,
                 message: 'The attribute "endDate" of an instance of "Experiment" cannot be empty.'
             });
         }
 
-        var begin = new Date(req.body.startDate);
-        var end = new Date(req.body.endDate);
-
-        if (begin > end) {
-            return res.status(400).send({
-                status: 400,
-                message: 'The attribute "endDate" of an instance of "Experiment" cannot be before its attribute "startDate".'
-            });
-        }
-       
-        if (!req.body.user_id) {
-            return res.status(400).send({
-                status: 400,
-                message: 'The attribute "user_id" of an instance of "Experiment" cannot be empty.'
-            });
-        }
-
-        return Experiment
+        return Question
             .create({
-                name: req.body.name,
-                description: req.body.description,
-                startDate: req.body.startDate,
-                endDate: req.body.endDate,
+                text: req.body.text,
+                initialimage: req.body.initialimage,
+                finalimage: req.body.finalimage,
+                initialsound: req.body.initialsound,
+                finalsound: req.body.finalsound,
                 user_id: req.body.user_id
             })
-            .then(Experiment => res.status(201).send(Experiment))
+            .then(Question => res.status(201).send(Question))
             .catch(error => res.status(400).send(error));
     },
 
     list(req, res) {
-        return Experiment
+        return Question
             .findAll({
                 // include: [
                 //     {
@@ -71,7 +61,7 @@ module.exports = {
                 // ],
                 // attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
             })
-            .then(experiments => res.status(200).send(experiments))
+            .then(questions => res.status(200).send(questions))
             .catch(error => res.status(400).send(error));
     },
 
@@ -79,11 +69,11 @@ module.exports = {
         // check that experiment id is not null, undefined. Check that the id is not zero.
         if (!req.body.id && req.body.id === parseInt(req.body.id, 10)) {
             return res.status(400).send({
-                message: 'The experiment ID must be an integer bigger than 0'
+                message: 'The question ID must be an integer bigger than 0'
             });
         }
 
-        return Experiment
+        return Question
             .findById(req.params.id, {
                 // include: [
                 //     {
@@ -94,49 +84,41 @@ module.exports = {
                 //     }
                 // ],
                 //Without these attributes, it fails bacuse its trying to search for an experiment_id that doesn't exists
-                attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'text', 'initialimage', 'finalimage', 'initialsound', 'finalsound', 'createdAt', 'updatedAt', 'user_id']
             })
-            .then(experiment => {
-                if (!experiment) {
+            .then(question => {
+                if (!question) {
                     return res.status(400).send({
                         status: 400,
                         message: 'No experiment with that ID was found.'
                     });
                 }
-                return res.status(200).send(experiment);
+                return res.status(200).send(question);
             })
             .catch(error => res.status(400).send(error));
     },
 
     update(req, res) {
-        return Experiment
+        return Question
             .findById(req.params.id, {
-                attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'text', 'initialimage', 'finalimage', 'initialsound', 'finalsound', 'createdAt', 'updatedAt', 'user_id']
             })
-            .then(experiment => {
-                if (!experiment) {
+            .then(question => {
+                if (!question) {
                     return res.status(400).send({
                         status: 400,
-                        message: 'No experiment with that ID was found.'
+                        message: 'No question with that ID was found.'
                     });
-                } else {
-                    //If im trying to update a date, the date must be correct
-                    const begin = new Date(req.body.startDate || experiment.startDate);
-                    const end = new Date(req.body.endDate || experiment.endDate);
-                    if (begin > end) {
-                        return res.status(400).send({
-                            message: 'The end date cannot be before the begin date.'
-                        });
-                    }
                 }
-                return experiment
+                return question
                     .update({
-                        name: req.body.name || experiment.name,
-                        description: req.body.description || experiment.description,
-                        startDate: req.body.startDate || experiment.startDate,
-                        endDate: req.body.endDate || experiment.endDate
+                        text: req.body.name || question.text,
+                        initialimage: req.body.initialimage || question.initialimage,
+                        finalimage: req.body.finalimage || question.finalimage,
+                        initialsound: req.body.initialsound || question.initialsound,
+                        finalsound: req.body.finalsound || question.finalsound
                     })
-                    .then((experiment) => res.status(200).send(experiment)) // Send back the updated tuple.
+                    .then((question) => res.status(200).send(question)) // Send back the updated tuple.
                     .catch((error) => res.status(400).send(error));
             })
             .catch((error) => res.status(400).send(error));
@@ -149,22 +131,22 @@ module.exports = {
                 message: 'ID must be an integer bigger than 0'
             });
         }
-        return Experiment
+        return Question
             .findById(req.params.id, {
-                attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'text', 'initialimage', 'finalimage', 'initialsound', 'finalsound', 'createdAt', 'updatedAt', 'user_id']
             })
-            .then(Experiment => {
-                if (!Experiment) {
+            .then(Question => {
+                if (!Question) {
                     return res.status(400).send({
                         status: 400,
-                        message: 'No experiment with that ID was found.',
+                        message: 'No question with that ID was found.',
                     });
                 }
-                return Experiment
+                return Question
                     .destroy()
                     .then(() => res.status(200).send({
                         status: 200,
-                        message: 'Experiment deleted'
+                        message: 'Question deleted'
                     }))
                     .catch(error => res.status(400).send({error}));
             })

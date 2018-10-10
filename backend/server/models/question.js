@@ -1,40 +1,44 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Experiment = sequelize.define('Experiment', {
+  var Question = sequelize.define('Question', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    name: {
+    text: {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    description: {
+    initialimage: {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    startDate: {
+    finalimage: {
       allowNull: false,
-      type: DataTypes.DATEONLY
+      type: DataTypes.TEXT
     },
-    endDate: {
+    initialsound: {
       allowNull: false,
-      type: DataTypes.DATEONLY
+      type: DataTypes.TEXT
+    },
+    finalsound: {
+      allowNull: false,
+      type: DataTypes.TEXT
     }
   }, {});
 
-  Experiment.associate = function (models) {
+  Question.associate = function (models) {
 
-    Experiment.belongsTo(models.User, {
+    Question.belongsTo(models.User, {
 
         foreignKey: 'user_id',
         as: 'user',
         onDelete: 'CASCADE',
       })
-    Experiment.belongsToMany(models.Questionnaire, {through: 'ExperimentQuestionnaire'});
+    Question.belongsToMany(models.Questionnaire, {through: 'QuestionQuestionnaire'});
   }
 
-  return Experiment;
+  return Question;
 };
