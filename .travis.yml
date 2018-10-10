@@ -9,4 +9,4 @@ node_js:
 # install:
 #   - cd backend && npm install
 script:
-  - cd backend && npm test
+  - cd backend && npm install && npm test
