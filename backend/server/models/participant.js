@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
   Participant.associate = function (models) {
     Participant.belongsTo(models.Experiment, {
       foreignKey: 'experiment_id',
-      as: 'participant',
+      as: 'experiment',
       onDelete: 'CASCADE',
     });
   }

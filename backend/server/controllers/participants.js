@@ -60,7 +60,7 @@ module.exports = {
                 include: [
                     {
                         model: Experiment,
-                        as: 'participant',
+                        as: 'experiment',
                         required: false,
                     }
                 ]

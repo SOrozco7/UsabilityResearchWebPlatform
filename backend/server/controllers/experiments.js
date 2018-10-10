@@ -1,5 +1,6 @@
 const Experiment = require('../models').Experiment;
 const User = require('../models').User;
+const Questionnaire = require('../models').Questionnaire;
 
 module.exports = {
     create(req, res) {
@@ -85,6 +86,9 @@ module.exports = {
 
         return Experiment
             .findById(req.params.id, {
+                include: [  
+                    {all: true} 
+                ],                
                 // include: [
                 //     {
                 //         model: User,
@@ -94,7 +98,7 @@ module.exports = {
                 //     }
                 // ],
                 //Without these attributes, it fails bacuse its trying to search for an experiment_id that doesn't exists
-                attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
+                //attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(experiment => {
                 if (!experiment) {
