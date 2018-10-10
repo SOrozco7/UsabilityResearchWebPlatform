@@ -1,4 +1,5 @@
 import { User } from "./user";
+import { Questionnaire } from "./questionnaire";
 
 export class Experiment {
     constructor(
@@ -7,6 +8,7 @@ export class Experiment {
         public startDate: Date,
         public endDate: Date,
         public user_id: string,
+        public questionnaires: Questionnaire[],
         
         public updatedAt?: Date,
         public createdAt?: Date,

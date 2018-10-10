@@ -13,6 +13,8 @@ import { ExperimentCreateComponent } from './components/experiments/experiment-c
 import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
 import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
 import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
+import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
+import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';
 import { SignupComponent } from './components/signup/signup/signup.component';
 
 const routes: Routes = [
@@ -55,6 +57,16 @@ const routes: Routes = [
     path: 'experiments/delete/:id', 
     component: ExperimentDeleteComponent, 
     canActivate: [AuthGuard] 
+  },
+  {
+    path: 'questionnaires',
+    component: QuestionnaireListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:id/questionnaires',
+    component: QuestionnaireListForExperimentComponent,
+    canActivate: [AuthGuard]
   },
   // All other routes
   { 

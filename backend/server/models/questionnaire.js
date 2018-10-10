@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'questionnaire_id',
       as: 'questionnaires',
     })
-    Questionnaire.belongsToMany(models.Experiment, {through: 'ExperimentQuestionnaire'});
+    Questionnaire.belongsToMany(models.Experiment, { as: 'theExperiments', through: 'experimentsQuestionnaires'});
   }
   return Questionnaire;
 };
