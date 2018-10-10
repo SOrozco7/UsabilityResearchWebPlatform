@@ -7,7 +7,6 @@ module.exports = {
         references: {
           model: 'Experiments',
           key: 'id',
-          as: 'experiment_id',
         },
       },
       QuestionnaireId: {
@@ -15,17 +14,16 @@ module.exports = {
         references: {
           model: 'Questionnaires',
           key: 'id',
-          as: 'questionnaire_id',
         },
       },
-      createdAt: { 
-        allowNull: false, 
-        type: Sequelize.DATE, 
-      },  
-      updatedAt: {  
-        allowNull: false, 
-        type: Sequelize.DATE, 
-      },     
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
