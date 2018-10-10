@@ -11,7 +11,8 @@ export class CrudService {
   models = {
 
     USER: "users",
-    EXPERIMENT: "experiments"
+    EXPERIMENT: "experiments",
+    QUESTIONNAIRE: "questionnaires"
   };
 
   constructor(private auth: AuthService, private http: HttpClient) {
