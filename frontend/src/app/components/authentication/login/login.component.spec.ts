@@ -7,7 +7,6 @@ import { AuthService } from '../../../services/auth.service';
 import { RouterStub } from '../../../router-stub';
 import { LoginComponent } from './login.component';
 
-
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;

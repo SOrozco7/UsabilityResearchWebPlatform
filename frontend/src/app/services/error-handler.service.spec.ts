@@ -3,7 +3,7 @@ import { ErrorHandlerService } from './error-handler.service';
 
 describe('ErrorHandlerService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    
+
     providers: [
       ErrorHandlerService
     ]

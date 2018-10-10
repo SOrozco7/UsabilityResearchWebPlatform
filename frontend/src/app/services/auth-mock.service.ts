@@ -5,14 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class AuthMockService {
 
-  constructor() { 
+  constructor() {
 
-    var userObj = {
+    const userObj = {
 
-      "user": {
-        "id": "danperez@gmail.com",
+      'user': {
+        'id': 'danperez@gmail.com',
       }
-    }
+    };
 
     localStorage.setItem('user', JSON.stringify(userObj.user));
   }

@@ -57,13 +57,11 @@ export class SignupComponent implements OnInit {
 
       this.errorHandler.showErrorMessage('You must introduce your email address, password and password confirmation.');
       return false;
-    }
-    else if (!this.passwordWasConfirmed()) {
+    } else if (!this.passwordWasConfirmed()) {
 
       this.errorHandler.showErrorMessage('The password was not correctly confirmed.');
       return false;
-    }
-    else {
+    } else {
       return true;
     }
   }

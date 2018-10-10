@@ -37,17 +37,17 @@ export class ExperimentListComponent implements OnInit {
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
         }
-      )
+      );
   }
 
   /**
-   * Method that retrieves the user who currently is logged in. The response includes 
-   * the experiments that she/he owns. The experiments are then extracted from the 
+   * Method that retrieves the user who currently is logged in. The response includes
+   * the experiments that she/he owns. The experiments are then extracted from the
    * resulting JSON response to be displayed.
    */
   getUserExperiments() {
 
-    let currUserId = this.auth.getUser().id;
+    const currUserId = this.auth.getUser().id;
     this.crud.retrieve(this.crud.models.USER, currUserId)
       .subscribe(
         (res: User) => {
@@ -57,7 +57,7 @@ export class ExperimentListComponent implements OnInit {
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
         }
-      )
+      );
   }
 
   /**
@@ -80,14 +80,14 @@ export class ExperimentListComponent implements OnInit {
    * @param id the id of the experiment to deletes
    */
   deleteExperiment(id: number) {
-    console.log("Deleting")
+    console.log('Deleting');
     this.crud.delete(this.crud.models.EXPERIMENT, id)
       .subscribe(
         (res: Response) => {
           this.errorHandler.showInformativeMessage('Experiment successfully deleted.');
           let x = 0;
-          for (let experiment of this.experiments) {
-            if (experiment.id == id) {
+          for (const experiment of this.experiments) {
+            if (experiment.id === id) {
 
               this.experiments.splice(x, 1);
             }
@@ -97,6 +97,6 @@ export class ExperimentListComponent implements OnInit {
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
         }
-      )
+      );
   }
 }

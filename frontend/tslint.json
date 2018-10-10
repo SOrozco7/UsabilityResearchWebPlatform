@@ -15,6 +15,10 @@
       "severity": "warn"
     },
     "eofline": true,
+    "file-name-casing": [
+      true,
+      "kebab-case"
+    ],
     "forin": true,
     "import-blacklist": [
       true,
@@ -45,6 +49,7 @@
     ],
     "no-arg": true,
     "no-bitwise": true,
+    "no-consecutive-blank-lines": true,
     "no-console": [
       true,
       "debug",
@@ -108,7 +113,12 @@
       }
     ],
     "unified-signatures": true,
-    "variable-name": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-snake-case"
+    ],
     "whitespace": [
       true,
       "check-branch",

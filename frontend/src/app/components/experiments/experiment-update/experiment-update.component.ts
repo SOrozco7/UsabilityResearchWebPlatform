@@ -25,7 +25,7 @@ export class ExperimentUpdateComponent implements OnInit {
     this.experiment = new Experiment(null, null, null, null, null, null, null, null);
     this.experiment.user_id = '';
 
-    this.id = parseInt(this.route.snapshot.paramMap.get("id"));
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
     this.crud.retrieve(this.crud.models.EXPERIMENT, this.id)
       .subscribe(
@@ -36,7 +36,7 @@ export class ExperimentUpdateComponent implements OnInit {
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
         }
-      )
+      );
   }
 
   updateExperiment() {
@@ -51,7 +51,7 @@ export class ExperimentUpdateComponent implements OnInit {
           (err: HttpErrorResponse) => {
             this.errorHandler.handleError(err);
           }
-        )
+        );
     }
   }
 
@@ -59,13 +59,12 @@ export class ExperimentUpdateComponent implements OnInit {
     if (!this.experiment.name && !this.experiment.description && !this.experiment.startDate && !this.experiment.endDate) {
       this.errorHandler.showErrorMessage('You must enter a valid value in all fields.');
       return false;
-    }
-    else {
+    } else {
       return true;
     }
   }
 
-  listExperiments(){
+  listExperiments() {
 
     this.router.navigate(['experiments']);
   }
