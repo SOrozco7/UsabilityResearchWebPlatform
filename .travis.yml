@@ -20,6 +20,8 @@ before_script:
 - npm install pg --save
 # Install pg hstore
 - npm install pg-hstore --save
+# Install Mocha
+- npm install mocha --save
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
 # Go to the backend folder
