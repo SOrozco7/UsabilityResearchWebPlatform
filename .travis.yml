@@ -9,7 +9,7 @@ services:
 - postgresql
 env:
 # Set the environment variable as 'test'
-- NODE_ENV=test
+- export NODE_ENV=test
 before_script:
 # Go to the backend folder
 - cd backend
