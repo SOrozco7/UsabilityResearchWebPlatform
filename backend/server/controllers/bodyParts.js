@@ -1,13 +1,13 @@
 const BodyParts = require('../models').BodyPart;
 const Experiment = require('../models').Experiment;
-
+//Need to create the basics for each part of bodyParts
 module.exports = {
     create(req, res) {
         // check that params are not null, undefined or empty string
-        console.log("mi nacho");
+        
         for(const i in  req.body.bodyPart[i])
         {
-            console.log("super nacho");
+        
             if (req.body.bodyPart[i]) {
                 BodyParts
                 .create({
