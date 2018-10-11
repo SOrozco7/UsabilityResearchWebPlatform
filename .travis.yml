@@ -15,8 +15,12 @@ before_script:
 - psql -c 'create database gesture_web_test;' -U postgres
 # Go to the backend folder
 - cd backend
-# Install the Sequelize CLI
-- npm install --save sequelize
+# Install the Sequelize CLI globally
+- npm install sequelize-cli -g
+# Install the Sequelize CLI locally 
+- npm install --save sequelize 
+# Install the Sequelize CLI 
+- npm install sequelize-cli
 # Start Sequelize
 # - sequelize init
 # Copy the example config.json file to a new file with the proper extension
