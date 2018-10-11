@@ -20,12 +20,11 @@ before_script:
 # Install the Sequelize CLI globally
 - npm install sequelize-cli -g
 # Install the Sequelize CLI locally 
-- npm install --save sequelize 
+- npm install --save sequelize
 # Install the Sequelize CLI 
 - npm install sequelize-cli
 # Copy the config.json file for Travis to a new file with the proper extension
 - cp server/config/config.json.travis server/config/config.json
 script: 
-# Start the server and run the tests.
-  - npm start &
+# Execute test script.
   - npm test
