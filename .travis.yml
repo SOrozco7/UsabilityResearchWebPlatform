@@ -7,12 +7,15 @@ install:
 services:
 # Add the PostgreSQL dependency
 - postgresql
+custom:
+  webpackIncludeModules:
+    forceInclude:
+    # Include the PostgreSQL client for Node.js.
+      - pg
 env:
 # Set the environment variable as 'test'
 - NODE_ENV=test
 before_script:
-# Install pg
-- npm install -g pg
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
 # Go to the backend folder
