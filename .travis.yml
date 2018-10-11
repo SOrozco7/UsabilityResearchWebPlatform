@@ -16,6 +16,8 @@ env:
 # Set the environment variable as 'test'
 - NODE_ENV=test
 before_script:
+# Go to the backend folder
+- cd backend
 # Install pg
 - npm install pg --save
 # Install pg hstore
@@ -26,8 +28,6 @@ before_script:
 - npm install nodemon --save
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
-# Go to the backend folder
-- cd backend
 # Install the Sequelize CLI globally
 - npm install sequelize-cli -g
 # Install the Sequelize CLI locally 
