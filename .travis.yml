@@ -25,8 +25,9 @@ before_script:
 - npm install sequelize-cli
 # Copy the config.json file for Travis to a new file with the proper extension
 - cp server/config/config.json.travis server/config/config.json
-# Start the web server
-- npm start
 script: 
+# Call the script to start the web server
+  - ./start_backend_server.sh
+  - sleep 25
 # Run the tests. You're now in the 'backend' folder.
   - npm test
