@@ -16,6 +16,8 @@ env:
 # Set the environment variable as 'test'
 - NODE_ENV=test
 before_script:
+# Install pg
+- npm install -g pg
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
 # Go to the backend folder
@@ -26,14 +28,12 @@ before_script:
 - npm install --save sequelize 
 # Install the Sequelize CLI 
 - npm install sequelize-cli
-# Start Sequelize
-# - sequelize init
 # Copy the example config.json file to a new file with the proper extension
 - cp server/config/config.json.example server/config/config.json
 # Migrate the DB
-- ./node_modules/.bin/sequelize db:migrate
+- sequelize db:migrate
 # Seed the DB
-- ./node_modules/.bin/sequelize db:seed:all
+- sequelize db:seed:all
 # Start the web server
 - "npm start &"
 script: 
