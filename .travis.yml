@@ -7,27 +7,14 @@ install:
 services:
 # Add the PostgreSQL dependency
 - postgresql
-custom:
-  webpackIncludeModules:
-    forceInclude:
-    # Include the PostgreSQL client for Node.js.
-      - pg
 env:
 # Set the environment variable as 'test'
 - NODE_ENV=test
 before_script:
 # Go to the backend folder
 - cd backend
-# Install pg
-- npm install pg --save
-# Install pg hstore
-- npm install pg-hstore --save
 # Install dependencies
 - npm install
-# # Install Mocha
-# - npm install mocha --save
-# # Install Nodemon
-# - npm install nodemon --save
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
 # Install the Sequelize CLI globally
@@ -36,10 +23,10 @@ before_script:
 - npm install --save sequelize 
 # Install the Sequelize CLI 
 - npm install sequelize-cli
-# Copy the example config.json file to a new file with the proper extension
-- cp server/config/config.json.example server/config/config.json
+# Copy the config.json file for Travis to a new file with the proper extension
+- cp server/config/config.json.travis server/config/config.json
 # Start the web server
-- "npm start &"
+- npm start
 script: 
-  # Run the tests. You're now in the 'backend' folder.
+# Run the tests. You're now in the 'backend' folder.
   - npm test
