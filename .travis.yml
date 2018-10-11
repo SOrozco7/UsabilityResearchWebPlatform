@@ -18,7 +18,7 @@ before_script:
 # Install the Sequelize CLI
 - npm install -g sequelize-cli
 # Start Sequelize
-- sequelize init
+# - sequelize init
 # Copy the example config.json file to a new file with the proper extension
 - cp server/config/config.json.example server/config/config.json
 # Migrate the DB
