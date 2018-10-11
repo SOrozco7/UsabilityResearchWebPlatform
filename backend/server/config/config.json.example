@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "password",
+    "password": "",
     "database": "gesture_web_dev",
     "host": "127.0.0.1",
     "port": 5432,
@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "postgres",
-    "password": null,
+    "password": "",
     "database": "gesture_web_test",
     "host": "127.0.0.1",
     "port": 5432,
