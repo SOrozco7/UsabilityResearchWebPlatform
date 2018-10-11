@@ -16,7 +16,7 @@ before_script:
 # Go to the backend folder
 - cd backend
 # Install the Sequelize CLI
-- npm install -g sequelize-cli
+- npm install --save sequelize
 # Start Sequelize
 # - sequelize init
 # Copy the example config.json file to a new file with the proper extension
