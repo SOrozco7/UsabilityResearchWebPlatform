@@ -31,9 +31,9 @@ before_script:
 # Copy the example config.json file to a new file with the proper extension
 - cp server/config/config.json.example server/config/config.json
 # Migrate the DB
-- sequelize db:migrate
+- ./node_modules/.bin/sequelize db:migrate
 # Seed the DB
-- sequelize db:seed:all
+- ./node_modules/.bin/sequelize db:seed:all
 # Start the web server
 - "npm start &"
 script: 
