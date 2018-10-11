@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "postgres",
-    "password": "",
+    "password": null,
     "database": "gesture_web_test",
     "host": "127.0.0.1",
     "port": 5432,
