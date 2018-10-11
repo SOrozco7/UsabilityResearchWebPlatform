@@ -6,6 +6,7 @@ import { User } from '../../../models/user';
 import { AuthService } from '../../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { BodyPart } from '../../../models/bodyPart';
 
 @Component({
   selector: 'app-experiment-create',
@@ -16,6 +17,7 @@ export class ExperimentCreateComponent implements OnInit {
 
   experiment: Experiment;
   id: number;
+  bodyPart : BodyPart;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -27,15 +29,19 @@ export class ExperimentCreateComponent implements OnInit {
   ngOnInit() {
     this.experiment = new Experiment(null, null, null, null, null, null, null, null);
     this.experiment.user_id = this.auth.getUser().id;
+    this.bodyPart = new BodyPart(null, null, null);
   }
 
   createExperiment() {
+
     if (this.validate()) {
       this.crud.create(this.crud.models.EXPERIMENT, this.experiment)
         .subscribe(
           (res: Experiment) => {
             console.log(res);
             this.experiment = res;
+            this.bodyPart.experiment_id = this.experiment.id;
+
             this.listExperiments();
           },
           (err: HttpErrorResponse) => {
