@@ -22,10 +22,12 @@ before_script:
 - npm install pg --save
 # Install pg hstore
 - npm install pg-hstore --save
-# Install Mocha
-- npm install mocha --save
-# Install Nodemon
-- npm install nodemon --save
+# Install dependencies
+- npm install
+# # Install Mocha
+# - npm install mocha --save
+# # Install Nodemon
+# - npm install nodemon --save
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
 # Install the Sequelize CLI globally

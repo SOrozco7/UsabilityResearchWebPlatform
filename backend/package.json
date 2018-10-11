@@ -24,7 +24,8 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "sequelize": "^4.39.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4"
   },
   "devDependencies": {
     "jest": "^23.6.0",
