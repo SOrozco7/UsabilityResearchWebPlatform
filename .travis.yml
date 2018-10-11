@@ -22,6 +22,8 @@ before_script:
 - npm install pg-hstore --save
 # Install Mocha
 - npm install mocha --save
+# Install Nodemon
+- npm install nodemon --save
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
 # Go to the backend folder
@@ -34,10 +36,6 @@ before_script:
 - npm install sequelize-cli
 # Copy the example config.json file to a new file with the proper extension
 - cp server/config/config.json.example server/config/config.json
-# Migrate the DB
-- sequelize db:migrate
-# Seed the DB
-- sequelize db:seed:all
 # Start the web server
 - "npm start &"
 script: 
