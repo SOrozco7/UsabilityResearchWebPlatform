@@ -39,5 +39,5 @@ before_script:
 # Start the web server
 - "npm start &"
 script: 
-  # Go to the backend folder and run the tests
-  - cd backend && npm test
+  # Run the tests. You're now in the 'backend' folder.
+  - npm test
