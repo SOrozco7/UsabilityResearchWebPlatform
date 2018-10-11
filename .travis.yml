@@ -17,7 +17,9 @@ env:
 - NODE_ENV=test
 before_script:
 # Install pg
-- npm install -g pg
+- npm install pg --save
+# Install pg hstore
+- npm install pg-hstore --save
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
 # Go to the backend folder
