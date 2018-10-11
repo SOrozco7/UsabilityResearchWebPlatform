@@ -26,8 +26,6 @@ before_script:
 # Copy the config.json file for Travis to a new file with the proper extension
 - cp server/config/config.json.travis server/config/config.json
 script: 
-# Call the script to start the web server
-  - ./start_backend_server.sh
-  - sleep 25
-# Run the tests. You're now in the 'backend' folder.
+# Start the server and run the tests.
+  - npm start &
   - npm test
