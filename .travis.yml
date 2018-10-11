@@ -11,9 +11,10 @@ env:
 # Set the environment variable as 'test'
 - export NODE_ENV=test
 before_script:
+# BACKEND
 # Go to the backend folder
 - cd backend
-# Install dependencies
+# Install dependencies for the backend
 - npm install
 # Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
@@ -25,6 +26,18 @@ before_script:
 - npm install sequelize-cli
 # Copy the config.json file for Travis to a new file with the proper extension
 - cp server/config/config.json.travis server/config/config.json
+######################################
+# FRONTEND
+# Go to the frontend folder
+- cd ../frontend/
+# Install the for the frontend
+- npm install
 script: 
-# Execute test script.
-  - npm test
+# Go to the backend folder
+- cd ../backend
+# Execute backend test script.
+- npm test
+# Go to the frontend folder
+- cd ../frontend/
+# Execute the Angular frontend tests
+- ng test 
