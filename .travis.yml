@@ -1,20 +1,32 @@
 language: node_js
 node_js:
 - "stable"
-install: npm install
+install: 
+# Install the dependencies
+- npm install
 services:
+# Add the PostgreSQL dependency
 - postgresql
 env:
+# Set the environment variable as 'test'
 - NODE_ENV=test
 before_script:
+# Create a DB
 - psql -c 'create database gesture_web_test;' -U postgres
-# - psql -c "CREATE USER postgres WITH PASSWORD '';" -U postgres
-# - npm run build
+# Go to the backend folder
+- cd backend
+# Install the Sequelize CLI
 - npm install -g sequelize-cli
-# - sequelize init
+# Start Sequelize
+- sequelize init
+# Copy the example config.json file to a new file with the proper extension
+- cp server/config/config.json.example server/config/config.json
+# Migrate the DB
 - sequelize db:migrate
+# Seed the DB
 - sequelize db:seed:all
+# Start the web server
+- "npm start &"
 script: 
+  # Go to the backend folder and run the tests
   - cd backend && npm test
-# after_success: 
-#   - npm run coverage

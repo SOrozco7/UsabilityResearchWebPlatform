@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "password",
+    "database": "gesture_web_dev",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": null,
+    "database": "gesture_web_test",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
