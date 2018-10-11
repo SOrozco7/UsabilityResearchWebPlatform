@@ -10,6 +10,8 @@ before_script:
 - psql -c 'create database gesture_web_test;' -U postgres
 # - psql -c "CREATE USER postgres WITH PASSWORD '';" -U postgres
 # - npm run build
+- npm install -g sequelize-cli
+- sequelize init
 - sequelize db:migrate
 - sequelize db:seed:all
 script: 
