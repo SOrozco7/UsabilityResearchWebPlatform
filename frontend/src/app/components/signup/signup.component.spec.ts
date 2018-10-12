@@ -2,10 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { CrudService } from '../../../services/crud.service';
-import { ErrorHandlerService } from '../../../services/error-handler.service';
-import { AuthService } from '../../../services/auth.service';
-import { RouterStub } from '../../../router-stub';
+import { CrudService } from '../../services/crud.service';
+import { ErrorHandlerService } from '../../services/error-handler.service';
+import { AuthService } from '../../services/auth.service';
+import { RouterStub } from '../../router-stub';
 import { SignupComponent } from './signup.component';
 import { BrowserModule, By } from '@angular/platform-browser';
 
@@ -67,6 +67,13 @@ describe('SignupComponent', () => {
     expect(component.validate()).toBe(false)
   }));
 
+  it("Two non-empty, equal passwords should be considered as a confirmed password.", async(() => {
+
+    component.user.password = 'password';
+    component.passwordConfirmation = 'password';
+    expect(component.passwordWasConfirmed()).toBe(true);
+  }));
+
   it("Two different passwords should not be considered as a confirmed password.", async(() => {
 
     component.user.password = 'string1';
@@ -76,6 +83,8 @@ describe('SignupComponent', () => {
 
   it("Two empty passwords should not be considered as a confirmed password.", async(() => {
 
+    component.user.password = '';
+    component.passwordConfirmation = '';
     expect(component.passwordWasConfirmed()).toBe(false);
   }));
 

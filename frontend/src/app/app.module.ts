@@ -22,7 +22,7 @@ import { QuestionnaireListComponent } from './components/questionnaires/question
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { NavComponent } from './components/nav/nav.component';
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';  // tslint:disable-line:max-line-length
-import { SignupComponent } from './components/signup/signup/signup.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
