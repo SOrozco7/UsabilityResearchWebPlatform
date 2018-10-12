@@ -1,0 +1,63 @@
+language: node_js
+sudo: required
+apt:
+# Add Chrome for running Angular tests
+  sources:
+    - google-chrome
+  packages:
+    - google-chrome-stable
+    - google-chrome-beta
+node_js:
+- "stable"
+# Add Chrome for running Angular tests
+before_install:
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+install: 
+# Install the dependencies
+- npm install
+services:
+# Add the PostgreSQL dependency
+- postgresql
+env:
+# Set the environment variable as 'test'
+- export NODE_ENV=test
+before_script:
+################################################
+# BACKEND
+# Go to the backend folder
+- cd backend
+# Install dependencies for the backend
+- npm install
+# Create a DB
+- psql -c 'create database gesture_web_test;' -U postgres
+# Install the Sequelize CLI globally
+- npm install sequelize-cli -g
+# Install the Sequelize CLI locally 
+- npm install --save sequelize
+# Install the Sequelize CLI 
+- npm install sequelize-cli
+# Copy the config.json file for Travis to a new file with the proper extension
+- cp server/config/config.json.travis server/config/config.json
+################################################
+# FRONTEND
+# Go to the frontend folder
+- cd ../frontend/
+# Install the Angular CLI
+- npm install -g angular-cli
+# Install Karma
+- npm install -g karma
+# Install the for the frontend
+- npm install
+# Build the project
+- ng build
+script: 
+# Go to the backend folder
+- cd ../backend
+# Execute backend test script.
+- npm test
+# Go to the frontend folder
+- cd ../frontend/
+# Execute the Angular frontend tests a single time by setting the 'watch' flag to false.
+- ng test --watch=false
