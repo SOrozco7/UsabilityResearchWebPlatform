@@ -15,6 +15,9 @@ env:
 # Set the environment variable as 'test'
 - export NODE_ENV=test
 before_script:
+# Fix for Chrome permissions
+- "sudo chown root /opt/google/chrome/chrome-sandbox"
+- "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
 # BACKEND
 # Go to the backend folder
 - cd backend
