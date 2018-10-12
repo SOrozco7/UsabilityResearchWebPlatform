@@ -8,7 +8,6 @@ import { RouterStub } from '../../../router-stub';
 import { LoginComponent } from './login.component';
 import { BrowserModule, By } from '@angular/platform-browser';
 
-
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;

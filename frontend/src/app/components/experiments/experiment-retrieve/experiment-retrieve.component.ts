@@ -15,36 +15,40 @@ export class ExperimentRetrieveComponent implements OnInit {
   experiment: Experiment;
   id: number;
 
-  constructor(private errorHandler:ErrorHandlerService, private crud:CrudService, private router:Router, private route:ActivatedRoute) { }
+  constructor(
+    private errorHandler: ErrorHandlerService,
+    private crud: CrudService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.experiment = new Experiment(null, null, null, null, null, null, null, null);
     this.experiment.user_id = '';
 
-    this.id = parseInt(this.route.snapshot.paramMap.get("id"));
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
     this.crud.retrieve(this.crud.models.EXPERIMENT, this.id)
     .subscribe(
-      (res:Experiment)=>{
+      (res: Experiment) => {
         console.log(res);
         this.experiment = res;
-        console.log(this.experiment.user_id)
+        console.log(this.experiment.user_id);
       },
-      (err:HttpErrorResponse) => {
+      (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
       }
-    )
+    );
   }
 
-  updateExperiment(updateID: number){
+  updateExperiment(updateID: number) {
     this.router.navigate(['experiments/update/' + updateID]);
   }
 
-  deleteExperiment(deleteID: number){
+  deleteExperiment(deleteID: number) {
     this.router.navigate(['experiments/delete/' + deleteID]);
   }
 
-  listExperiments(){
+  listExperiments() {
 
     this.router.navigate(['experiments']);
   }

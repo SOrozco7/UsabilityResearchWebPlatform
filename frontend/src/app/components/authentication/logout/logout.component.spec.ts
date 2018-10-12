@@ -7,7 +7,6 @@ import { AuthService } from '../../../services/auth.service';
 import { RouterStub } from '../../../router-stub';
 import { LogoutComponent } from './logout.component';
 
-
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
   let fixture: ComponentFixture<LogoutComponent>;
