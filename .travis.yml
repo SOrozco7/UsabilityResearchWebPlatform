@@ -59,5 +59,5 @@ script:
 - npm test
 # Go to the frontend folder
 - cd ../frontend/
-# Execute the Angular frontend tests
-- ng test 
+# Execute the Angular frontend tests a single time by setting the 'watch' flag to false.
+- ng test --watch=false
