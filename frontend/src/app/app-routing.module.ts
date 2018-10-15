@@ -15,7 +15,7 @@ import { ExperimentUpdateComponent } from './components/experiments/experiment-u
 import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
 import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';  // tslint:disable-line:max-line-length
-import { SignupComponent } from './components/signup/signup/signup.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
 
