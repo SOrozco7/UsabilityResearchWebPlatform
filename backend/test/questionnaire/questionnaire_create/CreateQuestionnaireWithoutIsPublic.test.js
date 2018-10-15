@@ -15,6 +15,7 @@ describe('CreateQuestionnaireWithoutIsPublic', function () {
                 "name": "Test name",
                 "description": "Test description",
                 "user_id": "danperez@gmail.com",
+                "scaleSize": "3"
             })
         })
         // .then(res => res.json())         // If you want to print the JSON for debugging, uncomment 

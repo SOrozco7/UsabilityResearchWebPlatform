@@ -14,7 +14,8 @@ describe('CreateQuestionnaireWithoutName', function () {
             body: JSON.stringify({
                 "description": "Test description",
                 "user_id": "danperez@gmail.com",
-                "isPublic": "true"
+                "isPublic": "true",
+                "scaleSize": "3"
             })
         })
         // .then(res => res.json())         // If you want to print the JSON for debugging, uncomment 

@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    scaleSize: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {});
 
   Questionnaire.associate = function (models) {

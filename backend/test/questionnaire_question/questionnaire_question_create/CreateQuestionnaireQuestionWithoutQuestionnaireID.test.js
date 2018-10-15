@@ -13,7 +13,6 @@ describe('CreateQuestionnaireQuestionWithoutQuestionnaireID', function () {
             },
             body: JSON.stringify({
                 "text": "Test text",
-                "scaleSize": "5",
             })
         })
         // .then(res => res.json())         // If you want to print the JSON for debugging, uncomment 

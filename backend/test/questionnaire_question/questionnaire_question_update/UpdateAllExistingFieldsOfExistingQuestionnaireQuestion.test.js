@@ -13,7 +13,6 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaireQuestion', function () {
             },
             body: JSON.stringify({
                 "text": "Test text",
-                "scaleSize": "5",
                 "questionnaire_id": "2"
             })
         })
@@ -25,7 +24,6 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaireQuestion', function () {
         const newQuestionId = createQuestionResponseJson.id;
         expect(createQuestionResponseJson.text).to.be.equal("Test text");
         expect(createQuestionResponseJson.questionnaire_id).to.be.equal(2);
-        expect(createQuestionResponseJson.scaleSize).to.be.equal(5);
 
         const updateQuestionResponse = await fetch(SERVER + '/questionnairequestions/' + newQuestionId, {
             method: 'PUT',
@@ -34,7 +32,6 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaireQuestion', function () {
             },
             body: JSON.stringify({
                 "text": "Test text 2",
-                "scaleSize": "6",
                 "questionnaire_id": "1"
             })
         });
@@ -42,7 +39,6 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaireQuestion', function () {
         const updateQuestionResponseJson = await updateQuestionResponse.json();
         expect(updateQuestionResponseJson.text).to.be.equal("Test text 2");
         expect(updateQuestionResponseJson.questionnaire_id).to.be.equal('1');
-        expect(updateQuestionResponseJson.scaleSize).to.be.equal('6');
 
         const deleteQuestionResponse = await fetch(SERVER + '/questionnairequestions/' + newQuestionId, {
             method: 'DELETE',

@@ -17,6 +17,7 @@ describe('ListAllQuestionnaires', function () {
             expect(questionnaire.name).to.be.a('String');
             expect(questionnaire.description).to.be.a('String');
             expect(questionnaire.isPublic).to.be.a('Boolean');
+            expect(questionnaire.scaleSize).to.be.a('Number');
         }
     });
 });
