@@ -13,7 +13,6 @@ describe('CreateQuestionnaireQuestion', function () {
             },
             body: JSON.stringify({
                 "text": "Test text",
-                "scaleSize": "5",
                 "questionnaire_id": "2"
             })
         })
@@ -24,7 +23,6 @@ describe('CreateQuestionnaireQuestion', function () {
         const createQuestionResponseJson = await createQuestionResponse.json();
         const newQuestionId = createQuestionResponseJson.id;
         expect(createQuestionResponseJson.text).to.be.equal("Test text");
-        expect(createQuestionResponseJson.scaleSize).to.be.equal(5);
         expect(createQuestionResponseJson.questionnaire_id).to.be.equal(2);
 
         const deleteQuestionResponse = await fetch(SERVER + '/questionnairequestions/' + newQuestionId, {

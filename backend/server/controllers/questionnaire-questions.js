@@ -8,12 +8,6 @@ module.exports = {
                 message: 'The attribute "text" of an instance of "QuestionnaireQuestion" cannot be empty.'
             });
         }
-        if (!req.body.scaleSize) {
-            return res.status(400).send({
-                status: 400,
-                message: 'The attribute "scaleSize" of an instance of "QuestionnaireQuestion" cannot be empty.'
-            });
-        }
         if (!req.body.questionnaire_id) {
             return res.status(400).send({
                 status: 400,
@@ -23,7 +17,6 @@ module.exports = {
         return Question
             .create({
                 text: req.body.text,
-                scaleSize: req.body.scaleSize,
                 questionnaire_id: req.body.questionnaire_id,
             })
             .then(question => res.status(201).send(question))
@@ -68,7 +61,6 @@ module.exports = {
                 return question
                     .update({
                         text: req.body.text || question.text,
-                        scaleSize: req.body.scaleSize || question.scaleSize,
                         questionnaire_id: req.body.questionnaire_id || question.questionnaire_id,
                     })
                     .then(question => res.status(200).send(question))
