@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "./test_script.sh"
+    "test": "./test_script.sh",
+    "test-local": "NODE_ENV=test mocha --recursive --reporter spec"
   },
   "keywords": [],
   "author": "",
