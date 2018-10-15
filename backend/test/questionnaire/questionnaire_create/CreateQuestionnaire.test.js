@@ -15,7 +15,8 @@ describe('CreateQuestionnaire', function () {
                 "name": "Test name",
                 "description": "Test description",
                 "user_id": "danperez@gmail.com",
-                "isPublic": "true"
+                "isPublic": "true",
+                "scaleSize": "3"
             })
         })
         // .then(res => res.json())         // If you want to print the JSON for debugging, uncomment 
@@ -28,6 +29,7 @@ describe('CreateQuestionnaire', function () {
         expect(createQuestionnaireResponseJson.description).to.be.equal("Test description");
         expect(createQuestionnaireResponseJson.user_id).to.be.equal("danperez@gmail.com");
         expect(createQuestionnaireResponseJson.isPublic).to.be.equal(true);
+        expect(createQuestionnaireResponseJson.isPublic).to.be.equal(3);
 
         const deleteQuestionnaireResponse = await fetch(SERVER + '/questionnaires/' + newQuestionnaireId, {
             method: 'DELETE',

@@ -17,6 +17,9 @@ module.exports = {
       isPublic: {
         type: Sequelize.BOOLEAN,
       },
+      scaleSize: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

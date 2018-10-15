@@ -15,7 +15,8 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaire', function () {
                 "name": "Test name",
                 "description": "Test description",
                 "user_id": "danperez@gmail.com",
-                "isPublic": "false"
+                "isPublic": "false",
+                "scaleSize": "3"
             })
         })
         // .then(res => res.json())         // If you want to print the JSON for debugging, uncomment 
@@ -28,6 +29,7 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaire', function () {
         expect(createQuestionnaireResponseJson.description).to.be.equal("Test description");
         expect(createQuestionnaireResponseJson.user_id).to.be.equal("danperez@gmail.com");
         expect(createQuestionnaireResponseJson.isPublic).to.be.equal(false);
+        expect(createQuestionnaireResponseJson.scaleSize).to.be.equal(3);
 
         const updateQuestionnaireResponse = await fetch(SERVER + '/questionnaires/' + newQuestionnaireId, {
             method: 'PUT',
@@ -38,7 +40,8 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaire', function () {
                 "name": "Test name 2",
                 "description": "Test description 2",
                 "user_id": "danperez@gmail.com",
-                "isPublic": "true"
+                "isPublic": "true",
+                "scaleSize": "4"
             })
         });
 
@@ -46,6 +49,7 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaire', function () {
         expect(updateQuestionnaireResponseJson.name).to.be.equal("Test name 2");
         expect(updateQuestionnaireResponseJson.description).to.be.equal("Test description 2");
         expect(updateQuestionnaireResponseJson.isPublic).to.be.equal(true);
+        expect(createQuestionnaireResponseJson.scaleSize).to.be.equal(4);
 
         const deleteQuestionnaireResponse = await fetch(SERVER + '/questionnaires/' + newQuestionnaireId, {
             method: 'DELETE',
