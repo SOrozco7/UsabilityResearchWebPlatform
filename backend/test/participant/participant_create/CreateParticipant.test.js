@@ -12,7 +12,12 @@ describe('CreateParticipant', function () {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "experiment_id": "2"
+                "experiment_id": "2",
+                "name": "Ali",
+                "age": "22",
+                "gender": "Male",
+                "ethnicgroup": "Arabic",
+                "educationlevel": "PhD"
             })
         })
         // .then(res => res.json())         // If you want to print the JSON for debugging, uncomment 

@@ -5,19 +5,19 @@ import { CrudService } from '../../../services/crud.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Questionnaire } from '../../../models/questionnaire';
-import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 
 import { QuestionnaireListComponent } from './questionnaire-list.component';
 
 class MockCrudService {
   models = {
 
-    USER: "users",
-    EXPERIMENT: "experiments",
-    QUESTIONNAIRE: "questionnaires"
+    USER: 'users',
+    EXPERIMENT: 'experiments',
+    QUESTIONNAIRE: 'questionnaires'
   };
   list(model: string) {
-    return Observable.of([new Questionnaire("SUS", "", true, 1, null, null, 3)]);
+    return of([new Questionnaire('SUS', '', true, 1, null, null, 3)]);
   }
 }
 
@@ -46,6 +46,6 @@ describe('QuestionnaireListComponent', () => {
 
   it('should retrieve the list of questionnaires', () => {
     expect(component.questionnaires !== undefined).toBe(true);
-    expect(component.questionnaires[0].name).toBe("SUS");
+    expect(component.questionnaires[0].name).toBe('SUS');
   });
 });

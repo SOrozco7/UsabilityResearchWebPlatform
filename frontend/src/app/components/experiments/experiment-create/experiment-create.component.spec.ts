@@ -37,9 +37,9 @@ describe('ExperimentCreateComponent', () => {
     fixture = TestBed.createComponent(ExperimentCreateComponent);
     component = fixture.componentInstance;
 
-    // Call the auth mock service to have a user with an id in the 
+    // Call the auth mock service to have a user with an id in the
     // local storage
-    let authMock = new AuthMockService();
+    const authMock = new AuthMockService();
   }));
 
   beforeEach(() => {

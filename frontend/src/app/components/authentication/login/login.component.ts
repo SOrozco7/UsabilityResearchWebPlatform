@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
                 .subscribe(
                     res => {
                         this.auth.setSession(res);
-                        console.log("Successful login!");
+                        console.log('Successful login!');
                         this.router.navigate(['']);
                     },
                     err => {
@@ -56,8 +56,7 @@ export class LoginComponent implements OnInit {
 
             this.errorHandler.showErrorMessage('You must introduce your email address and password.');
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
