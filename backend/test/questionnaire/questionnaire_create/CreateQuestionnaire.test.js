@@ -29,7 +29,7 @@ describe('CreateQuestionnaire', function () {
         expect(createQuestionnaireResponseJson.description).to.be.equal("Test description");
         expect(createQuestionnaireResponseJson.user_id).to.be.equal("danperez@gmail.com");
         expect(createQuestionnaireResponseJson.isPublic).to.be.equal(true);
-        expect(createQuestionnaireResponseJson.isPublic).to.be.equal(3);
+        expect(createQuestionnaireResponseJson.scaleSize).to.be.equal(3);
 
         const deleteQuestionnaireResponse = await fetch(SERVER + '/questionnaires/' + newQuestionnaireId, {
             method: 'DELETE',

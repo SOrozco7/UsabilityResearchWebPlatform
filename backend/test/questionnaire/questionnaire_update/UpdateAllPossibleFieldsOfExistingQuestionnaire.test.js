@@ -49,7 +49,7 @@ describe('UpdateAllPossibleFieldsOfExistingQuestionnaire', function () {
         expect(updateQuestionnaireResponseJson.name).to.be.equal("Test name 2");
         expect(updateQuestionnaireResponseJson.description).to.be.equal("Test description 2");
         expect(updateQuestionnaireResponseJson.isPublic).to.be.equal(true);
-        expect(createQuestionnaireResponseJson.scaleSize).to.be.equal(4);
+        expect(updateQuestionnaireResponseJson.scaleSize).to.be.equal("4");
 
         const deleteQuestionnaireResponse = await fetch(SERVER + '/questionnaires/' + newQuestionnaireId, {
             method: 'DELETE',
