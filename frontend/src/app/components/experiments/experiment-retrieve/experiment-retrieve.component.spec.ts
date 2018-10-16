@@ -41,25 +41,25 @@ describe('ExperimentRetrieveComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it("The listExperiments() method should be called if the 'Back' button is clicked", async(() => {
+  it('The listExperiments() method should be called if the \'Back\' button is clicked', async(() => {
 
-    spyOn(component, "listExperiments");
+    spyOn(component, 'listExperiments');
     htmlElement = fixture.debugElement.query(By.css('.btn.btn-lg.btn-danger.back')).nativeElement;
     htmlElement.click();
     expect(component.listExperiments).toHaveBeenCalled();
   }));
 
-  it("The updateExperiment() method should be called if the 'Edit' button is clicked", async(() => {
+  it('The updateExperiment() method should be called if the \'Edit\' button is clicked', async(() => {
 
-    spyOn(component, "updateExperiment");
+    spyOn(component, 'updateExperiment');
     htmlElement = fixture.debugElement.query(By.css('.btn.btn-lg.btn-success')).nativeElement;
     htmlElement.click();
     expect(component.updateExperiment).toHaveBeenCalled();
   }));
 
-  it("The deleteExperiment() method should be called if the 'Delete' button is clicked", async(() => {
+  it('The deleteExperiment() method should be called if the \'Delete\' button is clicked', async(() => {
 
-    spyOn(component, "deleteExperiment");
+    spyOn(component, 'deleteExperiment');
     htmlElement = fixture.debugElement.query(By.css('.btn.btn-lg.btn-danger.delete')).nativeElement;
     htmlElement.click();
     expect(component.deleteExperiment).toHaveBeenCalled();

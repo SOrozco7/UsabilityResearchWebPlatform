@@ -6,7 +6,7 @@ import { User } from '../../../models/user';
 import { AuthService } from '../../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
-import { BodyPart } from '../../../models/bodyPart';
+import { BodyPart } from '../../../models/body-part';
 
 @Component({
   selector: 'app-experiment-create',
@@ -17,7 +17,7 @@ export class ExperimentCreateComponent implements OnInit {
 
   experiment: Experiment;
   id: number;
-  bodyPart : BodyPart;
+  bodyPart: BodyPart;
 
   constructor(
     private errorHandler: ErrorHandlerService,
