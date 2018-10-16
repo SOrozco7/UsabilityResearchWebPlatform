@@ -42,7 +42,7 @@ export class QuestionnaireListForExperimentComponent implements OnInit {
   }
 
   fillQuestionnaire(id: number) {
-    this.router.navigate(['experiments/' + this.id + "/questionnaires/" + id + "/fill"]);
+    this.router.navigate(['experiments/' + this.id + '/questionnaires/' + id + '/fill']);
   }
 
 }
