@@ -61,3 +61,5 @@ script:
 - cd ../frontend/
 # Execute the Angular frontend tests a single time by setting the 'watch' flag to false.
 - ng test --watch=false
+# Execute the Angular linting script.
+- ng lint
