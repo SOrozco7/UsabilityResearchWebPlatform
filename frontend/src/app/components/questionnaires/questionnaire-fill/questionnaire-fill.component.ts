@@ -34,10 +34,15 @@ export class QuestionnaireFillComponent implements OnInit {
   id: number;
   errorMessage: string;
 
-  constructor(private errorHandler: ErrorHandlerService, private crud: CrudService, private router: Router, private auth: AuthService, private route: ActivatedRoute) { }
+  constructor(
+    private errorHandler: ErrorHandlerService,
+    private crud: CrudService,
+    private router: Router,
+    private auth: AuthService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = parseInt(this.route.snapshot.paramMap.get('questionnaire_id'));
+    this.id = parseInt(this.route.snapshot.paramMap.get('questionnaire_id'), 10);
     this.getQuestionnaire();
   }
 
@@ -79,7 +84,7 @@ export class QuestionnaireFillComponent implements OnInit {
 
     // Create a new participant.
     // TODO: Delegate participant creation to another section and simply reference here.
-    const participant = new Participant(parseInt(this.route.snapshot.paramMap.get('experiment_id')));
+    const participant = new Participant(parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10));
     // let createdParticipant: Participant;
     this.crud.create(this.crud.models.PARTICIPANT, participant)
       .subscribe((createdParticipant: Participant) => {
