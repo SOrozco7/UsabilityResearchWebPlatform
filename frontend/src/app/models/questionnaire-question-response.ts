@@ -1,5 +1,5 @@
-import { QuestionnaireQuestion } from "./questionnaire-question";
-import { QuestionnaireResponse } from "./questionnaire-response";
+import { QuestionnaireQuestion } from './questionnaire-question';
+import { QuestionnaireResponse } from './questionnaire-response';
 
 export class QuestionnaireQuestionResponse {
     constructor(

@@ -1,4 +1,4 @@
-import { QuestionnaireQuestion } from "./questionnaire-question";
+import { QuestionnaireQuestion } from './questionnaire-question';
 
 export class QuestionnaireResponse {
     constructor(
