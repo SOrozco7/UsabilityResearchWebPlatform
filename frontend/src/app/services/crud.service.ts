@@ -9,12 +9,13 @@ export class CrudService {
   headers: HttpHeaders;
   models = {
 
-    USER: "users",
-    EXPERIMENT: "experiments",
-    QUESTIONNAIRE: "questionnaires",
-    PARTICIPANT: "participants",
-    QUESTIONNAIRE_RESPONSE: "questionnaireresponses",
-    QUESTIONNAIRE_QUESTION_RESPONSE: "questionnairequestionresponses"
+    USER: 'users',
+    EXPERIMENT: 'experiments',
+    QUESTIONNAIRE: 'questionnaires',
+    BODYPART : 'bodyPart',
+    PARTICIPANT: 'participants',
+    QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
+    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses'
   };
 
   constructor(private auth: AuthService, private http: HttpClient) {
