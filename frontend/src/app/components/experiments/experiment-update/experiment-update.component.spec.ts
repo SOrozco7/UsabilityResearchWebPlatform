@@ -17,8 +17,8 @@ describe('ExperimentUpdateComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ExperimentUpdateComponent ],
       imports: [
-        RouterTestingModule, 
-        FormsModule, 
+        RouterTestingModule,
+        FormsModule,
         BrowserModule
       ],
       providers: [
@@ -45,17 +45,17 @@ describe('ExperimentUpdateComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it("The updateExperiment() method should be called if the 'Save changes' button is clicked", async(() => {
+  it('The updateExperiment() method should be called if the \'Save changes\' button is clicked', async(() => {
 
-    spyOn(component, "updateExperiment");
+    spyOn(component, 'updateExperiment');
     htmlElement = fixture.debugElement.query(By.css('.btn.btn-success.pull-right')).nativeElement;
     htmlElement.click();
     expect(component.updateExperiment).toHaveBeenCalled();
   }));
 
-  it("The listExperiments() method should be called if the 'Back' button is clicked", async(() => {
+  it('The listExperiments() method should be called if the \'Back\' button is clicked', async(() => {
 
-    spyOn(component, "listExperiments");
+    spyOn(component, 'listExperiments');
     htmlElement = fixture.debugElement.query(By.css('.btn.btn-lg.btn-danger')).nativeElement;
     htmlElement.click();
     expect(component.listExperiments).toHaveBeenCalled();

@@ -47,15 +47,15 @@ describe('LoginComponent', () => {
     expect(component.password).toEqual('', 'The password field is not empty.');
   }));
 
-  it("The login() method should be called if the 'Log in' button is clicked", async(() => {
-    spyOn(component, "login");
+  it('The login() method should be called if the \'Log in\' button is clicked', async(() => {
+    spyOn(component, 'login');
     htmlElement = fixture.debugElement.query(By.css('.btn.rounded-btn')).nativeElement;
     htmlElement.click();
     expect(component.login).toHaveBeenCalled();
   }));
 
-  it("The goToSignup() method should be called if the 'Don't have an account yet? Register here!' button is clicked", async(() => {
-    spyOn(component, "goToSignup");
+  it('The goToSignup() method should be called if the \'Don\'t have an account yet? Register here!\' button is clicked', async(() => {
+    spyOn(component, 'goToSignup');
     htmlElement = fixture.debugElement.query(By.css('.btn.signup')).nativeElement;
     htmlElement.click();
     expect(component.goToSignup).toHaveBeenCalled();
