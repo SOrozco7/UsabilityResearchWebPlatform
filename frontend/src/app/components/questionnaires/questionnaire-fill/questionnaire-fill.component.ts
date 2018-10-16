@@ -9,9 +9,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Participant } from '../../../models/participant';
 import { QuestionnaireResponse } from '../../../models/questionnaire-response';
 import { QuestionnaireQuestionResponse } from '../../../models/questionnaire-question-response';
-import { flatMap } from 'rxjs/operators';
 
-class Question_Answer {
+class QuestionAnswer {
   constructor(public text: string, public answerValue: number, public questionId: number) {}
 }
 
@@ -22,22 +21,23 @@ class Question_Answer {
   styleUrls: ['./questionnaire-fill.component.css']
 })
 
-
-
 export class QuestionnaireFillComponent implements OnInit {
 
   questionnaire: Questionnaire;
   questions: QuestionnaireQuestion[];
   // Functions as a form for each question.
-  question_answers: Question_Answer[] = [];
+  questionAnswers: QuestionAnswer[] = [];
+  // Array which holds the answers selected for each question in the corresponding index.
   answerValues: number[];
+  // Dummy array whose length equals the questionnaire's scale size; only used for the ngFor loop.
+  answerOptions: number[];
   id: number;
   errorMessage: string;
 
   constructor(private errorHandler: ErrorHandlerService, private crud: CrudService, private router: Router, private auth: AuthService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = parseInt(this.route.snapshot.paramMap.get("questionnaire_id"));
+    this.id = parseInt(this.route.snapshot.paramMap.get('questionnaire_id'));
     this.getQuestionnaire();
   }
 
@@ -48,32 +48,30 @@ export class QuestionnaireFillComponent implements OnInit {
           console.log(res);
           this.questionnaire = res;
           this.questions = res.questions;
-          for (let question of this.questions) {
-            this.question_answers.push(new Question_Answer(question.text, 0, question.id));
+          for (const question of this.questions) {
+            this.questionAnswers.push(new QuestionAnswer(question.text, 0, question.id));
           }
+          this.answerOptions = Array(this.questionnaire.scaleSize);
           console.log(this.questions);
           this.answerValues = Array(this.questions.length);
         },
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
         }
-      )
-  }
-  customTrackBy(index: number, obj: any): any {
-    console.log('index:', index, 'value:', obj);
-    return index;
+      );
   }
 
   radioCheck(index: number, value: number) {
-    this.question_answers[index].answerValue = value;
+    // Modifies the chosen option for a particular question.
+    this.questionAnswers[index].answerValue = value;
   }
 
   submitResponses() {
     // Check that all of the questions have been properly answered.
-    for (let question of this.question_answers) {
+    for (const question of this.questionAnswers) {
       if (question.answerValue === 0) {
-        console.log("ERR: At least one of the questions has not been answered");
-        this.errorMessage = "Error: At least one of the questions has not been answered.";
+        console.log('ERR: At least one of the questions has not been answered');
+        this.errorMessage = 'Error: At least one of the questions has not been answered.';
         return;
       }
     }
@@ -81,19 +79,19 @@ export class QuestionnaireFillComponent implements OnInit {
 
     // Create a new participant.
     // TODO: Delegate participant creation to another section and simply reference here.
-    const participant = new Participant(parseInt(this.route.snapshot.paramMap.get("experiment_id")));
-    //let createdParticipant: Participant;
+    const participant = new Participant(parseInt(this.route.snapshot.paramMap.get('experiment_id')));
+    // let createdParticipant: Participant;
     this.crud.create(this.crud.models.PARTICIPANT, participant)
       .subscribe((createdParticipant: Participant) => {
-        this.crud.create(this.crud.models.QUESTIONNAIRE_RESPONSE, 
+        this.crud.create(this.crud.models.QUESTIONNAIRE_RESPONSE,
           new QuestionnaireResponse(createdParticipant.id, null, this.id))
           .subscribe((createdResponse: QuestionnaireResponse) => {
-            for (let question of this.question_answers) {
-              this.crud.create(this.crud.models.QUESTIONNAIRE_QUESTION_RESPONSE, 
+            for (const question of this.questionAnswers) {
+              this.crud.create(this.crud.models.QUESTIONNAIRE_QUESTION_RESPONSE,
                 new QuestionnaireQuestionResponse(question.answerValue, createdResponse.id, question.questionId))
                 .subscribe(
                   (res: QuestionnaireQuestionResponse) => {
-                    console.log("Successfully created:", res);
+                    console.log('Successfully created:', res);
                   },
                   (err: HttpErrorResponse) => {
                     this.errorHandler.handleError(err);
@@ -110,6 +108,5 @@ export class QuestionnaireFillComponent implements OnInit {
           this.errorHandler.handleError(err);
         }
       );
-    console.log("submitResponses done.")
   }
 }
