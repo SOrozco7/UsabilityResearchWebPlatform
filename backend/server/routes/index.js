@@ -8,6 +8,7 @@ const questionnaireQuestionsController = require('../controllers').questionnaire
 const questionnaireResponsesController = require('../controllers').questionnaireResponses;
 const questionnaireQuestionResponsesController = require('../controllers').questionnaireQuestionResponses;
 const participantsController = require('../controllers').participants;
+const bodyPartsController =  require('../controllers').bodyParts;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -61,4 +62,13 @@ module.exports = (app) => {
   app.get('/api/participants/:id', participantsController.retrieve);
   app.put('/api/participants/:id', participantsController.update);
   app.delete('/api/participants/:id', participantsController.destroy);
+  
+  // Routes for the bodyParts
+  //app.post('/api/bodyParts', bodyPartsController.create);
 };
+
+
+
+
+
+

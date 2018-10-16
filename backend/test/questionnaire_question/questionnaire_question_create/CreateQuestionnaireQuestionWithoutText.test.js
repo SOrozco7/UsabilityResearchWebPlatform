@@ -12,7 +12,6 @@ describe('CreateQuestionnaireQuestionWithoutText', function () {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "scaleSize": "5",
                 "questionnaire_id": "2"
             })
         })

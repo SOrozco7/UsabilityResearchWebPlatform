@@ -16,48 +16,48 @@ import { ExperimentDeleteComponent } from './components/experiments/experiment-d
 import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
-import { SignupComponent } from './components/signup/signup/signup.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
 
   // General
-  { 
-    path:'login', 
+  {
+    path: 'login',
     component: LoginComponent
   },
-  { 
-    path: 'logout', 
+  {
+    path: 'logout',
     component: LogoutComponent
   },
   {
-    path:'signup', 
+    path: 'signup',
     component: SignupComponent
   },
   // Experiments
-  { 
-    path: 'experiments', 
-    component: ExperimentListComponent, 
-    canActivate: [AuthGuard] 
+  {
+    path: 'experiments',
+    component: ExperimentListComponent,
+    canActivate: [AuthGuard]
   },
-  { 
-    path: 'experiments/create', 
-    component: ExperimentCreateComponent, 
-    canActivate: [AuthGuard] 
-  }, 
-  { 
-    path: 'experiments/:id', 
-    component: ExperimentRetrieveComponent, 
-    canActivate: [AuthGuard] 
+  {
+    path: 'experiments/create',
+    component: ExperimentCreateComponent,
+    canActivate: [AuthGuard]
   },
-  { 
-    path: 'experiments/update/:id', 
-    component: ExperimentUpdateComponent, 
-    canActivate: [AuthGuard] 
-  },  
-  { 
-    path: 'experiments/delete/:id', 
-    component: ExperimentDeleteComponent, 
-    canActivate: [AuthGuard] 
+  {
+    path: 'experiments/:id',
+    component: ExperimentRetrieveComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/update/:id',
+    component: ExperimentUpdateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/delete/:id',
+    component: ExperimentDeleteComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'questionnaires',
@@ -75,11 +75,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   // All other routes
-  { 
-    path: '**', 
-    redirectTo: 'experiments' 
+  {
+    path: '**',
+    redirectTo: 'experiments'
   }
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

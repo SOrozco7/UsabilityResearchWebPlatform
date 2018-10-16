@@ -6,11 +6,12 @@ import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { AuthService } from '../../../services/auth.service';
 import { RouterStub } from '../../../router-stub';
 import { LoginComponent } from './login.component';
-
+import { BrowserModule, By } from '@angular/platform-browser';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let htmlElement: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -21,10 +22,13 @@ describe('LoginComponent', () => {
         AuthService,
         HttpClient,
         HttpHandler,
-        {provide: Router, useClass: RouterStub}
+        { provide: Router, useClass: RouterStub }
       ]
-    })
-      .compileComponents();
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+
   }));
 
   beforeEach(() => {
@@ -37,4 +41,24 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('The id and password fields should be empty', async(() => {
+    expect(component.id).toEqual('', 'The id field is not empty.');
+    expect(component.password).toEqual('', 'The password field is not empty.');
+  }));
+
+  it("The login() method should be called if the 'Log in' button is clicked", async(() => {
+    spyOn(component, "login");
+    htmlElement = fixture.debugElement.query(By.css('.btn.rounded-btn')).nativeElement;
+    htmlElement.click();
+    expect(component.login).toHaveBeenCalled();
+  }));
+
+  it("The goToSignup() method should be called if the 'Don't have an account yet? Register here!' button is clicked", async(() => {
+    spyOn(component, "goToSignup");
+    htmlElement = fixture.debugElement.query(By.css('.btn.signup')).nativeElement;
+    htmlElement.click();
+    expect(component.goToSignup).toHaveBeenCalled();
+  }));
+
 });

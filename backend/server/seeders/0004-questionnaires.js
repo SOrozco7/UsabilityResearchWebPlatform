@@ -9,6 +9,7 @@ module.exports = {
           description: "The canonical Computer System Usability Questionnaire developed by IBM.",
           user_id: "danperez@gmail.com",
           isPublic: true,
+          scaleSize: 7,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -16,6 +17,7 @@ module.exports = {
           name: "SUS",
           description: "System Usability Scale - a questionnaire for measuring usability.",
           isPublic: true,
+          scaleSize: 5,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -24,6 +26,7 @@ module.exports = {
           description: "This questionnaire has been adapted from the CSUSSUQ.",
           user_id: "danperez@gmail.com",
           isPublic: false,
+          scaleSize: 6,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },

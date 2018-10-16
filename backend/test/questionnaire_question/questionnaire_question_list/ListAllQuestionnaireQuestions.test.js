@@ -15,7 +15,6 @@ describe('ListAllQuestionnaireQuestions', function () {
             expect(question).to.be.an('Object');
             expect(question.id).to.be.a('Number');
             expect(question.text).to.be.a('String');
-            expect(question.scaleSize).to.be.a('Number');
             expect(question.questionnaire_id).to.be.a('Number');
         }
     });

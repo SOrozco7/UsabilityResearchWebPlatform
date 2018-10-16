@@ -7,10 +7,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    scaleSize: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     text: {
       type: DataTypes.TEXT,
       allowNull: false,

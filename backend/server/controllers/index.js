@@ -6,6 +6,7 @@ const questionnaireQuestions = require('./questionnaire-questions');
 const questionnaireResponses = require('./questionnaire-responses');
 const questionnaireQuestionResponses = require('./questionnaire-question-responses');
 const participants = require('./participants');
+const bodyParts = require('./bodyParts');
 
 module.exports = {
     authentication,
@@ -16,5 +17,6 @@ module.exports = {
     questionnaireResponses,
     questionnaireQuestionResponses,
     questionnaires,
-    participants
+    participants,
+    bodyParts
 };

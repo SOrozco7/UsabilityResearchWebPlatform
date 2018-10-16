@@ -17,12 +17,15 @@ export class QuestionnaireListForExperimentComponent implements OnInit {
   questionnaires: Questionnaire[];
   id: number;
 
-  constructor(private errorHandler: ErrorHandlerService, private crud: CrudService, private router: Router, private auth: AuthService, private route: ActivatedRoute) { }
-
-
+  constructor(
+    private errorHandler: ErrorHandlerService,
+    private crud: CrudService,
+    private router: Router,
+    private auth: AuthService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = parseInt(this.route.snapshot.paramMap.get("id"));
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.getThisExperimentsQuestionnaires();
   }
 
@@ -35,7 +38,7 @@ export class QuestionnaireListForExperimentComponent implements OnInit {
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
         }
-      )
+      );
   }
 
   fillQuestionnaire(id: number) {

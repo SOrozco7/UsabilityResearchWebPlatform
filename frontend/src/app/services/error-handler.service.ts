@@ -11,14 +11,11 @@ export class ErrorHandlerService {
 
     if (err.error && err.error.message) {
       this.showErrorMessage(err.error.message);
-    }
-    else if (err.error && err.error.errors && err.error.errors[0].message) {
+    } else if (err.error && err.error.errors && err.error.errors[0].message) {
       this.showErrorMessage(err.error.errors[0].message);
-    }
-    else if (err.message) {
+    } else if (err.message) {
       this.showErrorMessage(err.message);
-    }
-    else {
+    } else {
       this.showErrorMessage('There was a problem. Try again later.');
     }
 

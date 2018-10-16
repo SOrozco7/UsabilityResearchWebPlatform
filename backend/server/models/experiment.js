@@ -33,8 +33,11 @@ module.exports = (sequelize, DataTypes) => {
         as: 'user',
         onDelete: 'CASCADE',
       })
-    Experiment.belongsToMany(models.BodyParts);
     Experiment.belongsToMany(models.Questionnaire, { as: 'questionnaires', through: 'experimentsQuestionnaires' });
+    Experiment.hasMany(models.BodyParts, {
+      foreignKey: 'experiment_id',
+      as: 'bodyparts'
+    });
   }
 
   return Experiment;

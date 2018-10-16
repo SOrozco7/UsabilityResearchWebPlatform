@@ -21,6 +21,12 @@ module.exports = {
                 message: 'The attribute "isPublic" of an instance of "Questionnaire" cannot be empty.'
             });
         }
+        if (!req.body.scaleSize) {
+            return res.status(400).send({
+                status: 400,
+                message: 'The attribute "scaleSize" of an instance of "Questionnaire" cannot be empty.'
+            });
+        }
         if (!req.body.user_id && req.body.isPublic === false) {
             return res.status(400).send({
                 status: 400,
@@ -33,7 +39,8 @@ module.exports = {
                 name: req.body.name,
                 description: req.body.description,
                 user_id: req.body.user_id,
-                isPublic: req.body.isPublic
+                isPublic: req.body.isPublic,
+                scaleSize: req.body.scaleSize
             })
             .then(questionnaire => res.status(201).send(questionnaire))
             .catch(error => res.status(400).send(error));
@@ -92,6 +99,7 @@ module.exports = {
                         name: req.body.name || questionnaire.name,
                         description: req.body.description || questionnaire.description,
                         isPublic: req.body.isPublic || questionnaire.isPublic,
+                        scaleSize: req.body.scaleSize || questionnaire.scaleSize,
                         user_id: req.body.user_id || questionnaire.user_id
                     })
                     .then((questionnaire) => res.status(200).send(questionnaire))
