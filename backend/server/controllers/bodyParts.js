@@ -1,42 +1,36 @@
-const BodyParts = require('../models').BodyPart;
-const Experiment = require('../models').Experiment;
-//Need to create the basics for each part of bodyParts
+const BodyPart = require('../models').BodyParts;
+
+// Need to create the basics for each part of bodyParts
 module.exports = {
-    create(req, res) {
-        // check that params are not null, undefined or empty string
-        
-        for(const i in  req.body.bodyPart[i])
-        {
-        
-            if (req.body.bodyPart[i]) {
-                BodyParts
-                .create({
-                    BodyPart: req.body.bodyPart[i],
-                    experiment_id: req.body.experiment_id
-                })
-                .then(BodyPart => res.status(201).send(BodyPart))
-                .catch(error => res.status(400).send(error));
-            }
-        }
-        
+  create(req, res) {
+    // check that params are not null, undefined or empty string
 
-        return;
-         
-    },
+    req.body.bodyPart.forEach((bodyPart) => {
+      if (bodyPart) {
+        BodyPart
+          .create({
+            BodyPart: bodyPart,
+            experiment_id: req.body.experiment_id,
+          })
+          .then(response => res.status(201).send(response))
+          .catch(error => res.status(400).send(error));
+      }
+    });
+  },
 
-    list(req, res) {
-        
-    },
+  list() {
 
-    retrieve(req, res) {
-        
-    },
+  },
 
-    update(req, res) {
-       
-    },
+  retrieve() {
 
-    destroy(req, res) {
-        // check that project id is not null, undefined, not an integer or 0
-    },
+  },
+
+  update() {
+
+  },
+
+  destroy() {
+    // check that project id is not null, undefined, not an integer or 0
+  },
 };
