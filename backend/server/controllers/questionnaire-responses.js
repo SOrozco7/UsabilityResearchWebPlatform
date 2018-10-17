@@ -39,7 +39,7 @@ module.exports = {
         if (!response) {
           return res.status(404).send({
             status: 400,
-            message: 'No questionnaire response with that ID was found.'
+            message: 'No questionnaire response with that ID was found.',
           });
         }
         return res.status(200).send(response);

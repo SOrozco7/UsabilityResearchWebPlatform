@@ -40,7 +40,7 @@ module.exports = {
         if (!question) {
           return res.status(404).send({
             status: 400,
-            message: 'No question with that ID was found.'
+            message: 'No question with that ID was found.',
           });
         }
         return res.status(200).send(question);

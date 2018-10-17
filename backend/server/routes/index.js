@@ -52,7 +52,7 @@ module.exports = (app) => {
 
   // Routes for the QUESTIONNAIREQUESTIONRESPONSES table
   app.post('/api/questionnairequestionresponses', questionnaireQuestionResponsesController.create);
-  
+
   // Routes for the PARTICIPANTS table
   app.post('/api/participants', participantsController.create);
   app.get('/api/participants', participantsController.list);

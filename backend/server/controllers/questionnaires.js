@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-const Questionnaire = require('../models').Questionnaire;
-const QuestionnaireQuestion = require('../models').QuestionnaireQuestion;
-=======
-const { Questionnaire } = require('../models');
->>>>>>> develop_fromTCrum
+const { Questionnaire, QuestionnaireQuestion } = require('../models');
 
 module.exports = {
   create(req, res) {
@@ -57,40 +52,23 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-<<<<<<< HEAD
-    listByUser(req, res) {
-        return Questionnaire
-            .findAll({
-                where: {
-                    experiment_id: req.body.experiment_id
-                }
-            })
-    },
+  listByUser(req) {
+    return Questionnaire
+      .findAll({
+        where: {
+          experiment_id: req.body.experiment_id,
+        },
+      });
+  },
 
-    retrieve(req, res) {
-        return Questionnaire
-            .findById(req.params.id, {
-                include: [{
-                    model: QuestionnaireQuestion,
-                    as: 'questions',
-                    required: false,
-                }]
-            })
-            .then(questionnaire => {
-                if (!questionnaire) {
-                    return res.status(404).send({
-                        status: 400,
-                        message: 'No questionnaire with that ID was found.',
-                    });
-                }
-                res.status(200).send(questionnaire);
-            })
-            .catch(error => res.status(400).send(error));
-    },
-=======
   retrieve(req, res) {
     return Questionnaire
       .findById(req.params.id, {
+        include: [{
+          model: QuestionnaireQuestion,
+          as: 'questions',
+          required: false,
+        }],
       })
       .then((questionnaire) => {
         if (!questionnaire) {
@@ -103,7 +81,6 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
->>>>>>> develop_fromTCrum
 
   update(req, res) {
     return Questionnaire
