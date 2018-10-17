@@ -57,6 +57,8 @@ script:
 - cd ../backend
 # Execute backend test script.
 - npm test
+# Execute backend linting script.
+- npm run lint
 # Go to the frontend folder
 - cd ../frontend/
 # Execute the Angular frontend tests a single time by setting the 'watch' flag to false.
