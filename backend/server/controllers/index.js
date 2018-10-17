@@ -8,13 +8,12 @@ const participants = require('./participants');
 const bodyParts = require('./bodyParts');
 
 module.exports = {
-    authentication,
-    experiments,
-    users,
-    questionnaireQuestions,
-    questionnaires,
-    questionnaireResponses,
-    questionnaires,
-    participants,
-    bodyParts
+  authentication,
+  experiments,
+  users,
+  questionnaireQuestions,
+  questionnaires,
+  questionnaireResponses,
+  participants,
+  bodyParts,
 };

@@ -1,6 +1,5 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var QuestionnaireQuestionResponse = sequelize.define('QuestionnaireQuestionResponse', {
+  const QuestionnaireQuestionResponse = sequelize.define('QuestionnaireQuestionResponse', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -13,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 
-  QuestionnaireQuestionResponse.associate = function (models) {
+  QuestionnaireQuestionResponse.associate = (models) => {
     QuestionnaireQuestionResponse.belongsTo(models.QuestionnaireQuestion, {
       foreignKey: 'question_id',
       as: 'questionnaireQuestion',
@@ -24,6 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       as: 'questionnaireResponse',
       onDelete: 'CASCADE',
     });
-  }
+  };
   return QuestionnaireQuestionResponse;
 };
