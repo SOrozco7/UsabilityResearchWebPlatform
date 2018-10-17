@@ -1,11 +1,10 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var QuestionnaireQuestion = sequelize.define('QuestionnaireQuestion', {
+  const QuestionnaireQuestion = sequelize.define('QuestionnaireQuestion', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     text: {
       type: DataTypes.TEXT,
@@ -13,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 
-  QuestionnaireQuestion.associate = function (models) {
+  QuestionnaireQuestion.associate = (models) => {
     QuestionnaireQuestion.belongsTo(models.Questionnaire, {
       foreignKey: 'questionnaire_id',
       as: 'questionnaire',
@@ -23,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       as: 'responses',
       through: models.QuestionnaireQuestionResponse,
     });
-  }
+  };
 
   return QuestionnaireQuestion;
 };
