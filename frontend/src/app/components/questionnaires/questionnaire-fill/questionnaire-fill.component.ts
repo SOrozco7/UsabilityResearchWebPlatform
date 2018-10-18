@@ -97,7 +97,7 @@ export class QuestionnaireFillComponent implements OnInit {
                 .subscribe(
                   (res: QuestionnaireQuestionResponse) => {
                     console.log('Successfully created:', res);
-                    this.router.navigate(['experiments/' + this.id + '/questionnaires/']);
+                    this.router.navigate(['experiments/' + this.route.snapshot.paramMap.get('experiment_id') + '/questionnaires/']);
                   },
                   (err: HttpErrorResponse) => {
                     this.errorHandler.handleError(err);
