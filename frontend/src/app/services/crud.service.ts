@@ -12,7 +12,10 @@ export class CrudService {
     USER: 'users',
     EXPERIMENT: 'experiments',
     QUESTIONNAIRE: 'questionnaires',
-    BODYPART : 'bodyPart'
+    BODYPART : 'bodyPart',
+    PARTICIPANT: 'participants',
+    QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
+    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses'
   };
 
   constructor(private auth: AuthService, private http: HttpClient) {

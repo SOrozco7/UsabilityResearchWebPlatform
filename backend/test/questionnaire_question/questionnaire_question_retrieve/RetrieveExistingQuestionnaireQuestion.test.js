@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const SERVER = 'http://localhost:8000/api';
 
 describe('RetrieveExistingQuestionnaireQuestion', () => {
-  it('GET /questionnairequestionss/:id with valid id must retrieve a questionnaire question.', async () => {
+  it('GET /questionnairequestions/:id with valid id must retrieve a questionnaire question.', async () => {
     const response = await fetch(`${SERVER}/questionnairequestions/1`);
     expect(response.status).to.be.equal(200);
 

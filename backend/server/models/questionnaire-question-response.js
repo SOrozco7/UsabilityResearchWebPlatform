@@ -14,12 +14,12 @@ module.exports = (sequelize, DataTypes) => {
 
   QuestionnaireQuestionResponse.associate = (models) => {
     QuestionnaireQuestionResponse.belongsTo(models.QuestionnaireQuestion, {
-      foreignKey: 'question_id',
+      foreignKey: 'QuestionnaireQuestionId',
       as: 'questionnaireQuestion',
       onDelete: 'CASCADE',
     });
     QuestionnaireQuestionResponse.belongsTo(models.QuestionnaireResponse, {
-      foreignKey: 'response_id',
+      foreignKey: 'QuestionnaireResponseId',
       as: 'questionnaireResponse',
       onDelete: 'CASCADE',
     });

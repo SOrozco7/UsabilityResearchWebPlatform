@@ -1,13 +1,10 @@
 import { QuestionnaireQuestion } from './questionnaire-question';
 
-export class Questionnaire {
+export class QuestionnaireResponse {
     constructor(
-        public name: string,
-        public description: string,
-        public isPublic: boolean,
-        public scaleSize: number,
+        public participant_id: number,
         public questions?: QuestionnaireQuestion[],
-        public user_id?: number,
+        public questionnaire_id?: number,
 
         public updatedAt?: Date,
         public createdAt?: Date,

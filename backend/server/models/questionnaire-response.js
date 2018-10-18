@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'participant',
       onDelete: 'CASCADE',
     });
+    QuestionnaireResponse.belongsToMany(models.QuestionnaireQuestion, {
+      as: 'questions',
+      through: models.QuestionnaireQuestionResponse,
+    });
   };
   return QuestionnaireResponse;
 };

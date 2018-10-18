@@ -1,0 +1,46 @@
+<div>
+    <br>
+    <div class="row">
+        
+        <div class="col">
+            <div class="card mb-3">
+              <div *ngIf="questionnaire">
+                <div class="card-header">{{ questionnaire.name }}</div>
+                <table class="card-body table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Question</th>
+                        <th></th>
+                        <th *ngFor="let scaleValue of answerOptions; index as j">{{ j + 1 }}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let questionAnswer of questionAnswers; index as i">
+                            <td>
+                                {{ i + 1 }}
+                            </td>
+                            <td>
+                                {{ questionAnswer.text }}
+                            </td>
+                            <td>
+                                strongly<br>disagree
+                            </td>
+                            <td *ngFor="let scaleValue of answerOptions; index as j">
+                              <input type="radio" [value]="j+1" [name]="i" (change)="radioCheck(i, j+1)" />
+                            </td>
+                            <td>
+                                strongly<br>agree
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          <div *ngIf="errorMessage" class="alert alert-danger"> {{ errorMessage }} </div>
+          <button type="button" (click)="submitResponses()" class="btn btn-lg btn-success">Submit</button>
+        </div>
+    </div>
+  </div>
+  
