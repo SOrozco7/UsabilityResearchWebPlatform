@@ -44,6 +44,8 @@ before_script:
 # FRONTEND
 # Go to the frontend folder
 - cd ../frontend/
+# Copy environment file
+- cp src/environments/environment.prod.ts src/environments/environment.ts
 # Install the Angular CLI
 - npm install -g angular-cli
 # Install Karma
