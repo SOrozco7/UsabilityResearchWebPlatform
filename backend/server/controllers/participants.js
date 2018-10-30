@@ -42,7 +42,7 @@ module.exports = {
         return Participant
             .create({
                 id: req.body.id,
-                experiment_id: req.body.experiment_id
+                experiment_id: req.body.experiment_id,
                 name: req.body.name,
                 age: req.body.age,
                 gender: req.body.gender,

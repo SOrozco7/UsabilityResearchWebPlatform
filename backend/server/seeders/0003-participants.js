@@ -20,7 +20,7 @@ module.exports = {
           age: 32,
           gender: "Male",
           ethnicgroup: "Aryan",
-          educationlevel: "PhD"
+          educationlevel: "PhD",
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
