@@ -1,0 +1,36 @@
+<div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <div *ngIf="questionnaires; else elseBlock">
+        <div class="card mb-3">
+          <div class="card-header">Please select one of the following questionnaires to add to the experiment:</div>
+          <table class="card-body table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Questionnaire</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let questionnaire of questionnaires">
+                <td>
+                  {{questionnaire.id}}
+                </td>
+                <td>
+                  {{questionnaire.name}}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-link">Add</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <ng-template #elseBlock><p>No questionnaires were found.</p></ng-template>
+      <button type="button" class="btn btn-primary">Create a new questionnaire</button>
+    </div>
+  </div>
+</div>
