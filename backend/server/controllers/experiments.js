@@ -1,4 +1,4 @@
-const { Experiment } = require('../models');
+const { Experiment, Questionnaire } = require('../models');
 
 module.exports = {
   create(req, res) {
@@ -150,6 +150,51 @@ module.exports = {
             message: 'Experiment deleted',
           }))
           .catch(error => res.status(400).send({ error }));
+      })
+      .catch(error => res.status(400).send(error));
+  },
+
+  addQuestionnaire(req, res) {
+    // Add the questionnaire to the experiment.
+    if (!req.body.questionnaire || !req.body.questionnaire.id) {
+      return res.status(400).send({
+        message: 'The request has no questionnaire',
+      });
+    }
+    if (!req.params.id) {
+      return res.status(400).send({
+        message: 'The request has no experiment',
+      });
+    }
+    return Questionnaire
+      .findById(req.body.questionnaire.id, {
+        attributes: ['id'],
+      })
+      .then((questionnaire) => {
+        if (!questionnaire) {
+          return res.status(400).send({
+            status: 400,
+            message: 'No questionnaire with that ID was found.',
+          });
+        }
+        return Experiment
+          .findById(req.params.id, {
+            attributes: ['id'],
+          })
+          .then((experiment) => {
+            if (!experiment) {
+              return res.status(400).send({
+                status: 400,
+                message: 'No experiment with that ID was found.',
+              });
+            }
+            return experiment.addQuestionnaires([req.body.questionnaire.id])
+              .then(() => res.status(200).send({
+                status: 200,
+              }))
+              .catch(error => res.status(400).send(error));
+          })
+          .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));
   },
