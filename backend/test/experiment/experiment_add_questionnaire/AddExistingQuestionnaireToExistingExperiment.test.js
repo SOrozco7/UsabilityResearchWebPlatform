@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const SERVER = 'http://localhost:8000/api';
 
 describe('AddExistingQuestionnaireToExistingExperiment', () => {
-  it('POST /experiments/:id/addQuestionnaire with an existing questionnaire and existing experiment should add the questionnaire to the experiment.', async () => {
+  it('POST /experiments/:id/questionnaires with an existing questionnaire and existing experiment should add the questionnaire to the experiment.', async () => {
     // Create the experiment.
     const createExperimentResponse = await fetch(`${SERVER}/experiments/`, {
       method: 'POST',
@@ -40,7 +40,7 @@ describe('AddExistingQuestionnaireToExistingExperiment', () => {
     expect(createQuestionnaireResponseJson.name).to.be.equal('Test name');
 
     // Add the questionnaire to the experiment.
-    const addQuestionnaireResponse = await fetch(`${SERVER}/experiments/${createExperimentResponseJson.id}/addQuestionnaire`, {
+    const addQuestionnaireResponse = await fetch(`${SERVER}/experiments/${createExperimentResponseJson.id}/questionnaires`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
