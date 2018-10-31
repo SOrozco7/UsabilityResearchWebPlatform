@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const SERVER = 'http://localhost:8000/api';
 
 describe('AddExistingQuestionnaireToNonExistentExperiment', () => {
-  it('POST /experiments/:id/addQuestionnaire with an existing questionnaire and nonexisting experiment should not add the questionnaire to the experiment.', async () => {
+  it('POST /experiments/:id/questionnaires with an existing questionnaire and nonexisting experiment should not add the questionnaire to the experiment.', async () => {
     const createQuestionnaireResponse = await fetch(`${SERVER}/questionnaires/`, {
       method: 'POST',
       headers: {
@@ -21,7 +21,7 @@ describe('AddExistingQuestionnaireToNonExistentExperiment', () => {
     const createQuestionnaireResponseJson = await createQuestionnaireResponse.json();
     expect(createQuestionnaireResponseJson.name).to.be.equal('Test name');
 
-    const addQuestionnaireResponse = await fetch(`${SERVER}/experiments/0/addQuestionnaire`, {
+    const addQuestionnaireResponse = await fetch(`${SERVER}/experiments/0/questionnaires`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
