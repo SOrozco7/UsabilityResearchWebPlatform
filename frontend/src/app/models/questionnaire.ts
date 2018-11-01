@@ -7,7 +7,7 @@ export class Questionnaire {
         public isPublic: boolean,
         public scaleSize: number,
         public questions?: QuestionnaireQuestion[],
-        public user_id?: number,
+        public user_id?: string,
 
         public updatedAt?: Date,
         public createdAt?: Date,
