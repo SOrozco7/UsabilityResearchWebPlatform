@@ -2,7 +2,7 @@
   <br>
   <div class="row">
     <div class="col">
-      <div *ngIf="questionnaires; else elseBlock">
+      <div *ngIf="filteredQuestionnaires; else elseBlock">
         <div class="card mb-3">
           <div class="card-header">Please select one of the following questionnaires to add to the experiment:</div>
           <table class="card-body table table-hover">
@@ -14,7 +14,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let questionnaire of questionnaires">
+              <tr *ngFor="let questionnaire of filteredQuestionnaires">
                 <td>
                   {{questionnaire.id}}
                 </td>
