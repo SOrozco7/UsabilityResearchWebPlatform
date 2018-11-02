@@ -18,25 +18,25 @@ module.exports = {
         if (!req.body.age) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "age" of an instance of Participant cannot be empty.'
+                message: 'The attribute "age" of an instance of "Participant" cannot be empty.'
             });
         }
         if (!req.body.gender) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "gender" of an instance of Participant cannot be empty.'
+                message: 'The attribute "gender" of an instance of "Participant" cannot be empty.'
             });
         }
         if (!req.body.ethnicGroup) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "ethnicGroup" of an instance of Participant cannot be empty.'
+                message: 'The attribute "ethnicGroup" of an instance of "Participant" cannot be empty.'
             });
         }
         if (!req.body.educationLevel) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "educationLevel" of an instance of Participant cannot be empty.'
+                message: 'The attribute "educationLevel" of an instance of "Participant" cannot be empty.'
             });
         }
         return Participant
