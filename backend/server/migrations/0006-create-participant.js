@@ -17,10 +17,10 @@ module.exports = {
       gender: {
         type: Sequelize.STRING
       },
-      ethnicgroup: {
+      ethnicGroup: {
         type: Sequelize.STRING
       },
-      educationlevel: {
+      educationLevel: {
         type: Sequelize.STRING
       },
       createdAt: {

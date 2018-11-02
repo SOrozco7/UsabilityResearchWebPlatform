@@ -11,19 +11,19 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    initialimage: {
+    initialImage: {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    finalimage: {
+    finalImage: {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    initialsound: {
+    initialSound: {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    finalsound: {
+    finalSound: {
       allowNull: false,
       type: DataTypes.TEXT
     }

@@ -19,11 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    ethnicgroup: {
+    ethnicGroup: {
       allowNull: false,
       type: DataTypes.TEXT
     },    
-    educationlevel: {
+    educationLevel: {
       allowNull: false,
       type: DataTypes.TEXT
     }

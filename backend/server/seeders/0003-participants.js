@@ -9,8 +9,8 @@ module.exports = {
           name: "John Nash",
           age: 72,
           gender: "Male",
-          ethnicgroup: "Aryan",
-          educationlevel: "PhD",
+          ethnicGroup: "Aryan",
+          educationLevel: "PhD",
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -19,8 +19,8 @@ module.exports = {
           name: "Isaac Newton",
           age: 32,
           gender: "Male",
-          ethnicgroup: "Aryan",
-          educationlevel: "PhD",
+          ethnicGroup: "Aryan",
+          educationLevel: "PhD",
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },

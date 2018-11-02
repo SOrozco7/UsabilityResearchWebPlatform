@@ -7,41 +7,41 @@ module.exports = {
         if (!req.body.text) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "name" of an instance of "Experiment" cannot be empty.'
+                message: 'The attribute "text" of an instance of "Question" cannot be empty.'
             });
         }
-        if (!req.body.initialimage) {
+        if (!req.body.initialImage) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "description" of an instance of "Experiment" cannot be empty.'
+                message: 'The attribute "initialImage" of an instance of "Question" cannot be empty.'
             });
         }
-        if (!req.body.finalimage) {
+        if (!req.body.finalImage) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "startDate" of an instance of "Experiment" cannot be empty.'
+                message: 'The attribute "finalImage" of an instance of "Question" cannot be empty.'
             });
         }
-        if (!req.body.initialsound) {
+        if (!req.body.initialSound) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "startDate" of an instance of "Experiment" cannot be empty.'
+                message: 'The attribute "inititalSound" of an instance of "Question" cannot be empty.'
             });
         }
-        if (!req.body.finalsound) {
+        if (!req.body.finalSound) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "endDate" of an instance of "Experiment" cannot be empty.'
+                message: 'The attribute "finalSound" of an instance of "Question" cannot be empty.'
             });
         }
 
         return Question
             .create({
                 text: req.body.text,
-                initialimage: req.body.initialimage,
-                finalimage: req.body.finalimage,
-                initialsound: req.body.initialsound,
-                finalsound: req.body.finalsound,
+                initialImage: req.body.initialImage,
+                finalImage: req.body.finalImage,
+                initialSound: req.body.initialSound,
+                finalSound: req.body.finalSound,
                 user_id: req.body.user_id
             })
             .then(Question => res.status(201).send(Question))
@@ -66,7 +66,7 @@ module.exports = {
     },
 
     retrieve(req, res) {
-        // check that experiment id is not null, undefined. Check that the id is not zero.
+        // check that question id is not null, undefined. Check that the id is not zero.
         if (!req.body.id && req.body.id === parseInt(req.body.id, 10)) {
             return res.status(400).send({
                 message: 'The question ID must be an integer bigger than 0'
@@ -84,13 +84,13 @@ module.exports = {
                 //     }
                 // ],
                 //Without these attributes, it fails bacuse its trying to search for an experiment_id that doesn't exists
-                attributes: ['id', 'text', 'initialimage', 'finalimage', 'initialsound', 'finalsound', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(question => {
                 if (!question) {
                     return res.status(400).send({
                         status: 400,
-                        message: 'No experiment with that ID was found.'
+                        message: 'No question with that ID was found.'
                     });
                 }
                 return res.status(200).send(question);
@@ -101,7 +101,7 @@ module.exports = {
     update(req, res) {
         return Question
             .findById(req.params.id, {
-                attributes: ['id', 'text', 'initialimage', 'finalimage', 'initialsound', 'finalsound', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(question => {
                 if (!question) {
@@ -113,10 +113,10 @@ module.exports = {
                 return question
                     .update({
                         text: req.body.name || question.text,
-                        initialimage: req.body.initialimage || question.initialimage,
-                        finalimage: req.body.finalimage || question.finalimage,
-                        initialsound: req.body.initialsound || question.initialsound,
-                        finalsound: req.body.finalsound || question.finalsound
+                        initialImage: req.body.initialImage || question.initialImage,
+                        finalImage: req.body.finalImage || question.finalImage,
+                        initialSound: req.body.initialSound || question.initialSound,
+                        finalSound: req.body.finalSound || question.finalSound
                     })
                     .then((question) => res.status(200).send(question)) // Send back the updated tuple.
                     .catch((error) => res.status(400).send(error));
@@ -133,7 +133,7 @@ module.exports = {
         }
         return Question
             .findById(req.params.id, {
-                attributes: ['id', 'text', 'initialimage', 'finalimage', 'initialsound', 'finalsound', 'createdAt', 'updatedAt', 'user_id']
+                attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'user_id']
             })
             .then(Question => {
                 if (!Question) {

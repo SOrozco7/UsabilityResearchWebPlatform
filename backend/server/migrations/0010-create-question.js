@@ -11,16 +11,16 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
-      initialimage: {
+      initialImage: {
         type: Sequelize.STRING
       },
-      finalimage: {
+      finalImage: {
         type: Sequelize.STRING
       },
-      initialsound: {
+      initialSound: {
         type: Sequelize.STRING
       },
-      finalsound: {
+      finalSound: {
         type: Sequelize.STRING
       },
       createdAt: {

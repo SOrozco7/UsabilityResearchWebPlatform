@@ -16,8 +16,8 @@ describe('CreateParticipant', function () {
                 "name": "Ali",
                 "age": "22",
                 "gender": "Male",
-                "ethnicgroup": "Arabic",
-                "educationlevel": "PhD"
+                "ethnicGroup": "Arabic",
+                "educationLevel": "PhD"
             })
         })
         // .then(res => res.json())         // If you want to print the JSON for debugging, uncomment 

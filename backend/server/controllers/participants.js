@@ -27,16 +27,16 @@ module.exports = {
                 message: 'The attribute "gender" of an instance of "Experiment" cannot be empty.'
             });
         }
-        if (!req.body.ethnicgroup) {
+        if (!req.body.ethnicGroup) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "ethnicgroup" of an instance of "Experiment" cannot be empty.'
+                message: 'The attribute "ethnicGroup" of an instance of "Experiment" cannot be empty.'
             });
         }
-        if (!req.body.educationlevel) {
+        if (!req.body.educationLevel) {
             return res.status(400).send({
                 status: 400,
-                message: 'The attribute "educationlevel" of an instance of "Experiment" cannot be empty.'
+                message: 'The attribute "educationLevel" of an instance of "Experiment" cannot be empty.'
             });
         }
         return Participant
@@ -46,8 +46,8 @@ module.exports = {
                 name: req.body.name,
                 age: req.body.age,
                 gender: req.body.gender,
-                ethnicgroup: req.body.ethnicgroup,
-                educationlevel: req.body.educationlevel
+                ethnicGroup: req.body.ethnicGroup,
+                educationLevel: req.body.educationLevel
             })
             .then(participant => res.status(201).send(participant))
             .catch(error => res.status(400).send(error));
