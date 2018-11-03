@@ -8,6 +8,10 @@ import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angul
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/authentication/login/login.component';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -47,7 +51,11 @@ import { QuestionnaireAddToExperimentComponent } from './components/questionnair
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatButtonModule
   ],
   providers: [AuthService, CrudService, ErrorHandlerService],
   bootstrap: [AppComponent]

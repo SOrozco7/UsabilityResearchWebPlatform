@@ -1,0 +1,12 @@
+header {
+  background-color: #e5e5e5;
+  height: 60px;
+}
+
+main {
+  margin-top: 10px;
+}
+
+#navbar-icons {
+  float: right;
+}
