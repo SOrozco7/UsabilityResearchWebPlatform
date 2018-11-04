@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Question } from '../../../models/question';
 
 @Component({
   selector: 'app-experiment-run',
@@ -10,6 +11,6 @@ export class ExperimentRunComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
 
+  }
 }
