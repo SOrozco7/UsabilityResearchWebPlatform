@@ -21,8 +21,8 @@ describe('ExperimentCreateComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ExperimentCreateComponent],
       imports: [
-        RouterTestingModule, 
-        FormsModule, 
+        RouterTestingModule,
+        FormsModule,
         BrowserModule
       ],
       providers: [
@@ -52,7 +52,7 @@ describe('ExperimentCreateComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('The form should be valid', async(() => {  
+  it('The form should be valid', async(() => {
 
     expect(component.experiment.name).toEqual(null, 'The experiment name is not null');
     expect(component.experiment.description).toEqual(null, 'The experiment description is not null');
@@ -60,17 +60,17 @@ describe('ExperimentCreateComponent', () => {
     expect(component.experiment.endDate).toEqual(null, 'The experiment endDate is not null');
   }));
 
-  it("The createExperiment() method should be called if the 'Create Experiment' button is clicked", async(() => {
+  it('The createExperiment() method should be called if the \'Create Experiment\' button is clicked', async(() => {
 
-    spyOn(component, "createExperiment");
+    spyOn(component, 'createExperiment');
     htmlElement = fixture.debugElement.query(By.css('.btn.btn-success.pull-right')).nativeElement;
     htmlElement.click();
     expect(component.createExperiment).toHaveBeenCalled();
   }));
 
-  it("The listExperiments() method should be called if the 'Back' button is clicked", async(() => {
+  it('The listExperiments() method should be called if the \'Back\' button is clicked', async(() => {
 
-    spyOn(component, "listExperiments");
+    spyOn(component, 'listExperiments');
     htmlElement = fixture.debugElement.query(By.css('.btn.btn-lg.btn-danger')).nativeElement;
     htmlElement.click();
     expect(component.listExperiments).toHaveBeenCalled();

@@ -1,6 +1,5 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Questionnaire = sequelize.define('Questionnaire', {
+  const Questionnaire = sequelize.define('Questionnaire', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -19,9 +18,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    scaleSize: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {});
 
-  Questionnaire.associate = function (models) {
+  Questionnaire.associate = (models) => {
     Questionnaire.belongsTo(models.User, {
       foreignKey: 'user_id',
       as: 'user',
@@ -29,9 +32,9 @@ module.exports = (sequelize, DataTypes) => {
     });
     Questionnaire.hasMany(models.QuestionnaireQuestion, {
       foreignKey: 'questionnaire_id',
-      as: 'questionnaires',
-    })
-    Questionnaire.belongsToMany(models.Experiment, { as: 'theExperiments', through: 'experimentsQuestionnaires'});
-  }
+      as: 'questions',
+    });
+    Questionnaire.belongsToMany(models.Experiment, { as: 'theExperiments', through: 'experimentsQuestionnaires' });
+  };
   return Questionnaire;
 };

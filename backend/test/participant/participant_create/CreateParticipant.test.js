@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const fetch = require('node-fetch');
 
 const SERVER = 'http://localhost:8000/api';
@@ -33,14 +33,18 @@ describe('CreateParticipant', function () {
         expect(createParticipantResponseJson.ethnicGroup).to.be.equal("Arabic");
         expect(createParticipantResponseJson.educationLevel).to.be.equal("PhD");
 
-        const deleteParticipantResponse = await fetch(SERVER + '/participants/' + newParticipantId, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+    const createParticipantResponseJson = await createParticipantResponse.json();
+    const newParticipantId = createParticipantResponseJson.id;
+    expect(createParticipantResponseJson.experiment_id).to.be.equal(2);
 
-        const deleteParticipantResponseJson = await deleteParticipantResponse.json();
-        expect(deleteParticipantResponseJson.status).to.be.equal(200);
+    const deleteParticipantResponse = await fetch(`${SERVER}/participants/${newParticipantId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
+
+    const deleteParticipantResponseJson = await deleteParticipantResponse.json();
+    expect(deleteParticipantResponseJson.status).to.be.equal(200);
+  });
 });

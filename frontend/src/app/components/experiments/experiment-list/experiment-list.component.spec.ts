@@ -44,9 +44,9 @@ describe('ExperimentListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it("The createExperiment() method should be called if the 'Create Experiment' button is clicked", async(() => {
+  it('The createExperiment() method should be called if the \'Create Experiment\' button is clicked', async(() => {
 
-    spyOn(component, "createExperiment");
+    spyOn(component, 'createExperiment');
     htmlElement = fixture.debugElement.query(By.css('.btn.btn-success.pull-right')).nativeElement;
     htmlElement.click();
     expect(component.createExperiment).toHaveBeenCalled();

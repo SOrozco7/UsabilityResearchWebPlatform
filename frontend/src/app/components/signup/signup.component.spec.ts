@@ -55,33 +55,33 @@ describe('SignupComponent', () => {
     expect(component.passwordConfirmation).toEqual('', 'The password confirmation field is not empty.');
   }));
 
-  it("The signup() method should be called if the 'Sign up' button is clicked", async(() => {
-    spyOn(component, "signup");
+  it('The signup() method should be called if the \'Sign up\' button is clicked', async(() => {
+    spyOn(component, 'signup');
     htmlElement = fixture.debugElement.query(By.css('.btn.rounded-btn')).nativeElement;
     htmlElement.click();
     expect(component.signup).toHaveBeenCalled();
   }));
 
-  it("The validation of the signup fields with empty strings should return false.", async(() => {
+  it('The validation of the signup fields with empty strings should return false.', async(() => {
 
-    expect(component.validate()).toBe(false)
+    expect(component.validate()).toBe(false);
   }));
 
-  it("Two non-empty, equal passwords should be considered as a confirmed password.", async(() => {
+  it('Two non-empty, equal passwords should be considered as a confirmed password.', async(() => {
 
     component.user.password = 'password';
     component.passwordConfirmation = 'password';
     expect(component.passwordWasConfirmed()).toBe(true);
   }));
 
-  it("Two different passwords should not be considered as a confirmed password.", async(() => {
+  it('Two different passwords should not be considered as a confirmed password.', async(() => {
 
     component.user.password = 'string1';
     component.passwordConfirmation = 'string2';
-    expect(component.passwordWasConfirmed()).toBe(false)
+    expect(component.passwordWasConfirmed()).toBe(false);
   }));
 
-  it("Two empty passwords should not be considered as a confirmed password.", async(() => {
+  it('Two empty passwords should not be considered as a confirmed password.', async(() => {
 
     component.user.password = '';
     component.passwordConfirmation = '';

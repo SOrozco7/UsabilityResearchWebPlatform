@@ -1,6 +1,5 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Participant = sequelize.define('Participant', {
+  const Participant = sequelize.define('Participant', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -29,12 +28,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
 
-  Participant.associate = function (models) {
+  Participant.associate = (models) => {
     Participant.belongsTo(models.Experiment, {
       foreignKey: 'experiment_id',
       as: 'experiment',
       onDelete: 'CASCADE',
     });
-  }
+  };
   return Participant;
 };

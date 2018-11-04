@@ -1,29 +1,36 @@
-'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('QuestionnaireQuestion_Response', {
-      response_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'QuestionnaireResponses',
-          key: 'id',
-          as: 'response_id',
-        },
+  up: (queryInterface, Sequelize) => queryInterface.createTable('QuestionnaireQuestionResponses', {
+    QuestionnaireResponseId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'QuestionnaireResponses',
+        key: 'id',
       },
-      question_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'QuestionnaireQuestions',
-          key: 'id',
-          as: 'question_id',
-        },
+    },
+    QuestionnaireQuestionId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'QuestionnaireQuestions',
+        key: 'id',
       },
-      answerValue: {
-        type: Sequelize.INTEGER,
-      },
-    });
-  },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('QuestionnaireQuestion_Response');
-  }
+    },
+    responseValue: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      type: Sequelize.INTEGER,
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+  }),
+  down: queryInterface => queryInterface.dropTable('QuestionnaireQuestionResponses'),
 };

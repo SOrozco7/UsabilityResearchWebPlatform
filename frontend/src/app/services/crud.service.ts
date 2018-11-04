@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class CrudService {
@@ -12,7 +12,10 @@ export class CrudService {
     USER: 'users',
     EXPERIMENT: 'experiments',
     QUESTIONNAIRE: 'questionnaires',
-    BODYPART : "bodyPart"
+    BODYPART : 'bodyPart',
+    PARTICIPANT: 'participants',
+    QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
+    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses'
   };
 
   constructor(private auth: AuthService, private http: HttpClient) {
