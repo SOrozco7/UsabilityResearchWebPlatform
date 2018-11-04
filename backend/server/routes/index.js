@@ -32,8 +32,8 @@ module.exports = (app) => {
   app.delete('/api/experiments/:id', experimentsController.destroy);
   app.post('/api/experiments/:id/questionnaires', experimentsController.addQuestionnaire);
 
-  //Routes for the EXPERIMENTS table
-  app.post('/api/questions', questionsController.create);  
+  // Routes for the EXPERIMENTS table
+  app.post('/api/questions', questionsController.create);
   app.get('/api/questions', questionsController.list);
   app.get('/api/questions/:id', questionsController.retrieve);
   app.put('/api/questions/:id', questionsController.update);

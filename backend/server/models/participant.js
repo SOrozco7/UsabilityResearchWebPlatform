@@ -4,28 +4,28 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     name: {
       allowNull: false,
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     age: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     gender: {
       allowNull: false,
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     ethnicGroup: {
       allowNull: false,
-      type: DataTypes.TEXT
-    },    
+      type: DataTypes.TEXT,
+    },
     educationLevel: {
       allowNull: false,
-      type: DataTypes.TEXT
-    }
+      type: DataTypes.TEXT,
+    },
   }, {});
 
   Participant.associate = (models) => {

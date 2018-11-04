@@ -10,21 +10,9 @@ const participants = require('./participants');
 const bodyParts = require('./bodyParts');
 
 module.exports = {
-<<<<<<< HEAD
-    authentication,
-    experiments,
-    questions,
-    users,
-    questionnaireQuestions,
-    questionnaires,
-    questionnaireResponses,
-    questionnaires,
-    participants,
-    bodyParts
-};
-=======
   authentication,
   experiments,
+  questions,
   users,
   questionnaireQuestions,
   questionnaireResponses,
@@ -33,4 +21,3 @@ module.exports = {
   participants,
   bodyParts,
 };
->>>>>>> develop_fromTCrum

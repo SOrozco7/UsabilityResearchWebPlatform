@@ -91,35 +91,6 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-<<<<<<< HEAD
-        return Experiment
-            .findById(req.params.id, {
-                include: [  
-                    {all: true} 
-                ],                
-                // include: [
-                //     {
-                //         model: User,
-                //         as: 'user_id',
-                //         required: false,
-                //         attributes: ['id', 'firstName', 'lastName', 'username', 'createdAt', 'updatedAt']
-                //     }
-                // ],
-                //Without these attributes, it fails bacuse its trying to search for an experiment_id that doesn't exists
-                //attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'createdAt', 'updatedAt', 'user_id']
-            })
-            .then(experiment => {
-                if (!experiment) {
-                    return res.status(400).send({
-                        status: 400,
-                        message: 'No experiment with that ID was found.'
-                    });
-                }
-                return res.status(200).send(experiment);
-            })
-            .catch(error => res.status(400).send(error));
-    },
-=======
   update(req, res) {
     return Experiment
       .findById(req.params.id, {
@@ -140,7 +111,6 @@ module.exports = {
             message: 'The end date cannot be before the begin date.',
           });
         }
->>>>>>> develop_fromTCrum
 
         return experiment
           .update({
