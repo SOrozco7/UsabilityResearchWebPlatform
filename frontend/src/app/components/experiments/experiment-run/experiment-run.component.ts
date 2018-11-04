@@ -28,6 +28,7 @@ export class ExperimentRunComponent implements OnInit {
   ngOnInit() {
 
     this.experimentQuestions = null;
+    this.currentQuestion = null;
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
     // Get the list of the experiment's questions by retrieving the experiment
