@@ -2,21 +2,23 @@
   <h2>
     Create a new questionnaire
   </h2>
-  <form>
+  <form [formGroup]="questionnaireForm" (ngSubmit)="onSubmit()">
     <p>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Questionnaire name">
+        <input matInput placeholder="Questionnaire name" formControlName="name" required minlength="3">
+        <mat-error *ngIf="questionnaireForm.get('name').invalid">{{ getNameErrorMessage() }}</mat-error>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="full-width">
-        <textarea matInput placeholder="Description"></textarea>
+        <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+        <mat-error *ngIf="questionnaireForm.get('name').invalid">{{ getDescriptionErrorMessage() }}</mat-error>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="full-width">
         <mat-label>Likert scale size</mat-label>
-        <mat-select>
+        <mat-select formControlName="scaleSize" required>
           <mat-option value="2">2</mat-option>
           <mat-option value="3">3</mat-option>
           <mat-option value="4">4</mat-option>
@@ -28,24 +30,28 @@
           <mat-option value="10">10</mat-option>
           <mat-option value="11">11</mat-option>
         </mat-select>
+        <mat-error *ngIf="questionnaireForm.get('scaleSize').invalid">You must select a scale size</mat-error>
       </mat-form-field>
     </p>
     <p>
       Make public:
-      <mat-radio-group>
+      <mat-radio-group formControlName="isPublic" required>
         <mat-radio-button value="True">yes</mat-radio-button>
         <mat-radio-button value="False">no</mat-radio-button>
       </mat-radio-group>
     </p>
     <h3>Questions</h3>
     <p>
-      Type questions, one per line:
+      Type question prompts, one per line:
+      <br>
+      <em>Example: 'I feel that the site is easy to use'.</em>
     </p>
     <p>
       <mat-form-field class="full-width">
-        <textarea matInput placeholder="Questions" class="long"></textarea>
+        <textarea matInput placeholder="Questions" class="long" formControlName="questions" required></textarea>
+        <mat-error *ngIf="questionnaireForm.get('questions').invalid">You must enter at least one question</mat-error>
       </mat-form-field>
     </p>
-    <button mat-raised-button color="primary">Submit</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!questionnaireForm.valid">Submit</button>
   </form>
 </section>

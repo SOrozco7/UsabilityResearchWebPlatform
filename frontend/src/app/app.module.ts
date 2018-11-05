@@ -51,7 +51,8 @@ import { QuestionnaireAddToExperimentComponent } from './components/questionnair
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, CrudService, ErrorHandlerService],
   bootstrap: [AppComponent]
