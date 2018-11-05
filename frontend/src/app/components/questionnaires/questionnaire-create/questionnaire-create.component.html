@@ -1,0 +1,51 @@
+<section class="main-center">
+  <h2>
+    Create a new questionnaire
+  </h2>
+  <form>
+    <p>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Questionnaire name">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Description"></textarea>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="full-width">
+        <mat-label>Likert scale size</mat-label>
+        <mat-select>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="6">6</mat-option>
+          <mat-option value="7">7</mat-option>
+          <mat-option value="8">8</mat-option>
+          <mat-option value="9">9</mat-option>
+          <mat-option value="10">10</mat-option>
+          <mat-option value="11">11</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p>
+      Make public:
+      <mat-radio-group>
+        <mat-radio-button value="True">yes</mat-radio-button>
+        <mat-radio-button value="False">no</mat-radio-button>
+      </mat-radio-group>
+    </p>
+    <h3>Questions</h3>
+    <p>
+      Type questions, one per line:
+    </p>
+    <p>
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Questions" class="long"></textarea>
+      </mat-form-field>
+    </p>
+    <button mat-raised-button color="primary">Submit</button>
+  </form>
+</section>
