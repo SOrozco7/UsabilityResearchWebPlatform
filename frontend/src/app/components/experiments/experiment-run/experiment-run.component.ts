@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Experiment } from '../../../models/experiment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { RecordRTCComponent } from '../../record-rtc/record-rtc.component';
 import { Question } from '../../../models/question';
 
 @Component({
@@ -38,13 +39,17 @@ export class ExperimentRunComponent implements OnInit {
         console.log(res);
         
         // Assign the array of questions
-        this.experimentQuestions = res.questions;
+        // this.experimentQuestions = res.questions;
 
         // Use an index of the current question and the amount
         // of questions in this experiment to control the display
         // of the questions
         this.currQuestionIndex = 0;
-        this.questionCount = this.experimentQuestions.length;
+
+        if(this.experimentQuestions != null){
+
+          this.questionCount = this.experimentQuestions.length;
+        }
 
         this.assignCurrentlyDisplayedQuestion();
       },
@@ -61,7 +66,10 @@ export class ExperimentRunComponent implements OnInit {
    */
   assignCurrentlyDisplayedQuestion(){
 
-    this.currentQuestion = this.experimentQuestions[this.currQuestionIndex];
+    if(this.experimentQuestions != null){
+      
+      this.currentQuestion = this.experimentQuestions[this.currQuestionIndex];
+    }
   }
 
   /**
