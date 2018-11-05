@@ -18,6 +18,9 @@ export class RecordRTCComponent implements AfterViewInit {
 
   constructor() {
     // Do stuff
+
+    // Start the recording automatically.
+    this.startRecording();
   }
 
   ngAfterViewInit() {
@@ -85,6 +88,10 @@ export class RecordRTCComponent implements AfterViewInit {
   }
 
   download() {
-    this.recordRTC.save('video.webm');
+
+    if(this.recordRTC != null){
+      
+      this.recordRTC.save('video.webm');
+    }
   }
 }
