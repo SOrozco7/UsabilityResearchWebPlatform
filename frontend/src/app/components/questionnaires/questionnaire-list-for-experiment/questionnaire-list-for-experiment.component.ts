@@ -45,4 +45,8 @@ export class QuestionnaireListForExperimentComponent implements OnInit {
     this.router.navigate(['experiments/' + this.id + '/questionnaires/' + id + '/fill']);
   }
 
+  addAnotherQuestionnaire() {
+    this.router.navigate(['experiments/' + this.id + '/addquestionnaire']);
+  }
+
 }
