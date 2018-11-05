@@ -7,7 +7,6 @@ import { BrowserModule, By } from '@angular/platform-browser';
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
-  let htmlElement: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,13 +30,4 @@ describe('NavComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('The logout() method should be called if the \'Log out\' button is clicked', async(() => {
-
-    spyOn(component, 'logout');
-    htmlElement = fixture.debugElement.query(By.css('.btn.btn-danger.float-right.logoutBtn')).nativeElement;
-    htmlElement.click();
-    expect(component.logout).toHaveBeenCalled();
-  }));
-
 });
