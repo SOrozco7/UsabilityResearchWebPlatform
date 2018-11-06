@@ -13,8 +13,15 @@
   <img src="https://www.lifewire.com/thmb/jBocYI2vxqn3ntNUsYx_rCb8OzU=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/HDTV_185310724-56a4b4525f9b58b7d0d86554.jpg"
     alt="Final image for the question" width="35%" height="35%">
 
-  <button type="button" (click)="changeCurrentlyDisplayedQuestion()" class="btn btn-lg btn-primary change-question" id="right-panel-link">Submit
-    response</button>
+  <!-- Modify the button: either 'Submit response' or 'Finish experiment' -->
+  <ng-container *ngIf="currQuestionIndex < questionCount - 1; else second">
+    <button type="button" (click)="changeCurrentlyDisplayedQuestion()" class="btn btn-lg btn-primary change-question"
+      id="right-panel-link">Submit response</button>
+  </ng-container>
+  <ng-template #second>
+    <button type="button" (click)="finishExperiment()" class="btn btn-lg btn-primary change-question" id="right-panel-link">Finish
+      experiment</button>
+  </ng-template>
 
   <record-rtc></record-rtc>
 

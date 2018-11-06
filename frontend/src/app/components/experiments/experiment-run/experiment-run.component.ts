@@ -6,6 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { RecordRTCComponent } from '../../record-rtc/record-rtc.component';
 import { Question } from '../../../models/question';
+import { CommonModule } from '@angular/common';  
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-experiment-run',
@@ -30,6 +32,14 @@ export class ExperimentRunComponent implements OnInit {
 
     this.experimentQuestions = null;
     this.currentQuestion = null;
+
+    // Use an index of the current question and the amount
+    // of questions in this experiment to control the display
+    // of the questions
+    this.currQuestionIndex = 0;
+
+    // Set the default value
+    this.questionCount = 1;
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
     // Get the list of the experiment's questions by retrieving the experiment
@@ -40,11 +50,6 @@ export class ExperimentRunComponent implements OnInit {
         
         // Assign the array of questions
         // this.experimentQuestions = res.questions;
-
-        // Use an index of the current question and the amount
-        // of questions in this experiment to control the display
-        // of the questions
-        this.currQuestionIndex = 0;
 
         if(this.experimentQuestions != null){
 
