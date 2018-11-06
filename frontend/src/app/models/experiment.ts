@@ -10,7 +10,7 @@ export class Experiment {
         public endDate: Date,
         public user_id: string,
         public questionnaires: Questionnaire[],
-        public questions: Question[],
+        public questions?: Question[],
         public updatedAt?: Date,
         public createdAt?: Date,
         public id?: number
