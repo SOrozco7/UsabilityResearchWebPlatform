@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 const SERVER = 'http://localhost:8000/api';
 
-describe('UpdateNonExistentParticipant', () => {
+describe('UpdateExistingParticipant', () => {
   it('PUT /participant/:id with an invalid id must not update a participant.', async () => {
     const updateParticipantResponse = await fetch(`${SERVER}/participants/${0}`, {
       method: 'PUT',

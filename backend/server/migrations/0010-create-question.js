@@ -30,12 +30,12 @@ module.exports = {
       allowNull: false,
       type: Sequelize.DATE,
     },
-    user_id: {
-      type: Sequelize.STRING,
+    experiment_id: {
+      type: Sequelize.INTEGER,
       references: {
-        model: 'Users',
+        model: 'Experiments',
         key: 'id',
-        as: 'user_id',
+        as: 'experiment_id',
       },
     },
   }),

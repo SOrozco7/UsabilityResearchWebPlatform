@@ -41,7 +41,7 @@ module.exports = {
         finalImage: req.body.finalImage,
         initialSound: req.body.initialSound,
         finalSound: req.body.finalSound,
-        user_id: req.body.user_id,
+        experiment_id: req.body.experiment_id,
       })
       .then(question => res.status(201).send(question))
       .catch(error => res.status(400).send(error));
@@ -65,7 +65,7 @@ module.exports = {
 
     return Question
       .findById(req.params.id, {
-        attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'user_id'],
+        attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'experiment_id'],
       })
       .then((question) => {
         if (!question) {
@@ -82,7 +82,7 @@ module.exports = {
   update(req, res) {
     return Question
       .findById(req.params.id, {
-        attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'user_id'],
+        attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'experiment_id'],
       })
       .then((question) => {
         if (!question) {
@@ -114,7 +114,7 @@ module.exports = {
     }
     return Question
       .findById(req.params.id, {
-        attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'user_id'],
+        attributes: ['id', 'text', 'initialImage', 'finalImage', 'initialSound', 'finalSound', 'createdAt', 'updatedAt', 'experiment_id'],
       })
       .then((question) => {
         if (!question) {

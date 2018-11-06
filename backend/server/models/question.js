@@ -30,10 +30,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Question.associate = (models) => {
-    Question.belongsTo(models.User, {
+    Question.belongsTo(models.Experiment, {
 
-      foreignKey: 'user_id',
-      as: 'user',
+      foreignKey: 'experiment_id',
+      as: 'experiment',
       onDelete: 'CASCADE',
     });
     Question.belongsToMany(models.Questionnaire, { through: 'QuestionQuestionnaire' });
