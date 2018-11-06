@@ -88,6 +88,7 @@ export class QuestionnaireCreateComponent implements OnInit {
   }
 
   parseQuestions() {
-    return this.questionnaireForm.get('questions').value.split(/\r\n|\r|\n/);
+    // Split the textarea into individual lines, and filter out any blank lines.
+    return this.questionnaireForm.get('questions').value.split(/\r\n|\r|\n/).filter(question => question.length > 0);
   }
 }
