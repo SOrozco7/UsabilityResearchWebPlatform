@@ -4,7 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Experiment } from '../../../models/experiment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
-import { RecordRTCComponent } from '../../record-rtc/record-rtc.component';
+import { RecordRtcComponent } from '../../record-rtc/record-rtc.component';
 import { Question } from '../../../models/question';
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';

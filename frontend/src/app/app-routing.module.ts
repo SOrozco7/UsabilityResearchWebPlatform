@@ -19,7 +19,7 @@ import { QuestionnaireAddToExperimentComponent } from './components/questionnair
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
-import { RecordRTCComponent } from './components/record-rtc/record-rtc.component';
+import { RecordRtcComponent } from './components/record-rtc/record-rtc.component';
 
 const routes: Routes = [
 
@@ -89,7 +89,7 @@ const routes: Routes = [
   },
   {
     path: 'recordrtc',
-    component: RecordRTCComponent
+    component: RecordRtcComponent
   },
   // All other routes
   {

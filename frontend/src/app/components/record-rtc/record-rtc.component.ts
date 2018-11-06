@@ -9,7 +9,7 @@ let RecordRTC = require('recordrtc/RecordRTC.min');
   templateUrl: './record-rtc.component.html',
   styleUrls: ['./record-rtc.component.css']
 })
-export class RecordRTCComponent implements AfterViewInit {
+export class RecordRtcComponent implements AfterViewInit {
 
   private stream: MediaStream;
   private recordRTC: any;
