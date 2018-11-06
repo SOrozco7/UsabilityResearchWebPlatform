@@ -3,3 +3,6 @@
     bottom: 5%;
     right: 5%;
 }
+.experiment-card {
+  max-width: 600px;
+}

@@ -1,25 +1,20 @@
-<div class="col-sm-6">
-  <div class="card text-white bg-dark mb-3">
+<div class="row align-items-center justify-content-center">
+  <mat-card class="experiment-card text-white bg-dark">
     <div class="card-header">{{experiment.user_id}}</div>
-    <div class="card-body">
-      <h4 class="card-title">{{experiment.name}}</h4>
-      <p class="card-text">{{experiment.description}}</p>
-      <p class="card-text">From: {{experiment.startDate}}</p>
-      <p class="card-text">To: {{experiment.endDate}}</p>
+      <div class="card-body">
+        <mat-card-title>{{experiment.name}}</mat-card-title>
+        <mat-card-content>{{experiment.description}}</mat-card-content>
+        <p class="card-text">From: {{experiment.startDate}}</p>
+        <p class="card-text">To: {{experiment.endDate}}</p>
     </div>
-  </div>
-
-  <br>
-  <button type="button" (click)="listExperiments()" class="btn btn-lg btn-primary">Back</button>
-  &nbsp;
-  &nbsp;
-  <button type="button" (click)="updateExperiment(experiment.id)" class="btn btn-lg btn-primary">Edit</button>
-  &nbsp;
-  &nbsp;
-  <button type="button" (click)="viewExperimentsQuestionnaires()" class="btn btn-lg btn-primary">View Questionnaires</button>
-  &nbsp;
-  &nbsp;
-  <button type="button" (click)="deleteExperiment(experiment.id)" class="btn btn-lg btn-danger delete">Delete</button>
+  </mat-card>
 </div>
 
-<button type="button" (click)="runExperiment(experiment.id)" class="btn btn-lg btn-primary run-experiment" id="right-panel-link">Run Experiment</button>
+<br>
+
+<section>
+  <button mat-raised-button id="back-button" (click)="listExperiments()">Back</button>
+  <button mat-raised-button id="update-button" (click)="updateExperiment(experiment.id)">Edit</button>
+  <button mat-raised-button id="view-questionnaires-button" (click)="viewExperimentsQuestionnaires()">View Questionnaires</button>
+  <button mat-raised-button id="delete-button" (click)="deleteExperiment(experiment.id)" color="warn">Delete</button>
+</section>

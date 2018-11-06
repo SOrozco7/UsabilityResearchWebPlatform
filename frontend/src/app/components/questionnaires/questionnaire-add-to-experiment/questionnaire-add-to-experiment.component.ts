@@ -17,6 +17,8 @@ export class QuestionnaireAddToExperimentComponent implements OnInit {
 
   filteredQuestionnaires: Questionnaire[] = [];
   currentUserId: string;
+  experiment: Experiment;
+  id: number;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -27,16 +29,17 @@ export class QuestionnaireAddToExperimentComponent implements OnInit {
 
   ngOnInit() {
     this.currentUserId = this.auth.getUser().id;
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.getQuestionnairesAndFilter();
   }
 
   getQuestionnairesAndFilter() {
     // Get all questionnaires linked to current experiment.
-    this.crud.retrieve(this.crud.models.EXPERIMENT, parseInt(this.route.snapshot.paramMap.get('id'), 10))
+    this.crud.retrieve(this.crud.models.EXPERIMENT, this.id)
       .subscribe(
         (res: Experiment) => {
           console.log(res);
-          const experiment = res;
+          this.experiment = res;
           // Retrieves the questionnaires and filters those that fullfill both:
           // a) are public or belong to current user.
           // b) are not already linked to present experiment.
@@ -44,11 +47,12 @@ export class QuestionnaireAddToExperimentComponent implements OnInit {
             .subscribe(
             (responseQuestionnaires: Questionnaire[]) => {
               console.log(res);
-              const questionnaireIds = experiment.questionnaires.map(questionnaire => questionnaire.id);
+              const questionnaireIds = this.experiment.questionnaires.map(questionnaire => questionnaire.id);
               console.log('The questionnaire ids:');
               console.log(questionnaireIds);
-              responseQuestionnaires.filter(questionnaire =>
-                questionnaire.isPublic || questionnaire.user_id === this.currentUserId && !questionnaireIds.includes(questionnaire.id));
+              console.log(this.currentUserId);
+              responseQuestionnaires = responseQuestionnaires.filter(questionnaire =>
+                (questionnaire.isPublic || questionnaire.user_id === this.currentUserId) && !questionnaireIds.includes(questionnaire.id));
               this.filteredQuestionnaires = responseQuestionnaires;
             },
             (err: HttpErrorResponse) => {
@@ -60,6 +64,22 @@ export class QuestionnaireAddToExperimentComponent implements OnInit {
             this.errorHandler.handleError(err);
           }
         );
+  }
+
+  addQuestionnaireToExperiment(questionnaire: Questionnaire) {
+    // Adds the questionnaire to the experiment and then redirects to the experiment's questionnaires.
+    this.crud.addBelongs(this.crud.models.EXPERIMENT, this.crud.models.QUESTIONNAIRE, this.id,
+      {
+        questionnaire: questionnaire,
+        experiment: this.experiment
+      })
+      .subscribe(res => {
+        console.log('Successfully added.');
+        this.router.navigate(['experiments/' + this.id + '/questionnaires']);
+      },
+      (err: HttpErrorResponse) => {
+        this.errorHandler.handleError(err);
+      });
   }
 
 }

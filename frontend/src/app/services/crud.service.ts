@@ -97,4 +97,16 @@ export class CrudService {
       }
     );
   }
+
+  addBelongs(ownerModel: string, objectModel: string, ownerId: any, body: any) {
+    // Adds a model instance to another model.
+    // For example: adding a questionnaire to an experiment.
+    return this.http.post(
+      this.URL + '/' + ownerModel + '/' + ownerId + '/' + objectModel,
+      body,
+      {
+        headers: this.headers
+      }
+    );
+  }
 }
