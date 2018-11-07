@@ -1,0 +1,17 @@
+form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.long {
+  height: 200px;
+}
+
+.mat-radio-button {
+  margin: 0 5px;
+}

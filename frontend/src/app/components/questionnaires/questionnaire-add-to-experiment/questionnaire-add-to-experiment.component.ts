@@ -82,4 +82,7 @@ export class QuestionnaireAddToExperimentComponent implements OnInit {
       });
   }
 
+  navigateToCreateQuestionnaire() {
+    this.router.navigate(['questionnaires/create']);
+  }
 }

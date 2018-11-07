@@ -40,6 +40,7 @@ module.exports = (app) => {
 
   // Routes for the QUESTIONNAIREQUESTIONS table
   app.post('/api/questionnairequestions', questionnaireQuestionsController.create);
+  app.post('/api/questionnairequestions-bulk', questionnaireQuestionsController.bulkCreate);
   app.get('/api/questionnairequestions', questionnaireQuestionsController.list);
   app.get('/api/questionnairequestions/:id', questionnaireQuestionsController.retrieve);
   app.put('/api/questionnairequestions/:id', questionnaireQuestionsController.update);
