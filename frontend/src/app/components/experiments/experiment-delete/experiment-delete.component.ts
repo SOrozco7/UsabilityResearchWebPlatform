@@ -27,6 +27,7 @@ export class ExperimentDeleteComponent implements OnInit {
     .subscribe(
       (res: Response) => {
         this.errorHandler.showInformativeMessage('Successfully deleted experiment.');
+        this.router.navigate(['/experiments']);
       },
       (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
