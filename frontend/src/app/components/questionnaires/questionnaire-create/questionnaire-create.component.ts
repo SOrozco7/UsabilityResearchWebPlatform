@@ -43,7 +43,7 @@ export class QuestionnaireCreateComponent implements OnInit {
   }
 
   getDescriptionErrorMessage() {
-    if (this.questionnaireForm.get('name').hasError('required')) {
+    if (this.questionnaireForm.get('description').hasError('required')) {
       return 'You must enter a description';
     }
     return '';
