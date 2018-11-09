@@ -94,7 +94,7 @@ module.exports = {
   update(req, res) {
     return Participant
       .findById(req.params.id, {
-        attributes: ['id', 'experiment_id'],
+        attributes: ['id', 'experiment_id', 'name', 'age', 'gender', 'ethnicGroup', 'educationLevel'],
       })
       .then((participant) => {
         if (!participant) {
@@ -105,7 +105,11 @@ module.exports = {
         }
         return participant
           .update({
-            experiment_id: req.body.experiment_id || participant.experiment_id,
+            name: req.body.name || participant.name,
+            age: req.body.age || participant.age,
+            gender: req.body.gender || participant.gender,
+            ethnicGroup: req.body.ethnicGroup || participant.ethnicGroup,
+            educationLevel: req.body.educationLevel || participant.educationLevel,
           })
           .then(updatedParticipant => res.status(200).send(updatedParticipant))
           .catch(error => res.status(400).send(error));
