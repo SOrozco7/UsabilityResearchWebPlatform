@@ -127,7 +127,7 @@ module.exports = {
 
     return Participant
       .findById(req.params.id, {
-        attributes: ['id', 'experiment_id'],
+        attributes: ['id', 'experiment_id', 'name', 'age', 'gender', 'ethnicGroup', 'educationLevel'],
       })
       .then((participant) => {
         if (!participant) {
