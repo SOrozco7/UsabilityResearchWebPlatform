@@ -1,4 +1,4 @@
-const { expect } = require('chai').expect;
+const { expect } = require('chai');
 const fetch = require('node-fetch');
 
 const SERVER = 'http://localhost:8000/api';
