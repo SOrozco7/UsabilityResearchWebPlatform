@@ -12,12 +12,22 @@ describe('CreateParticipant', () => {
       },
       body: JSON.stringify({
         experiment_id: '2',
+        name: 'Ali',
+        age: '22',
+        gender: 'Male',
+        ethnicGroup: 'Arabic',
+        educationLevel: 'PhD',
       }),
     });
 
     const createParticipantResponseJson = await createParticipantResponse.json();
     const newParticipantId = createParticipantResponseJson.id;
     expect(createParticipantResponseJson.experiment_id).to.be.equal(2);
+    expect(createParticipantResponseJson.name).to.be.equal('Ali');
+    expect(createParticipantResponseJson.age).to.be.equal(22);
+    expect(createParticipantResponseJson.gender).to.be.equal('Male');
+    expect(createParticipantResponseJson.ethnicGroup).to.be.equal('Arabic');
+    expect(createParticipantResponseJson.educationLevel).to.be.equal('PhD');
 
     const deleteParticipantResponse = await fetch(`${SERVER}/participants/${newParticipantId}`, {
       method: 'DELETE',

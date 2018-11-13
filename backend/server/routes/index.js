@@ -1,5 +1,6 @@
 const usersController = require('../controllers').users;
 const experimentsController = require('../controllers').experiments;
+const questionsController = require('../controllers').questions;
 const authenticationController = require('../controllers').authentication;
 const questionnairesController = require('../controllers').questionnaires;
 const questionnaireQuestionsController = require('../controllers').questionnaireQuestions;
@@ -31,6 +32,13 @@ module.exports = (app) => {
   app.delete('/api/experiments/:id', experimentsController.destroy);
   app.post('/api/experiments/:id/questionnaires', experimentsController.addQuestionnaire);
 
+  // Routes for the EXPERIMENTS table
+  app.post('/api/questions', questionsController.create);
+  app.get('/api/questions', questionsController.list);
+  app.get('/api/questions/:id', questionsController.retrieve);
+  app.put('/api/questions/:id', questionsController.update);
+  app.delete('/api/questions/:id', questionsController.destroy);
+
   // Routes for the QUESTIONNAIRES table
   app.post('/api/questionnaires', questionnairesController.create);
   app.get('/api/questionnaires', questionnairesController.list);
@@ -40,6 +48,7 @@ module.exports = (app) => {
 
   // Routes for the QUESTIONNAIREQUESTIONS table
   app.post('/api/questionnairequestions', questionnaireQuestionsController.create);
+  app.post('/api/questionnairequestions-bulk', questionnaireQuestionsController.bulkCreate);
   app.get('/api/questionnairequestions', questionnaireQuestionsController.list);
   app.get('/api/questionnairequestions/:id', questionnaireQuestionsController.retrieve);
   app.put('/api/questionnairequestions/:id', questionnaireQuestionsController.update);

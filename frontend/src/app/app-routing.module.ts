@@ -14,6 +14,7 @@ import { ExperimentRetrieveComponent } from './components/experiments/experiment
 import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
 import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
 import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
+import { QuestionnaireCreateComponent } from './components/questionnaires/questionnaire-create/questionnaire-create.component';
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';  // tslint:disable-line:max-line-length
 import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component';  // tslint:disable-line:max-line-length
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
@@ -75,6 +76,11 @@ const routes: Routes = [
   {
     path: 'experiments/:id/questionnaires',
     component: QuestionnaireListForExperimentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'questionnaires/create',
+    component: QuestionnaireCreateComponent,
     canActivate: [AuthGuard]
   },
   {
