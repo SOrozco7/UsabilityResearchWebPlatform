@@ -54,7 +54,7 @@ export class ExperimentRunComponent implements OnInit {
         this.experimentQuestions = res.questions;
 
         if(this.experimentQuestions != null){
-
+          
           this.questionCount = this.experimentQuestions.length;
         }
 
