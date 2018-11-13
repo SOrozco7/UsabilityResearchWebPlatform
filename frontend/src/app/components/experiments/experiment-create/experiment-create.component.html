@@ -1,0 +1,60 @@
+<div class="col-sm-6 left-element">
+  <div class="card text-white bg-dark mb-3">
+    <form (submit)="createExperiment()">
+      <div class="card-body">
+        <div class="form-group">
+          <input type="text" class="form-control input-underline input-lg" name="experimentName" [(ngModel)]="experiment.name"
+            placeholder="Experiment Name">
+          <br>
+          <textarea class="form-control" rows="3" name="experimentDescription" [(ngModel)]="experiment.description"
+            placeholder="Experiment Description"></textarea>
+        </div>
+        <p>From:</p>
+        <input class="form-control" type="date" id="endDate" name="startDate" [(ngModel)]="experiment.startDate">
+        <br>
+        <p>To:</p>
+        <input class="form-control" type="date" id="endDate" name="endDate" [(ngModel)]="experiment.endDate"><br>
+        <p>Body Parts used:</p>
+        <input type="checkbox" value="Head" name = "bodyPart[]"  >Head<br>
+        <input type="checkbox" value="Neck" name = "bodyPart[]" >Neck<br>
+        <input type="checkbox" value="SpineShoulder" name = "bodyPart[]" > Spine Shoulder<br>
+        <input type="checkbox" value="ShoulderLeft" name = "bodyPart[]" > Left Shoulder<br>
+        <input type="checkbox" value="ShoulderRight" name = "bodyPart[]"> Right Shoulder<br>
+        <input type="checkbox" value="ElbowLeft" name = "bodyPart[]" > Left Elbow<br>
+        <input type="checkbox" value="ElbowRight" name = "bodyPart[]" > Right Elbow<br>
+        <input type="checkbox" value="WristLeft" name = "bodyPart[]" > Left Wrist<br>
+        <input type="checkbox" value="WristRight" name = "bodyPart[]" > Right Wrist<br>
+        <input type="checkbox" value="ThumbLeft" name = "bodyPart[]" >Left Thumb<br>
+        <input type="checkbox" value="ThumbRight" name = "bodyPart[]" >Right Thumb<br>
+        <input type="checkbox" value="HandLeft" name = "bodyPart[]" > Left Hand<br>
+        
+        <input type="checkbox" value="HandRight" name = "bodyPart[]"> Right Hand <br>
+        <input type="checkbox" value="HandTipLeft" name = "bodyPart[]"> HandTipLeft <br>
+        <input type="checkbox" value="HandTipRight" name = "bodyPart[]"> HandTipRight <br>
+        <input type="checkbox" value="SpineMid" name = "bodyPart[]"> Mid Spine <br>
+        <input type="checkbox" value="SpineBase" name = "bodyPart[]"> Spine Base <br>
+        <input type="checkbox" value="HipLeft" name = "bodyPart[]"> Left Hip <br>
+        <input type="checkbox" value="HipRight" name = "bodyPart[]"> Right Hip <br>
+        <input type="checkbox" value="KneeLeft" name = "bodyPart[]"> Left Knee <br>
+        <input type="checkbox" value="KneeRight" name = "bodyPart[]"> Right Knee <br>
+        <input type="checkbox" value="AnkleLeft" name = "bodyPart[]"> Left Ankle <br>
+        <input type="checkbox" value="AnkleRight" name = "bodyPart[]"> Right Ankle <br>
+        <input type="checkbox" value="FootLeft" name = "bodyPart[]"> Left Foot <br>
+        <input type="checkbox" value="FootRight" name="bodyPart[]"> Right Foot <br>
+
+
+      </div>
+      <br>
+      <button type="button" (click)="listExperiments()" class="btn btn-lg btn-danger">Back</button>
+      &nbsp;
+      &nbsp;
+      <button type="submit" class="btn btn-success pull-right">Create experiment</button>
+      &nbsp;
+      <p></p>
+    </form>
+  </div>
+</div>
+
+<div class = "right-element">
+    <img src="assets/images/bodyParts.png" alt="nacho">
+</div>

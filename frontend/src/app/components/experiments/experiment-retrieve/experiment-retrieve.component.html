@@ -1,0 +1,20 @@
+<div class="row align-items-center justify-content-center">
+  <mat-card class="experiment-card text-white bg-dark">
+    <div class="card-header">{{experiment.user_id}}</div>
+      <div class="card-body">
+        <mat-card-title>{{experiment.name}}</mat-card-title>
+        <mat-card-content>{{experiment.description}}</mat-card-content>
+        <p class="card-text">From: {{experiment.startDate}}</p>
+        <p class="card-text">To: {{experiment.endDate}}</p>
+    </div>
+  </mat-card>
+</div>
+
+<br>
+
+<section>
+  <button mat-raised-button id="back-button" (click)="listExperiments()">Back</button>
+  <button mat-raised-button id="update-button" (click)="updateExperiment(experiment.id)">Edit</button>
+  <button mat-raised-button id="view-questionnaires-button" (click)="viewExperimentsQuestionnaires()">View Questionnaires</button>
+  <button mat-raised-button id="delete-button" (click)="deleteExperiment(experiment.id)" color="warn">Delete</button>
+</section>
