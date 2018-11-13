@@ -22,7 +22,7 @@ export class ExperimentUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.experiment = new Experiment(null, null, null, null, null, null, null, null);
+    this.experiment = new Experiment(null, null, null, null, null, null, 0, 0, null, null);
     this.experiment.user_id = '';
 
     this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);

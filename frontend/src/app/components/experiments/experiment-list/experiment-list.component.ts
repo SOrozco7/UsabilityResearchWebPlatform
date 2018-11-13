@@ -25,22 +25,6 @@ export class ExperimentListComponent implements OnInit {
   }
 
   /**
-   * Method that retrieves the whole list of experiments.
-   */
-  getAllExperiments() {
-    this.crud.list(this.crud.models.EXPERIMENT)
-      .subscribe(
-        (res: Experiment[]) => {
-          console.log(res);
-          this.experiments = res;
-        },
-        (err: HttpErrorResponse) => {
-          this.errorHandler.handleError(err);
-        }
-      );
-  }
-
-  /**
    * Method that retrieves the user who currently is logged in. The response includes
    * the experiments that she/he owns. The experiments are then extracted from the
    * resulting JSON response to be displayed.
@@ -53,11 +37,49 @@ export class ExperimentListComponent implements OnInit {
         (res: User) => {
           console.log(res.experiments);
           this.experiments = res.experiments;
+          this.setQuestionsCounts();
+          this.setParticipantsCounts();
         },
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);
         }
       );
+  }
+
+  /**
+   * Method that sets the count of questions of each of the user's experiments.
+   */
+  setQuestionsCounts() {
+
+    for (let currExperiment of this.experiments) {
+
+      if(currExperiment.questions != null){
+
+        currExperiment.questionsCount = currExperiment.questions.length;
+      }
+      else{
+
+        currExperiment.questionsCount = 0;
+      }
+    }
+  }
+
+  /**
+   * Method that sets the count of participants of each of the user's experiments.
+   */
+  setParticipantsCounts() {
+
+    for (let currExperiment of this.experiments) {
+
+      if(currExperiment.participants != null){
+
+        currExperiment.participantsCount = currExperiment.participants.length;
+      }
+      else{
+
+        currExperiment.participantsCount = 0;
+      }
+    }
   }
 
   /**
