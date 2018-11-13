@@ -51,7 +51,7 @@ export class ExperimentRunComponent implements OnInit {
         console.log(res);
         
         // Assign the array of questions
-        // this.experimentQuestions = res.questions;
+        this.experimentQuestions = res.questions;
 
         if(this.experimentQuestions != null){
 
