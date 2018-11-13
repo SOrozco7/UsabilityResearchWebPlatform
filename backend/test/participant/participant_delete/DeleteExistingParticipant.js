@@ -3,8 +3,8 @@ const fetch = require('node-fetch');
 
 const SERVER = 'http://localhost:8000/api';
 
-describe('CreateParticipant', () => {
-  it('POST /participants/ must create a participant.', async () => {
+describe('DeleteExistingParticipant', () => {
+  it('DELETE /participants/:id must delete a participant.', async () => {
     const createParticipantResponse = await fetch(`${SERVER}/participants/`, {
       method: 'POST',
       headers: {
@@ -19,7 +19,6 @@ describe('CreateParticipant', () => {
         educationLevel: 'PhD',
       }),
     });
-
     const createParticipantResponseJson = await createParticipantResponse.json();
     const newParticipantId = createParticipantResponseJson.id;
     expect(createParticipantResponseJson.experiment_id).to.be.equal(2);
@@ -28,6 +27,8 @@ describe('CreateParticipant', () => {
     expect(createParticipantResponseJson.gender).to.be.equal('Male');
     expect(createParticipantResponseJson.ethnicGroup).to.be.equal('Arabic');
     expect(createParticipantResponseJson.educationLevel).to.be.equal('PhD');
+
+    // console.log("The participant with id " + newExperimentId + " was successfully created.");
 
     const deleteParticipantResponse = await fetch(`${SERVER}/participants/${newParticipantId}`, {
       method: 'DELETE',
@@ -38,5 +39,7 @@ describe('CreateParticipant', () => {
 
     const deleteParticipantResponseJson = await deleteParticipantResponse.json();
     expect(deleteParticipantResponseJson.status).to.be.equal(200);
+
+    // console.log("The participant with id " + newExperimentId + " was successfully deleted.");
   });
 });

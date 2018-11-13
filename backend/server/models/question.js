@@ -1,39 +1,43 @@
+
 module.exports = (sequelize, DataTypes) => {
-  const Participant = sequelize.define('Participant', {
+  const Question = sequelize.define('Question', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    name: {
+    text: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-    age: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
-    gender: {
+    initialImage: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-    ethnicGroup: {
+    finalImage: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-    educationLevel: {
+    initialSound: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
+    finalSound: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
   }, {});
 
-  Participant.associate = (models) => {
-    Participant.belongsTo(models.Experiment, {
+  Question.associate = (models) => {
+    Question.belongsTo(models.Experiment, {
+
       foreignKey: 'experiment_id',
       as: 'experiment',
       onDelete: 'CASCADE',
     });
+    Question.belongsToMany(models.Questionnaire, { through: 'QuestionQuestionnaire' });
   };
-  return Participant;
+
+  return Question;
 };
