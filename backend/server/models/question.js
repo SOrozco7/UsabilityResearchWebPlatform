@@ -28,9 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
   }, {});
-
   Question.associate = (models) => {
-
     Question.belongsToMany(models.Questionnaire, { through: 'QuestionQuestionnaire' });
   };
 

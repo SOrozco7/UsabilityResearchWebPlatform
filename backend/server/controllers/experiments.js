@@ -1,4 +1,4 @@
-const { Experiment, Questionnaire, Question } = require('../models');
+const { Experiment, Questionnaire } = require('../models');
 
 module.exports = {
   create(req, res) {
@@ -60,8 +60,8 @@ module.exports = {
   list(req, res) {
     return Experiment
       .findAll({
-        include: [{ 
-          all: true
+        include: [{
+          all: true,
         }],
       })
       .then(experiments => res.status(200).send(experiments))
@@ -78,9 +78,10 @@ module.exports = {
 
     return Experiment
       .findById(req.params.id, {
-        include: [{ 
-            all: true
-          }],
+        include:
+        [{
+          all: true,
+        }],
       })
       .then((experiment) => {
         if (!experiment) {
