@@ -15,8 +15,6 @@ import { BrowserModule } from '@angular/platform-browser';
   styleUrls: ['./experiment-run.component.css']
 })
 export class ExperimentRunComponent implements OnInit {
-
-
   
   experimentQuestions: Question[];
   currQuestionIndex: number;

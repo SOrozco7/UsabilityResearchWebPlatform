@@ -36,6 +36,7 @@ describe('ExperimentRunComponent', () => {
   }));
 
   beforeEach(() => {
+    
     fixture = TestBed.createComponent(ExperimentRunComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
