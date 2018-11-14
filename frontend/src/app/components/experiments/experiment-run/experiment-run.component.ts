@@ -39,7 +39,7 @@ export class ExperimentRunComponent implements OnInit {
     this.currQuestionIndex = 0;
 
     // Set the default value
-    this.questionCount = 1;
+    this.questionCount = 0;
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
     // Get the list of the experiment's questions by retrieving the experiment
