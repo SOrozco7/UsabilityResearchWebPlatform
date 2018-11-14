@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 declare var require: any;
 
-const recordRTCDependency = require('recordrtc/RecordRTC.min'); // tslint:disable-line:max-line-length
+const recordRTCDependency = require('recordrtc/RecordRTC.min');
 
 @Component({
   selector: 'app-record-rtc',
@@ -17,7 +17,6 @@ export class RecordRtcComponent implements AfterViewInit {
   @ViewChild('video') video;
 
   constructor() {
-    // Do stuff
 
     // Start the recording automatically.
     this.startRecording();

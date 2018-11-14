@@ -5,12 +5,8 @@
   <p>{{currentQuestion?.text}}</p>
 
   <img src="{{currentQuestion?.initialImage}}" alt="Initial image for the question">
-  <!-- <img src="https://d3nevzfk7ii3be.cloudfront.net/igi/CQerEFCURNsA2Iwj" alt="Initial image for the question" width="35%"
-    height="35%"> -->
 
   <img src="{{currentQuestion?.finalImage}}" alt="Final image for the question">
-  <!-- <img src="https://www.lifewire.com/thmb/jBocYI2vxqn3ntNUsYx_rCb8OzU=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/HDTV_185310724-56a4b4525f9b58b7d0d86554.jpg"
-    alt="Final image for the question" width="35%" height="35%"> -->
 
   <!-- Modify the button: either 'Submit response' or 'Finish experiment' -->
   <ng-container *ngIf="currQuestionIndex < questionCount - 1; else second">
