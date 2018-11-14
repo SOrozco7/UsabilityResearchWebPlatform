@@ -1,0 +1,16 @@
+.video {
+  box-shadow: 1px 6px 10px 2px rgba(35, 35, 35, 0.62);
+  height: 300px;
+  max-height: 800px;
+  width: 450px;
+  position: absolute;
+  bottom: 5%;
+  right: 35%;
+}
+
+.row {
+  position: absolute;
+  bottom: 5%;
+  right: 35%;
+  /* margin-bottom: 20px; */
+}

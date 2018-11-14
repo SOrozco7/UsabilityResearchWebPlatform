@@ -22,7 +22,7 @@ export class ExperimentRetrieveComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.experiment = new Experiment(null, null, null, null, null, null, null, null);
+    this.experiment = new Experiment(null, null, null, null, null, null, 0, 0, null, null);
     this.experiment.user_id = '';
 
     this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
@@ -55,5 +55,10 @@ export class ExperimentRetrieveComponent implements OnInit {
 
   viewExperimentsQuestionnaires() {
     this.router.navigate(['experiments/' + this.id + '/questionnaires']);
+  }
+
+  runExperiment(runID: number) {
+
+    this.router.navigate(['experiments/run/' + runID]);
   }
 }

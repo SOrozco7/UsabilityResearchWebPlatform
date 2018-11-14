@@ -27,7 +27,7 @@ export class ExperimentCreateComponent implements OnInit {
     private auth: AuthService) { }
 
   ngOnInit() {
-    this.experiment = new Experiment(null, null, null, null, null, null, null, null);
+    this.experiment = new Experiment(null, null, null, null, null, null, 0, 0, null, null);
     this.experiment.user_id = this.auth.getUser().id;
     this.bodyPart = new BodyPart(null, null, null);
   }

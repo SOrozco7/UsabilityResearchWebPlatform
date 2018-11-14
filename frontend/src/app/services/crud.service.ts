@@ -11,6 +11,7 @@ export class CrudService {
 
     USER: 'users',
     EXPERIMENT: 'experiments',
+    QUESTION: 'questions',
     QUESTIONNAIRE: 'questionnaires',
     BODYPART : 'bodyPart',
     PARTICIPANT: 'participants',
