@@ -6,6 +6,6 @@ export class Question {
         public initialImage: String,
         public finalImage: String,
         public initialSound: String,
-        public finalSound: String 
-    ){ }
+        public finalSound: String
+    ) { }
 }

@@ -7,7 +7,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { RecordRtcComponent } from '../../record-rtc/record-rtc.component';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,7 +36,7 @@ describe('ExperimentRunComponent', () => {
   }));
 
   beforeEach(() => {
-    
+
     fixture = TestBed.createComponent(ExperimentRunComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

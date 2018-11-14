@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { RecordRtcComponent } from '../../record-rtc/record-rtc.component';
 import { Question } from '../../../models/question';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
@@ -15,7 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
   styleUrls: ['./experiment-run.component.css']
 })
 export class ExperimentRunComponent implements OnInit {
-  
+
   experimentQuestions: Question[];
   currQuestionIndex: number;
   currentQuestion: Question;
@@ -47,12 +47,12 @@ export class ExperimentRunComponent implements OnInit {
     .subscribe(
       (res: Experiment) => {
         console.log(res);
-        
+
         // Assign the array of questions
         this.experimentQuestions = res.questions;
 
-        if(this.experimentQuestions != null){
-          
+        if (this.experimentQuestions != null) {
+
           this.questionCount = this.experimentQuestions.length;
         }
 
@@ -66,31 +66,30 @@ export class ExperimentRunComponent implements OnInit {
 
   /**
    * Method to assign the current question based on the
-   * array of the experiment's question and the current 
+   * array of the experiment's question and the current
    * question's index.
    */
-  assignCurrentlyDisplayedQuestion(){
+  assignCurrentlyDisplayedQuestion() {
 
-    if(this.experimentQuestions != null){
-      
+    if (this.experimentQuestions != null) {
+
       this.currentQuestion = this.experimentQuestions[this.currQuestionIndex];
     }
   }
 
   /**
    * Method to change the current question based on the
-   * array of the experiment's question and the current 
-   * question's index. 
+   * array of the experiment's question and the current
+   * question's index.
    */
-  changeCurrentlyDisplayedQuestion(){
+  changeCurrentlyDisplayedQuestion() {
 
     // If there is at least one more question left
-    if(this.currQuestionIndex < this.questionCount - 1){
+    if (this.currQuestionIndex < this.questionCount - 1) {
 
       this.currQuestionIndex++;
       this.assignCurrentlyDisplayedQuestion();
-    }
-    else{
+    } else {
 
       // Just finish the experiment
       this.finishExperiment();
@@ -98,10 +97,10 @@ export class ExperimentRunComponent implements OnInit {
   }
 
   /**
-   * Method to finish the experiment and return to 
+   * Method to finish the experiment and return to
    * the ExperiementRetrieveComponent.
    */
-  finishExperiment(){
+  finishExperiment() {
 
     this.retrieveExperiment(this.experimentId);
   }

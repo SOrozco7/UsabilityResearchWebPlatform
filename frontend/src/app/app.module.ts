@@ -26,7 +26,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';  // tslint:disable-line:max-line-length
 import { SignupComponent } from './components/signup/signup.component';
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
-import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component';
+import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component'; // tslint:disable-line:max-line-length
 import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
 import { RecordRtcComponent } from './components/record-rtc/record-rtc.component';  // tslint:disable-line:max-line-length
 

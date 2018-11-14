@@ -51,13 +51,12 @@ export class ExperimentListComponent implements OnInit {
    */
   setQuestionsCounts() {
 
-    for (let currExperiment of this.experiments) {
+    for (const currExperiment of this.experiments) {
 
-      if(currExperiment.questions != null){
+      if (currExperiment.questions != null) {
 
         currExperiment.questionsCount = currExperiment.questions.length;
-      }
-      else{
+      } else {
 
         currExperiment.questionsCount = 0;
       }
@@ -69,13 +68,12 @@ export class ExperimentListComponent implements OnInit {
    */
   setParticipantsCounts() {
 
-    for (let currExperiment of this.experiments) {
+    for (const currExperiment of this.experiments) {
 
-      if(currExperiment.participants != null){
+      if (currExperiment.participants != null) {
 
         currExperiment.participantsCount = currExperiment.participants.length;
-      }
-      else{
+      } else {
 
         currExperiment.participantsCount = 0;
       }
