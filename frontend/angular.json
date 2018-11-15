@@ -26,7 +26,9 @@
               "src/styles.css",
               "src/styles/app.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "../node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
