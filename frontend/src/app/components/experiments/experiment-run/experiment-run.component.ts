@@ -102,6 +102,7 @@ export class ExperimentRunComponent implements OnInit {
     // If there is at least one more question left
     if (this.currQuestionIndex < this.questionCount - 1) {
 
+      this.child.stopRecording();
       this.currQuestionIndex++;
       this.assignCurrentlyDisplayedQuestion();
       this.child.startRecording();
