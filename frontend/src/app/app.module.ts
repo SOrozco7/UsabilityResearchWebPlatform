@@ -29,6 +29,7 @@ import { QuestionnaireFillComponent } from './components/questionnaires/question
 import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component'; // tslint:disable-line:max-line-length
 import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
 import { RecordRtcComponent } from './components/record-rtc/record-rtc.component';
+import { VideoUploadComponent } from './components/youtube/video-upload/video-upload.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { RecordRtcComponent } from './components/record-rtc/record-rtc.component
     QuestionnaireFillComponent,
     QuestionnaireAddToExperimentComponent,
     ExperimentRunComponent,
-    RecordRtcComponent
+    RecordRtcComponent,
+    VideoUploadComponent
   ],
   imports: [
     BrowserModule,

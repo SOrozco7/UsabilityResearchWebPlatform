@@ -8,6 +8,7 @@ import { RecordRtcComponent } from '../../record-rtc/record-rtc.component';
 import { Question } from '../../../models/question';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { VideoService } from '../../../services/video.service';
 
 @Component({
   selector: 'app-experiment-run',
@@ -21,7 +22,7 @@ export class ExperimentRunComponent implements OnInit {
   currentQuestion: Question;
   questionCount: number;
   // This array contains the videos of the participant's answers
-  experimentAnswers: Object[];
+  videosArr: Object[];
   experimentId: number;
 
   @ViewChild(RecordRtcComponent) child:RecordRtcComponent;
@@ -30,9 +31,12 @@ export class ExperimentRunComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private crud: CrudService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private videoService: VideoService) { }
 
   ngOnInit() {
+
+    this.videoService.currentVideosArray.subscribe(videosArr => this.videosArr = videosArr);
 
     this.experimentQuestions = null;
     this.currentQuestion = null;
@@ -58,7 +62,7 @@ export class ExperimentRunComponent implements OnInit {
           if (this.experimentQuestions != null) {
 
             this.questionCount = this.experimentQuestions.length;
-            this.experimentAnswers = [];
+            this.videosArr = [];
           }
 
           this.assignCurrentlyDisplayedQuestion();
@@ -69,14 +73,24 @@ export class ExperimentRunComponent implements OnInit {
       );
   }
 
+  /**
+   * Method to update the videos array across the ExperimentRunComponent, 
+   * the VideoService and the VideoUploadComponent.
+   */
+  updateVideosArray() {
+
+    this.videoService.changeVideosArray(this.videosArr);
+  }
+
   receiveVideo($event) {
 
-    console.log("1 this.experimentAnswers.length = " + this.experimentAnswers.length);
+    console.log("1 this.videosArr.length = " + this.videosArr.length);
 
-    this.experimentAnswers[this.currQuestionIndex] = $event;
+    this.videosArr[this.currQuestionIndex] = $event;
     console.log("Video received! -> ");
-    console.log(this.experimentAnswers[this.currQuestionIndex]);
-    console.log("2 this.experimentAnswers.length = " + this.experimentAnswers.length);
+    console.log(this.videosArr[this.currQuestionIndex]);
+    this.updateVideosArray();
+    console.log("2 this.videosArr.length = " + this.videosArr.length);
   }
 
   /**
@@ -99,11 +113,15 @@ export class ExperimentRunComponent implements OnInit {
    */
   changeCurrentlyDisplayedQuestion() {
 
-    // If there is at least one more question left
-    if (this.currQuestionIndex < this.questionCount - 1) {
+    this.child.stopRecording();
+    this.currQuestionIndex++;
 
-      this.child.stopRecording();
-      this.currQuestionIndex++;
+    console.log("this.questionCount = " + this.questionCount);
+    console.log("this.currQuestionIndex = " + this.currQuestionIndex);
+
+    // If there is at least one more question left
+    if (this.currQuestionIndex <= this.questionCount - 1) {
+
       this.assignCurrentlyDisplayedQuestion();
       this.child.startRecording();
     } else {
@@ -119,7 +137,8 @@ export class ExperimentRunComponent implements OnInit {
    */
   finishExperiment() {
 
-    this.retrieveExperiment(this.experimentId);
+    // this.retrieveExperiment(this.experimentId);
+    this.uploadVideos(this.experimentId, 1);
   }
 
   /**
@@ -128,5 +147,10 @@ export class ExperimentRunComponent implements OnInit {
    */
   retrieveExperiment(id: number) {
     this.router.navigate(['experiments/' + id]);
+  }
+
+  uploadVideos(experimentId, participantId){
+
+    this.router.navigate(['experiments/' + experimentId + '/participant/' + participantId + '/video/upload']);
   }
 }

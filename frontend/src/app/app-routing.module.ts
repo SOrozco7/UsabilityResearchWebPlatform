@@ -20,6 +20,7 @@ import { QuestionnaireAddToExperimentComponent } from './components/questionnair
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
+import { VideoUploadComponent } from './components/youtube/video-upload/video-upload.component';
 
 const routes: Routes = [
 
@@ -90,6 +91,11 @@ const routes: Routes = [
   {
     path: 'experiments/:id/addquestionnaire',
     component: QuestionnaireAddToExperimentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/participant/:participant_id/video/upload',
+    component: VideoUploadComponent,
     canActivate: [AuthGuard]
   },
   // All other routes
