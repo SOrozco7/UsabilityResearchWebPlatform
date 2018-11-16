@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../../../services/video.service';
 import { ScriptService } from '../../../services/script.service';
-import * as $ from 'jquery';
+import * as videoUpload from '../../../../assets/js/upload_video';
 
 @Component({
   selector: 'app-video-upload',
