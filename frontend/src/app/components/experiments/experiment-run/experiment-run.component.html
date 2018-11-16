@@ -18,6 +18,6 @@
       experiment</button>
   </ng-template>
 
-  <app-record-rtc></app-record-rtc>
+  <app-record-rtc (videoEvent)="receiveVideo($event)"></app-record-rtc>
 
 </div>

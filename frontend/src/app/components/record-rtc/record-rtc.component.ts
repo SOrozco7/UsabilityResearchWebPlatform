@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
 
 declare var require: any;
 
@@ -12,7 +12,8 @@ const recordRTCDependency = require('recordrtc/RecordRTC.min');
 export class RecordRtcComponent implements AfterViewInit {
 
   private stream: MediaStream;
-  private recordRTC: any;
+  recordRTC: any;
+  @Output() videoEvent = new EventEmitter<any>();
 
   @ViewChild('video') video;
 
@@ -20,6 +21,14 @@ export class RecordRtcComponent implements AfterViewInit {
 
     // Start the recording automatically.
     this.startRecording();
+  }
+
+  sendVideo(){
+
+    console.log("Sending video!");
+    console.log(this.recordRTC);
+    // Emit the video to the parent component
+    this.videoEvent.emit(this.recordRTC);
   }
 
   ngAfterViewInit() {
@@ -84,6 +93,11 @@ export class RecordRtcComponent implements AfterViewInit {
     const stream = this.stream;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
+
+    console.log("Video stopped!!");
+
+    // Call the method that sends the video to the parent component
+    this.sendVideo();
   }
 
   download() {

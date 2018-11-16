@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Experiment } from '../../../models/experiment';
@@ -20,7 +20,11 @@ export class ExperimentRunComponent implements OnInit {
   currQuestionIndex: number;
   currentQuestion: Question;
   questionCount: number;
+  // This array contains the videos of the participant's answers
+  experimentAnswers: Object[];
   experimentId: number;
+
+  @ViewChild(RecordRtcComponent) child:RecordRtcComponent;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -44,24 +48,35 @@ export class ExperimentRunComponent implements OnInit {
 
     // Get the list of the experiment's questions by retrieving the experiment
     this.crud.retrieve(this.crud.models.EXPERIMENT, this.experimentId)
-    .subscribe(
-      (res: Experiment) => {
-        console.log(res);
+      .subscribe(
+        (res: Experiment) => {
+          console.log(res);
 
-        // Assign the array of questions
-        this.experimentQuestions = res.questions;
+          // Assign the array of questions
+          this.experimentQuestions = res.questions;
 
-        if (this.experimentQuestions != null) {
+          if (this.experimentQuestions != null) {
 
-          this.questionCount = this.experimentQuestions.length;
+            this.questionCount = this.experimentQuestions.length;
+            this.experimentAnswers = [];
+          }
+
+          this.assignCurrentlyDisplayedQuestion();
+        },
+        (err: HttpErrorResponse) => {
+          this.errorHandler.handleError(err);
         }
+      );
+  }
 
-        this.assignCurrentlyDisplayedQuestion();
-      },
-      (err: HttpErrorResponse) => {
-        this.errorHandler.handleError(err);
-      }
-    );
+  receiveVideo($event) {
+
+    console.log("1 this.experimentAnswers.length = " + this.experimentAnswers.length);
+
+    this.experimentAnswers[this.currQuestionIndex] = $event;
+    console.log("Video received! -> ");
+    console.log(this.experimentAnswers[this.currQuestionIndex]);
+    console.log("2 this.experimentAnswers.length = " + this.experimentAnswers.length);
   }
 
   /**
@@ -89,6 +104,7 @@ export class ExperimentRunComponent implements OnInit {
 
       this.currQuestionIndex++;
       this.assignCurrentlyDisplayedQuestion();
+      this.child.startRecording();
     } else {
 
       // Just finish the experiment
