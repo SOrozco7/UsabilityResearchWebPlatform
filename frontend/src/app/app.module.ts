@@ -14,6 +14,9 @@ import { MaterialModule } from './material.module';
 import { AuthService } from './services/auth.service';
 import { CrudService } from './services/crud.service';
 import { ErrorHandlerService } from './services/error-handler.service';
+import { ScriptService } from './services/script.service';
+
+// Components
 import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
 import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
 import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
@@ -60,7 +63,7 @@ import { VideoUploadComponent } from './components/youtube/video-upload/video-up
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, CrudService, ErrorHandlerService],
+  providers: [AuthService, CrudService, ErrorHandlerService, ScriptService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
