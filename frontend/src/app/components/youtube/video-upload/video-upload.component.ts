@@ -18,7 +18,7 @@ export class VideoUploadComponent implements OnInit {
 
     this.videoService.currentVideosArray.subscribe(videosArr => this.videosArr = videosArr);
 
-    this.scriptService.load('googleAjax', 'jsClient').then(data => {
+    this.scriptService.load('googleAjax', 'jsClient', 'uploadVideo', 'corsUpload').then(data => {
       console.log('script loaded ', data);
   }).catch(error => console.log(error));
 
