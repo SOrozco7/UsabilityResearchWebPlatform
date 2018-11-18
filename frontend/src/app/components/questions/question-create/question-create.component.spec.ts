@@ -10,7 +10,6 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-//import { MaterialModule } from '../../../material.module';
 import { BrowserModule } from '@angular/platform-browser';
 
 describe('QuestionCreateComponent', () => {

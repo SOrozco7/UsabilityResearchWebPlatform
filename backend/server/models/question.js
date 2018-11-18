@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     Question.belongsTo(models.Experiment, {
 
       foreignKey: 'experiment_id',
-      as: 'experiment',
+      as: 'experiments',
       onDelete: 'CASCADE',
     });
     Question.belongsToMany(models.Questionnaire, { through: 'QuestionQuestionnaire' });

@@ -19,6 +19,8 @@ import { QuestionnaireAddToExperimentComponent } from './components/questionnair
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { QuestionCreateComponent } from './components/questions/question-create/question-create.component';
+import { QuestionRetrieveComponent } from './components/questions/question-retrieve/question-retrieve.component';
+import { QuestionListComponent } from './components/questions/question-list/question-list.component';
 
 const routes: Routes = [
 
@@ -64,6 +66,16 @@ const routes: Routes = [
   {
     path: 'experiments/:id/questions/create',
     component: QuestionCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/questions/:question_id',
+    component: QuestionRetrieveComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:id/questions',
+    component: QuestionListComponent,
     canActivate: [AuthGuard]
   },
   {
