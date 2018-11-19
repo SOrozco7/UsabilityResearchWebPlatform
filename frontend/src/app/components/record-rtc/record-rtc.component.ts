@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
 
 declare var require: any;
-
-const recordRTCDependency = require('recordrtc/RecordRTC.min');
+const recordRTCVideo = require('recordrtc/RecordRTC.min');
 
 @Component({
   selector: 'app-record-rtc',
@@ -13,7 +12,7 @@ export class RecordRtcComponent implements AfterViewInit {
 
   private stream: MediaStream;
   recordRTC: any;
-  @Output() videoEvent = new EventEmitter<any>();
+  @Output() videoEvent = new EventEmitter<Blob>();
 
   @ViewChild('video') video;
 
@@ -25,10 +24,10 @@ export class RecordRtcComponent implements AfterViewInit {
 
   sendVideo(){
 
-    console.log("Sending video!");
-    console.log(this.recordRTC);
+    // console.log("Sending video!");
+    // console.log("blob at 'sendVideo()' = " + this.recordRTC.getBlob());
     // Emit the video to the parent component
-    this.videoEvent.emit(this.recordRTC);
+    // this.videoEvent.emit(this.recordRTC.getBlob());
   }
 
   ngAfterViewInit() {
@@ -55,7 +54,7 @@ export class RecordRtcComponent implements AfterViewInit {
       bitsPerSecond: 1024000 // if this line is provided, skip above two
     };
     this.stream = stream;
-    this.recordRTC = recordRTCDependency(stream, options);
+    this.recordRTC = recordRTCVideo(stream, options);
     this.recordRTC.startRecording();
     const video: HTMLVideoElement = this.video.nativeElement;
     video.src = window.URL.createObjectURL(stream);
@@ -70,6 +69,7 @@ export class RecordRtcComponent implements AfterViewInit {
     const video: HTMLVideoElement = this.video.nativeElement;
     const recordRTC = this.recordRTC;
     video.src = audioVideoWebMURL;
+    console.log("123 video.src = " + video.src);
     this.toggleControls();
     const recordedBlob = recordRTC.getBlob();
     recordRTC.getDataURL(function (dataURL) { });
@@ -88,12 +88,13 @@ export class RecordRtcComponent implements AfterViewInit {
   }
 
   stopRecording() {
+
     const recordRTC = this.recordRTC;
     recordRTC.stopRecording(this.processVideo.bind(this));
     const stream = this.stream;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
-
+    
     console.log("Video stopped!!");
 
     // Call the method that sends the video to the parent component
@@ -104,7 +105,12 @@ export class RecordRtcComponent implements AfterViewInit {
 
     if (this.recordRTC != null) {
 
-      this.recordRTC.save('video.webm');
+      console.log("this.recordRTC.getBlob()");
+      console.log("blob at 'download()' = ");
+      console.log(this.recordRTC.getBlob());
+      console.log("Sending video at 'download()'!");
+      this.videoEvent.emit(this.recordRTC.getBlob());
+      // this.recordRTC.save('video.webm');
     }
   }
 }

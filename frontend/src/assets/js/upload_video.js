@@ -18,6 +18,8 @@ var signinCallback = function (result) {
   if (result.access_token) {
     var uploadVideo = new UploadVideo();
     uploadVideo.ready(result.access_token);
+    localStorage.setItem("access_token",result.access_token);
+    console.log("Access token: " + result.access_token);
   }
 };
 
@@ -87,6 +89,12 @@ UploadVideo.prototype.ready = function (accessToken) {
   $('#button').on("click", this.handleUploadClicked.bind(this));
 };
 
+function uploadToYouTube(file){
+
+  console.log("UPLOADING NOW!!!!!!!!!!!");
+  UploadVideo.prototype.uploadFile(file);
+};
+
 /**
  * Uploads a video file to YouTube.
  *
@@ -108,7 +116,8 @@ UploadVideo.prototype.uploadFile = function (file) {
   var uploader = new MediaUploader({
     baseUrl: 'https://www.googleapis.com/upload/youtube/v3/videos',
     file: file,
-    token: this.accessToken,
+    // token: this.accessToken,
+    token: localStorage.getItem("access_token"),
     metadata: metadata,
     params: {
       part: Object.keys(metadata).join(',')

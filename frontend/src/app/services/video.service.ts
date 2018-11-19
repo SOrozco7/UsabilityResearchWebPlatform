@@ -6,12 +6,12 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 export class VideoService {
 
-  private videosSource =  new BehaviorSubject<Object[]>(null);
+  private videosSource =  new BehaviorSubject<Blob[]>(null);
   currentVideosArray = this.videosSource.asObservable();
 
   constructor() { }
 
-  changeVideosArray(videosArr: Object[]){
+  changeVideosArray(videosArr: Blob[]){
 
     this.videosSource.next(videosArr);
   }

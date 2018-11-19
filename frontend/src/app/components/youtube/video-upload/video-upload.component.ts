@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../../../services/video.service';
 import { ScriptService } from '../../../services/script.service';
-import * as videoUpload from '../../../../assets/js/upload_video';
+import '../../../../assets/js/upload_video.js';
+
+declare var uploadToYouTube: any;
 
 @Component({
   selector: 'app-video-upload',
@@ -10,7 +12,7 @@ import * as videoUpload from '../../../../assets/js/upload_video';
 })
 export class VideoUploadComponent implements OnInit {
 
-  videosArr: Object[];
+  videosArr: Blob[];
 
   constructor(private videoService: VideoService, private scriptService: ScriptService) { }
 
@@ -22,8 +24,19 @@ export class VideoUploadComponent implements OnInit {
       console.log('script loaded ', data);
   }).catch(error => console.log(error));
 
-    if(this.videosArr != null)
+    if(this.videosArr != null){
+
       console.log("From VideoUploadComponent -> videosArr.length = " + this.videosArr.length);
+      console.log("From VideoUploadComponent -> console.log(Object.values(this.videosArr[0])) = " + console.log(Object.values(this.videosArr[0])));
+    }
+  }
+
+  callYouTubeUpload(){
+
+    if(this.videosArr != null){
+
+      new uploadToYouTube(this.videosArr[0]);
+    }
   }
 
 }

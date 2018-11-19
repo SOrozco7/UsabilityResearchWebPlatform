@@ -22,7 +22,7 @@ export class ExperimentRunComponent implements OnInit {
   currentQuestion: Question;
   questionCount: number;
   // This array contains the videos of the participant's answers
-  videosArr: Object[];
+  videosArr: Blob[];
   experimentId: number;
 
   @ViewChild(RecordRtcComponent) child:RecordRtcComponent;
@@ -85,7 +85,7 @@ export class ExperimentRunComponent implements OnInit {
   receiveVideo($event) {
 
     console.log("1 this.videosArr.length = " + this.videosArr.length);
-
+    
     this.videosArr[this.currQuestionIndex] = $event;
     console.log("Video received! -> ");
     console.log(this.videosArr[this.currQuestionIndex]);
