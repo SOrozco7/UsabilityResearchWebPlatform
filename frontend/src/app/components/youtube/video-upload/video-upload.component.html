@@ -12,28 +12,30 @@
     <span id="channel-name"></span>
   </div>
 
-  <div>
+  <!-- <div>
     <label for="title">Title:</label>
     <input id="title" type="text" value="Default Title">
   </div>
   <div>
     <label for="description">Description:</label>
     <textarea id="description">Default description</textarea>
-  </div>
+  </div> -->
   <div>
-    <label for="privacy-status">Privacy Status:</label>
-    <select id="privacy-status">
-      <option>public</option>
-      <option>unlisted</option>
-      <option>private</option>
-    </select>
+    <label for="privacy-status">Privacy Status: private</label>
+    <!-- <select id="privacy-status"> -->
+    <!-- <option>public</option> -->
+    <!-- <option>unlisted</option> -->
+    <!-- <option>private</option> -->
+    <!-- </select> -->
   </div>
 
-  <button (click)="callYouTubeUpload()">Real upload button!!</button>
+  <ng-container *ngIf="videosArr">
+    <button (click)="callYouTubeUpload()">Upload {{videosArr.length}} experiment responses to YouTube</button>
+  </ng-container>
 
   <div>
-    <input input type="file" id="file" class="button" accept="video/*">
-    <button id="button">Upload Video</button>
+    <!-- <input input type="file" id="file" class="button" accept="video/*"> -->
+    <!-- <button id="button">Upload Video</button> -->
     <div class="during-upload">
       <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span>
         bytes)</p>
