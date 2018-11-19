@@ -96,12 +96,9 @@ export class RecordRtcComponent implements AfterViewInit {
     stream.getVideoTracks().forEach(track => track.stop());
     
     console.log("Video stopped!!");
-
-    // Call the method that sends the video to the parent component
-    this.sendVideo();
   }
 
-  download() {
+  sendToParentComponent() {
 
     if (this.recordRTC != null) {
 
@@ -111,6 +108,14 @@ export class RecordRtcComponent implements AfterViewInit {
       console.log("Sending video at 'download()'!");
       this.videoEvent.emit(this.recordRTC.getBlob());
       // this.recordRTC.save('video.webm');
+    }
+  }
+
+  download() {
+
+    if (this.recordRTC != null) {
+
+      this.recordRTC.save('video.webm');
     }
   }
 }

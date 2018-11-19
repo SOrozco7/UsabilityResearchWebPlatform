@@ -35,7 +35,10 @@ export class VideoUploadComponent implements OnInit {
 
     if(this.videosArr != null){
 
-      new uploadToYouTube(this.videosArr[0]);
+      for(let i = 0; i < this.videosArr.length; i++) {
+        
+        new uploadToYouTube(this.videosArr[i]);
+      }
     }
   }
 
