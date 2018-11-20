@@ -1,18 +1,17 @@
 <div class="col-sm-6">    
   <div class="card text-white bg-dark mb-3">
-          <div class="card-header">{{question.experiment_id}}</div>
+          <div class="card-header">Experiment #{{question.experiment_id}}</div>
           <div class="card-body">
-              <h4 class="card-title">{{question.id}}</h4>
+              <h4 class="card-title">Question #{{question.id}}</h4>
               <p class="card-text">{{question.text}}</p>
-              <p class="card-text">From: {{question.initialImage}}</p>
-              <p class="card-text">To: {{question.finalImage}}</p>
+              <img src="{{question.initialImage}}" alt="Initial Image">
+              <img src="{{question.finalImage}}" alt="Final Image">
           </div>
   </div>
 </div>
 
 <br>
 <button type="button" (click)="listQuestions()" class="btn btn-lg btn-danger back">Back</button>
-<button type="button" (click)="addQuestion()" class="btn btn-lg btn-danger back">Add question</button>
 &nbsp;
 &nbsp;
 <button type="button" (click)="updateQuestion(question.id)" class="btn btn-lg btn-success">Edit</button>

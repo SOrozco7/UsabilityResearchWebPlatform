@@ -6,7 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { Question } from 'src/app/models/question';
 
-
 @Component({
   selector: 'app-question-retrieve',
   templateUrl: './question-retrieve.component.html',
@@ -28,7 +27,7 @@ export class QuestionRetrieveComponent implements OnInit {
     this.question = new Question(null, null, null, null, null, null, null);
     this.question.experiment_id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    this.id = parseInt(this.route.snapshot.paramMap.get('question_id'), 10);
 
     this.crud.retrieve(this.crud.models.QUESTION, this.id)
     .subscribe(

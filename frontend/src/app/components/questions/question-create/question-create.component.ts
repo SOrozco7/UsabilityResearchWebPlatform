@@ -56,13 +56,8 @@ export class QuestionCreateComponent implements OnInit {
     }
   }
 
-
   retrieveExperiment() {
 
     this.router.navigate(['experiments/' + this.question.experiment_id]);
   }
-
-
-
-
 }

@@ -76,5 +76,3 @@ export class QuestionUpdateComponent implements OnInit {
     this.router.navigate(['questions']);
   }
 }
-
-

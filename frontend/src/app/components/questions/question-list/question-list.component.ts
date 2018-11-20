@@ -20,9 +20,9 @@ export class QuestionListComponent implements OnInit {
   questions: Question[];
 
   constructor(
-    private errorHandler: ErrorHandlerService, 
-    private crud: CrudService, 
-    private router: Router, 
+    private errorHandler: ErrorHandlerService,
+    private crud: CrudService,
+    private router: Router,
     private auth: AuthService,
     private route: ActivatedRoute
     ) { }
@@ -78,7 +78,7 @@ export class QuestionListComponent implements OnInit {
    * @param id the id of the experiment to retrieve
    */
   retrieveQuestion(questionId: number) {
-    this.router.navigate(['experiments/'+ this.experimentId + '/questions/' + questionId]);
+    this.router.navigate(['experiments/' + this.experimentId + '/questions/' + questionId]);
   }
 
   /**
