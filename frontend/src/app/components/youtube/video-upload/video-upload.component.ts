@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../../../services/video.service';
 import { ScriptService } from '../../../services/script.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import '../../../../assets/js/upload_video.js';
 import { QuestionResponse } from '../../../models/question-response';
 
@@ -20,7 +20,11 @@ export class VideoUploadComponent implements OnInit {
   participantId: number;
   uploadButtonDisabled: boolean;
 
-  constructor(private videoService: VideoService, private scriptService: ScriptService, private route: ActivatedRoute) { }
+  constructor(
+    private videoService: VideoService, 
+    private scriptService: ScriptService, 
+    private route: ActivatedRoute, 
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -32,43 +36,50 @@ export class VideoUploadComponent implements OnInit {
 
     this.scriptService.load('googleAjax', 'jsClient', 'uploadVideo', 'corsUpload').then(data => {
       console.log('script loaded ', data);
-    }).catch(error => console.log(error));  
+    }).catch(error => console.log(error));
 
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
     this.participantId = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
     this.setQuestionResponseArray();
   }
 
-  setQuestionResponseArray(){
+  setQuestionResponseArray() {
 
-    if(this.questionResponsesArr != null){
+    if (this.questionResponsesArr != null) {
 
-      for(let i = 0; i < this.questionResponsesArr.length; i++) {
+      for (let i = 0; i < this.questionResponsesArr.length; i++) {
 
-        this.questionResponsesArr[i].videoId = "";
+        this.questionResponsesArr[i].videoId = '';
       }
     }
   }
 
-  callYouTubeUpload(){
+  callYouTubeUpload() {
 
-    if(this.videosArr != null){
+    if (this.videosArr != null) {
 
-      for(let i = 0; i < this.videosArr.length; i++) {
+      for (let i = 0; i < this.videosArr.length; i++) {
 
         const questionId = this.questionResponsesArr[i].question_id;
 
-        const videoName = "experiment" + this.experimentId
-          + "_question" + questionId + "_participant" + this.participantId;
+        const videoName = 'experiment' + this.experimentId
+          + '_question' + questionId + '_participant' + this.participantId;
 
-        const videoDescription = "Video corresponding to the response of participant " + this.participantId
-          + " of the question " + questionId + " of the experiment " + this.experimentId + ".\n\nVideo uploaded by GestureWeb.";
-        
-        new uploadToYouTube(this.videosArr[i], questionId, videoName, videoDescription);
+        const videoDescription = 'Video corresponding to the response of participant ' + this.participantId
+          + ' of the question ' + questionId + ' of the experiment ' + this.experimentId + '.\n\nVideo uploaded by GestureWeb.';
+
+        const upload = new uploadToYouTube(this.videosArr[i], questionId, videoName, videoDescription);
       }
 
       this.uploadButtonDisabled = true;
     }
   }
 
+  /**
+   * Method that retrieves an experiment.
+   * @param id the id of the experiment to retrieve
+   */
+  retrieveExperiment(id: number) {
+    this.router.navigate(['experiments/' + id]);
+  }
 }

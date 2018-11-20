@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {ScriptStore} from "./script.store";
+import { Injectable } from '@angular/core';
+import { scriptStore } from './script.store';
 
 declare var document: any;
 
@@ -9,7 +9,7 @@ export class ScriptService {
 private scripts: any = {};
 
 constructor() {
-    ScriptStore.forEach((script: any) => {
+    scriptStore.forEach((script: any) => {
         this.scripts[script.name] = {
             loaded: false,
             src: script.src
@@ -18,31 +18,30 @@ constructor() {
 }
 
 load(...scripts: string[]) {
-    var promises: any[] = [];
+    const promises: any[] = [];
     scripts.forEach((script) => promises.push(this.loadScript(script)));
     return Promise.all(promises);
 }
 
 loadScript(name: string) {
     return new Promise((resolve, reject) => {
-        //resolve if already loaded
+        // resolve if already loaded
         if (this.scripts[name].loaded) {
             resolve({script: name, loaded: true, status: 'Already Loaded'});
-        }
-        else {
-            //load script
-            let script = document.createElement('script');
+        } else {
+            // load script
+            const script = document.createElement('script');
             script.type = 'text/javascript';
             script.src = this.scripts[name].src;
-            if (script.readyState) {  //IE
+            if (script.readyState) {  // IE
                 script.onreadystatechange = () => {
-                    if (script.readyState === "loaded" || script.readyState === "complete") {
+                    if (script.readyState === 'loaded' || script.readyState === 'complete') {
                         script.onreadystatechange = null;
                         this.scripts[name].loaded = true;
                         resolve({script: name, loaded: true, status: 'Loaded'});
                     }
                 };
-            } else {  //Others
+            } else {  // Others
                 script.onload = () => {
                     this.scripts[name].loaded = true;
                     resolve({script: name, loaded: true, status: 'Loaded'});

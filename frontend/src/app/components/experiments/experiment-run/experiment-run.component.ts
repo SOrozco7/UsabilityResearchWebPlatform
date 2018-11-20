@@ -28,7 +28,7 @@ export class ExperimentRunComponent implements OnInit {
   experimentId: number;
   participantId: number;
 
-  @ViewChild(RecordRtcComponent) child:RecordRtcComponent;
+  @ViewChild(RecordRtcComponent) child: RecordRtcComponent;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -79,16 +79,16 @@ export class ExperimentRunComponent implements OnInit {
   }
 
   /**
-   * Method to update the videos array across the ExperimentRunComponent, 
+   * Method to update the videos array across the ExperimentRunComponent,
    * the VideoService and the VideoUploadComponent.
    */
   updateVideosArray() {
 
     this.videoService.changeVideosArray(this.videosArr);
   }
-  
+
   /**
-   * Method to update the question responses array across the ExperimentRunComponent, 
+   * Method to update the question responses array across the ExperimentRunComponent,
    * the VideoService and the VideoUploadComponent.
    */
   updateQuestionResponsesArray() {
@@ -98,13 +98,9 @@ export class ExperimentRunComponent implements OnInit {
 
   receiveVideo($event) {
 
-    console.log("1 this.videosArr.length = " + this.videosArr.length);
-    
     this.videosArr[this.currQuestionIndex] = $event;
-    console.log("Video received! -> ");
     console.log(this.videosArr[this.currQuestionIndex]);
     this.updateVideosArray();
-    console.log("2 this.videosArr.length = " + this.videosArr.length);
 
     this.updateQuestionResponsesArray();
   }
@@ -120,8 +116,8 @@ export class ExperimentRunComponent implements OnInit {
 
       this.currentQuestion = this.experimentQuestions[this.currQuestionIndex];
 
-      this.questionResponsesArr[this.currQuestionIndex] = new QuestionResponse(-1, "", -1, -1);
-      this.questionResponsesArr[this.currQuestionIndex].participant_id = this.participantId
+      this.questionResponsesArr[this.currQuestionIndex] = new QuestionResponse(-1, '', -1, -1);
+      this.questionResponsesArr[this.currQuestionIndex].participant_id = this.participantId;
       this.questionResponsesArr[this.currQuestionIndex].question_id = this.currentQuestion.id;
     }
   }
@@ -136,8 +132,8 @@ export class ExperimentRunComponent implements OnInit {
     this.child.stopRecording();
     this.currQuestionIndex++;
 
-    console.log("this.questionCount = " + this.questionCount);
-    console.log("this.currQuestionIndex = " + this.currQuestionIndex);
+    console.log('this.questionCount = ' + this.questionCount);
+    console.log('this.currQuestionIndex = ' + this.currQuestionIndex);
 
     // If there is at least one more question left
     if (this.currQuestionIndex <= this.questionCount - 1) {
@@ -169,7 +165,7 @@ export class ExperimentRunComponent implements OnInit {
     this.router.navigate(['experiments/' + id]);
   }
 
-  uploadVideos(experimentId, participantId){
+  uploadVideos(experimentId, participantId) {
 
     this.router.navigate(['experiments/' + experimentId + '/participants/' + participantId + '/video/upload']);
   }

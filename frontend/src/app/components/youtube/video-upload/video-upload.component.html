@@ -25,12 +25,13 @@
 
     <br>
     <br>
-    
+
     <div>
       <p>All videos will be uploaded as "Private"</p>
     </div>
 
-    <button [disabled]="uploadButtonDisabled" (click)="callYouTubeUpload()" id="uploadButton">Upload {{videosArr.length}} experiment responses to YouTube</button>
+    <button [disabled]="uploadButtonDisabled" (click)="callYouTubeUpload()" id="uploadButton">Upload
+      {{videosArr.length}} experiment responses to YouTube</button>
 
     <br>
     <br>
@@ -86,3 +87,7 @@
       authorized by the owner to make the content publicly available on YouTube, and that it otherwise complies with
       the YouTube Terms of Service located at <a href="http://www.youtube.com/t/terms" target="_blank">http://www.youtube.com/t/terms</a></p>
   </div>
+
+  <section>
+    <button mat-raised-button id="back-button" (click)="retrieveExperiment(this.experimentId)">Back to the experiment</button>
+  </section>

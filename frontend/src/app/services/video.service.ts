@@ -15,12 +15,12 @@ export class VideoService {
 
   constructor() { }
 
-  changeVideosArray(videosArr: Blob[]){
+  changeVideosArray(videosArr: Blob[]) {
 
     this.videosSource.next(videosArr);
   }
 
-  changeQuestionResponsesArray(questionResponsesArr: QuestionResponse[]){
+  changeQuestionResponsesArray(questionResponsesArr: QuestionResponse[]) {
 
     this.questionResponseSource.next(questionResponsesArr);
   }

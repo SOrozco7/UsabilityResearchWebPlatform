@@ -22,7 +22,7 @@ export class RecordRtcComponent implements AfterViewInit {
     this.startRecording();
   }
 
-  sendVideo(){
+  sendVideo() {
 
     // console.log("Sending video!");
     // console.log("blob at 'sendVideo()' = " + this.recordRTC.getBlob());
@@ -69,7 +69,7 @@ export class RecordRtcComponent implements AfterViewInit {
     const video: HTMLVideoElement = this.video.nativeElement;
     const recordRTC = this.recordRTC;
     video.src = audioVideoWebMURL;
-    console.log("123 video.src = " + video.src);
+    console.log('123 video.src = ' + video.src);
     this.toggleControls();
     const recordedBlob = recordRTC.getBlob();
     recordRTC.getDataURL(function (dataURL) { });
@@ -94,18 +94,18 @@ export class RecordRtcComponent implements AfterViewInit {
     const stream = this.stream;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
-    
-    console.log("Video stopped!!");
+
+    console.log('Video stopped!!');
   }
 
   sendToParentComponent() {
 
     if (this.recordRTC != null) {
 
-      console.log("this.recordRTC.getBlob()");
-      console.log("blob at 'download()' = ");
+      console.log('this.recordRTC.getBlob()');
+      console.log('blob at \'download()\' = ');
       console.log(this.recordRTC.getBlob());
-      console.log("Sending video at 'download()'!");
+      console.log('Sending video at \'download()\'!');
       this.videoEvent.emit(this.recordRTC.getBlob());
       // this.recordRTC.save('video.webm');
     }

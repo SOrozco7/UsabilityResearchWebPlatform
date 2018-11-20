@@ -58,7 +58,7 @@ export class ExperimentRetrieveComponent implements OnInit {
   }
 
   runExperiment(experimentId: number) {
-    let participantId = 1;
+    const participantId = 1; // Hardcoded for now
     this.router.navigate(['experiments/run/' + experimentId + '/participants/' + participantId]);
   }
 }
