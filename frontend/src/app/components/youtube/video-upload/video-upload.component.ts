@@ -58,8 +58,8 @@ export class VideoUploadComponent implements OnInit {
 
         const questionId = this.questionResponsesArr[i].question_id;
 
-        const videoName = "experiment_" + this.experimentId
-          + "_question_" + questionId + "_participant_" + this.participantId;
+        const videoName = "experiment" + this.experimentId
+          + "_question" + questionId + "_participant" + this.participantId;
 
         const videoDescription = "Video corresponding to the response of participant " + this.participantId
           + " of the question " + questionId + " of the experiment " + this.experimentId + ".\n\nVideo uploaded by GestureWeb.";
