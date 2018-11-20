@@ -148,7 +148,7 @@ UploadVideo.prototype.uploadFile = function (file, questionId, videoName, descri
         max: totalBytes
       });
 
-      $('#percent-transferred').text(percentageComplete);
+      $('#percent-transferred_' + questionId).text(percentageComplete  + "%");
       $('#bytes-transferred').text(bytesUploaded);
       $('#total-bytes').text(totalBytes);
 

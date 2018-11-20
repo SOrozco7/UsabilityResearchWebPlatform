@@ -45,7 +45,8 @@
             <thead>
               <tr>
                 <th>Question ID</th>
-                <th>YouTube video ID</th>
+                <th>Upload Progress</th>
+                <th>YouTube Video ID</th>
                 <th>YouTube Link</th>
                 <th></th>
               </tr>
@@ -54,6 +55,8 @@
               <tr *ngFor="let questionResponse of questionResponsesArr">
                 <td>
                   {{questionResponse.question_id}}
+                </td>
+                <td id="percent-transferred_{{questionResponse.question_id}}">
                 </td>
                 <td id="video-id_{{questionResponse.question_id}}">
                 </td>
@@ -70,17 +73,17 @@
   <div>
     <!-- <input input type="file" id="file" class="button" accept="video/*"> -->
     <!-- <button id="button">Upload Video</button> -->
-    <div class="during-upload">
+    <!-- <div class="during-upload">
       <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span>
         bytes)</p>
       <progress id="upload-progress" max="1" value="0"></progress>
-    </div>
+    </div> -->
 
-    <div class="post-upload">
+    <!-- <div class="post-upload">
       <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
       <ul id="post-upload-status"></ul>
       <div id="player"></div>
-    </div>
+    </div> -->
     <p id="disclaimer">By uploading a video, you certify that you own all rights to the content or that you are
       authorized by the owner to make the content publicly available on YouTube, and that it otherwise complies with
       the YouTube Terms of Service located at <a href="http://www.youtube.com/t/terms" target="_blank">http://www.youtube.com/t/terms</a></p>
