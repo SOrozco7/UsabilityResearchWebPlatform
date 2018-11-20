@@ -18,10 +18,13 @@ export class VideoUploadComponent implements OnInit {
   questionResponsesArr: QuestionResponse[];
   experimentId: number;
   participantId: number;
+  uploadButtonDisabled: boolean;
 
   constructor(private videoService: VideoService, private scriptService: ScriptService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.uploadButtonDisabled = false;
 
     this.videoService.currentVideosArray.subscribe(videosArr => this.videosArr = videosArr);
     this.videoService.currentQuestionResponsesArray
@@ -63,6 +66,8 @@ export class VideoUploadComponent implements OnInit {
         
         new uploadToYouTube(this.videosArr[i], questionId, videoName, videoDescription);
       }
+
+      this.uploadButtonDisabled = true;
     }
   }
 
