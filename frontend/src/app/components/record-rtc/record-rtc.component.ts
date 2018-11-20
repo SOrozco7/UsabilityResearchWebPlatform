@@ -7,7 +7,7 @@ const recordRTCVideo = require('recordrtc/RecordRTC.min');
 @Component({
   selector: 'app-record-rtc',
   templateUrl: './record-rtc.component.html',
-  styleUrls: ['./record-rtc.component.css']
+  styleUrls: ['./record-rtc.component.css'],
 })
 export class RecordRtcComponent implements AfterViewInit {
 

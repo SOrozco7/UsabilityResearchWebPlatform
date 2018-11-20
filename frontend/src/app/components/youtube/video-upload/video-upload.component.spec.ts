@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VideoUploadComponent } from './video-upload.component';
+import { NgxNotificationService } from 'ngx-notification';
 
 describe('VideoUploadComponent', () => {
   let component: VideoUploadComponent;
@@ -8,7 +9,10 @@ describe('VideoUploadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoUploadComponent ]
+      declarations: [ VideoUploadComponent ],
+      providers: [
+        NgxNotificationService
+      ]
     })
     .compileComponents();
   }));

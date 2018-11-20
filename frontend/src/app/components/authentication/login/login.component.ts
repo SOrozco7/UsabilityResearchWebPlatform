@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private errorHandler: ErrorHandlerService,
-        private auth: AuthService, 
+        private auth: AuthService,
         public router: Router,
         private ngxNotificationService: NgxNotificationService) { }
 

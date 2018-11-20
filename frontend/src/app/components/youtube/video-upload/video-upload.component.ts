@@ -6,6 +6,7 @@ import '../../../../assets/js/upload_video.js';
 import { QuestionResponse } from '../../../models/question-response';
 import { NgxNotificationService } from 'ngx-notification';
 
+
 declare var uploadToYouTube: any;
 
 @Component({
@@ -22,9 +23,9 @@ export class VideoUploadComponent implements OnInit {
   uploadButtonDisabled: boolean;
 
   constructor(
-    private videoService: VideoService, 
-    private scriptService: ScriptService, 
-    private route: ActivatedRoute, 
+    private videoService: VideoService,
+    private scriptService: ScriptService,
+    private route: ActivatedRoute,
     private router: Router,
     private ngxNotificationService: NgxNotificationService) { }
 
