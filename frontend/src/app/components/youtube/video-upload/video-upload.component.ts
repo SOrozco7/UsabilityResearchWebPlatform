@@ -4,6 +4,7 @@ import { ScriptService } from '../../../services/script.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import '../../../../assets/js/upload_video.js';
 import { QuestionResponse } from '../../../models/question-response';
+import { NgxNotificationService } from 'ngx-notification';
 
 declare var uploadToYouTube: any;
 
@@ -24,7 +25,8 @@ export class VideoUploadComponent implements OnInit {
     private videoService: VideoService, 
     private scriptService: ScriptService, 
     private route: ActivatedRoute, 
-    private router: Router) { }
+    private router: Router,
+    private ngxNotificationService: NgxNotificationService) { }
 
   ngOnInit() {
 
@@ -67,6 +69,7 @@ export class VideoUploadComponent implements OnInit {
       }
 
       this.uploadButtonDisabled = true;
+      this.sendNotification('The videos are being uploaded to YouTube', 'success', 'bottom-right');
     }
   }
 
@@ -76,5 +79,10 @@ export class VideoUploadComponent implements OnInit {
    */
   retrieveExperiment(id: number) {
     this.router.navigate(['experiments/' + id]);
+  }
+
+  sendNotification(message, color, position) {
+
+    this.ngxNotificationService.sendMessage(message, color, position);
   }
 }

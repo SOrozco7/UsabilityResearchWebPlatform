@@ -163,7 +163,7 @@ UploadVideo.prototype.uploadFile = function (file, questionId, videoName, descri
       $('#youTubeLink_video-id_' + questionId).append("<a href='" + youTubeLink + "' target='_blank'>" + "Watch on YouTube</a>");
 
       $('.post-upload').show();
-      this.pollForVideoStatus();
+      // this.pollForVideoStatus();
     }.bind(this)
   });
   // This won't correspond to the *exact* start of the upload, but it should be close enough.

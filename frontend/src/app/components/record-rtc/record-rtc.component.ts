@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { NgxNotificationService } from 'ngx-notification';
 
 declare var require: any;
 const recordRTCVideo = require('recordrtc/RecordRTC.min');
@@ -16,7 +17,7 @@ export class RecordRtcComponent implements AfterViewInit {
 
   @ViewChild('video') video;
 
-  constructor() {
+  constructor(private ngxNotificationService: NgxNotificationService) {
 
     // Start the recording automatically.
     this.startRecording();
@@ -96,6 +97,8 @@ export class RecordRtcComponent implements AfterViewInit {
 
       console.log(this.recordRTC.getBlob());
       this.videoEvent.emit(this.recordRTC.getBlob());
+
+      this.sendNotification('The video was successfully saved!', 'success', 'bottom-left');
     }
   }
 
@@ -105,5 +108,10 @@ export class RecordRtcComponent implements AfterViewInit {
 
       this.recordRTC.save('video.webm');
     }
+  }
+
+  sendNotification(message, color, position) {
+
+    this.ngxNotificationService.sendMessage(message, color, position);
   }
 }
