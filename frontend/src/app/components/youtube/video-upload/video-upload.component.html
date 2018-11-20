@@ -20,17 +20,46 @@
     <label for="description">Description:</label>
     <textarea id="description">Default description</textarea>
   </div> -->
-  <div>
-    <label for="privacy-status">Privacy Status: private</label>
-    <!-- <select id="privacy-status"> -->
-    <!-- <option>public</option> -->
-    <!-- <option>unlisted</option> -->
-    <!-- <option>private</option> -->
-    <!-- </select> -->
-  </div>
 
   <ng-container *ngIf="videosArr">
+
+    <div>
+      <label for="privacy-status">Privacy Status: private</label>
+      <!-- <select id="privacy-status"> -->
+      <!-- <option>public</option> -->
+      <!-- <option>unlisted</option> -->
+      <!-- <option>private</option> -->
+      <!-- </select> -->
+    </div>
+
     <button (click)="callYouTubeUpload()">Upload {{videosArr.length}} experiment responses to YouTube</button>
+
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">YouTube Uploads</div>
+          <table class="card-body table table-hover">
+            <thead>
+              <tr>
+                <th>Question ID</th>
+                <th>YouTube video ID</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let questionResponse of questionResponsesArr">
+                <td>
+                  {{questionResponse.question_id}}
+                </td>
+                <td id="video-id_{{questionResponse.question_id}}">
+                  {{questionResponse.videoId}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </ng-container>
 
   <div>

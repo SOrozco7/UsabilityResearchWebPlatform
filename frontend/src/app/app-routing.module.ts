@@ -64,7 +64,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'experiments/run/:id',
+    path: 'experiments/run/:experiment_id/participants/:participant_id',
     component: ExperimentRunComponent,
     canActivate: [AuthGuard]
   },
@@ -94,7 +94,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'experiments/:experiment_id/participant/:participant_id/video/upload',
+    path: 'experiments/:experiment_id/participants/:participant_id/video/upload',
     component: VideoUploadComponent,
     canActivate: [AuthGuard]
   },
