@@ -34,6 +34,9 @@
 
     <button (click)="callYouTubeUpload()">Upload {{videosArr.length}} experiment responses to YouTube</button>
 
+    <br>
+    <br>
+
     <div class="row">
       <div class="col">
         <div class="card mb-3">
@@ -43,6 +46,7 @@
               <tr>
                 <th>Question ID</th>
                 <th>YouTube video ID</th>
+                <th>YouTube Link</th>
                 <th></th>
               </tr>
             </thead>
@@ -52,7 +56,8 @@
                   {{questionResponse.question_id}}
                 </td>
                 <td id="video-id_{{questionResponse.question_id}}">
-                  {{questionResponse.videoId}}
+                </td>
+                <td id="youTubeLink_video-id_{{questionResponse.question_id}}">
                 </td>
               </tr>
             </tbody>

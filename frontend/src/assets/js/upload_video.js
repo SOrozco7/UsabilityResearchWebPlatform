@@ -39,7 +39,7 @@ var UploadVideo = function () {
    * @type Array.<string>
    * @default ['google-cors-upload']
    */
-  this.tags = ['youtube-cors-upload'];
+  this.tags = ['usability research', 'human computer interaction', 'hci'];
 
   /**
    * The numeric YouTube
@@ -89,10 +89,10 @@ UploadVideo.prototype.ready = function (accessToken) {
   $('#button').on("click", this.handleUploadClicked.bind(this));
 };
 
-function uploadToYouTube(file){
+function uploadToYouTube(file, questionId, videoName, description){
 
   console.log("UPLOADING NOW!!!!!!!!!!!");
-  UploadVideo.prototype.uploadFile(file);
+  UploadVideo.prototype.uploadFile(file, questionId, videoName, description);
 };
 
 /**
@@ -101,11 +101,11 @@ function uploadToYouTube(file){
  * @method uploadFile
  * @param {object} file File object corresponding to the video to upload.
  */
-UploadVideo.prototype.uploadFile = function (file) {
+UploadVideo.prototype.uploadFile = function (file, questionId, videoName, description) {
   var metadata = {
     snippet: {
-      title: $('#title').val(),
-      description: $('#description').text(),
+      title: videoName,
+      description: description,
       tags: this.tags,
       categoryId: this.categoryId
     },
@@ -157,7 +157,11 @@ UploadVideo.prototype.uploadFile = function (file) {
     onComplete: function (data) {
       var uploadResponse = JSON.parse(data);
       this.videoId = uploadResponse.id;
-      $('#video-id').text(this.videoId);
+      $('#video-id_' + questionId).text(this.videoId);
+
+      var youTubeLink = "https://www.youtube.com/watch?v=" + this.videoId; 
+      $('#youTubeLink_video-id_' + questionId).append("<a href='" + youTubeLink + "' target='_blank'>" + "Watch on YouTube</a>");
+
       $('.post-upload').show();
       this.pollForVideoStatus();
     }.bind(this)

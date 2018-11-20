@@ -34,7 +34,6 @@ export class VideoUploadComponent implements OnInit {
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
     this.participantId = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
     this.setQuestionResponseArray();
-    console.log("this.questionResponsesArr.length = " + this.questionResponsesArr.length);
   }
 
   setQuestionResponseArray(){
@@ -43,7 +42,7 @@ export class VideoUploadComponent implements OnInit {
 
       for(let i = 0; i < this.questionResponsesArr.length; i++) {
 
-        this.questionResponsesArr[i].videoId = "YOUTUBE_VIDEO_ID";
+        this.questionResponsesArr[i].videoId = "";
       }
     }
   }
@@ -53,8 +52,16 @@ export class VideoUploadComponent implements OnInit {
     if(this.videosArr != null){
 
       for(let i = 0; i < this.videosArr.length; i++) {
+
+        const questionId = this.questionResponsesArr[i].question_id;
+
+        const videoName = "experiment_" + this.experimentId
+          + "_question_" + questionId + "_participant_" + this.participantId;
+
+        const videoDescription = "Video corresponding to the response of participant " + this.participantId
+          + " of the question " + questionId + " of the experiment " + this.experimentId + ".\n\nVideo uploaded by GestureWeb.";
         
-        new uploadToYouTube(this.videosArr[i]);
+        new uploadToYouTube(this.videosArr[i], questionId, videoName, videoDescription);
       }
     }
   }
