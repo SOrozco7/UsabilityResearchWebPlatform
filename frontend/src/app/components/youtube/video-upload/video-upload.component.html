@@ -23,13 +23,11 @@
 
   <ng-container *ngIf="videosArr">
 
+    <br>
+    <br>
+    
     <div>
-      <label for="privacy-status">Privacy Status: private</label>
-      <!-- <select id="privacy-status"> -->
-      <!-- <option>public</option> -->
-      <!-- <option>unlisted</option> -->
-      <!-- <option>private</option> -->
-      <!-- </select> -->
+      <p>All videos will be uploaded as "Private"</p>
     </div>
 
     <button [disabled]="uploadButtonDisabled" (click)="callYouTubeUpload()" id="uploadButton">Upload {{videosArr.length}} experiment responses to YouTube</button>
