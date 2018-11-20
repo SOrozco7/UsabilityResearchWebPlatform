@@ -22,14 +22,6 @@ export class RecordRtcComponent implements AfterViewInit {
     this.startRecording();
   }
 
-  sendVideo() {
-
-    // console.log("Sending video!");
-    // console.log("blob at 'sendVideo()' = " + this.recordRTC.getBlob());
-    // Emit the video to the parent component
-    // this.videoEvent.emit(this.recordRTC.getBlob());
-  }
-
   ngAfterViewInit() {
     // set the initial state of the video
     const video: HTMLVideoElement = this.video.nativeElement;
@@ -102,12 +94,8 @@ export class RecordRtcComponent implements AfterViewInit {
 
     if (this.recordRTC != null) {
 
-      console.log('this.recordRTC.getBlob()');
-      console.log('blob at \'download()\' = ');
       console.log(this.recordRTC.getBlob());
-      console.log('Sending video at \'download()\'!');
       this.videoEvent.emit(this.recordRTC.getBlob());
-      // this.recordRTC.save('video.webm');
     }
   }
 

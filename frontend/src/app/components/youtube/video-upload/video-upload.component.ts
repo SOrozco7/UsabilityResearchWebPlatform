@@ -40,20 +40,12 @@ export class VideoUploadComponent implements OnInit {
 
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
     this.participantId = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
-    this.setQuestionResponseArray();
   }
 
-  setQuestionResponseArray() {
-
-    if (this.questionResponsesArr != null) {
-
-      for (let i = 0; i < this.questionResponsesArr.length; i++) {
-
-        this.questionResponsesArr[i].videoId = '';
-      }
-    }
-  }
-
+  /**
+   * Method that calls the YouTube upload for all videos from the current participant's
+   * responses to the experiment's questions.
+   */
   callYouTubeUpload() {
 
     if (this.videosArr != null) {
@@ -62,12 +54,15 @@ export class VideoUploadComponent implements OnInit {
 
         const questionId = this.questionResponsesArr[i].question_id;
 
+        // Assign the name of the video according to the experiment id, the question
+        // id and the participant id.
         const videoName = 'experiment' + this.experimentId
           + '_question' + questionId + '_participant' + this.participantId;
 
         const videoDescription = 'Video corresponding to the response of participant ' + this.participantId
           + ' of the question ' + questionId + ' of the experiment ' + this.experimentId + '.\n\nVideo uploaded by GestureWeb.';
 
+        // Call the upload. This executes a function in 'assets/js/upload_video.js'
         const upload = new uploadToYouTube(this.videosArr[i], questionId, videoName, videoDescription);
       }
 
