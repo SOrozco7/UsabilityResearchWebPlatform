@@ -1,6 +1,7 @@
 const usersController = require('../controllers').users;
 const experimentsController = require('../controllers').experiments;
 const questionsController = require('../controllers').questions;
+const questionResponsesController = require('../controllers').questionResponses;
 const authenticationController = require('../controllers').authentication;
 const questionnairesController = require('../controllers').questionnaires;
 const questionnaireQuestionsController = require('../controllers').questionnaireQuestions;
@@ -32,12 +33,18 @@ module.exports = (app) => {
   app.delete('/api/experiments/:id', experimentsController.destroy);
   app.post('/api/experiments/:id/questionnaires', experimentsController.addQuestionnaire);
 
-  // Routes for the EXPERIMENTS table
+  // Routes for the QUESTIONS table
   app.post('/api/questions', questionsController.create);
   app.get('/api/questions', questionsController.list);
   app.get('/api/questions/:id', questionsController.retrieve);
   app.put('/api/questions/:id', questionsController.update);
   app.delete('/api/questions/:id', questionsController.destroy);
+
+  // Routes for the QUESTIONRESPONSES table
+  app.post('/api/questionresponses', questionResponsesController.create);
+  app.get('/api/questionresponses', questionResponsesController.list);
+  app.get('/api/questionresponses/:id', questionResponsesController.retrieve);
+  app.delete('/api/questionresponses/:id', questionResponsesController.destroy);
 
   // Routes for the QUESTIONNAIRES table
   app.post('/api/questionnaires', questionnairesController.create);
