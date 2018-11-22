@@ -93,13 +93,13 @@ module.exports = {
         }
         return question
           .update({
-            text: req.body.name || question.text,
+            text: req.body.text || question.text,
             initialImage: req.body.initialImage || question.initialImage,
             finalImage: req.body.finalImage || question.finalImage,
             initialSound: req.body.initialSound || question.initialSound,
             finalSound: req.body.finalSound || question.finalSound,
           })
-          .then(finalquestion => res.status(200).send(finalquestion))
+          .then(updatedQuestion => res.status(200).send(updatedQuestion))
           .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));

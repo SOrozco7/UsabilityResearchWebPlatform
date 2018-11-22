@@ -22,6 +22,7 @@ import { QuestionCreateComponent } from './components/questions/question-create/
 import { QuestionRetrieveComponent } from './components/questions/question-retrieve/question-retrieve.component';
 import { QuestionListComponent } from './components/questions/question-list/question-list.component';
 import { QuestionUpdateComponent } from './components/questions/question-update/question-update.component';
+import { QuestionDeleteComponent } from './components/questions/question-delete/question-delete.component';
 
 const routes: Routes = [
 
@@ -80,8 +81,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'experiments/:experiment_id/questions/:question_id',
+    path: 'experiments/:experiment_id/questions/update/:question_id',
     component: QuestionUpdateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/questions/delete/:question_id',
+    component: QuestionDeleteComponent,
     canActivate: [AuthGuard]
   },
   {

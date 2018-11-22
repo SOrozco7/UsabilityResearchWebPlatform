@@ -13,7 +13,7 @@ import { Question } from 'src/app/models/question';
 })
 export class QuestionRetrieveComponent implements OnInit {
 
-  experiment: Experiment;
+  experimentId: number;
   id: number;
   question: Question;
 
@@ -28,6 +28,7 @@ export class QuestionRetrieveComponent implements OnInit {
     this.question.experiment_id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
     this.id = parseInt(this.route.snapshot.paramMap.get('question_id'), 10);
+    this.experimentId = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
 
     this.crud.retrieve(this.crud.models.QUESTION, this.id)
     .subscribe(
@@ -42,21 +43,21 @@ export class QuestionRetrieveComponent implements OnInit {
     );
   }
 
-  updateQuestion(updateID: number) {
-    this.router.navigate(['experiments/' + this.id + 'questions/update/' + updateID]);
+  updateQuestion() {
+    this.router.navigate(['experiments/' + this.experimentId + '/questions/update/' + this.id]);
   }
 
-  deleteQuestion(deleteID: number) {
-    this.router.navigate(['experiments/' + this.id + 'questions/delete/' + deleteID]);
+  deleteQuestion() {
+    this.router.navigate(['experiments/' + this.experimentId + '/questions/delete/' + this.id]);
   }
 
   listQuestions() {
 
-    this.router.navigate(['experiments/' + this.id + 'questions']);
+    this.router.navigate(['experiments/' + this.experimentId + '/questions']);
   }
 
   addQuestion() {
 
-    this.router.navigate(['experiments/' + this.id + '/questions/create']);
+    this.router.navigate(['experiments/' + this.experimentId + '/questions/create']);
   }
 }

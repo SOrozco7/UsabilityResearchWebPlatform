@@ -25,9 +25,9 @@ export class QuestionUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.question = new Question(null, null, null, null, null, null, null);
-    this.question.experiment_id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    this.question.experiment_id = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
 
-    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    this.id = parseInt(this.route.snapshot.paramMap.get('question_id'), 10);
 
     this.crud.retrieve(this.crud.models.QUESTION, this.id)
       .subscribe(
@@ -46,9 +46,10 @@ export class QuestionUpdateComponent implements OnInit {
       this.crud.update(this.crud.models.QUESTION, this.id, this.question)
         .subscribe(
           (res: Question) => {
+            console.log("hello");
             console.log(res);
             this.question = res;
-            this.router.navigate(['experiments/' + this.id + 'questions']);
+            this.router.navigate(['experiments/' + this.id + '/questions']);
           },
           (err: HttpErrorResponse) => {
             this.errorHandler.handleError(err);
@@ -73,6 +74,6 @@ export class QuestionUpdateComponent implements OnInit {
 
   listQuestions() {
 
-    this.router.navigate(['experiments/' + this.id + 'questions']);
+    this.router.navigate(['experiments/' + this.id + '/questions']);
   }
 }
