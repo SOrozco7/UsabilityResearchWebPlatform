@@ -116,7 +116,7 @@ export class ExperimentRunComponent implements OnInit {
 
       this.currentQuestion = this.experimentQuestions[this.currQuestionIndex];
 
-      this.questionResponsesArr[this.currQuestionIndex] = new QuestionResponse(-1, '', -1, -1);
+      this.questionResponsesArr[this.currQuestionIndex] = new QuestionResponse(-1, '', -1);
       this.questionResponsesArr[this.currQuestionIndex].participant_id = this.participantId;
       this.questionResponsesArr[this.currQuestionIndex].question_id = this.currentQuestion.id;
     }
