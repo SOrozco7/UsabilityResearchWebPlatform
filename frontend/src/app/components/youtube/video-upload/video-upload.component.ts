@@ -81,6 +81,9 @@ export class VideoUploadComponent implements OnInit {
     }
   }
 
+  /**
+   * Method that inserts to the database the participant's question responses
+   */
   createQuestionResponses() {
 
     // First, assign the video IDs to the QuestionResponse instances
@@ -99,7 +102,6 @@ export class VideoUploadComponent implements OnInit {
         .subscribe(
           (res: QuestionResponse) => {
 
-            console.log('Question response #' + i + ' ' + res);
             this.questionResponsesArr[i] = res;
           },
           (err: HttpErrorResponse) => {
@@ -109,17 +111,23 @@ export class VideoUploadComponent implements OnInit {
     }
   }
 
+  /**
+   * Method that accesses the DOM to update the 'videoId' property
+   * of the QuestionResponse instances in the questionResponsesArr array.
+   * This update is necessary because those HTML fields were dinamically 
+   * updated by JQuery using the legacy YouTube Data API code; the regular
+   * Angular double binding does not take those updated values by default.
+   */
   assignQuestionResponses() {
-
-    console.log(this.questionResponsesArr);
 
     for (let i = 0; i < this.questionResponsesArr.length; i++) {
 
+      // The HTML fields that we're trying to access have the following id's:
+      //    video-id_<QUESTION_ID>
+      //    e.g. video-id_124
       const questionId = this.questionResponsesArr[i].question_id;
       this.questionResponsesArr[i].videoId = document.getElementById('video-id_' + questionId).innerText;
     }
-
-    console.log(this.questionResponsesArr);
   }
 
   /**
