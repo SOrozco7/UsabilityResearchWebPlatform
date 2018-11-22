@@ -48,7 +48,7 @@ export class QuestionUpdateComponent implements OnInit {
           (res: Question) => {
             console.log(res);
             this.question = res;
-            this.router.navigate(['questions']);
+            this.router.navigate(['experiments/' + this.id + 'questions']);
           },
           (err: HttpErrorResponse) => {
             this.errorHandler.handleError(err);
@@ -73,6 +73,6 @@ export class QuestionUpdateComponent implements OnInit {
 
   listQuestions() {
 
-    this.router.navigate(['questions']);
+    this.router.navigate(['experiments/' + this.id + 'questions']);
   }
 }

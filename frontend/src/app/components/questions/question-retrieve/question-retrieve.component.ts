@@ -43,24 +43,20 @@ export class QuestionRetrieveComponent implements OnInit {
   }
 
   updateQuestion(updateID: number) {
-    this.router.navigate(['questions/update/' + updateID]);
+    this.router.navigate(['experiments/' + this.id + 'questions/update/' + updateID]);
   }
 
   deleteQuestion(deleteID: number) {
-    this.router.navigate(['questions/delete/' + deleteID]);
+    this.router.navigate(['experiments/' + this.id + 'questions/delete/' + deleteID]);
   }
 
   listQuestions() {
 
-    this.router.navigate(['questions']);
+    this.router.navigate(['experiments/' + this.id + 'questions']);
   }
 
   addQuestion() {
 
     this.router.navigate(['experiments/' + this.id + '/questions/create']);
   }
-
-  // viewExperimentsQuestionnaires() {
-  //   this.router.navigate(['experiments/' + this.id + '/questionnaires']);
-  // }
 }

@@ -21,6 +21,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { QuestionCreateComponent } from './components/questions/question-create/question-create.component';
 import { QuestionRetrieveComponent } from './components/questions/question-retrieve/question-retrieve.component';
 import { QuestionListComponent } from './components/questions/question-list/question-list.component';
+import { QuestionUpdateComponent } from './components/questions/question-update/question-update.component';
 
 const routes: Routes = [
 
@@ -76,6 +77,11 @@ const routes: Routes = [
   {
     path: 'experiments/:id/questions',
     component: QuestionListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/questions/:question_id',
+    component: QuestionUpdateComponent,
     canActivate: [AuthGuard]
   },
   {

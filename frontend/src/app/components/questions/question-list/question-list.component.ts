@@ -52,38 +52,23 @@ export class QuestionListComponent implements OnInit {
   }
 
   /**
-   * Method that takes you to the section to create an experiment.
-   */
-  createExperiment() {
-    this.router.navigate(['experiments/create']);
-  }
-
-  /**
    * Method that takes you to the section to create a question.
    */
   createQuestion() {
-    this.router.navigate(['question/create']);
+    this.router.navigate(['experiments/' + this.experimentId + '/question/create']);
   }
 
   /**
-   * Method that retrieves an experiment.
-   * @param id the id of the experiment to retrieve
-   */
-  retrieveExperiment(id: number) {
-    this.router.navigate(['experiments/' + id]);
-  }
-
-  /**
-   * Method that retrieves an experiment.
-   * @param id the id of the experiment to retrieve
+   * Method that retrieves a question.
+   * @param questionId the id of the question to retrieve
    */
   retrieveQuestion(questionId: number) {
     this.router.navigate(['experiments/' + this.experimentId + '/questions/' + questionId]);
   }
 
   /**
-   * Method that deletes a given experiment
-   * @param id the id of the experiment to deletes
+   * Method that deletes a given question
+   * @param questionid the id of the question to deletes
    */
   deleteQuestion(id: number) {
     console.log('Deleting');
