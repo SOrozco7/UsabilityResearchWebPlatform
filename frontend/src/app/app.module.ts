@@ -64,8 +64,7 @@ import { NgxNotificationComponent } from 'ngx-notification';
     HttpClientModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule,
-    NgxNotificationModule
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,
