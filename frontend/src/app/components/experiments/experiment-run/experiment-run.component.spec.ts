@@ -19,16 +19,16 @@ describe('ExperimentRunComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         ExperimentRunComponent,
         RecordRtcComponent,
         NgxNotificationComponent
       ],
       imports: [
-        RouterTestingModule, 
-        BrowserModule, 
-        CommonModule, 
-        FormsModule, 
+        RouterTestingModule,
+        BrowserModule,
+        CommonModule,
+        FormsModule,
         MaterialModule
       ],
       providers: [

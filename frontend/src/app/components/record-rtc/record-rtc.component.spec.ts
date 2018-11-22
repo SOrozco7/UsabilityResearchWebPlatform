@@ -8,9 +8,9 @@ describe('RecordRtcComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         RecordRtcComponent,
-        NgxNotificationComponent 
+        NgxNotificationComponent
       ],
       providers: [
         NgxNotificationService

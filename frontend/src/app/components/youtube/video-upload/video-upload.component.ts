@@ -6,7 +6,6 @@ import '../../../../assets/js/upload_video.js';
 import { QuestionResponse } from '../../../models/question-response';
 import { NgxNotificationService } from 'ngx-notification';
 
-
 declare var uploadToYouTube: any;
 
 @Component({
