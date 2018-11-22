@@ -114,7 +114,7 @@ export class VideoUploadComponent implements OnInit {
   /**
    * Method that accesses the DOM to update the 'videoId' property
    * of the QuestionResponse instances in the questionResponsesArr array.
-   * This update is necessary because those HTML fields were dinamically 
+   * This update is necessary because those HTML fields were dinamically
    * updated by JQuery using the legacy YouTube Data API code; the regular
    * Angular double binding does not take those updated values by default.
    */
