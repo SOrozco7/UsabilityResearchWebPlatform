@@ -1,17 +1,32 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { ScriptService } from '../../../services/script.service';
 import { VideoUploadComponent } from './video-upload.component';
-import { NgxNotificationService } from 'ngx-notification';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NgxNotificationService, NgxNotificationComponent } from 'ngx-notification';
 
 describe('VideoUploadComponent', () => {
+
+  const fakeActivatedRoute = {
+    snapshot: { data: { } }
+  } as ActivatedRoute;
+
   let component: VideoUploadComponent;
   let fixture: ComponentFixture<VideoUploadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoUploadComponent ],
+      declarations: [
+        VideoUploadComponent,
+        NgxNotificationComponent
+      ],
+      imports: [
+
+        RouterTestingModule
+      ],
       providers: [
-        NgxNotificationService
+        NgxNotificationService,
+        ScriptService,
       ]
     })
     .compileComponents();

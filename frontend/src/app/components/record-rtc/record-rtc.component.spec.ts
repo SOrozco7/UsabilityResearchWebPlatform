@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RecordRtcComponent } from './record-rtc.component';
+import { NgxNotificationService, NgxNotificationComponent } from 'ngx-notification';
 
 describe('RecordRtcComponent', () => {
   let component: RecordRtcComponent;
@@ -8,7 +8,13 @@ describe('RecordRtcComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecordRtcComponent ]
+      declarations: [ 
+        RecordRtcComponent,
+        NgxNotificationComponent 
+      ],
+      providers: [
+        NgxNotificationService
+      ]
     })
     .compileComponents();
   }));

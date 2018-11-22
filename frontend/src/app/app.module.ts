@@ -15,7 +15,7 @@ import { AuthService } from './services/auth.service';
 import { CrudService } from './services/crud.service';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { ScriptService } from './services/script.service';
-import { NgxNotificationService } from 'ngx-notification';
+import { NgxNotificationService, NgxNotificationModule } from 'ngx-notification';
 
 // Components
 import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
@@ -64,7 +64,8 @@ import { NgxNotificationComponent } from 'ngx-notification';
     HttpClientModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxNotificationModule
   ],
   providers: [
     AuthService,
