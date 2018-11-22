@@ -5,6 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import '../../../../assets/js/upload_video.js';
 import { QuestionResponse } from '../../../models/question-response';
 import { NgxNotificationService } from 'ngx-notification';
+import { CrudService } from '../../../services/crud.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 declare var uploadToYouTube: any;
 
@@ -26,7 +31,10 @@ export class VideoUploadComponent implements OnInit {
     private scriptService: ScriptService,
     private route: ActivatedRoute,
     private router: Router,
-    private ngxNotificationService: NgxNotificationService) { }
+    private ngxNotificationService: NgxNotificationService,
+    private crud: CrudService,
+    private errorHandler: ErrorHandlerService,
+    @Inject(DOCUMENT) document) { }
 
   ngOnInit() {
 
@@ -71,6 +79,47 @@ export class VideoUploadComponent implements OnInit {
       this.uploadButtonDisabled = true;
       this.sendNotification('The videos are being uploaded to YouTube', 'success', 'bottom-right');
     }
+  }
+
+  createQuestionResponses() {
+
+    // First, assign the video IDs to the QuestionResponse instances
+    // in the questionResponsesArr. As JQuery updated those strings,
+    // after the YouTube uploads finished, before this call to
+    // 'assignQuestionResponses()', the attribute 'videoId' of each
+    // QuestionResponse instance in that array is empty.
+    this.assignQuestionResponses();
+
+    // Once the video IDs have been set, everything's ready for
+    // inserting the question responses to the database.
+
+    for (let i = 0; i < this.questionResponsesArr.length; i++) {
+
+      this.crud.create(this.crud.models.QUESTION_RESPONSE, this.questionResponsesArr[i])
+        .subscribe(
+          (res: QuestionResponse) => {
+
+            console.log('Question response #' + i + ' ' + res);
+            this.questionResponsesArr[i] = res;
+          },
+          (err: HttpErrorResponse) => {
+            this.errorHandler.handleError(err);
+          }
+        );
+    }
+  }
+
+  assignQuestionResponses() {
+
+    console.log(this.questionResponsesArr);
+
+    for (let i = 0; i < this.questionResponsesArr.length; i++) {
+
+      const questionId = this.questionResponsesArr[i].question_id;
+      this.questionResponsesArr[i].videoId = document.getElementById('video-id_' + questionId).innerText;
+    }
+
+    console.log(this.questionResponsesArr);
   }
 
   /**

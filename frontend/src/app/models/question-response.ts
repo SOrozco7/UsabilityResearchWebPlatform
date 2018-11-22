@@ -3,7 +3,6 @@ export class QuestionResponse {
     constructor(
         public question_id: number,
         public videoId: string,
-        public participant_id: number,
-        public id?: number
+        public participant_id: number
     ) { }
 }
