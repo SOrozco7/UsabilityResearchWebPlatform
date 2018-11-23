@@ -73,7 +73,8 @@ module.exports = (app) => {
   app.delete('/api/participants/:id', participantsController.destroy);
 
   // Route for uploading files.
-  // The HTTP body to this endpoint should be a multipart form with a single field of file type called 'file'.
+  // The HTTP body to this endpoint should be a multipart form with a single field of file
+  // type called 'file'.
   app.post('/api/fileupload',
     filesMiddleware.multer.single('file'),
     filesMiddleware.sendUploadToGCS,
