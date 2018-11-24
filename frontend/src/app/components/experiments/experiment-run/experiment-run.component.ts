@@ -142,19 +142,9 @@ export class ExperimentRunComponent implements OnInit {
       this.child.startRecording();
     } else {
 
-      // Just finish the experiment
-      this.finishExperiment();
+      // Upload the participant's video responses
+      this.uploadVideos(this.experimentId, this.participantId);
     }
-  }
-
-  /**
-   * Method to finish the experiment and return to
-   * the ExperiementRetrieveComponent.
-   */
-  finishExperiment() {
-
-    // this.retrieveExperiment(this.experimentId);
-    this.uploadVideos(this.experimentId, 1);
   }
 
   /**
@@ -165,6 +155,11 @@ export class ExperimentRunComponent implements OnInit {
     this.router.navigate(['experiments/' + id]);
   }
 
+  /**
+   * Method to access the VideoUploadComponent
+   * @param experimentId the id of the experiment being run
+   * @param participantId the id of the participant at the moment
+   */
   uploadVideos(experimentId, participantId) {
 
     this.router.navigate(['experiments/' + experimentId + '/participants/' + participantId + '/video/upload']);
