@@ -5,8 +5,9 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <button md-raised-button color="primary" (click)="startRecording()"> Record </button>
-    <button md-raised-button color="primary"(click) ="stopRecording()"> Stop</button>
-    <button md-raised-button color="primary" (click)="download()"> Download</button>
+    <button md-raised-button color="primary"(click) ="stopRecording()"> 1. Stop video</button>
+    <button md-raised-button color="primary" (click)="sendToParentComponent()"> 2. Save response</button>
   </div>
 </div>
+
+<lib-ngx-notification></lib-ngx-notification>

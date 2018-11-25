@@ -26,7 +26,10 @@
               "src/styles.css",
               "src/styles/app.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/cors_upload.js",
+              "src/assets/js/upload_video.js"
+            ]
           },
           "configurations": {
             "production": {

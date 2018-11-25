@@ -17,7 +17,8 @@ export class CrudService {
     PARTICIPANT: 'participants',
     QUESTIONNAIRE_QUESTION: 'questionnairequestions',
     QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
-    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses'
+    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses',
+    QUESTION_RESPONSE: 'questionresponses'
   };
 
   constructor(private auth: AuthService, private http: HttpClient) {

@@ -1,5 +1,4 @@
-const { Participant } = require('../models');
-const { Experiment } = require('../models');
+const { Participant, Experiment, QuestionResponse } = require('../models');
 
 module.exports = {
   create(req, res) {
@@ -60,6 +59,11 @@ module.exports = {
           {
             model: Experiment,
             as: 'experiment',
+            required: false,
+          },
+          {
+            model: QuestionResponse,
+            as: 'questionresponses',
             required: false,
           },
         ],
