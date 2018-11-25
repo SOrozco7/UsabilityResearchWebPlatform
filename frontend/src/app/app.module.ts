@@ -36,7 +36,8 @@ import { RecordRtcComponent } from './components/record-rtc/record-rtc.component
 import { VideoUploadComponent } from './components/youtube/video-upload/video-upload.component';
 import { NgxNotificationComponent } from 'ngx-notification';
 import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
-import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component'; // tslint:disable-line:max-line-length
+import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component';
+import { ParticipantSelectionComponent } from './components/participants/participant-selection/participant-selection.component'; // tslint:disable-line:max-line-length
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { QuestionResponsesRetrieveComponent } from './components/question-respon
     VideoUploadComponent,
     NgxNotificationComponent,
     QuestionResponsesListComponent,
-    QuestionResponsesRetrieveComponent
+    QuestionResponsesRetrieveComponent,
+    ParticipantSelectionComponent
   ],
   imports: [
     BrowserModule,
