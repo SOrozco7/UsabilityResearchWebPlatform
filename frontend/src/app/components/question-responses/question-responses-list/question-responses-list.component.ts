@@ -27,11 +27,8 @@ export class QuestionResponsesListComponent implements OnInit {
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
     // List only the question responses of the current experiment
-    const data = {
-      experiment_id: String(this.experimentId)
-    };
-    
-    const searchParams = new URLSearchParams(data);
+    let searchParams = new URLSearchParams();
+    searchParams.set("experiment_id", this.experimentId.toString());
 
     this.crud.list(this.crud.models.PARTICIPANT, searchParams)
     .subscribe(
@@ -68,8 +65,16 @@ export class QuestionResponsesListComponent implements OnInit {
    * Method that takes you to the section to retrieve a specific 
    * participant's responses.
    */
-  retrieveResponses(participantId){
+  retrieveQuestionResponses(participantId){
 
     this.router.navigate(['experiments/' + this.experimentId + '/responses/participants/' + participantId]);
+  }
+
+  /**
+   * Method that takes you back to the experiment home page
+   */
+  retrieveExperiment(){
+
+    this.router.navigate(['experiments/' + this.experimentId]);
   }
 }

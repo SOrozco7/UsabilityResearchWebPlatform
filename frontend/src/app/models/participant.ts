@@ -12,6 +12,20 @@ export class Participant {
         public updatedAt?: Date,
         public createdAt?: Date,
         public id?: number,
-        public questionResponses?: QuestionResponse[]
+        public questionresponses?: QuestionResponse[]
     ) { }
+
+    public sortQuestionResponsesArray(){
+
+        this.questionresponses.sort((qr1, qr2) => {
+
+            if(qr1.question_id > qr2.question_id)
+                return 1;
+
+            else if(qr1.question_id < qr2.question_id)
+                return -1;
+
+            return 0;
+        });
+    }
 }

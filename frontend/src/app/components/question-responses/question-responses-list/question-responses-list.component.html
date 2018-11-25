@@ -1,4 +1,5 @@
 <div>
+  <button mat-raised-button id="back-button" (click)="retrieveExperiment()">Back</button>
   <br>
   <br>
   <div class="row">
@@ -34,7 +35,7 @@
                 {{participant.educationLevel}}
               </td>
               <td>
-                <button type="button" (click)="retrieveResponses(participant.id)" class="btn btn-primary">View responses</button>
+                <button type="button" (click)="retrieveQuestionResponses(participant.id)" class="btn btn-primary">View responses</button>
               </td>
             </tr>
           </tbody>

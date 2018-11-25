@@ -84,7 +84,7 @@ export class QuestionnaireFillComponent implements OnInit {
 
     // Create a new participant.
     // TODO: Delegate participant creation to another section and simply reference here.
-    const participant = new Participant(parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10));
+    const participant = new Participant("",-1,"", "", "", parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10));
     // let createdParticipant: Participant;
     this.crud.create(this.crud.models.PARTICIPANT, participant)
       .subscribe((createdParticipant: Participant) => {
