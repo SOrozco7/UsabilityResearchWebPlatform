@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { CrudService } from '../../../services/crud.service';
+import { Participant } from '../../../models/participant';
 
 @Component({
   selector: 'app-question-responses-list',
@@ -7,9 +12,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionResponsesListComponent implements OnInit {
 
-  constructor() { }
+  arrParticipants: Participant[];
+  experimentId: number;
+
+  constructor(
+    private route: ActivatedRoute,
+    private errorHandler: ErrorHandlerService,
+    private crud: CrudService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+
+    this.experimentId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+
+    this.crud.list(this.crud.models.PARTICIPANT, )
+    .subscribe(
+      (res: Participant[]) => {
+        // console.log(res);
+        // this.experiment = res;
+        // console.log(this.experiment.user_id);
+      },
+      (err: HttpErrorResponse) => {
+        this.errorHandler.handleError(err);
+      }
+    );
+
   }
 
 }

@@ -1,3 +1,29 @@
-<p>
-  question-responses-list works!
-</p>
+<div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col">
+      <div class="card mb-3">
+        <div class="card-header">Experiment #{{experimentId}} Responses</div>
+        <table class="card-body table table-hover">
+          <thead>
+            <tr>
+              <th>Participant</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let participant of participants">
+              <td>
+                {{participant.id}}
+              </td>
+              <td>
+                <button type="button" (click)="retrieveExperiment(experiment.id)" class="btn btn-primary">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

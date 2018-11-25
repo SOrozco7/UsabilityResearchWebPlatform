@@ -36,9 +36,21 @@ export class CrudService {
     }
   }
 
-  list(model: string) {
+  /**
+   * 
+   * @param model The model to list
+   * @param searchParams Optional search parameters for the query. Filters can be added here.
+   */
+  list(model: string, searchParams?: URLSearchParams) {
+
+    let url = this.URL + '/' + model + '/';
+
+    // Check whether there are search parameters to 
+    if(searchParams)
+      url += searchParams.toString();
+
     return this.http.get(
-      this.URL + '/' + model,
+      url,
       {
         headers: this.headers
       }
