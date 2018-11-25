@@ -58,6 +58,8 @@ module.exports = {
 
     // If the request contains a query, add the corresponding filter, i.e. the 'WHERE' clause. 
     // Else, just add an empty 'WHERE' clause.
+    // This is an example of a call with a query that filters on 'experiment_id':
+    //    api/participants?experiment_id=1
     const participantWhere = req.query.experiment_id ? {experiment_id: req.query.experiment_id} : {};
 
     return Participant
