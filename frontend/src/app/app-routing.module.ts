@@ -6,20 +6,26 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 // Components
+// User
 import { LoginComponent } from './components/authentication/login/login.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
+import { SignupComponent } from './components/signup/signup.component';
+// Experiment
 import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
 import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
 import { ExperimentRetrieveComponent } from './components/experiments/experiment-retrieve/experiment-retrieve.component';
 import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
 import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
+import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
+// QuestionResponses
+import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
+// Questionnaire
 import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
 import { QuestionnaireCreateComponent } from './components/questionnaires/questionnaire-create/questionnaire-create.component';
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';  // tslint:disable-line:max-line-length
 import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component';  // tslint:disable-line:max-line-length
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
+// Video
 import { VideoUploadComponent } from './components/youtube/video-upload/video-upload.component';
 
 const routes: Routes = [
@@ -96,6 +102,11 @@ const routes: Routes = [
   {
     path: 'experiments/:experiment_id/participants/:participant_id/video/upload',
     component: VideoUploadComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:id/responses',
+    component: QuestionResponsesListComponent,
     canActivate: [AuthGuard]
   },
   // All other routes

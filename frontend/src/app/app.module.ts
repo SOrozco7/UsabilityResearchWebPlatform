@@ -35,6 +35,7 @@ import { ExperimentRunComponent } from './components/experiments/experiment-run/
 import { RecordRtcComponent } from './components/record-rtc/record-rtc.component';
 import { VideoUploadComponent } from './components/youtube/video-upload/video-upload.component';
 import { NgxNotificationComponent } from 'ngx-notification';
+import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { NgxNotificationComponent } from 'ngx-notification';
     ExperimentRunComponent,
     RecordRtcComponent,
     VideoUploadComponent,
-    NgxNotificationComponent
+    NgxNotificationComponent,
+    QuestionResponsesListComponent
   ],
   imports: [
     BrowserModule,
