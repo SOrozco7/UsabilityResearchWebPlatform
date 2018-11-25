@@ -47,15 +47,15 @@ export class ParticipantSelectionComponent implements OnInit {
    * @param participants the array of participants from the Participant.List
    * request.
    */
-  filterParticipants(participants){
+  filterParticipants(participants) {
 
     this.arrParticipants = [];
     let j = 0;
 
     for (let i = 0; i < participants.length; i++) {
 
-      if (!participants[i].questionresponses 
-        || participants[i].questionresponses.length == 0) {
+      if (!participants[i].questionresponses
+        || participants[i].questionresponses.length === 0) {
 
         this.arrParticipants[j++] = participants[i];
       }
@@ -75,7 +75,7 @@ export class ParticipantSelectionComponent implements OnInit {
    * @param participantId the id of the participant of the experiment selected
    * for the experiment run
    */
-  runExperiment(participantId){
+  runExperiment(participantId) {
 
     this.router.navigate(['experiments/run/' + this.experimentId + '/participants/' + participantId]);
   }

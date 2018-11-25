@@ -54,7 +54,7 @@ export class QuestionResponsesListComponent implements OnInit {
 
     for (let i = 0; i < participants.length; i++) {
 
-      if (participants[i].questionresponses 
+      if (participants[i].questionresponses
         && participants[i].questionresponses.length > 0) {
 
         this.arrParticipants[j++] = participants[i];
