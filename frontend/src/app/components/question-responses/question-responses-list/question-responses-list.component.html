@@ -1,0 +1,46 @@
+<div>
+  <button mat-raised-button id="back-button" (click)="retrieveExperiment()">Back</button>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col">
+      <div class="card mb-3">
+        <div class="card-header">Experiment #{{experimentId}} Responses by Participants</div>
+        <table class="card-body table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Ethnic Group</th>
+              <th>Education Level</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let participant of arrParticipants">
+              <td>
+                {{participant.name}}
+              </td>
+              <td>
+                {{participant.age}}
+              </td>
+              <td>
+                {{participant.gender}}
+              </td>
+              <td>
+                {{participant.ethnicGroup}}
+              </td>
+              <td>
+                {{participant.educationLevel}}
+              </td>
+              <td>
+                <button type="button" (click)="retrieveQuestionResponses(participant.id)" class="btn btn-primary">View responses</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

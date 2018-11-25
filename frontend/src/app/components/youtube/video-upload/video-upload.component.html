@@ -1,0 +1,85 @@
+<span id="signinButton" class="pre-sign-in">
+  <!-- IMPORTANT: Replace the value of the <code>data-clientid</code>
+                    attribute in the following tag with your project's client ID. -->
+  <span class="g-signin" data-callback="signinCallback" data-clientid="356467445416-alabb24kh42nlbu42ph6cfq9krit76n1.apps.googleusercontent.com"
+    data-cookiepolicy="single_host_origin" data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
+  </span>
+</span>
+
+<div class="post-sign-in">
+  <div>
+    <img id="channel-thumbnail">
+    <span id="channel-name"></span>
+  </div>
+
+  <ng-container *ngIf="videosArr">
+
+    <br>
+    <br>
+
+    <div>
+      <p>All videos will be uploaded as "Private"</p>
+    </div>
+
+    <button [disabled]="uploadButtonDisabled" (click)="callYouTubeUpload()" id="uploadButton">Upload
+      {{videosArr.length}} experiment responses to YouTube</button>
+
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">YouTube Uploads</div>
+          <table class="card-body table table-hover">
+            <thead>
+              <tr>
+                <th>Question ID</th>
+                <th>Upload Progress</th>
+                <th>YouTube Video ID</th>
+                <th>YouTube Link</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let questionResponse of questionResponsesArr">
+                <td>
+                  {{questionResponse.question_id}}
+                </td>
+                <td id="percent-transferred_{{questionResponse.question_id}}">
+                </td>
+                <td id="video-id_{{questionResponse.question_id}}">
+                </td>
+                <td id="youTubeLink_video-id_{{questionResponse.question_id}}">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="uploadButtonDisabled">
+
+      <div>
+        <br>
+        <section>
+          <button mat-raised-button id="back-button" (click)="createQuestionResponses()">Save YouTube video IDs in the database</button>
+        </section>
+        <br>
+      </div>
+    </ng-container>
+
+  </ng-container>
+
+  <div>
+    <p id="disclaimer">By uploading a video, you certify that you own all rights to the content or that you are
+      authorized by the owner to make the content publicly available on YouTube, and that it otherwise complies with
+      the YouTube Terms of Service located at <a href="http://www.youtube.com/t/terms" target="_blank">http://www.youtube.com/t/terms</a></p>
+  </div>
+
+  <section>
+    <button mat-raised-button id="back-button" (click)="retrieveExperiment(this.experimentId)">Back to the experiment</button>
+  </section>
+
+  <lib-ngx-notification></lib-ngx-notification>

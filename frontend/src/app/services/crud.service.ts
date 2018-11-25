@@ -17,7 +17,8 @@ export class CrudService {
     PARTICIPANT: 'participants',
     QUESTIONNAIRE_QUESTION: 'questionnairequestions',
     QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
-    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses'
+    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses',
+    QUESTION_RESPONSE: 'questionresponses'
   };
 
   constructor(private auth: AuthService, private http: HttpClient) {
@@ -35,9 +36,23 @@ export class CrudService {
     }
   }
 
-  list(model: string) {
+  /**
+   *
+   * @param model The model to list
+   * @param searchParams Optional search parameters for the query.
+   * Filters (i.e. SQL 'WHERE' clauses) can be added here.
+   */
+  list(model: string, searchParams?: URLSearchParams) {
+
+    let url = this.URL + '/' + model + '/';
+
+    // Check whether there are search parameters to add
+    if (searchParams) {
+      url += '?' + searchParams.toString();
+    }
+
     return this.http.get(
-      this.URL + '/' + model,
+      url,
       {
         headers: this.headers
       }

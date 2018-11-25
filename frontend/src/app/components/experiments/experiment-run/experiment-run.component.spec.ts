@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../material.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxNotificationService, NgxNotificationComponent } from 'ngx-notification';
 
 describe('ExperimentRunComponent', () => {
   let component: ExperimentRunComponent;
@@ -18,15 +19,26 @@ describe('ExperimentRunComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExperimentRunComponent, RecordRtcComponent],
-      imports: [RouterTestingModule, BrowserModule, CommonModule, FormsModule, MaterialModule],
+      declarations: [
+        ExperimentRunComponent,
+        RecordRtcComponent,
+        NgxNotificationComponent
+      ],
+      imports: [
+        RouterTestingModule,
+        BrowserModule,
+        CommonModule,
+        FormsModule,
+        MaterialModule
+      ],
       providers: [
 
         AuthService,
         CrudService,
         ErrorHandlerService,
         HttpClient,
-        HttpHandler
+        HttpHandler,
+        NgxNotificationService
       ]
     }).compileComponents();
 

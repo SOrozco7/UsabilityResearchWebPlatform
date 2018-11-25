@@ -11,13 +11,13 @@
   <!-- Modify the button: either 'Submit response' or 'Finish experiment' -->
   <ng-container *ngIf="currQuestionIndex < questionCount - 1; else second">
     <button mat-raised-button type="button" (click)="changeCurrentlyDisplayedQuestion()" class="btn btn-lg btn-primary change-question"
-      id="right-panel-link">Submit response</button>
+      id="right-panel-link">3. Next question</button>
   </ng-container>
   <ng-template #second>
-    <button mat-raised-button type="button" (click)="finishExperiment()" class="btn btn-lg btn-success change-question" id="right-panel-link">Finish
+    <button mat-raised-button type="button" (click)="changeCurrentlyDisplayedQuestion()" class="btn btn-lg btn-success change-question" id="right-panel-link">3. Finish
       experiment</button>
   </ng-template>
 
-  <app-record-rtc></app-record-rtc>
+  <app-record-rtc (videoEvent)="receiveVideo($event)"></app-record-rtc>
 
 </div>
