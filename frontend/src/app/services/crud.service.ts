@@ -11,9 +11,11 @@ export class CrudService {
 
     USER: 'users',
     EXPERIMENT: 'experiments',
+    QUESTION: 'questions',
     QUESTIONNAIRE: 'questionnaires',
     BODYPART : 'bodyPart',
     PARTICIPANT: 'participants',
+    QUESTIONNAIRE_QUESTION: 'questionnairequestions',
     QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
     QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses'
   };
@@ -102,6 +104,15 @@ export class CrudService {
     // For example: adding a questionnaire to an experiment.
     return this.http.post(
       this.URL + '/' + ownerModel + '/' + ownerId + '/' + objectModel,
+      body,
+      {
+        headers: this.headers
+      }
+    );
+  }
+
+  bulkCreate(model: string, body: any) {
+    return this.http.post(this.URL + '/' + model + '-bulk',
       body,
       {
         headers: this.headers

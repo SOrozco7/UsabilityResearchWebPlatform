@@ -14,7 +14,7 @@
               <th>Experiment</th>
               <th>Date</th>
               <th>Total Questions</th>
-              <th>Total Users</th>
+              <th>Total Participants</th>
               <th></th>
             </tr>
           </thead>
@@ -30,10 +30,10 @@
                 {{experiment.startDate}}
               </td>
               <td>
-                <span>-</span>
+                <span>{{experiment.questionsCount}}</span>
               </td>
               <td>
-                <span>-</span>
+                <span>{{experiment.participantsCount}}</span>
               </td>
               <td>
                 <button type="button" (click)="retrieveExperiment(experiment.id)" class="btn btn-primary">View</button>

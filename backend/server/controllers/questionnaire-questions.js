@@ -23,6 +23,38 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
+  bulkCreate(req, res) {
+    if (!req.body.questionnairequestions) {
+      return res.status(400).send({
+        status: 400,
+        message: 'The attribute "questionnairequestions" of a request to QuestionnaireQuestion.bulkCreate cannot be empty.',
+      });
+    }
+    // eslint-disable-next-line consistent-return
+    req.body.questionnairequestions.forEach((questionnairequestion) => {
+      if (!questionnairequestion.text) {
+        return res.status(400).send({
+          status: 400,
+          message: 'The attribute "text" of an instance of "QuestionnaireQuestion" cannot be empty.',
+        });
+      }
+      if (!questionnairequestion.questionnaire_id) {
+        return res.status(400).send({
+          status: 400,
+          message: 'The attribute "questionnaire_id" of an instance of "QuestionnaireQuestion" cannot be empty.',
+        });
+      }
+    });
+
+    return Question
+      .bulkCreate(req.body.questionnairequestions, { validate: true })
+      .then(() => res.status(201).send({
+        status: 201,
+        message: 'Successfully created questionnaire questions.',
+      }))
+      .catch(error => res.status(400).send(error));
+  },
+
   list(req, res) {
     return Question
       .findAll({

@@ -6,9 +6,26 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    // There will be further information here, but as for now this solely serves
-    // the purpose of bridging a QuestionnaireResponse with an
-    // Experiment.
+    name: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
+    age: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    gender: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
+    ethnicGroup: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
+    educationLevel: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
   }, {});
 
   Participant.associate = (models) => {

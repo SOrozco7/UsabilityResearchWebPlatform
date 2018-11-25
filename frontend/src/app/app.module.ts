@@ -20,12 +20,15 @@ import { ExperimentRetrieveComponent } from './components/experiments/experiment
 import { ExperimentUpdateComponent } from './components/experiments/experiment-update/experiment-update.component';
 import { ExperimentDeleteComponent } from './components/experiments/experiment-delete/experiment-delete.component';
 import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
+import { QuestionnaireCreateComponent } from './components/questionnaires/questionnaire-create/questionnaire-create.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { NavComponent } from './components/nav/nav.component';
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';  // tslint:disable-line:max-line-length
 import { SignupComponent } from './components/signup/signup.component';
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
-import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component';  // tslint:disable-line:max-line-length
+import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component'; // tslint:disable-line:max-line-length
+import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
+import { RecordRtcComponent } from './components/record-rtc/record-rtc.component';  // tslint:disable-line:max-line-length
 
 @NgModule({
   declarations: [
@@ -37,19 +40,23 @@ import { QuestionnaireAddToExperimentComponent } from './components/questionnair
     ExperimentUpdateComponent,
     ExperimentDeleteComponent,
     QuestionnaireListComponent,
+    QuestionnaireCreateComponent,
     LogoutComponent,
     NavComponent,
     QuestionnaireListForExperimentComponent,
     SignupComponent,
     QuestionnaireFillComponent,
-    QuestionnaireAddToExperimentComponent
+    QuestionnaireAddToExperimentComponent,
+    ExperimentRunComponent,
+    RecordRtcComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, CrudService, ErrorHandlerService],
   bootstrap: [AppComponent]
