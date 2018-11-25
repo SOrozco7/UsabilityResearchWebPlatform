@@ -92,6 +92,11 @@ module.exports = {
             as: 'experiment',
             required: false,
           },
+          {
+            model: QuestionResponse,
+            as: 'questionresponses',
+            required: false,
+          },
         ],
       })
       .then((participant) => {
