@@ -36,10 +36,7 @@ export class QuestionResponsesListComponent implements OnInit {
     this.crud.list(this.crud.models.PARTICIPANT, searchParams)
     .subscribe(
       (res: Participant[]) => {
-        console.log(res);
-        this.arrParticipants = res;
-        // this.experiment = res;
-        // console.log(this.experiment.user_id);
+        this.filterParticipants(res);
       },
       (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
@@ -48,11 +45,31 @@ export class QuestionResponsesListComponent implements OnInit {
   }
 
   /**
+   * Method that adds to the arrParticipants attribute of this component
+   * only those participants of this experiment who actually have responses. 
+   * @param participants the array of participants from the Participant.List
+   * request.
+   */
+  filterParticipants(participants){
+
+    this.arrParticipants = [];
+    let j = 0;
+
+    for(let i = 0; i < participants.length; i++){
+
+      if(participants[i].questionresponses && participants[i].questionresponses.length > 0){
+
+        this.arrParticipants[j++] = participants[i];
+      }
+    }
+  }
+
+  /**
    * Method that takes you to the section to retrieve a specific 
    * participant's responses.
    */
   retrieveResponses(participantId){
 
-    this.router.navigate(['experiments/' + this.experimentId + '/responses/participant/' + participantId]);
+    this.router.navigate(['experiments/' + this.experimentId + '/responses/participants/' + participantId]);
   }
 }

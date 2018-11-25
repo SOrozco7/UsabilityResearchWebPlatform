@@ -36,6 +36,7 @@ import { RecordRtcComponent } from './components/record-rtc/record-rtc.component
 import { VideoUploadComponent } from './components/youtube/video-upload/video-upload.component';
 import { NgxNotificationComponent } from 'ngx-notification';
 import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
+import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { QuestionResponsesListComponent } from './components/question-responses/
     RecordRtcComponent,
     VideoUploadComponent,
     NgxNotificationComponent,
-    QuestionResponsesListComponent
+    QuestionResponsesListComponent,
+    QuestionResponsesRetrieveComponent
   ],
   imports: [
     BrowserModule,
