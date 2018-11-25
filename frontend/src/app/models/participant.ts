@@ -15,15 +15,15 @@ export class Participant {
         public questionresponses?: QuestionResponse[]
     ) { }
 
-    public sortQuestionResponsesArray(){
+    public sortQuestionResponsesArray() {
 
         this.questionresponses.sort((qr1, qr2) => {
 
-            if(qr1.question_id > qr2.question_id)
+            if (qr1.question_id > qr2.question_id) {
                 return 1;
-
-            else if(qr1.question_id < qr2.question_id)
+            } else if (qr1.question_id < qr2.question_id) {
                 return -1;
+                 }
 
             return 0;
         });

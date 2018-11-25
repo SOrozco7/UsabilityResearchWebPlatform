@@ -1,6 +1,8 @@
-const { Participant, Experiment, QuestionResponse } = require('../models');
-var Sequelize = require('sequelize');
-const Op = Sequelize.Op;
+const { Participant } = require('../models');
+
+const { Experiment } = require('../models');
+
+const { QuestionResponse } = require('../models');
 
 module.exports = {
   create(req, res) {
@@ -53,14 +55,14 @@ module.exports = {
       .then(participant => res.status(201).send(participant))
       .catch(error => res.status(400).send(error));
   },
-
   list(req, res) {
-
-    // If the request contains a query, add the corresponding filter, i.e. the 'WHERE' clause. 
+    // If the request contains a query, add the corresponding filter, i.e. the 'WHERE' clause.
     // Else, just add an empty 'WHERE' clause.
     // This is an example of a call with a query that filters on 'experiment_id':
     //    api/participants?experiment_id=1
-    const participantWhere = req.query.experiment_id ? {experiment_id: req.query.experiment_id} : {};
+    const participantWhere = req.query.experiment_id
+      ? { experiment_id: req.query.experiment_id }
+      : { };
 
     return Participant
       .findAll({
@@ -75,9 +77,8 @@ module.exports = {
             as: 'questionresponses',
             required: false,
           },
-        ]
-        ,
-        where: participantWhere // Apply the optional filter here. 
+        ],
+        where: participantWhere, // Apply the optional filter here.
       })
       .then(participants => res.status(200).send(participants))
       .catch(error => res.status(400).send(error));

@@ -27,8 +27,8 @@ export class QuestionResponsesListComponent implements OnInit {
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
 
     // List only the question responses of the current experiment
-    let searchParams = new URLSearchParams();
-    searchParams.set("experiment_id", this.experimentId.toString());
+    const searchParams = new URLSearchParams();
+    searchParams.set('experiment_id', this.experimentId.toString());
 
     this.crud.list(this.crud.models.PARTICIPANT, searchParams)
     .subscribe(
@@ -43,18 +43,18 @@ export class QuestionResponsesListComponent implements OnInit {
 
   /**
    * Method that adds to the arrParticipants attribute of this component
-   * only those participants of this experiment who actually have responses. 
+   * only those participants of this experiment who actually have responses.
    * @param participants the array of participants from the Participant.List
    * request.
    */
-  filterParticipants(participants){
+  filterParticipants(participants) {
 
     this.arrParticipants = [];
     let j = 0;
 
-    for(let i = 0; i < participants.length; i++){
+    for (let i = 0; i < participants.length; i++) {
 
-      if(participants[i].questionresponses && participants[i].questionresponses.length > 0){
+      if (participants[i].questionresponses && participants[i].questionresponses.length > 0) {
 
         this.arrParticipants[j++] = participants[i];
       }
@@ -62,10 +62,10 @@ export class QuestionResponsesListComponent implements OnInit {
   }
 
   /**
-   * Method that takes you to the section to retrieve a specific 
+   * Method that takes you to the section to retrieve a specific
    * participant's responses.
    */
-  retrieveQuestionResponses(participantId){
+  retrieveQuestionResponses(participantId) {
 
     this.router.navigate(['experiments/' + this.experimentId + '/responses/participants/' + participantId]);
   }
@@ -73,7 +73,7 @@ export class QuestionResponsesListComponent implements OnInit {
   /**
    * Method that takes you back to the experiment home page
    */
-  retrieveExperiment(){
+  retrieveExperiment() {
 
     this.router.navigate(['experiments/' + this.experimentId]);
   }

@@ -30,7 +30,7 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
   ngOnInit() {
 
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
-    this.participant = new Participant("", -1, "", "", "", -1, null, null, -1, null);
+    this.participant = new Participant('', -1, '', '', '', -1, null, null, -1, null);
     this.participant.id = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
     this.participant.questionresponses = [];
     this.currQuestionIndex = 0;
@@ -39,7 +39,18 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
     .subscribe(
       (res: Participant) => {
 
-        this.participant = new Participant(res.name, res.age, res.gender, res.ethnicGroup, res.educationLevel, res.experiment_id, null, null, res.id, res.questionresponses);
+        this.participant =
+          new Participant(
+            res.name,
+            res.age,
+            res.gender,
+            res.ethnicGroup,
+            res.educationLevel,
+            res.experiment_id,
+            null,
+            null,
+            res.id,
+            res.questionresponses);
         this.participant.sortQuestionResponsesArray();
       },
       (err: HttpErrorResponse) => {
@@ -47,19 +58,19 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
       }
     );
   }
-  
-  setCurrQuestion(questionIndex){
+
+  setCurrQuestion(questionIndex) {
 
     this.currQuestionIndex = questionIndex;
   }
 
-  getCurrYouTubeVideoURL(){
+  getCurrYouTubeVideoURL() {
 
-    let videoId = this.participant.questionresponses[this.currQuestionIndex].videoId;
-    return this.domSanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + videoId);
+    const videoId = this.participant.questionresponses[this.currQuestionIndex].videoId;
+    return this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + videoId);
   }
 
-  retrieveQuestionResponses(){
+  retrieveQuestionResponses() {
 
     this.router.navigate(['experiments/' + this.experimentId + '/responses']);
   }

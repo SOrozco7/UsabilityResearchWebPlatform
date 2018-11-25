@@ -19,7 +19,7 @@ import { ExperimentDeleteComponent } from './components/experiments/experiment-d
 import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
 // QuestionResponses
 import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
-import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component';
+import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component'; // tslint:disable-line:max-line-length
 // Questionnaire
 import { QuestionnaireListComponent } from './components/questionnaires/questionnaire-list/questionnaire-list.component';
 import { QuestionnaireCreateComponent } from './components/questionnaires/questionnaire-create/questionnaire-create.component';
