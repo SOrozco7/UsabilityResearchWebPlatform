@@ -4,21 +4,37 @@
   <div class="row">
     <div class="col">
       <div class="card mb-3">
-        <div class="card-header">Experiment #{{experimentId}} Responses</div>
+        <div class="card-header">Experiment #{{experimentId}} Responses by Participants</div>
         <table class="card-body table table-hover">
           <thead>
             <tr>
-              <th>Participant</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Ethnic Group</th>
+              <th>Education Level</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let participant of participants">
+            <tr *ngFor="let participant of arrParticipants">
               <td>
-                {{participant.id}}
+                {{participant.name}}
               </td>
               <td>
-                <button type="button" (click)="retrieveExperiment(experiment.id)" class="btn btn-primary">View</button>
+                {{participant.age}}
+              </td>
+              <td>
+                {{participant.gender}}
+              </td>
+              <td>
+                {{participant.ethnicGroup}}
+              </td>
+              <td>
+                {{participant.educationLevel}}
+              </td>
+              <td>
+                <button type="button" (click)="retrieveResponses(participant.id)" class="btn btn-primary">View responses</button>
               </td>
             </tr>
           </tbody>
