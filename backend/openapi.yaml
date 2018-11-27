@@ -142,7 +142,7 @@ paths:
         '200':
           description: "Sucessful experiment deletion"
           schema:
-            $ref: "#/definitions/experiment"
+            $ref: "#/definitions/deleteExperimentResponse"
         '400':
           description: "Failed experiment deletion"
           schema:
@@ -154,3 +154,29 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/experiment"
+
+definitions:
+  experiment:
+    type: object
+    properties:
+      id:
+        type: number
+      name:
+        type: string
+      description:
+        type: string
+      startDate:
+        type: string
+      endDate:
+        type: string
+      user_id:
+        type: string
+
+  deleteResponse:
+    type: object
+    properties:
+      status: 
+        type: number
+      message:
+        type: string
+
