@@ -1,0 +1,156 @@
+paths:
+  "/api/experiments":
+    post:
+      description: "Echo a given message."
+      operationId: "experiments_create"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: "Successful experiment creation"
+          schema:
+            $ref: "#/definitions/experiment"
+        '400':
+          description: "Failed experiment creation"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - description: "Name of the experiment"
+        in: body
+        name: name
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+      - description: "Description of the experiment"
+        in: body
+        name: description
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+      - description: "Start date of the experiment"
+        in: body
+        name: startDate
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+      - description: "End date of the experiment"
+        in: body
+        name: endDate
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+      - description: "User ID of the experiment"
+        in: body
+        name: user_id
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+    get:
+      description: "Returns the list of experiments."
+      operationId: "experiments_list"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: "Successful experiment list"
+          schema:
+            type: array
+            $ref: "#/definitions/experiment"
+        '400':
+          description: "Failed experiment list"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  "/api/experiments/{id}":
+    get:
+      description: "Retrieves an experiment"
+      operationId: "experiments_retrieve"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: "Sucessful experiment retrieve"
+          schema:
+            $ref: "#/definitions/experiment"
+        '400':
+          description: "Failed experiment retrieve"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - description: "ID of the experiment"
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+    put:
+      description: "Updates an experiment"
+      operationId: "experiments_update"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: "Succesful experiment update"
+          schema:
+            $ref: "#/definitions/experiment"
+        '400':
+          description: "Failed experiment update"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - description: "ID of the experiment"
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: "#/definitions/experiment" 
+      - description: "Name of the experiment"
+        in: body
+        name: name
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+      - description: "Description of the experiment"
+        in: body
+        name: description
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+      - description: "Start date of the experiment"
+        in: body
+        name: startDate
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+      - description: "End date of the experiment"
+        in: body
+        name: endDate
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+      - description: "User ID of the experiment"
+        in: body
+        name: user_id
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
+    delete:
+      description: "Deletes an experiment"
+      operationId: "experiments_delete"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: "Sucessful experiment deletion"
+          schema:
+            $ref: "#/definitions/experiment"
+        '400':
+          description: "Failed experiment deletion"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - description: "ID of the experiment"
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: "#/definitions/experiment"
