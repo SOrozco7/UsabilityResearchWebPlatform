@@ -33,12 +33,12 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
     const participantId = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
 
     // This line is required to be able to initialize the questionresponses array.
-    this.participant = new Participant("", -1, "", "", "", -1, null, null, -1, null);
+    this.participant = new Participant('', -1, '', '', '', -1, null, null, -1, null);
 
     // This line is required because if the initialization of the questionresponses array
     // is not made, the Karma test fails.
     this.participant.questionresponses = [];
-    
+
     this.currQuestionIndex = 0;
 
     this.crud.retrieve(this.crud.models.PARTICIPANT, participantId)
@@ -64,8 +64,9 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
 
         // Sort the question responses by the relative order
         // of their IDs
-        if(this.participant.questionresponses)
+        if (this.participant.questionresponses) {
           this.participant.sortQuestionResponsesArray();
+        }
       },
       (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
@@ -89,9 +90,9 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
    */
   getCurrYouTubeVideoURL() {
 
-    if(this.participant 
-      && this.participant.questionresponses 
-      && this.currQuestionIndex < this.participant.questionresponses.length){
+    if (this.participant
+      && this.participant.questionresponses
+      && this.currQuestionIndex < this.participant.questionresponses.length) {
 
       // Retrieve the YouTube video ID of the currently chosen video
       const videoId = this.participant.questionresponses[this.currQuestionIndex].videoId;
