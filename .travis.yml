@@ -40,6 +40,8 @@ before_script:
 - npm install sequelize-cli
 # Copy the config.json file for Travis to a new file with the proper extension
 - cp server/config/config.json.travis server/config/config.json
+# Copy the cloud.json file to Travis as well
+- cp server/config/cloud.json.travis server/config/cloud.json
 ################################################
 # FRONTEND
 # Go to the frontend folder

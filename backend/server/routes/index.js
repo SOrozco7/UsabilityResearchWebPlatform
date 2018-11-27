@@ -9,6 +9,8 @@ const questionnaireResponsesController = require('../controllers').questionnaire
 const questionnaireQuestionResponsesController = require('../controllers').questionnaireQuestionResponses;
 const participantsController = require('../controllers').participants;
 
+const filesMiddleware = require('../middlewares/files');
+
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
     message: 'Welcome to the GestureWeb Project API!',
@@ -76,6 +78,28 @@ module.exports = (app) => {
   app.get('/api/participants/:id', participantsController.retrieve);
   app.put('/api/participants/:id', participantsController.update);
   app.delete('/api/participants/:id', participantsController.destroy);
+
+  // Route for uploading files.
+  // The HTTP body to this endpoint should be a multipart form with a single field of file
+  // type called 'file'.
+  app.post('/api/fileupload',
+    filesMiddleware.multer.single('file'),
+    filesMiddleware.sendUploadToGCS,
+    (req, res) => {
+      // Was an image uploaded? If so, we'll use its public URL
+      // in cloud storage.
+      if (req.file && req.file.cloudStoragePublicUrl) {
+        res.status(201).send({
+          imageUrl: req.file.cloudStoragePublicUrl,
+          status: 200,
+        });
+      } else {
+        res.status(400).send({
+          status: 400,
+          message: 'Error uploading the file.',
+        });
+      }
+    });
 
   // Routes for the bodyParts
   // app.post('/api/bodyParts', bodyPartsController.create);
