@@ -33,12 +33,11 @@ paths:
           type: string
           format: email
       - name: username
-        description: "The email of the user"
+        description: "The username of the user"
         required: true
         in: body
         schema:
           type: string
-          format: email
       - name: firstName
         description: "The first name of the user"
         required: true
@@ -105,16 +104,16 @@ paths:
             $ref: '#/definitions/deleteResponse'
     "/api/experiments":
     post:
-      description: "Echo a given message."
+      description: "Create an experiment."
       operationId: "experiments_create"
       produces:
       - "application/json"
       responses:
-        '200':
+        200:
           description: "Successful experiment creation"
           schema:
             $ref: "#/definitions/experiment"
-        '400':
+        400:
           description: "Failed experiment creation"
           schema:
             $ref: "#/definitions/ErrorModel"
@@ -155,12 +154,12 @@ paths:
       produces:
       - "application/json"
       responses:
-        '200':
+        200:
           description: "Successful experiment list"
           schema:
             type: array
             $ref: "#/definitions/experiment"
-        '400':
+        400:
           description: "Failed experiment list"
           schema:
             $ref: "#/definitions/ErrorModel"
@@ -171,11 +170,11 @@ paths:
       produces:
       - "application/json"
       responses:
-        '200':
+        200:
           description: "Sucessful experiment retrieve"
           schema:
             $ref: "#/definitions/experiment"
-        '400':
+        400:
           description: "Failed experiment retrieve"
           schema:
             $ref: "#/definitions/ErrorModel"
@@ -192,11 +191,11 @@ paths:
       produces:
       - "application/json"
       responses:
-        '200':
+        200:
           description: "Succesful experiment update"
           schema:
             $ref: "#/definitions/experiment"
-        '400':
+        400:
           description: "Failed experiment update"
           schema:
             $ref: "#/definitions/ErrorModel"
@@ -243,11 +242,11 @@ paths:
       produces:
       - "application/json"
       responses:
-        '200':
+        200:
           description: "Sucessful experiment deletion"
           schema:
             $ref: "#/definitions/deleteExperimentResponse"
-        '400':
+        400:
           description: "Failed experiment deletion"
           schema:
             $ref: "#/definitions/ErrorModel"
