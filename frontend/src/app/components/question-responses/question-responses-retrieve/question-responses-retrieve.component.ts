@@ -30,15 +30,17 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
   ngOnInit() {
 
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
-    this.participant = new Participant('', -1, '', '', '', -1, null, null, -1, null);
-    this.participant.id = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
-    this.participant.questionresponses = [];
+    const participantId = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
     this.currQuestionIndex = 0;
 
-    this.crud.retrieve(this.crud.models.PARTICIPANT, this.participant.id)
+    this.crud.retrieve(this.crud.models.PARTICIPANT, participantId)
     .subscribe(
       (res: Participant) => {
 
+        // Instead of assigning 'this.participant = res', call the
+        // constructor of the Participant model to have access
+        // to the 'sortQuestionResponsesArray()' method defined
+        // in that class.
         this.participant =
           new Participant(
             res.name,
@@ -51,6 +53,9 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
             null,
             res.id,
             res.questionresponses);
+
+        // Sort the question responses by the relative order
+        // of their IDs
         this.participant.sortQuestionResponsesArray();
       },
       (err: HttpErrorResponse) => {
@@ -59,17 +64,35 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
     );
   }
 
+  /**
+   * Method that sets the current question
+   * @param questionIndex the index of the new current question.
+   */
   setCurrQuestion(questionIndex) {
 
     this.currQuestionIndex = questionIndex;
   }
 
+  /**
+   * Method that returns the YouTube video URL
+   * of the currently chosen video. The URL
+   * string is sanitized before being returned.
+   */
   getCurrYouTubeVideoURL() {
 
+    // Retrieve the YouTube video ID of the currently chosen video
     const videoId = this.participant.questionresponses[this.currQuestionIndex].videoId;
+
+    // To be able to set this YouTube link in the corresponding iframe's [src] attribute,
+    // the URL string must be sanitized. This prevents Cross-Site Scripting Security bugs
+    // and makes it safe to use such URLs in DOM contexts.
     return this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + videoId);
   }
 
+  /**
+   * Method that takes you to the list of question responses
+   * of this experiment.
+   */
   retrieveQuestionResponses() {
 
     this.router.navigate(['experiments/' + this.experimentId + '/responses']);
