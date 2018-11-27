@@ -101,8 +101,8 @@ paths:
       responses:
         200:
           schema:
-            $ref: '#/definitions/deleteResponse'
-    "/api/experiments":
+            $ref: "#/definitions/deleteResponse"
+  "/api/experiments":
     post:
       description: "Create an experiment."
       operationId: "experiments_create"
@@ -257,7 +257,107 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/experiment"
-
+  "/api/questions":
+    post:
+      description: "Creates a new question"
+      operationId: questions_list
+      responses:
+        201:
+          schema:
+            $ref: "$/definitions/question"
+        400:
+          description: "Failed to create question"
+      parameters:
+      - name: text
+        description: "The text to display for the question"
+        required: true
+        in: body
+        type: string
+      - name: initialImage
+        description: "The URL of the initial image"
+        required: true
+        in: body
+        type: string
+      - name: finalImage
+        description: "The URL of the final image"
+        required: true
+        in: body
+        type: string
+      - name: initialSound
+        description: "The URL of the initial sound"
+        required: true
+        in: body
+        type: string
+      - name: finalSound
+        description: "The URL of the final sound"
+        required: true
+        in: body
+        type: string
+      - name: experiment_id
+        description: "The id of the experiment which this question belongs to"
+        required: true
+        in: body
+        type: number
+    get:
+      description: "Get all questions"
+      operationId: questions_list
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/question"
+        400:
+          description: "Failed to list questions"
+  "/api/questions/{id}":
+    get:
+      description: "Get a specific question"
+      operationId: questions_retrieve
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/question"
+        400:
+          description: "Failed to retrieve question"
+      parameters:
+      - name: id
+        in: path
+        description: "The id of the question to retrieve"
+        required: true
+        type: number
+    put:
+      description: "Update a specific question"
+      operationId: questions_update
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/quesion"
+        400:
+          description: "Failed to update question"
+      parameters:
+      - name: id
+        in: path
+        description: "The id of the question to update"
+        required: true
+        type: number
+    delete:
+      description: "Delete a specific question"
+      operationId: questions_destroy
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/deleteResponse"
+        400:
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - name: id
+        in: path
+        description: "The id of the question to delete"
+        required: true
+        type: number
+      
+ 
 definitions:
 
   user:
@@ -286,6 +386,22 @@ definitions:
       endDate:
         type: string
       user_id:
+        type: string
+
+  question:
+    type: object
+    properties:
+      id:
+        type: number
+      text:
+        type: string
+      initialImage:
+        type: string
+      finalImage:
+        type: string
+      initialSound:
+        type: string
+      finalSound:
         type: string
 
   deleteResponse:
