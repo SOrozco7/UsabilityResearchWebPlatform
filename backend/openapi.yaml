@@ -1,0 +1,128 @@
+# [START swagger]
+swagger: "2.0"
+info:
+  description: "Endpoints for GestureWeb"
+  title: "GestureWeb Endpoints"
+  version: "1.0.0"
+host: "echo-api.endpoints.tidal-guild-214115.cloud.goog"
+# [END swagger]
+consumes:
+- "application/json"
+produces:
+- "application/json"
+schemes:
+- "http"
+paths:
+  "/api/users":
+    post:
+      description: "Creates a new user"
+      operationId: users_create
+      responses:
+        201:
+          description: "User created successfully"
+          schema:
+            $ref: "#/definitions/user"
+        400:
+          description: "Failed to create user"
+      parameters:
+      - name: id
+        description: "The email of the user"
+        required: true
+        in: body
+        schema:
+          type: string
+          format: email
+      - name: username
+        description: "The email of the user"
+        required: true
+        in: body
+        schema:
+          type: string
+          format: email
+      - name: firstName
+        description: "The first name of the user"
+        required: true
+        in: body
+        type: string
+      - name: lastName
+        description: "The last name of the user"
+        required: true
+        in: body
+        type: string
+      - name: password
+        description: "The user's password"
+        required: true
+        in: body
+        type: string
+    get:
+      description: "Get all existing users"
+      operationId: users_list
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/user"
+        400:
+          description: "Failed to list users"
+  "/api/users/{id}":
+    get:
+      description: "Get a specific user"
+      operationId: users_retrieve
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/user"
+        400:
+          description: "Failed to retrieve user"
+      parameters:
+      - name: id
+        in: path
+        description: "The id of the user to retrieve"
+        required: true
+        type: string
+    put:
+      description: "Update a specific user"
+      operationId: users_update
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/user"
+        400:
+          description: "Failed to update user"
+      parameters:
+      - name: id
+        in: path
+        description: "The id of the user to update"
+        required: true
+        type: string
+    delete:
+      description: "Delete a user"
+      operationId: users_destroy
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/deleteUserResponse'
+
+
+
+definitions:
+  user:
+    type: object
+    properties:
+      username:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+
+  deleteUserResponse:
+    type: object
+    properties:
+      status:
+        type: number
+      message:
+        type: string
