@@ -31,6 +31,14 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
 
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
     const participantId = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
+
+    // This line is required to be able to initialize the questionresponses array.
+    this.participant = new Participant("", -1, "", "", "", -1, null, null, -1, null);
+
+    // This line is required because if the initialization of the questionresponses array
+    // is not made, the Karma test fails.
+    this.participant.questionresponses = [];
+    
     this.currQuestionIndex = 0;
 
     this.crud.retrieve(this.crud.models.PARTICIPANT, participantId)
@@ -56,7 +64,8 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
 
         // Sort the question responses by the relative order
         // of their IDs
-        this.participant.sortQuestionResponsesArray();
+        if(this.participant.questionresponses)
+          this.participant.sortQuestionResponsesArray();
       },
       (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
@@ -80,13 +89,18 @@ export class QuestionResponsesRetrieveComponent implements OnInit {
    */
   getCurrYouTubeVideoURL() {
 
-    // Retrieve the YouTube video ID of the currently chosen video
-    const videoId = this.participant.questionresponses[this.currQuestionIndex].videoId;
+    if(this.participant 
+      && this.participant.questionresponses 
+      && this.currQuestionIndex < this.participant.questionresponses.length){
 
-    // To be able to set this YouTube link in the corresponding iframe's [src] attribute,
-    // the URL string must be sanitized. This prevents Cross-Site Scripting Security bugs
-    // and makes it safe to use such URLs in DOM contexts.
-    return this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + videoId);
+      // Retrieve the YouTube video ID of the currently chosen video
+      const videoId = this.participant.questionresponses[this.currQuestionIndex].videoId;
+
+      // To be able to set this YouTube link in the corresponding iframe's [src] attribute,
+      // the URL string must be sanitized. This prevents Cross-Site Scripting Security bugs
+      // and makes it safe to use such URLs in DOM contexts.
+      return this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + videoId);
+    }
   }
 
   /**
