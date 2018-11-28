@@ -34,6 +34,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'experiment',
       onDelete: 'CASCADE',
     });
+    Participant.hasMany(models.QuestionResponse, {
+      foreignKey: 'participant_id',
+      as: 'questionresponses',
+    });
   };
   return Participant;
 };

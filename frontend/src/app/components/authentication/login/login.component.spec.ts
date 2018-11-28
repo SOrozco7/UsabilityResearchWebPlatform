@@ -7,6 +7,7 @@ import { AuthService } from '../../../services/auth.service';
 import { RouterStub } from '../../../router-stub';
 import { LoginComponent } from './login.component';
 import { BrowserModule, By } from '@angular/platform-browser';
+import { NgxNotificationService, NgxNotificationComponent } from 'ngx-notification';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -15,10 +16,14 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent],
+      declarations: [
+        LoginComponent,
+        NgxNotificationComponent
+      ],
       imports: [FormsModule],
       providers: [
         ErrorHandlerService,
+        NgxNotificationService,
         AuthService,
         HttpClient,
         HttpHandler,

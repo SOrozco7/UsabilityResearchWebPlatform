@@ -1,13 +1,13 @@
-<div class="col-sm-6">    
-  <div class="card text-white bg-dark mb-3">
-          <div class="card-header">{{experiment.user_id}}</div>
-          <div class="card-body">
-              <h4 class="card-title">{{experiment.name}}</h4>
-              <p class="card-text">{{experiment.description}}</p>
-              <p class="card-text">From: {{experiment.startDate}}</p>
-              <p class="card-text">To: {{experiment.endDate}}</p>
-          </div>
-  </div>
+<div class="row align-items-center justify-content-center">
+  <mat-card class="experiment-card text-white bg-dark">
+    <div class="card-header">{{experiment.user_id}}</div>
+      <div class="card-body">
+        <mat-card-title>{{experiment.name}}</mat-card-title>
+        <mat-card-content>{{experiment.description}}</mat-card-content>
+        <p class="card-text">From: {{experiment.startDate}}</p>
+        <p class="card-text">To: {{experiment.endDate}}</p>
+    </div>
+  </mat-card>
 </div>
 
 <br>
@@ -22,3 +22,13 @@
 &nbsp;
 &nbsp;
 <button type="button" (click)="deleteExperiment(experiment.id)" class="btn btn-lg btn-danger delete">Delete</button>
+
+<section>
+  <button mat-raised-button id="back-button" (click)="listExperiments()">Back</button>
+  <button mat-raised-button id="update-button" (click)="updateExperiment(experiment.id)">Edit</button>
+  <button mat-raised-button id="view-questionnaires-button" (click)="viewExperimentQuestionnaires()">View Questionnaires</button>
+  <button mat-raised-button id="view-responses-button" (click)="viewExperimentResponses()">View Experiment Responses</button>
+  <button mat-raised-button id="delete-button" (click)="deleteExperiment(experiment.id)" color="warn">Delete</button>
+</section>
+
+<button mat-raised-button id="run-experiment-button" (click)="runExperiment(experiment.id)" class="btn btn-lg btn-primary run-experiment">Run Experiment</button>

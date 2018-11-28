@@ -12,12 +12,15 @@ export class CrudService {
 
     USER: 'users',
     EXPERIMENT: 'experiments',
+    QUESTION: 'questions',
     QUESTIONNAIRE: 'questionnaires',
     BODYPART : 'bodyPart',
     PARTICIPANT: 'participants',
+    QUESTIONNAIRE_QUESTION: 'questionnairequestions',
     QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
     QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses',
     QUESTION: 'questions'
+    QUESTION_RESPONSE: 'questionresponses'
   };
 
   constructor(private auth: AuthService, private http: HttpClient) {
@@ -35,9 +38,23 @@ export class CrudService {
     }
   }
 
-  list(model: string) {
+  /**
+   *
+   * @param model The model to list
+   * @param searchParams Optional search parameters for the query.
+   * Filters (i.e. SQL 'WHERE' clauses) can be added here.
+   */
+  list(model: string, searchParams?: URLSearchParams) {
+
+    let url = this.URL + '/' + model + '/';
+
+    // Check whether there are search parameters to add
+    if (searchParams) {
+      url += '?' + searchParams.toString();
+    }
+
     return this.http.get(
-      this.URL + '/' + model,
+      url,
       {
         headers: this.headers
       }
@@ -93,6 +110,27 @@ export class CrudService {
   delete(model: string, id: any) {
     return this.http.delete(
       this.URL + '/' + model + '/' + id,
+      {
+        headers: this.headers
+      }
+    );
+  }
+
+  addBelongs(ownerModel: string, objectModel: string, ownerId: any, body: any) {
+    // Adds a model instance to another model.
+    // For example: adding a questionnaire to an experiment.
+    return this.http.post(
+      this.URL + '/' + ownerModel + '/' + ownerId + '/' + objectModel,
+      body,
+      {
+        headers: this.headers
+      }
+    );
+  }
+
+  bulkCreate(model: string, body: any) {
+    return this.http.post(this.URL + '/' + model + '-bulk',
+      body,
       {
         headers: this.headers
       }

@@ -60,6 +60,9 @@ module.exports = {
   list(req, res) {
     return Experiment
       .findAll({
+        include: [{
+          all: true,
+        }],
       })
       .then(experiments => res.status(200).send(experiments))
       .catch(error => res.status(400).send(error));

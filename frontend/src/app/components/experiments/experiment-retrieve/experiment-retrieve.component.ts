@@ -22,7 +22,7 @@ export class ExperimentRetrieveComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.experiment = new Experiment(null, null, null, null, null, null, null, null);
+    this.experiment = new Experiment(null, null, null, null, null, null, 0, 0, null, null);
     this.experiment.user_id = '';
 
     this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
@@ -57,13 +57,23 @@ export class ExperimentRetrieveComponent implements OnInit {
 
     this.router.navigate(['experiments/' + this.id + '/questions/create']);
   }
-
-  viewExperimentsQuestionnaires() {
-    this.router.navigate(['experiments/' + this.id + '/questionnaires']);
-  }
+  
   listQuestions() {
 
     this.router.navigate(['experiments/' + this.id + '/questions']);
   }
 
+  viewExperimentQuestionnaires() {
+    this.router.navigate(['experiments/' + this.id + '/questionnaires']);
+  }
+
+  viewExperimentResponses() {
+
+    this.router.navigate(['experiments/' + this.id + '/responses']);
+  }
+
+  runExperiment(experimentId: number) {
+    const participantId = 1; // Hardcoded for now
+    this.router.navigate(['experiments/run/' + experimentId + '/participants/' + participantId]);
+  }
 }

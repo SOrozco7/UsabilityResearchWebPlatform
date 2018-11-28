@@ -38,6 +38,5 @@ module.exports = (sequelize, DataTypes) => {
     });
     Question.belongsToMany(models.Questionnaire, { through: 'QuestionQuestionnaire' });
   };
-
   return Question;
 };

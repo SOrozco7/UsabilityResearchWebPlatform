@@ -22,7 +22,7 @@
                   {{questionnaire.name}}
                 </td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-link">Add</button>
+                  <button type="button" (click)="addQuestionnaireToExperiment(questionnaire)" class="btn btn-sm btn-link">Add</button>
                 </td>
               </tr>
             </tbody>
@@ -30,7 +30,7 @@
         </div>
       </div>
       <ng-template #elseBlock><p>No questionnaires were found.</p></ng-template>
-      <button type="button" class="btn btn-primary">Create a new questionnaire</button>
+      <button mat-stroked-button color="primary" (click)="navigateToCreateQuestionnaire()">Create a new questionnaire</button>
     </div>
   </div>
 </div>
