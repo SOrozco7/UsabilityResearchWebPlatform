@@ -6,7 +6,7 @@
 #    Build image for VPS kubernetes cluster:
 #    docker build -t gcr.io/${PROJECT_ID}/backend .
 #
-#    Run image (on localhost:4200):
+#    Run image (on localhost:8000):
 #    docker run --name backend_container -p 8000:8000 gcr.io/${PROJECT_ID}/backend
 #	 
 #	 Push image to GCR:
