@@ -1,4 +1,8 @@
 const { Experiment, Questionnaire } = require('../models');
+const redisClient = require('redis').createClient;
+const env = process.env.NODE_ENV || 'development';
+const config = require(`${__dirname}/../config/config.json`)[env]; // eslint-disable-line 
+const redis = redisClient(6379, config.redisHost);
 
 module.exports = {
   create(req, res) {
@@ -76,23 +80,46 @@ module.exports = {
       });
     }
 
-    return Experiment
-      .findById(req.params.id, {
-        include:
-        [{
-          all: true,
-        }],
-      })
-      .then((experiment) => {
-        if (!experiment) {
-          return res.status(400).send({
-            status: 400,
-            message: 'No experiment with that ID was found.',
-          });
-        }
-        return res.status(200).send(experiment);
-      })
-      .catch(error => res.status(400).send(error));
+    redis.get(req.params.id, (err, result) => {
+
+      if(!err && result){
+        
+        console.log("!!!!!!!!!!!!!!!!!!");
+        console.log(result);
+        console.log("!!!!!!!!!!!!!!!!!!");
+        const resultJSON = JSON.parse(result);
+        console.log("\n\nFound in Redis!\n\n");
+        return res.status(200).json(resultJSON);
+      }
+      else{
+
+        console.log("\n\nNot found in Redis! Looking in the DB.\n\n");
+
+        return Experiment
+          .findById(req.params.id, {
+            include:
+            [{
+              all: true,
+            }],
+          })
+          .then((experiment) => {
+            if (!experiment) {
+              return res.status(400).send({
+                status: 400,
+                message: 'No experiment with that ID was found.',
+              });
+            }
+
+            const experimentJSON = JSON.stringify(experiment);
+
+            redis.set(req.params.id, experimentJSON, () => {
+
+              return res.status(200).send(experiment);
+            });
+          })
+          .catch(error => res.status(400).send(error));
+          }
+    })
   },
 
   update(req, res) {
@@ -123,7 +150,17 @@ module.exports = {
             startDate: req.body.startDate || experiment.startDate,
             endDate: req.body.endDate || experiment.endDate,
           })
-          .then(updatedExperiment => res.status(200).send(updatedExperiment))
+          .then((updatedExperiment) => {
+
+            console.log("\n\nThe experiment was updated in the DB.\n\n");
+            const updatedExperimentJSON = JSON.stringify(updatedExperiment);
+
+            redis.set(req.params.id, updatedExperimentJSON, () => {
+
+              console.log("\n\nThe experiment was updated in Redis.\n\n");
+              res.status(200).send(updatedExperiment);
+            });
+          })
           .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));
