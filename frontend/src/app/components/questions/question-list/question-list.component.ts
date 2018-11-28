@@ -90,4 +90,9 @@ export class QuestionListComponent implements OnInit {
         }
       );
   }
+
+  retrieveExperiment() {
+    this.router.navigate(['experiments/' + this.experimentId]);
+  }
+
 }

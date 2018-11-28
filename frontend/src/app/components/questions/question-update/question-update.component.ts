@@ -18,6 +18,7 @@ export class QuestionUpdateComponent implements OnInit {
   experiment: Experiment;
   id: number;
   question: Question;
+  experiment_id: number;
 
   constructor(private errorHandler: ErrorHandlerService, private crud: CrudService, private router: Router, private route: ActivatedRoute) {
 
@@ -28,6 +29,7 @@ export class QuestionUpdateComponent implements OnInit {
     this.question.experiment_id = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
 
     this.id = parseInt(this.route.snapshot.paramMap.get('question_id'), 10);
+    this.experiment_id = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
 
     this.crud.retrieve(this.crud.models.QUESTION, this.id)
       .subscribe(
@@ -46,7 +48,7 @@ export class QuestionUpdateComponent implements OnInit {
       this.crud.update(this.crud.models.QUESTION, this.id, this.question)
         .subscribe(
           (res: Question) => {
-            console.log("hello");
+            console.log('hello');
             console.log(res);
             this.question = res;
             this.router.navigate(['experiments/' + this.id + '/questions']);
@@ -74,6 +76,11 @@ export class QuestionUpdateComponent implements OnInit {
 
   listQuestions() {
 
-    this.router.navigate(['experiments/' + this.id + '/questions']);
+    this.router.navigate(['experiments/' + this.experiment_id + '/questions']);
+  }
+
+  retrieveQuestion() {
+
+    this.router.navigate(['experiments/' + this.experiment_id + '/questions/' + this.id]);
   }
 }
