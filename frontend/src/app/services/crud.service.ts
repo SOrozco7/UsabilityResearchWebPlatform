@@ -19,7 +19,6 @@ export class CrudService {
     QUESTIONNAIRE_QUESTION: 'questionnairequestions',
     QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
     QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses',
-    QUESTION: 'questions'
     QUESTION_RESPONSE: 'questionresponses'
   };
 

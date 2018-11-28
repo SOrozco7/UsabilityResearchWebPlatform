@@ -64,7 +64,7 @@ import { QuestionResponsesRetrieveComponent } from './components/question-respon
     QuestionListComponent,
     QuestionRetrieveComponent,
     QuestionUpdateComponent,
-    QuestionDeleteComponent
+    QuestionDeleteComponent,
     ExperimentRunComponent,
     RecordRtcComponent,
     VideoUploadComponent,

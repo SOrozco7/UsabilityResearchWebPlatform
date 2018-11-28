@@ -9,7 +9,6 @@ import { AuthGuard } from './guards/auth.guard';
 // User
 import { LoginComponent } from './components/authentication/login/login.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
-import { SignupComponent } from './components/signup/signup.component';
 // Experiment
 import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
 import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
