@@ -102,7 +102,7 @@ paths:
         200:
           schema:
             $ref: '#/definitions/deleteResponse'
-    "/api/experiments":
+  "/api/experiments":
     post:
       description: "Create an experiment."
       operationId: "experiments_create"
@@ -245,7 +245,7 @@ paths:
         200:
           description: "Sucessful experiment deletion"
           schema:
-            $ref: "#/definitions/deleteExperimentResponse"
+            $ref: "#/definitions/deleteResponse"
         400:
           description: "Failed experiment deletion"
           schema:
@@ -257,6 +257,167 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/experiment"
+  "/api/participants":
+    post:
+      description: "Create a participant."
+      operationId: "participants_create"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successful participant creation"
+          schema:
+            $ref: "#/definitions/participant"
+        400:
+          description: "Failed participant creation"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - description: "ID of the experiment in which the participant is registered"
+        in: body
+        name: experiment_id
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Name of the participant"
+        in: body
+        name: name
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Age of the participant"
+        in: body
+        name: age
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Gender of the participant"
+        in: body
+        name: gender
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Ethnic group of the participant"
+        in: body
+        name: ethnicGroup
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Education level of the participant"
+        in: body
+        name: educationLevel
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+    get:
+      description: "Returns the list of participants."
+      operationId: "participants_list"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successful participant list"
+          schema:
+            type: array
+            $ref: "#/definitions/participant"
+        400:
+          description: "Failed participant list"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  "/api/participants/{id}":
+    get:
+      description: "Retrieves a participant"
+      operationId: "participants_retrieve"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Sucessful participant retrieve"
+          schema:
+            $ref: "#/definitions/participant"
+        400:
+          description: "Failed participant retrieve"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - description: "ID of the participant"
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+    put:
+      description: "Updates a participant."
+      operationId: "participants_update"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successful participant update"
+          schema:
+            $ref: "#/definitions/participant"
+        400:
+          description: "Failed participant update"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - description: "ID of the participant"
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: "#/definitions/participant" 
+      - description: "Name of the participant"
+        in: body
+        name: name
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Age of the participant"
+        in: body
+        name: age
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Gender of the participant"
+        in: body
+        name: gender
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Ethnic group of the participant"
+        in: body
+        name: ethnicGroup
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+      - description: "Education level of the participant"
+        in: body
+        name: educationLevel
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
+    delete:
+      description: "Deletes a participant"
+      operationId: "participants_delete"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Sucessful participant deletion"
+          schema:
+            $ref: "#/definitions/deleteResponse"
+        400:
+          description: "Failed participant deletion"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      parameters:
+      - description: "ID of the participant"
+        in: path
+        name: id
+        required: true
+        schema:
+          $ref: "#/definitions/participant"
 
 definitions:
 
@@ -286,6 +447,24 @@ definitions:
       endDate:
         type: string
       user_id:
+        type: string
+
+  participant:
+    type: object
+    properties:
+      id:
+        type: number
+      experiment_id:
+        type: number
+      name:
+        type: string
+      age:
+        type: number
+      gender:
+        type: string
+      ethnicGroup:
+        type: string
+      educationLevel:
         type: string
 
   deleteResponse:
