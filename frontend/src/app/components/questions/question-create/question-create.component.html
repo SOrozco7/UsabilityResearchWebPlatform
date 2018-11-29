@@ -1,0 +1,30 @@
+<div class="col-sm-6 left-element">
+    <button type="button" (click)="retrieveExperiment()" class="btn btn-lg btn-danger">Back</button>
+  <div class="card text-white bg-dark mb-3">
+    <form (submit)="createQuestion()">
+      <div class="card-body">
+        <p>Question Text</p>
+        <input class="form-control" type="text" id="questionText" name="questionText" [(ngModel)]="question.text">
+        <br>
+        <p>Initial Image</p>
+        <input class="form-control" type="text" id="initialImage" name="initialImage" [(ngModel)]="question.initialImage">
+        <br>
+        <p>Final Image</p>
+        <input class="form-control" type="text" id="finalImage" name="finalImage" [(ngModel)]="question.finalImage">
+        <br>
+        <p>Initial Sound</p>
+        <input class="form-control" type="text" id="initialSound" name="initialSound" [(ngModel)]="question.initialSound">
+        <br>
+        <p>Final Sound</p>
+        <input class="form-control" type="text" id="finalSound" name="finalSound" [(ngModel)]="question.finalSound"><br>
+        
+      </div>
+      <br>
+      &nbsp;
+      &nbsp;
+      <button type="submit" class="btn btn-success pull-right">Create question</button>
+      &nbsp;
+      <p></p>
+    </form>
+  </div>
+</div>

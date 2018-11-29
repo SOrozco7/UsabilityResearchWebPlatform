@@ -31,6 +31,11 @@ import { QuestionnaireListForExperimentComponent } from './components/questionna
 import { SignupComponent } from './components/signup/signup.component';
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
 import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component'; // tslint:disable-line:max-line-length
+import { QuestionCreateComponent } from './components/questions/question-create/question-create.component';
+import { QuestionListComponent } from './components/questions/question-list/question-list.component';
+import { QuestionRetrieveComponent } from './components/questions/question-retrieve/question-retrieve.component';
+import { QuestionUpdateComponent } from './components/questions/question-update/question-update.component';
+import { QuestionDeleteComponent } from './components/questions/question-delete/question-delete.component';  // tslint:disable-line:max-line-length
 import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
 import { RecordRtcComponent } from './components/record-rtc/record-rtc.component';
 import { VideoUploadComponent } from './components/youtube/video-upload/video-upload.component';
@@ -56,6 +61,11 @@ import { ParticipantSelectionComponent } from './components/participants/partici
     SignupComponent,
     QuestionnaireFillComponent,
     QuestionnaireAddToExperimentComponent,
+    QuestionCreateComponent,
+    QuestionListComponent,
+    QuestionRetrieveComponent,
+    QuestionUpdateComponent,
+    QuestionDeleteComponent,
     ExperimentRunComponent,
     RecordRtcComponent,
     VideoUploadComponent,

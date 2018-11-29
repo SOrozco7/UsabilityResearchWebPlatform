@@ -9,7 +9,6 @@ import { AuthGuard } from './guards/auth.guard';
 // User
 import { LoginComponent } from './components/authentication/login/login.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
-import { SignupComponent } from './components/signup/signup.component';
 // Experiment
 import { ExperimentListComponent } from './components/experiments/experiment-list/experiment-list.component';
 import { ExperimentCreateComponent } from './components/experiments/experiment-create/experiment-create.component';
@@ -28,6 +27,12 @@ import { QuestionnaireCreateComponent } from './components/questionnaires/questi
 import { QuestionnaireListForExperimentComponent } from './components/questionnaires/questionnaire-list-for-experiment/questionnaire-list-for-experiment.component';  // tslint:disable-line:max-line-length
 import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component';  // tslint:disable-line:max-line-length
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { QuestionCreateComponent } from './components/questions/question-create/question-create.component';
+import { QuestionRetrieveComponent } from './components/questions/question-retrieve/question-retrieve.component';
+import { QuestionListComponent } from './components/questions/question-list/question-list.component';
+import { QuestionUpdateComponent } from './components/questions/question-update/question-update.component';
+import { QuestionDeleteComponent } from './components/questions/question-delete/question-delete.component';
 // Video
 import { VideoUploadComponent } from './components/youtube/video-upload/video-upload.component';
 
@@ -75,6 +80,31 @@ const routes: Routes = [
   {
     path: 'experiments/:id/participants/select',
     component: ParticipantSelectionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:id/questions/create',
+    component: QuestionCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/questions/:question_id',
+    component: QuestionRetrieveComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:id/questions',
+    component: QuestionListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/questions/update/:question_id',
+    component: QuestionUpdateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/questions/delete/:question_id',
+    component: QuestionDeleteComponent,
     canActivate: [AuthGuard]
   },
   {

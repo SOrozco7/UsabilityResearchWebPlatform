@@ -29,5 +29,14 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 
+  Question.associate = (models) => {
+    Question.belongsTo(models.Experiment, {
+
+      foreignKey: 'experiment_id',
+      as: 'experiments',
+      onDelete: 'CASCADE',
+    });
+    Question.belongsToMany(models.Questionnaire, { through: 'QuestionQuestionnaire' });
+  };
   return Question;
 };
