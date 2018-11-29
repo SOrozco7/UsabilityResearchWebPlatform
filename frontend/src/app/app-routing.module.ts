@@ -18,6 +18,7 @@ import { ExperimentDeleteComponent } from './components/experiments/experiment-d
 import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
 // Participant
 import { ParticipantSelectionComponent } from './components/participants/participant-selection/participant-selection.component'; // tslint:disable-line:max-line-length
+import { ParticipantListComponent } from './components/participants/participant-list/participant-list.component'; // tslint:disable-line:max-line-length
 // QuestionResponses
 import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
 import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component'; // tslint:disable-line:max-line-length
@@ -78,6 +79,11 @@ const routes: Routes = [
   {
     path: 'experiments/delete/:id',
     component: ExperimentDeleteComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:id/participants',
+    component: ParticipantListComponent,
     canActivate: [AuthGuard]
   },
   {
