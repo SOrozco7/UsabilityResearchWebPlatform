@@ -135,4 +135,17 @@ export class CrudService {
       }
     );
   }
+
+  uploadFile(body: FormData) {
+    console.log(this.URL + '/fileupload');
+    console.log(body);
+    return this.http.post(this.URL + '/fileupload',
+      body,
+      {
+        headers: new HttpHeaders({
+          'Authorization': this.auth.getToken()
+        })
+      }
+    );
+  }
 }

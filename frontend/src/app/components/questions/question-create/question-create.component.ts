@@ -16,6 +16,15 @@ export class QuestionCreateComponent implements OnInit {
 
   question: Question;
   id: number;
+  initialImageFile: File = null;
+  finalImageFile: File = null;
+  initialSoundFile: File = null;
+  finalSoundFile: File = null;
+
+  initialImageUrl: string = null;
+  finalImageUrl: string = null;
+  initialSoundUrl: string = null;
+  finalSoundUrl: string = null;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -30,7 +39,15 @@ export class QuestionCreateComponent implements OnInit {
   }
 
   createQuestion() {
-
+    // Validate that we have the urls (for the images at least)
+    if (!this.finalImageUrl || !this.initialImageUrl) {
+      console.log('Error: missing one or more of the image files');
+      return;
+    }
+    this.question.initialImage = this.initialImageUrl;
+    this.question.finalImage = this.finalImageUrl;
+    this.question.initialSound = this.initialSoundUrl;
+    this.question.finalSound = this.finalSoundUrl;
     if (this.validate()) {
       this.crud.create(this.crud.models.QUESTION, this.question)
         .subscribe(
@@ -38,7 +55,7 @@ export class QuestionCreateComponent implements OnInit {
             console.log(res);
             this.question = res;
 
-            this.retrieveExperiment();
+            this.listQuestions();
           },
           (err: HttpErrorResponse) => {
             this.errorHandler.handleError(err);
@@ -56,8 +73,73 @@ export class QuestionCreateComponent implements OnInit {
     }
   }
 
-  retrieveExperiment() {
+  listQuestions() {
 
-    this.router.navigate(['experiments/' + this.question.experiment_id]);
+    this.router.navigate(['experiments/' + this.question.experiment_id + '/questions']);
+  }
+
+  onInitialImageSelected(event) {
+    this.initialImageFile = <File>event.target.files[0];
+  }
+  onFinalImageSelected(event) {
+    this.finalImageFile = <File>event.target.files[0];
+  }
+  onInitialSoundSelected(event) {
+    this.initialSoundFile = <File>event.target.files[0];
+  }
+  onFinalSoundSelected(event) {
+    this.finalSoundFile = <File>event.target.files[0];
+  }
+
+  onUploadInitialImage() {
+    const fd = new FormData();
+    fd.append('file', this.initialImageFile);
+    this.crud.uploadFile(fd)
+      .subscribe((res: any) => {
+          console.log('file successfully uploaded');
+          this.initialImageUrl = res.imageUrl;
+        }, err => {
+          console.log('Error: ' + err);
+        }
+        );
+  }
+
+  onUploadFinalImage() {
+    const fd = new FormData();
+    fd.append('file', this.finalImageFile);
+    this.crud.uploadFile(fd)
+      .subscribe((res: any) => {
+          console.log('file successfully uploaded');
+          this.finalImageUrl = res.imageUrl;
+        }, err => {
+          console.log('Error: ' + err);
+        }
+        );
+  }
+
+  onUploadInitialSound() {
+    const fd = new FormData();
+    fd.append('file', this.initialSoundFile);
+    this.crud.uploadFile(fd)
+      .subscribe((res: any) => {
+          console.log('file successfully uploaded');
+          this.initialSoundUrl = res.imageUrl;
+        }, err => {
+          console.log('Error: ' + err);
+        }
+        );
+  }
+
+  onUploadFinalSound() {
+    const fd = new FormData();
+    fd.append('file', this.finalSoundFile);
+    this.crud.uploadFile(fd)
+      .subscribe((res: any) => {
+          console.log('file successfully uploaded');
+          this.finalSoundUrl = res.imageUrl;
+        }, err => {
+          console.log('Error: ' + err);
+        }
+        );
   }
 }
