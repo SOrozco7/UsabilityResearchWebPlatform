@@ -31,7 +31,6 @@ export class QuestionnaireQuestionCreateComponent implements OnInit {
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.question = new QuestionnaireQuestion(null, this.id);
-    this.sendNotification("TEST ", "success", "bottom-left");
   }
 
   createQuestionnaireQuestion() {
