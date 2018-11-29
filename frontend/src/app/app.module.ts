@@ -45,7 +45,8 @@ import { QuestionResponsesRetrieveComponent } from './components/question-respon
 import { QuestionnaireRetrieveComponent } from './components/questionnaires/questionnaire-retrieve/questionnaire-retrieve.component'; // tslint:disable-line:max-line-length
 import { ParticipantSelectionComponent } from './components/participants/participant-selection/participant-selection.component';
 import { QuestionnaireQuestionCreateComponent } from './components/questionnaire-questions/questionnaire-question-create/questionnaire-question-create.component';
-import { ParticipantListComponent } from './components/participants/participant-list/participant-list.component'; // tslint:disable-line:max-line-length
+import { ParticipantListComponent } from './components/participants/participant-list/participant-list.component';
+import { ParticipantRetrieveComponent } from './components/participants/participant-retrieve/participant-retrieve.component'; // tslint:disable-line:max-line-length
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { ParticipantListComponent } from './components/participants/participant-
     QuestionnaireRetrieveComponent,
     ParticipantSelectionComponent,
     QuestionnaireQuestionCreateComponent,
-    ParticipantListComponent
+    ParticipantListComponent,
+    ParticipantRetrieveComponent
   ],
   imports: [
     BrowserModule,
