@@ -14,6 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class QuestionnaireListForExperimentComponent implements OnInit {
 
+  experiment: Experiment;
   questionnaires: Questionnaire[];
   id: number;
 
@@ -33,6 +34,7 @@ export class QuestionnaireListForExperimentComponent implements OnInit {
     this.crud.retrieve(this.crud.models.EXPERIMENT, this.id)
       .subscribe(
         (res: Experiment) => {
+          this.experiment = res;
           this.questionnaires = res.questionnaires;
         },
         (err: HttpErrorResponse) => {
@@ -49,4 +51,7 @@ export class QuestionnaireListForExperimentComponent implements OnInit {
     this.router.navigate(['experiments/' + this.id + '/addquestionnaire']);
   }
 
+  retrieveExperiment() {
+    this.router.navigate(['experiments/' + this.id]);
+  }
 }

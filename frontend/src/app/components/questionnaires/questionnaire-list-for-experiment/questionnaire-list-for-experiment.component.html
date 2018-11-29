@@ -1,4 +1,7 @@
 <div>
+  <h3 *ngIf="experiment">{{experiment.name}}</h3>
+  <button type="button" class="btn btn-danger" (click)="retrieveExperiment()">Back</button>
+  <br>
   <br>
   <div class="row">
       
