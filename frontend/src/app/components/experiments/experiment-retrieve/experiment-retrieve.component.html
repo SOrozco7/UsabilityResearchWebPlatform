@@ -11,15 +11,16 @@
 </div>
 
 <br>
-<!-- <button style="position: relative; margin-right: 5px" type="button" (click)="listQuestions()" class="btn btn-lg btn-success">View questions</button> -->
+<button type="button" id="back-button"  (click)="listExperiments()" class="btn btn-lg btn-danger back">Back</button>
+&nbsp;
+&nbsp;
+<button type="button" (click)="updateExperiment(experiment.id)" id="update-button"  class="btn btn-lg btn-success">Edit</button>
+<button style="position: relative; margin-right: 20px; margin-left: 20px" type="button" (click)="viewExperimentsQuestionnaires()" class="btn btn-lg">View Questionnaires</button>
+<button style="position: relative; margin-right: 20px" type="button" (click)="listQuestions()" class="btn btn-lg btn-info">View questions</button>
+<button type="button" (click)="addQuestion()" class="btn btn-lg btn-info">Add question</button>
+&nbsp;
+&nbsp;
+<button type="button" id="delete-button" (click)="deleteExperiment(experiment.id)" class="btn btn-lg btn-danger delete">Delete</button>
 
-<section>
-  <button mat-raised-button id="back-button" (click)="listExperiments()">Back</button>
-  <button mat-raised-button id="update-button" (click)="updateExperiment(experiment.id)">Edit</button>
-  <button mat-raised-button id="view-questions-button" (click)="listQuestions()">View Questions</button>
-  <button mat-raised-button id="view-responses-button" (click)="viewExperimentResponses()">View Responses</button>
-  <button mat-raised-button id="view-questionnaires-button" (click)="viewExperimentQuestionnaires()">View Questionnaires</button>
-  <button mat-raised-button id="delete-button" (click)="deleteExperiment(experiment.id)" color="warn">Delete</button>
-</section>
 
 <button mat-raised-button id="run-experiment-button" (click)="selectParticipant(experiment.id)" class="btn btn-lg btn-primary run-experiment">Run Experiment</button>
