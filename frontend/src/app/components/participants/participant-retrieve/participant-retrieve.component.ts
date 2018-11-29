@@ -46,4 +46,9 @@ export class ParticipantRetrieveComponent implements OnInit {
 
     this.router.navigate(['experiments/' + this.experimentId + '/participants/delete/' + participantId]);
   }
+
+  updateParticipant(participantId){
+
+    this.router.navigate(['experiments/' + this.experimentId + '/participants/' + participantId + '/update/']);
+  }
 }

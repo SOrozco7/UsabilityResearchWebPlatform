@@ -19,6 +19,7 @@ export class ParticipantCreateComponent implements OnInit {
     "Native American",
     "Alaska Native",
     "White American",
+    "Aryan",
     "Hispanic",
     "African American",
     "Asian American",
@@ -26,8 +27,8 @@ export class ParticipantCreateComponent implements OnInit {
   ];
 
   genders = [
-    "M",
-    "F"
+    "Male",
+    "Female"
   ];
 
   educationLevels = [

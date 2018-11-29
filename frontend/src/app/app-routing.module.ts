@@ -22,6 +22,7 @@ import { ParticipantListComponent } from './components/participants/participant-
 import { ParticipantRetrieveComponent } from './components/participants/participant-retrieve/participant-retrieve.component'; // tslint:disable-line:max-line-length
 import { ParticipantCreateComponent } from './components/participants/participant-create/participant-create.component'; // tslint:disable-line:max-line-length
 import { ParticipantDeleteComponent } from './components/participants/participant-delete/participant-delete.component';
+import { ParticipantUpdateComponent } from './components/participants/participant-update/participant-update.component'; // tslint:disable-line:max-line-length
 // QuestionResponses
 import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
 import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component'; // tslint:disable-line:max-line-length
@@ -87,6 +88,11 @@ const routes: Routes = [
   {
     path: 'experiments/:id/participants/create',
     component: ParticipantCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/participants/:participant_id/update',
+    component: ParticipantUpdateComponent,
     canActivate: [AuthGuard]
   },
   {
