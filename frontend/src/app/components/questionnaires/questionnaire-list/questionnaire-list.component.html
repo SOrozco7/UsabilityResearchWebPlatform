@@ -1,45 +1,34 @@
 <div>
+  <button type="button" class="btn btn-secondary" (click)="listExperiments()">Back</button>
+  <br>
   <br>
   <div class="row">
-      
-      <div class="col">
-          <div class="card mb-3">
-              <div class="card-header">Questionnaires</div>
-              <table class="card-body table table-hover">
-                  <thead>
-                  <tr>
-                      <th>#</th>
-                      <th>Questionnaire</th>
-                      <th>Author</th>
-                      <th>Total Questions</th>
-                      <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                      <tr *ngFor="let questionnaire of questionnaires">
-                          <td>
-                              {{questionnaire.id}}
-                          </td>
-                          <td>
-                              {{questionnaire.name}}
-                          </td>
-                          <td>
-                              <span>-</span>
-                            </td>
-                          <td>
-                              <span>-</span>
-                          </td>
-                          <td>
-                              <span>-</span>
-                          </td>
-                          <td>
-                            <button type="button" class="btn btn-sm btn-link">View</button>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-          
-      </div>
+    <div class="col">
+      <div class="card mb-3">
+        <div class="card-header">My Questionnaires</div>
+        <table class="card-body table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Questionnaire</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let questionnaire of questionnaires">
+              <td>
+                {{questionnaire.id}}
+              </td>
+              <td>
+                {{questionnaire.name}}
+              </td>
+              <td>
+                <button type="button" class="btn btn-sm btn-link" (click)="retrieveQuestionnaire(questionnaire.id)">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>  
+    </div>
   </div>
 </div>

@@ -42,6 +42,7 @@ import { VideoUploadComponent } from './components/youtube/video-upload/video-up
 import { NgxNotificationComponent } from 'ngx-notification';
 import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
 import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component'; // tslint:disable-line:max-line-length
+import { QuestionnaireRetrieveComponent } from './components/questionnaires/questionnaire-retrieve/questionnaire-retrieve.component'; // tslint:disable-line:max-line-length
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { QuestionResponsesRetrieveComponent } from './components/question-respon
     VideoUploadComponent,
     NgxNotificationComponent,
     QuestionResponsesListComponent,
-    QuestionResponsesRetrieveComponent
+    QuestionResponsesRetrieveComponent,
+    QuestionnaireRetrieveComponent
   ],
   imports: [
     BrowserModule,

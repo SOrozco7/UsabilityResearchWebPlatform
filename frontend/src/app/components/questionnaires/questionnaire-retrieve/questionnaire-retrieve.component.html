@@ -1,0 +1,31 @@
+<div>
+    <button type="button" class="btn btn-secondary" (click)="listQuestionnaires()">Back</button>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3" *ngIf="questionnaire">
+          <div class="card-header">{{questionnaire.name}}</div>
+          <table class="card-body table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Question</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let question of questionnaire.questions; index as i">
+                <td>
+                  {{i + 1}}
+                </td>
+                <td>
+                  {{question.text}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>  
+      </div>
+    </div>
+  </div>
+  
