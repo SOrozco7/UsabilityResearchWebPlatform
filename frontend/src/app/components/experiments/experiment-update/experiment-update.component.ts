@@ -71,6 +71,6 @@ export class ExperimentUpdateComponent implements OnInit {
 
   retrieveExperiment() {
 
-    this.router.navigate(['experiments/'+this.id]);
+    this.router.navigate(['experiments/' + this.id]);
   }
 }
