@@ -55,7 +55,7 @@ export class QuestionListComponent implements OnInit {
    * Method that takes you to the section to create a question.
    */
   createQuestion() {
-    this.router.navigate(['experiments/' + this.experimentId + '/question/create']);
+    this.router.navigate(['experiments/' + this.experimentId + '/questions/create']);
   }
 
   /**

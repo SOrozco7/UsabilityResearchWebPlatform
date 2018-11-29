@@ -21,18 +21,18 @@ module.exports = {
         message: 'The attribute "finalImage" of an instance of "Question" cannot be empty.',
       });
     }
-    if (!req.body.initialSound) {
-      return res.status(400).send({
-        status: 400,
-        message: 'The attribute "inititalSound" of an instance of "Question" cannot be empty.',
-      });
-    }
-    if (!req.body.finalSound) {
-      return res.status(400).send({
-        status: 400,
-        message: 'The attribute "finalSound" of an instance of "Question" cannot be empty.',
-      });
-    }
+    // if (!req.body.initialSound) {
+    //   return res.status(400).send({
+    //     status: 400,
+    //     message: 'The attribute "inititalSound" of an instance of "Question" cannot be empty.',
+    //   });
+    // }
+    // if (!req.body.finalSound) {
+    //   return res.status(400).send({
+    //     status: 400,
+    //     message: 'The attribute "finalSound" of an instance of "Question" cannot be empty.',
+    //   });
+    // }
 
     return Question
       .create({

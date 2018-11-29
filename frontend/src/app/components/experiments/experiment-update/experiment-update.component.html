@@ -18,6 +18,7 @@
         <p>To:</p>
         <input class="form-control" type="date" id="endDate" name="endDate" [(ngModel)]="experiment.endDate">
       </div>
+      <button style="position: relative; margin-right: 5px; margin-left: 20px" type="button" (click)="retrieveExperiment()" class="btn btn-default">Cancel</button>
       <button type="submit" class="btn btn-success pull-right">Save changes</button>
       &nbsp;
       <p></p>
@@ -27,4 +28,4 @@
 
 <br>
 &nbsp;
-<button type="button" (click)="listExperiments()" class="btn btn-lg btn-danger">Back</button>
+<button type="button" (click)="listExperiments()" class="btn btn-lg btn-danger">Back to Experiments</button>

@@ -32,19 +32,15 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-      console.log('Trying to login');
 
         if (this.validate()) {
             this.auth.login(this.id, this.password)
                 .subscribe(
                     res => {
                         this.auth.setSession(res);
-                        console.log('Successful login!');
                         this.router.navigate(['']);
                     },
                     err => {
-                        console.log('Unsuccessful login');
-
                         this.errorHandler.handleError(err);
                         this.password = '';
                         this.router.navigate(['/login']);
@@ -57,9 +53,6 @@ export class LoginComponent implements OnInit {
     }
 
     validate() {
-
-        // console.log("id = " + this.id + "; password = " + this.password);
-        console.log('In validate()');
 
         if (!this.id || !this.password) {
 
