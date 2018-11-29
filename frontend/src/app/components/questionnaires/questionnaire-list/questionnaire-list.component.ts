@@ -42,4 +42,8 @@ export class QuestionnaireListComponent implements OnInit {
   retrieveQuestionnaire(id: number) {
     this.router.navigate(['questionnaires/' + id]);
   }
+
+  navigateToCreateQuestionnaire() {
+    this.router.navigate(['questionnaires/create']);
+  }
 }

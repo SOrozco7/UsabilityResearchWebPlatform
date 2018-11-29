@@ -115,4 +115,8 @@ export class QuestionnaireFillComponent implements OnInit {
         }
       );
   }
+
+  listQuestionnaires() {
+    this.router.navigate(['experiments/' + this.route.snapshot.paramMap.get('experiment_id') + '/questionnaires']);
+  }
 }
