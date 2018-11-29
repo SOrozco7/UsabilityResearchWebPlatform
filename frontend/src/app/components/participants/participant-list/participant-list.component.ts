@@ -49,4 +49,9 @@ export class ParticipantListComponent implements OnInit {
 
     this.router.navigate(['experiments/' + this.experimentId + '/participants/' + participantId]);
   }
+
+  createParticipant(){
+
+    this.router.navigate(['experiments/' + this.experimentId + '/participants/create']);
+  }
 }

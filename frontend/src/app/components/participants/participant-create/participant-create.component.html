@@ -1,0 +1,40 @@
+<div class="col-sm-6 left-element">
+  <div class="btn-toolbar" role="toolbar">
+    <button class="btn btn-secondary pull-right mr-2" (click)="listParticipants()">Back</button>
+  </div>
+  <br>
+  <div class="card text-white bg-dark mb-3">
+    <form (submit)="createParticipant()">
+      <div class="card-body">
+        <p>Name</p>
+        <input class="form-control" type="text" id="participantName" name="participantName" [(ngModel)]="participant.name">
+        <br>
+        <p>Age</p>
+        <input class="form-control" type="number" id="participantAge" name="participantAge" min="1" max="120" [(ngModel)]="participant.age">
+        <br>
+        <p>Gender</p>
+        <select class='select-option' required [(ngModel)]='participant.gender' name="gender" (ngModelChange)='onGenderSelected($event)'>
+            <option class='option' *ngFor='let gender of genders' [value]="gender">{{gender}}</option>
+        </select>
+        <br>
+        <br>
+        <p>Ethnic Group</p>
+        <select class='select-option' required [(ngModel)]='participant.ethnicGroup' name="ethnicGroup" (ngModelChange)='onEthnicGroupSelected($event)'>
+            <option class='option' *ngFor='let ethnicGroup of ethnicGroups' [value]="ethnicGroup">{{ethnicGroup}}</option>
+        </select>
+        <br>
+        <br>
+        <p>Education Level</p>
+        <select class='select-option' required [(ngModel)]='participant.educationLevel' name="educationLevel" (ngModelChange)='onEducationLevelSelected($event)'>
+            <option class='option' *ngFor='let educationLevel of educationLevels' [value]="educationLevel">{{educationLevel}}</option>
+        </select>
+        <br>
+      </div>
+      <br>
+      &nbsp;
+      <button type="submit" class="btn btn-success pull-right">Create participant</button>
+      &nbsp;
+      <p></p>
+    </form>
+  </div>
+</div>
