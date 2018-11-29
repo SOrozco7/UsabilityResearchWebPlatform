@@ -7,17 +7,21 @@
         <input class="form-control" type="text" id="questionText" name="questionText" [(ngModel)]="question.text">
         <br>
         <p>Initial Image</p>
-        <input class="form-control" type="text" id="initialImage" name="initialImage" [(ngModel)]="question.initialImage">
+        <input class="form-control" type="file" accept="image/*" (change)="onInitialImageSelected($event)">
+        <button type="button" (click)="onUploadInitialImage()">Send</button>
         <br>
         <p>Final Image</p>
-        <input class="form-control" type="text" id="finalImage" name="finalImage" [(ngModel)]="question.finalImage">
+        <input class="form-control" type="file" accept="image/*" (change)="onFinalImageSelected($event)">
+        <button type="button" (click)="onUploadFinalImage()">Send</button>
         <br>
         <p>Initial Sound</p>
-        <input class="form-control" type="text" id="initialSound" name="initialSound" [(ngModel)]="question.initialSound">
+        <input class="form-control" type="file" (change)="onInitialSoundSelected($event)">
+        <button type="button" (click)="onUploadInitialSound()">Send</button>
         <br>
         <p>Final Sound</p>
-        <input class="form-control" type="text" id="finalSound" name="finalSound" [(ngModel)]="question.finalSound"><br>
-        
+        <input class="form-control" type="file" (change)="onFinalSoundSelected($event)"><br>
+        <button type="button" (click)="onUploadFinalSound()">Send</button>
+      
       </div>
       <br>
       &nbsp;

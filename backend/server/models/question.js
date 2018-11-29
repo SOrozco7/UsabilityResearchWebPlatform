@@ -20,11 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
     initialSound: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.TEXT,
     },
     finalSound: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.TEXT,
     },
   }, {});

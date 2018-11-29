@@ -21,7 +21,7 @@ export class AuthService {
       user_id: id,
       password: password
     };
-
+    console.log('In login()');
     return this.http.post(
       this.URL + '/login',
       body,
