@@ -43,4 +43,7 @@ export class QuestionnaireRetrieveComponent implements OnInit {
     this.router.navigate(['questionnaires']);
   }
 
+  createQuestionnaireQuestion() {
+    this.router.navigate(['questionnaires/' + this.id + '/questions/create']);
+  }
 }

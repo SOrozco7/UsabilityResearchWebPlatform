@@ -28,6 +28,7 @@ import { QuestionnaireListForExperimentComponent } from './components/questionna
 import { QuestionnaireAddToExperimentComponent } from './components/questionnaires/questionnaire-add-to-experiment/questionnaire-add-to-experiment.component';  // tslint:disable-line:max-line-length
 import { QuestionnaireFillComponent } from './components/questionnaires/questionnaire-fill/questionnaire-fill.component';
 import { QuestionnaireRetrieveComponent } from './components/questionnaires/questionnaire-retrieve/questionnaire-retrieve.component'; // tslint:disable-line:max-line-length
+import { QuestionnaireQuestionCreateComponent } from './components/questionnaire-questions/questionnaire-question-create/questionnaire-question-create.component'; // tslint:disable-line:max-line-length
 
 import { SignupComponent } from './components/signup/signup.component';
 import { QuestionCreateComponent } from './components/questions/question-create/question-create.component';
@@ -132,6 +133,11 @@ const routes: Routes = [
   {
     path: 'questionnaires/:id',
     component: QuestionnaireRetrieveComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'questionnaires/:id/questions/create',
+    component: QuestionnaireQuestionCreateComponent,
     canActivate: [AuthGuard]
   },
   {
