@@ -120,11 +120,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'questionnaires/:id',
-    component: QuestionnaireRetrieveComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'experiments/:id/questionnaires',
     component: QuestionnaireListForExperimentComponent,
     canActivate: [AuthGuard]
@@ -132,6 +127,11 @@ const routes: Routes = [
   {
     path: 'questionnaires/create',
     component: QuestionnaireCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'questionnaires/:id',
+    component: QuestionnaireRetrieveComponent,
     canActivate: [AuthGuard]
   },
   {
