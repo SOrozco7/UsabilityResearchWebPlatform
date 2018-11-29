@@ -1,0 +1,53 @@
+<div>
+  <button mat-raised-button id="back-button" (click)="retrieveExperiment()">Back</button>
+  <br>
+  <br>
+  <ng-container *ngIf="arrParticipants && arrParticipants.length > 0; else second">
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">Select a participant for running the experiment</div>
+          <table class="card-body table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Ethnic Group</th>
+                <th>Education Level</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let participant of arrParticipants">
+                <td>
+                  {{participant.name}}
+                </td>
+                <td>
+                  {{participant.age}}
+                </td>
+                <td>
+                  {{participant.gender}}
+                </td>
+                <td>
+                  {{participant.ethnicGroup}}
+                </td>
+                <td>
+                  {{participant.educationLevel}}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" (click)="runExperiment(participant.id)">Select</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #second>
+    <h3>Oops...</h3>
+    <br>
+    <p>There are no participants registered or all the current participants have already gone through the experiment. Please, add more participants to the experiment.</p>
+  </ng-template>
+</div>
