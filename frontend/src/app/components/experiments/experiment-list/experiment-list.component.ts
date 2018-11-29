@@ -95,6 +95,10 @@ export class ExperimentListComponent implements OnInit {
     this.router.navigate(['experiments/' + id]);
   }
 
+  viewQuestionnaires() {
+    this.router.navigate(['questionnaires/']);
+  }
+
   /**
    * Method that deletes a given experiment
    * @param id the id of the experiment to deletes

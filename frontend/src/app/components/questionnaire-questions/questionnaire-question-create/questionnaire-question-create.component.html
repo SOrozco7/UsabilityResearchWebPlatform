@@ -1,0 +1,19 @@
+<div class="col-sm-6 left-element">
+  <button type="button" (click)="retrieveQuestionnaire()" class="btn btn-lg btn-danger">Back</button>
+  <div class="card text-white bg-dark mb-3">
+    <form (submit)="createQuestionnaireQuestion()">
+      <div class="card-body">
+        <p>Question Text</p>
+        <input class="form-control" type="text" name="text" [(ngModel)]="question.text">
+      </div>
+      <br>
+      &nbsp;
+      &nbsp;
+      <button type="submit" class="btn btn-success pull-right">Create question</button>
+      &nbsp;
+      <p></p>
+    </form>
+  </div>
+</div>
+
+<lib-ngx-notification></lib-ngx-notification>

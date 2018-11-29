@@ -84,6 +84,11 @@ module.exports = {
             as: 'questions',
             required: false,
           },
+          {
+            model: Questionnaire,
+            as: 'questionnaires',
+            required: false,
+          },
         ],
       })
       .then((experiment) => {

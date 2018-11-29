@@ -42,7 +42,9 @@ import { VideoUploadComponent } from './components/youtube/video-upload/video-up
 import { NgxNotificationComponent } from 'ngx-notification';
 import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
 import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component'; // tslint:disable-line:max-line-length
-import { ParticipantSelectionComponent } from './components/participants/participant-selection/participant-selection.component'; // tslint:disable-line:max-line-length
+import { QuestionnaireRetrieveComponent } from './components/questionnaires/questionnaire-retrieve/questionnaire-retrieve.component'; // tslint:disable-line:max-line-length
+import { ParticipantSelectionComponent } from './components/participants/participant-selection/participant-selection.component';
+import { QuestionnaireQuestionCreateComponent } from './components/questionnaire-questions/questionnaire-question-create/questionnaire-question-create.component'; // tslint:disable-line:max-line-length
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { ParticipantSelectionComponent } from './components/participants/partici
     NgxNotificationComponent,
     QuestionResponsesListComponent,
     QuestionResponsesRetrieveComponent,
-    ParticipantSelectionComponent
+    QuestionnaireRetrieveComponent,
+    ParticipantSelectionComponent,
+    QuestionnaireQuestionCreateComponent
   ],
   imports: [
     BrowserModule,

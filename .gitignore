@@ -51,6 +51,7 @@ package-lock.json
 /frontend/src/environments/environment.ts
 /backend/server/config/cloud.json
 AdminKey.json
+/backend/server/config/key.json
 
 # Emacs
 *~
