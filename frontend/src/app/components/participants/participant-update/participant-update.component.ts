@@ -16,27 +16,27 @@ export class ParticipantUpdateComponent implements OnInit {
   experimentId: number;
 
   ethnicGroups = [
-    "Native American",
-    "Alaska Native",
-    "White American",
-    "Aryan",
-    "Hispanic",
-    "African American",
-    "Asian American",
-    "Other"
+    'Native American',
+    'Alaska Native',
+    'White American',
+    'Aryan',
+    'Hispanic',
+    'African American',
+    'Asian American',
+    'Other'
   ];
 
   genders = [
-    "Male",
-    "Female"
+    'Male',
+    'Female'
   ];
 
   educationLevels = [
-    "High School",
-    "Bachelor's Degree",
-    "Master's Degree",
-    "PhD",
-    "Other"
+    'High School',
+    'Bachelor\'s Degree',
+    'Master\'s Degree',
+    'PhD',
+    'Other'
   ];
 
   ethnicGroupSelected: any;
@@ -44,17 +44,17 @@ export class ParticipantUpdateComponent implements OnInit {
   educationLevelSelected: any;
 
   onGenderSelected(event) {
-    console.log(event); //option value will be sent as event
+    console.log(event); // option value will be sent as event
     this.participant.gender = event;
   }
 
   onEthnicGroupSelected(event) {
-    console.log(event); //option value will be sent as event
+    console.log(event); // option value will be sent as event
     this.participant.ethnicGroup = event;
   }
 
   onEducationLevelSelected(event) {
-    console.log(event); //option value will be sent as event
+    console.log(event); // option value will be sent as event
     this.participant.educationLevel = event;
   }
 
@@ -66,7 +66,7 @@ export class ParticipantUpdateComponent implements OnInit {
 
   ngOnInit() {
 
-    this.participant = new Participant("", 20, "", "", "", -1, null, null, -1, null);
+    this.participant = new Participant('', 20, '', '', '', -1, null, null, -1, null);
     this.participant.id = parseInt(this.route.snapshot.paramMap.get('participant_id'), 10);
     this.experimentId = parseInt(this.route.snapshot.paramMap.get('experiment_id'), 10);
     this.participant.experiment_id = this.experimentId;
@@ -76,7 +76,7 @@ export class ParticipantUpdateComponent implements OnInit {
         (res: Participant) => {
           console.log(res);
           this.participant = res;
-          this.ethnicGroupSelected = "AASDASD"
+          this.ethnicGroupSelected = 'AASDASD';
         },
         (err: HttpErrorResponse) => {
           this.errorHandler.handleError(err);

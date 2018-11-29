@@ -12,7 +12,7 @@ import { ErrorHandlerService } from '../../../services/error-handler.service';
 })
 export class ParticipantDeleteComponent implements OnInit {
 
-  experimentId: number; 
+  experimentId: number;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -31,7 +31,7 @@ export class ParticipantDeleteComponent implements OnInit {
     .subscribe(
       (res: Response) => {
         this.errorHandler.showInformativeMessage('Successfully deleted participant.');
-        
+
         this.listParticipants();
       },
       (err: HttpErrorResponse) => {
@@ -40,7 +40,7 @@ export class ParticipantDeleteComponent implements OnInit {
     );
   }
 
-  listParticipants(){
+  listParticipants() {
 
     this.router.navigate(['experiments/' + this.experimentId + '/participants/']);
   }

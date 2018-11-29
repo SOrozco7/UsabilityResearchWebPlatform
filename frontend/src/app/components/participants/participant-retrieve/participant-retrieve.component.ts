@@ -37,17 +37,17 @@ export class ParticipantRetrieveComponent implements OnInit {
       );
   }
 
-  listParticipants(){
+  listParticipants() {
 
     this.router.navigate(['experiments/' + this.experimentId + '/participants/']);
   }
 
-  deleteParticipant(participantId){
+  deleteParticipant(participantId) {
 
     this.router.navigate(['experiments/' + this.experimentId + '/participants/delete/' + participantId]);
   }
 
-  updateParticipant(participantId){
+  updateParticipant(participantId) {
 
     this.router.navigate(['experiments/' + this.experimentId + '/participants/' + participantId + '/update/']);
   }

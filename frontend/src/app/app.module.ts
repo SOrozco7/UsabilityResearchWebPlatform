@@ -44,7 +44,7 @@ import { QuestionResponsesListComponent } from './components/question-responses/
 import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component'; // tslint:disable-line:max-line-length
 import { QuestionnaireRetrieveComponent } from './components/questionnaires/questionnaire-retrieve/questionnaire-retrieve.component'; // tslint:disable-line:max-line-length
 import { ParticipantSelectionComponent } from './components/participants/participant-selection/participant-selection.component';
-import { QuestionnaireQuestionCreateComponent } from './components/questionnaire-questions/questionnaire-question-create/questionnaire-question-create.component';
+import { QuestionnaireQuestionCreateComponent } from './components/questionnaire-questions/questionnaire-question-create/questionnaire-question-create.component'; // tslint:disable-line:max-line-length
 import { ParticipantListComponent } from './components/participants/participant-list/participant-list.component';
 import { ParticipantRetrieveComponent } from './components/participants/participant-retrieve/participant-retrieve.component';
 import { ParticipantCreateComponent } from './components/participants/participant-create/participant-create.component';

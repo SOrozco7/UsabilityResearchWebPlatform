@@ -45,12 +45,12 @@ export class ParticipantListComponent implements OnInit {
     this.router.navigate(['experiments/' + this.experimentId]);
   }
 
-  retrieveParticipant(participantId){
+  retrieveParticipant(participantId) {
 
     this.router.navigate(['experiments/' + this.experimentId + '/participants/' + participantId]);
   }
 
-  createParticipant(){
+  createParticipant() {
 
     this.router.navigate(['experiments/' + this.experimentId + '/participants/create']);
   }
