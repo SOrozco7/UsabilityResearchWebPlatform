@@ -55,7 +55,7 @@ export class QuestionCreateComponent implements OnInit {
             console.log(res);
             this.question = res;
 
-            this.retrieveExperiment();
+            this.listQuestions();
           },
           (err: HttpErrorResponse) => {
             this.errorHandler.handleError(err);
@@ -73,9 +73,9 @@ export class QuestionCreateComponent implements OnInit {
     }
   }
 
-  retrieveExperiment() {
+  listQuestions() {
 
-    this.router.navigate(['experiments/' + this.question.experiment_id]);
+    this.router.navigate(['experiments/' + this.question.experiment_id + '/questions']);
   }
 
   onInitialImageSelected(event) {

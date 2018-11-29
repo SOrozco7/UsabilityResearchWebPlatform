@@ -50,6 +50,7 @@ package-lock.json
 # secrets
 /frontend/src/environments/environment.ts
 /backend/server/config/cloud.json
+AdminKey.json
 
 # Emacs
 *~
