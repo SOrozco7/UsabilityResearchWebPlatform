@@ -89,6 +89,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'experiments/:id/participants/select',
+    component: ParticipantSelectionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'experiments/:id/participants',
     component: ParticipantListComponent,
     canActivate: [AuthGuard]
@@ -96,11 +101,6 @@ const routes: Routes = [
   {
     path: 'experiments/:experiment_id/participants/:participant_id',
     component: ParticipantRetrieveComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'experiments/:id/participants/select',
-    component: ParticipantSelectionComponent,
     canActivate: [AuthGuard]
   },
   {
