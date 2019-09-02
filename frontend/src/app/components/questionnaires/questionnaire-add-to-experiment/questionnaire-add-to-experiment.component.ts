@@ -47,6 +47,7 @@ export class QuestionnaireAddToExperimentComponent implements OnInit {
             .subscribe(
             (responseQuestionnaires: Questionnaire[]) => {
               console.log(res);
+              console.log('Attempting to map');
               const questionnaireIds = this.experiment.questionnaires.map(questionnaire => questionnaire.id);
               console.log('The questionnaire ids:');
               console.log(questionnaireIds);

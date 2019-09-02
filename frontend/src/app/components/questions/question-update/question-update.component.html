@@ -1,0 +1,26 @@
+<div class="col-sm-6">
+  <div class="card text-white bg-dark mb-3">
+    <form (submit)="updateQuestion()">
+      <div class="card-header">{{question.experiment_id}}</div>
+      <div class="card-body">
+        <div class="form-group">
+          <input type="text" class="form-control input-underline input-lg" name="questionText" [(ngModel)]="question.text"
+            placeholder="Question Text">
+          <br>
+          <textarea *ngIf="question" class="form-control" rows="3" name="questionInitialImage" [(ngModel)]="question.initialImage"
+            placeholder="Question Initial Image"></textarea>
+          <textarea *ngIf="question" class="form-control" rows="3" name="questionFinalImage" [(ngModel)]="question.finalImage"
+            placeholder="Question Final Image"></textarea>            
+        </div>
+      </div>
+      <button style="position: relative; margin-right: 5px; margin-left: 20px" (click)="retrieveQuestion()" class="btn btn-default">Cancel</button>
+      <button type="submit" class="btn btn-success pull-right">Save changes</button>
+      &nbsp;
+      <p></p>
+    </form>
+  </div>
+</div>
+
+<br>
+&nbsp;
+<button type="button" (click)="listQuestions()" class="btn btn-lg btn-danger">Back to Questions</button>

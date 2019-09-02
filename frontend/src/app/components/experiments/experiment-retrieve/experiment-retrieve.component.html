@@ -10,13 +10,13 @@
   </mat-card>
 </div>
 
-<br>
-
 <section>
   <button mat-raised-button id="back-button" (click)="listExperiments()">Back</button>
   <button mat-raised-button id="update-button" (click)="updateExperiment(experiment.id)">Edit</button>
-  <button mat-raised-button id="view-questionnaires-button" (click)="viewExperimentsQuestionnaires()">View Questionnaires</button>
+  <button mat-raised-button id="view-questions-button" (click)="listQuestions()">View Questions</button>
+  <button mat-raised-button id="view-responses-button" (click)="viewExperimentResponses()">View Experiment Responses</button>
+  <button mat-raised-button id="view-questionnaires-button" (click)="viewExperimentQuestionnaires()">View Questionnaires</button>
   <button mat-raised-button id="delete-button" (click)="deleteExperiment(experiment.id)" color="warn">Delete</button>
 </section>
 
-<button mat-raised-button id="run-experiment-button" (click)="runExperiment(experiment.id)" class="btn btn-lg btn-primary run-experiment">Run Experiment</button>
+<button mat-raised-button id="run-experiment-button" (click)="selectParticipant(experiment.id)" class="btn btn-lg btn-primary run-experiment">Run Experiment</button>

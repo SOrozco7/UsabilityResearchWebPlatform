@@ -1,0 +1,36 @@
+<div>
+  <button class="btn btn-danger" (click)="retrieveExperiment()">Back</button>    
+  <br>
+  <br>
+  <div class="row">
+
+    <div class="col">
+      <div class="card mb-3">
+        <div class="card-header">My Questions</div>
+        <table class="card-body table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Question</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let question of questions">
+              <td>
+                {{question.id}}
+              </td>
+              <td>
+                {{question.text}}
+              </td>
+              <td>
+                <button type="button" (click)="retrieveQuestion(question.id)" class="btn btn-primary">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-success pull-right" (click)="createQuestion()">Create Question</button>      
+    </div>
+  </div>
+</div>

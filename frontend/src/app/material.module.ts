@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatListModule,
   ],
   exports: [
     BrowserAnimationsModule,
@@ -28,6 +30,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatListModule,
   ]
 })
 export class MaterialModule {}

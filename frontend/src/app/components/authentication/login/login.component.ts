@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
+import { NgxNotificationService } from 'ngx-notification';
 
 @Component({
     selector: 'app-login',
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
     id: string;
     password: string;
 
-    constructor(private errorHandler: ErrorHandlerService, private auth: AuthService, public router: Router) { }
+    constructor(
+        private errorHandler: ErrorHandlerService,
+        private auth: AuthService,
+        public router: Router,
+        private ngxNotificationService: NgxNotificationService) { }
 
     ngOnInit() {
 
@@ -29,18 +34,17 @@ export class LoginComponent implements OnInit {
     login() {
 
         if (this.validate()) {
-
             this.auth.login(this.id, this.password)
                 .subscribe(
                     res => {
                         this.auth.setSession(res);
-                        console.log('Successful login!');
                         this.router.navigate(['']);
                     },
                     err => {
                         this.errorHandler.handleError(err);
                         this.password = '';
                         this.router.navigate(['/login']);
+                        this.sendNotification('Invalid credentials. Please, try again.', 'danger', 'bottom-right');
                     }
                 );
         }
@@ -49,8 +53,6 @@ export class LoginComponent implements OnInit {
     }
 
     validate() {
-
-        // console.log("id = " + this.id + "; password = " + this.password);
 
         if (!this.id || !this.password) {
 
@@ -64,5 +66,10 @@ export class LoginComponent implements OnInit {
     goToSignup() {
 
         this.router.navigate(['/signup']);
+    }
+
+    sendNotification(message, color, position) {
+
+        this.ngxNotificationService.sendMessage(message, color, position);
     }
 }

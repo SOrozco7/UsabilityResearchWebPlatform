@@ -21,18 +21,18 @@ module.exports = {
         message: 'The attribute "finalImage" of an instance of "Question" cannot be empty.',
       });
     }
-    if (!req.body.initialSound) {
-      return res.status(400).send({
-        status: 400,
-        message: 'The attribute "inititalSound" of an instance of "Question" cannot be empty.',
-      });
-    }
-    if (!req.body.finalSound) {
-      return res.status(400).send({
-        status: 400,
-        message: 'The attribute "finalSound" of an instance of "Question" cannot be empty.',
-      });
-    }
+    // if (!req.body.initialSound) {
+    //   return res.status(400).send({
+    //     status: 400,
+    //     message: 'The attribute "inititalSound" of an instance of "Question" cannot be empty.',
+    //   });
+    // }
+    // if (!req.body.finalSound) {
+    //   return res.status(400).send({
+    //     status: 400,
+    //     message: 'The attribute "finalSound" of an instance of "Question" cannot be empty.',
+    //   });
+    // }
 
     return Question
       .create({
@@ -93,13 +93,13 @@ module.exports = {
         }
         return question
           .update({
-            text: req.body.name || question.text,
+            text: req.body.text || question.text,
             initialImage: req.body.initialImage || question.initialImage,
             finalImage: req.body.finalImage || question.finalImage,
             initialSound: req.body.initialSound || question.initialSound,
             finalSound: req.body.finalSound || question.finalSound,
           })
-          .then(finalquestion => res.status(200).send(finalquestion))
+          .then(updatedQuestion => res.status(200).send(updatedQuestion))
           .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));

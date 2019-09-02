@@ -1,0 +1,21 @@
+<button mat-raised-button id="back-button" (click)="retrieveQuestionResponses()">Back</button>
+<br>
+<br>
+<h1>Responses by {{ participant.name }}</h1>
+<br>
+<br>
+
+<div style="width: 200px; float: left;">
+  <mat-list>
+    <mat-list-item *ngFor="let questionResponse of this.participant.questionresponses; let i = index">
+      <button (click)="setCurrQuestion(i)">Question #{{ i + 1 }}</button>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<ng-container *ngIf="this.participant.questionresponses[this.currQuestionIndex]">
+  <div style="margin-left: 220px;">
+    <iframe width="840" height="630" [src]="getCurrYouTubeVideoURL()">
+    </iframe>
+  </div>
+</ng-container>

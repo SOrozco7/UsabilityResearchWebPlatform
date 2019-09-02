@@ -1,0 +1,34 @@
+<div class="col-sm-6 left-element">
+  <button type="button" (click)="listQuestions()" class="btn btn-lg btn-danger">Back</button>
+  <div class="card text-white bg-dark mb-3">
+    <form (submit)="createQuestion()">
+      <div class="card-body">
+        <p>Question Text</p>
+        <input class="form-control" type="text" id="questionText" name="questionText" [(ngModel)]="question.text">
+        <br>
+        <p>Initial Image</p>
+        <input class="form-control" type="file" accept="image/*" (change)="onInitialImageSelected($event)">
+        <button type="button" (click)="onUploadInitialImage()">Send</button>
+        <br>
+        <p>Final Image</p>
+        <input class="form-control" type="file" accept="image/*" (change)="onFinalImageSelected($event)">
+        <button type="button" (click)="onUploadFinalImage()">Send</button>
+        <br>
+        <p>Initial Sound</p>
+        <input class="form-control" type="file" (change)="onInitialSoundSelected($event)">
+        <button type="button" (click)="onUploadInitialSound()">Send</button>
+        <br>
+        <p>Final Sound</p>
+        <input class="form-control" type="file" (change)="onFinalSoundSelected($event)"><br>
+        <button type="button" (click)="onUploadFinalSound()">Send</button>
+      
+      </div>
+      <br>
+      &nbsp;
+      &nbsp;
+      <button type="submit" class="btn btn-success pull-right">Create question</button>
+      &nbsp;
+      <p></p>
+    </form>
+  </div>
+</div>

@@ -34,4 +34,16 @@ export class QuestionnaireListComponent implements OnInit {
         }
       );
   }
+
+  listExperiments() {
+    this.router.navigate(['experiments']);
+  }
+
+  retrieveQuestionnaire(id: number) {
+    this.router.navigate(['questionnaires/' + id]);
+  }
+
+  navigateToCreateQuestionnaire() {
+    this.router.navigate(['questionnaires/create']);
+  }
 }

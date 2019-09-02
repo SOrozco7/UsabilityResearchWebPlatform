@@ -10,7 +10,7 @@
               [ngModelOptions]="{standalone: true}">
           </div>
 
-          <div class="form-group">
+          <div class="form-group" (keyup.enter)="login()">
             <input type="password" [(ngModel)]="password" class="form-control input-underline input-lg" id="password"
               placeholder="Password" [ngModelOptions]="{standalone: true}">
           </div>
@@ -24,3 +24,5 @@
     </div>
   </div>
 </div>
+
+<lib-ngx-notification></lib-ngx-notification>

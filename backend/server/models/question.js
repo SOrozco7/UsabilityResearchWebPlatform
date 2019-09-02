@@ -20,17 +20,23 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
     initialSound: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.TEXT,
     },
     finalSound: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.TEXT,
     },
   }, {});
+
   Question.associate = (models) => {
+    Question.belongsTo(models.Experiment, {
+
+      foreignKey: 'experiment_id',
+      as: 'experiments',
+      onDelete: 'CASCADE',
+    });
     Question.belongsToMany(models.Questionnaire, { through: 'QuestionQuestionnaire' });
   };
-
   return Question;
 };

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Question } from '../models/question';
 
 @Injectable()
 export class CrudService {
@@ -17,7 +18,8 @@ export class CrudService {
     PARTICIPANT: 'participants',
     QUESTIONNAIRE_QUESTION: 'questionnairequestions',
     QUESTIONNAIRE_RESPONSE: 'questionnaireresponses',
-    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses'
+    QUESTIONNAIRE_QUESTION_RESPONSE: 'questionnairequestionresponses',
+    QUESTION_RESPONSE: 'questionresponses'
   };
 
   constructor(private auth: AuthService, private http: HttpClient) {
@@ -35,9 +37,23 @@ export class CrudService {
     }
   }
 
-  list(model: string) {
+  /**
+   *
+   * @param model The model to list
+   * @param searchParams Optional search parameters for the query.
+   * Filters (i.e. SQL 'WHERE' clauses) can be added here.
+   */
+  list(model: string, searchParams?: URLSearchParams) {
+
+    let url = this.URL + '/' + model + '/';
+
+    // Check whether there are search parameters to add
+    if (searchParams) {
+      url += '?' + searchParams.toString();
+    }
+
     return this.http.get(
-      this.URL + '/' + model,
+      url,
       {
         headers: this.headers
       }
@@ -116,6 +132,19 @@ export class CrudService {
       body,
       {
         headers: this.headers
+      }
+    );
+  }
+
+  uploadFile(body: FormData) {
+    console.log(this.URL + '/fileupload');
+    console.log(body);
+    return this.http.post(this.URL + '/fileupload',
+      body,
+      {
+        headers: new HttpHeaders({
+          'Authorization': this.auth.getToken()
+        })
       }
     );
   }

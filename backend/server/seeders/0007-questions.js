@@ -4,9 +4,9 @@ module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.bulkInsert('Questions',
     [
       {
-        text: 'Using the pillow, make a gesture to turn the tv on',
-        initialImage: 'image1.jpg',
-        finalImage: 'image2.jpg',
+        text: 'Using the pillow, make a gesture to turn the lightbulb on',
+        initialImage: 'https://storage.googleapis.com/andres-bucket/lightbulboff.png',
+        finalImage: 'https://storage.googleapis.com/andres-bucket/lightbulbon.png',
         initialSound: 'sound1.mp3',
         finalSound: 'sound2.mp3',
         experiment_id: 1,
@@ -14,9 +14,9 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW'),
       },
       {
-        text: 'Using the pillow, make a gesture to turn the tv off',
-        initialImage: 'image3.jpg',
-        finalImage: 'image4.jpg',
+        text: 'Using the pillow, make a gesture to play the music',
+        initialImage: 'https://storage.googleapis.com/andres-bucket/itunesplay.png',
+        finalImage: 'https://storage.googleapis.com/andres-bucket/itunesstopped.png',
         initialSound: 'sound3.mp3',
         finalSound: 'sound4.mp3',
         experiment_id: 1,
@@ -24,21 +24,11 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW'),
       },
       {
-        text: 'Using the pillow, make a gesture to increase the volume',
-        initialImage: 'image5.jpg',
-        finalImage: 'image6.jpg',
+        text: 'Using the pillow, make a gesture to close the garage door',
+        initialImage: 'https://storage.googleapis.com/andres-bucket/garageopen.png',
+        finalImage: 'https://storage.googleapis.com/andres-bucket/garageclosed.png',
         initialSound: 'sound5.mp3',
         finalSound: 'sound6.mp3',
-        experiment_id: 1,
-        createdAt: Sequelize.fn('NOW'),
-        updatedAt: Sequelize.fn('NOW'),
-      },
-      {
-        text: 'Using the pillow, make a gesture to play a song',
-        initialImage: 'image7.jpg',
-        finalImage: 'image8.jpg',
-        initialSound: 'sound7.mp3',
-        finalSound: 'sound8.mp3',
         experiment_id: 1,
         createdAt: Sequelize.fn('NOW'),
         updatedAt: Sequelize.fn('NOW'),
@@ -54,9 +44,6 @@ module.exports = {
       },
       {
         id: 3,
-      },
-      {
-        id: 4,
       },
     ]),
 };
