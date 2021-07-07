@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ParticipantSelectionComponent } from './participant-selection.component';
+import { ParticipantDeleteComponent } from './participant-delete.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpHandler } from '@angular/common/http';
@@ -9,14 +9,13 @@ import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { AuthService } from '../../../services/auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ParticipantSelectionComponent', () => {
-
-  let component: ParticipantSelectionComponent;
-  let fixture: ComponentFixture<ParticipantSelectionComponent>;
+describe('ParticipantDeleteComponent', () => {
+  let component: ParticipantDeleteComponent;
+  let fixture: ComponentFixture<ParticipantDeleteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ParticipantSelectionComponent ],
+      declarations: [ ParticipantDeleteComponent ],
       imports: [
         RouterTestingModule,
         FormsModule
@@ -34,7 +33,7 @@ describe('ParticipantSelectionComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ParticipantSelectionComponent);
+    fixture = TestBed.createComponent(ParticipantDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

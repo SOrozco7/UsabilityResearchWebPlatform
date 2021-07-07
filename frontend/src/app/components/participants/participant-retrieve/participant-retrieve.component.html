@@ -1,0 +1,20 @@
+<div class="row align-items-center justify-content-center">
+  <mat-card class="experiment-card text-white bg-dark">
+    <ng-container *ngIf="participant">
+      <div class="card-header">Participant #{{participant.id}}</div>
+      <div class="card-body">
+        <mat-card-title>{{participant.name}}</mat-card-title>
+        <mat-card-content>Age: {{participant.age}}</mat-card-content>
+        <mat-card-content>Gender: {{participant.gender}}</mat-card-content>
+        <mat-card-content>Ethnic Group: {{participant.ethnicGroup}}</mat-card-content>
+        <mat-card-content>Education Level: {{participant.educationLevel}}</mat-card-content>
+      </div>
+    </ng-container>
+  </mat-card>
+</div>
+
+<section>
+  <button mat-raised-button id="back-button" (click)="listParticipants()">Back</button>
+  <button mat-raised-button id="update-button" (click)="updateParticipant(participant.id)">Edit</button>
+  <button mat-raised-button id="delete-button" (click)="deleteParticipant(participant.id)" color="warn">Delete</button>
+</section>

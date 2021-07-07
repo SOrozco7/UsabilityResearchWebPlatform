@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ParticipantSelectionComponent } from './participant-selection.component';
+import { ParticipantRetrieveComponent } from './participant-retrieve.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpHandler } from '@angular/common/http';
@@ -8,18 +8,19 @@ import { CrudService } from '../../../services/crud.service';
 import { ErrorHandlerService } from '../../../services/error-handler.service';
 import { AuthService } from '../../../services/auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from '../../../material.module';
 
-describe('ParticipantSelectionComponent', () => {
-
-  let component: ParticipantSelectionComponent;
-  let fixture: ComponentFixture<ParticipantSelectionComponent>;
+describe('ParticipantRetrieveComponent', () => {
+  let component: ParticipantRetrieveComponent;
+  let fixture: ComponentFixture<ParticipantRetrieveComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ParticipantSelectionComponent ],
+      declarations: [ ParticipantRetrieveComponent ],
       imports: [
         RouterTestingModule,
-        FormsModule
+        FormsModule,
+        MaterialModule
       ],
       providers: [
         ScriptService,
@@ -34,7 +35,7 @@ describe('ParticipantSelectionComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ParticipantSelectionComponent);
+    fixture = TestBed.createComponent(ParticipantRetrieveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

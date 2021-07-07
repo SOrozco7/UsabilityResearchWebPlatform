@@ -63,6 +63,11 @@ export class ExperimentRetrieveComponent implements OnInit {
     this.router.navigate(['experiments/' + this.id + '/questions']);
   }
 
+  listParticipants() {
+
+    this.router.navigate(['experiments/' + this.id + '/participants']);
+  }
+
   viewExperimentQuestionnaires() {
     this.router.navigate(['experiments/' + this.id + '/questionnaires']);
   }

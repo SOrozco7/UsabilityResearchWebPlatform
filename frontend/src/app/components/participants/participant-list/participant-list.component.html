@@ -1,0 +1,49 @@
+<div>
+  <div class="btn-toolbar" role="toolbar">
+    <button class="btn btn-secondary pull-right mr-2" (click)="retrieveExperiment()">Back</button>
+    <button class="btn btn-success pull-right m" (click)="createParticipant()">Add Participant</button>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col">
+      <div class="card mb-3">
+        <div class="card-header">Participants of the experiment #{{experimentId}}</div>
+        <table class="card-body table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Ethnic Group</th>
+              <th>Education Level</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let participant of arrParticipants">
+              <td>
+                {{participant.name}}
+              </td>
+              <td>
+                {{participant.age}}
+              </td>
+              <td>
+                {{participant.gender}}
+              </td>
+              <td>
+                {{participant.ethnicGroup}}
+              </td>
+              <td>
+                {{participant.educationLevel}}
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="retrieveParticipant(participant.id)">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

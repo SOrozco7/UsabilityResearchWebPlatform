@@ -18,6 +18,11 @@ import { ExperimentDeleteComponent } from './components/experiments/experiment-d
 import { ExperimentRunComponent } from './components/experiments/experiment-run/experiment-run.component';
 // Participant
 import { ParticipantSelectionComponent } from './components/participants/participant-selection/participant-selection.component'; // tslint:disable-line:max-line-length
+import { ParticipantListComponent } from './components/participants/participant-list/participant-list.component'; // tslint:disable-line:max-line-length
+import { ParticipantRetrieveComponent } from './components/participants/participant-retrieve/participant-retrieve.component'; // tslint:disable-line:max-line-length
+import { ParticipantCreateComponent } from './components/participants/participant-create/participant-create.component'; // tslint:disable-line:max-line-length
+import { ParticipantDeleteComponent } from './components/participants/participant-delete/participant-delete.component';
+import { ParticipantUpdateComponent } from './components/participants/participant-update/participant-update.component'; // tslint:disable-line:max-line-length
 // QuestionResponses
 import { QuestionResponsesListComponent } from './components/question-responses/question-responses-list/question-responses-list.component';
 import { QuestionResponsesRetrieveComponent } from './components/question-responses/question-responses-retrieve/question-responses-retrieve.component'; // tslint:disable-line:max-line-length
@@ -81,8 +86,33 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'experiments/:id/participants/create',
+    component: ParticipantCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/participants/:participant_id/update',
+    component: ParticipantUpdateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/participants/delete/:participant_id',
+    component: ParticipantDeleteComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'experiments/:id/participants/select',
     component: ParticipantSelectionComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:id/participants',
+    component: ParticipantListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'experiments/:experiment_id/participants/:participant_id',
+    component: ParticipantRetrieveComponent,
     canActivate: [AuthGuard]
   },
   {
